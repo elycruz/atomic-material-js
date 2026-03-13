@@ -1,0 +1,378 @@
+/**
+ * Layout direction
+ * ---------------------- */
+html:not([dir="rtl"]) :where(ez-input, .ez-input, .ez-textfield) {
+  flex-flow: row nowrap;
+}
+
+html[dir="rtl"] :where(ez-input, .ez-input, .ez-textfield) {
+  flex-flow: column nowrap;
+}
+
+/**
+ * Base
+ * ------------------------ */
+
+/**
+ * Padding (ltr)
+ * ------------------------ */
+html:not([dir="rtl"]) :where(ez-input, .ez-input, .ez-textfield):where(
+  input:not(
+    [type="button"],
+    [type="checkbox"],
+    [type="color"],
+    [type="image"],
+    [type="radio"],
+    [type="range"],
+    [type="reset"],
+    [type="submit"]
+   ),
+  select,
+  textarea
+) {
+  padding: var(--ez-input-padding-block) var(--ez-input-padding-inline);
+}
+
+html:not([dir="rtl"]) :where(ez-input, .ez-input, .ez-textfield) > *:not(
+  [type="button"],
+  [type="checkbox"],
+  [type="color"],
+  [type="image"],
+  [type="radio"],
+  [type="range"],
+  [type="reset"],
+  [type="submit"]
+) {
+  padding: calc(var(--ez-input-padding-block) - var(--ez-input-border-width))
+  calc(var(--ez-input-padding-inline) - var(--ez-input-border-width));
+}
+
+/**
+ * Padding (rtl)
+ */
+html[dir="rtl"] :where(ez-input, .ez-input, .ez-textfield):is(
+  input:not(
+    [type="button"],
+    [type="checkbox"],
+    [type="color"],
+    [type="image"],
+    [type="radio"],
+    [type="range"],
+    [type="reset"],
+    [type="submit"]
+  ),
+  select,
+  textarea
+) {
+  padding: var(--ez-input-padding-inline) var(--ez-input-padding-block);
+}
+
+html[dir="rtl"] :where(ez-input, .ez-input, .ez-textfield) > *:not(
+  [type="button"],
+  [type="checkbox"],
+  [type="color"],
+  [type="image"],
+  [type="radio"],
+  [type="range"],
+  [type="reset"],
+  [type="submit"]
+) {
+  padding: calc(var(--ez-input-padding-inline) - var(--ez-input-border-width))
+  calc(var(--ez-input-padding-block) - var(--ez-input-border-width));
+}
+
+/**
+ * Size control - Restrict heights for known control sizes.
+ */
+:where(ez-input, .ez-input, .ez-textfield):not(.ez-small, .ez-large, textarea, :has(> textarea)) {
+  max-height: calc(36 / 16 * 1rem);
+}
+
+/** .. For select elements */
+:where(ez-input, .ez-input, .ez-textfield):not(.ez-small, .ez-large) > select {
+  min-height: calc(38 / 16 * 1rem);
+}
+
+:where(.ez-input, .ez-textfield):not(.ez-small, .ez-large):is(select) {
+  min-height: calc(36 / 16 * 1rem);
+}
+
+/**
+ * @todo Support 'ez-small', and 'ez-large', input control, sizes.
+ */
+
+/**
+ * Default dimensions, where not checkbox, and/or radio button.
+ */
+:where(ez-input, .ez-input, .ez-textfield):not([type="checkbox"], [type="radio"]) {
+  --ez-input-padding-block: var(--ez-6px);
+  --ez-input-padding-inline: var(--ez-6px);
+
+  display: inline-flex;
+  width: fit-content;
+  height: fit-content;
+  color: var(--ez-input-text-color);
+}
+
+/**
+ * Default background.
+ */
+:where(ez-input, .ez-input, .ez-textfield):has(
+  input:not(
+    [type="button"],
+    [type="checkbox"],
+    [type="color"],
+    [type="image"],
+    [type="radio"],
+    [type="range"],
+    [type="reset"],
+    [type="submit"]
+  ),
+  select,
+  textarea
+),
+:where(ez-input, .ez-input, .ez-textfield):is(
+  input:not(
+    [type="button"],
+    [type="checkbox"],
+    [type="color"],
+    [type="image"],
+    [type="radio"],
+    [type="range"],
+    [type="reset"],
+    [type="submit"]
+  ),
+  select,
+  textarea
+) {
+  background: var(--ez-input-bg-color);
+}
+
+:where(ez-input, .ez-input, .ez-textfield) > :is(input, textarea, select) {
+  vertical-align: middle;
+}
+
+/*
+ * Input, Select, Textarea, and 'not checkbox, or radio'
+ * ---------------------- */
+:where(ez-input, .ez-input, .ez-textfield):not([type="checkbox"], [type="radio"]),
+:where(ez-input, .ez-input, .ez-textfield) > :is(
+  input:not([type="checkbox"], [type="radio"]),
+  textarea,
+  select
+) {
+  border-radius: var(--ez-border-radius);
+}
+
+:where(ez-input, .ez-input, .ez-textfield):is(
+  input:not([type="checkbox"], [type="radio"]),
+  textarea,
+  select
+),
+:where(ez-input, .ez-input, .ez-textfield) > :is(
+  input:not([type="checkbox"], [type="radio"]),
+  textarea,
+  select
+ ) {
+  border: none;
+  margin: 0;
+}
+
+/**
+ * Line-height
+ */
+:where(ez-input, .ez-input, .ez-textfield):where(
+  input:not(
+    [type="checkbox"],
+    [type="color"],
+    [type="image"],
+    [type="radio"],
+    [type="range"]
+  ),
+  select,
+  textarea
+),
+:where(ez-input, .ez-input, .ez-textfield) > :where(
+  input:not(
+    [type="checkbox"],
+    [type="color"],
+    [type="image"],
+    [type="radio"],
+    [type="range"]
+  ),
+  select,
+  textarea
+) {
+  line-height: var(--ez-24px);
+}
+
+/*
+ * Focus Visible
+ *--------------------- */
+:where(ez-input, .ez-input, .ez-textfield) > :is(
+  input:not(
+    [type="button"],
+    [type="checkbox"],
+    [type="color"],
+    [type="image"],
+    [type="radio"],
+    [type="range"],
+    [type="reset"],
+    [type="submit"]
+  ),
+  select,
+  textarea
+):focus-visible {
+  outline: none;
+}
+
+/*
+ * Outlined/Default
+ * ----------------------- */
+:where(
+  :where(ez-input, .ez-input, .ez-textfield):not(.ez-underlined),
+  :where(ez-input, .ez-input, .ez-textfield).ez-outlined
+):has(
+  input:not([type="range"], [type="image"], [type="checkbox"], [type="radio"]),
+  select,
+  textarea
+),
+:where(
+  :where(ez-input, .ez-input, .ez-textfield):not(.ez-underlined),
+  :where(ez-input, .ez-input, .ez-textfield).ez-outlined
+):is(
+  input:not([type="range"], [type="image"], [type="checkbox"], [type="radio"]),
+  select,
+  textarea
+) {
+  border: var(--ez-border-width) solid;
+}
+
+:where(ez-input, .ez-input, .ez-textfield).ez-underlined {
+  border-bottom: var(--ez-border-width) solid;
+}
+
+/*
+ * Size
+ * -------------------- */
+:where(ez-input, .ez-input, .ez-textfield).ez-small {
+  /* --ez-input-padding-block: ; */
+}
+
+/*
+ * MD3 Filled variant
+ * ----------------------- */
+:where(ez-input, .ez-input, .ez-textfield).ez-filled {
+  position: relative;
+  background: var(--md-sys-color-surface-container-highest, var(--ez-input-bg-color));
+  border: none;
+  border-bottom: 1px solid var(--md-sys-color-on-surface-variant, currentcolor);
+  border-radius: var(--md-sys-shape-corner-extra-small, var(--ez-border-radius))
+    var(--md-sys-shape-corner-extra-small, var(--ez-border-radius))
+    0 0;
+  min-height: 56px;
+}
+
+:where(ez-input, .ez-input, .ez-textfield).ez-filled:has(:focus) {
+  border-bottom-width: 2px;
+  border-bottom-color: var(--md-sys-color-primary, var(--ez-input-highlight-color));
+}
+
+:where(ez-input, .ez-input, .ez-textfield).ez-filled:has(:is(.ez-error, :invalid)) {
+  border-bottom-color: var(--md-sys-color-error, red);
+}
+
+/*
+ * MD3 Outlined focus enhancement
+ * ----------------------- */
+:where(ez-input, .ez-input, .ez-textfield).ez-outlined:has(:focus) {
+  border-width: 2px;
+  border-color: var(--md-sys-color-primary, var(--ez-input-highlight-color));
+}
+
+:where(ez-input, .ez-input, .ez-textfield).ez-outlined:has(:is(.ez-error, :invalid)) {
+  border-color: var(--md-sys-color-error, red);
+}
+
+/*
+ * Floating label
+ * ----------------------- */
+:where(ez-input, .ez-input, .ez-textfield).ez-filled > label,
+:where(ez-input, .ez-input, .ez-textfield).ez-outlined > label {
+  position: absolute;
+  top: 50%;
+  left: var(--ez-input-padding-inline, var(--ez-6px));
+  transform: translateY(-50%);
+  font-size: var(--md-sys-typescale-body-large-size, 1.33333rem);
+  color: var(--md-sys-color-on-surface-variant, GrayText);
+  pointer-events: none;
+  transition: transform var(--md-sys-motion-duration-short4, 200ms) var(--md-sys-motion-easing-standard, ease),
+              font-size var(--md-sys-motion-duration-short4, 200ms) var(--md-sys-motion-easing-standard, ease),
+              top var(--md-sys-motion-duration-short4, 200ms) var(--md-sys-motion-easing-standard, ease);
+}
+
+:where(ez-input, .ez-input, .ez-textfield).ez-filled:has(:focus, :not(:placeholder-shown)) > label {
+  top: 8px;
+  transform: translateY(0);
+  font-size: var(--md-sys-typescale-body-small-size, 1rem);
+  color: var(--md-sys-color-primary, var(--ez-input-highlight-color));
+}
+
+:where(ez-input, .ez-input, .ez-textfield).ez-outlined:has(:focus, :not(:placeholder-shown)) > label {
+  top: 0;
+  transform: translateY(-50%);
+  font-size: var(--md-sys-typescale-body-small-size, 1rem);
+  color: var(--md-sys-color-primary, var(--ez-input-highlight-color));
+  background: var(--md-sys-color-surface, Canvas);
+  padding-inline: 4px;
+}
+
+/* Error state label color */
+:where(ez-input, .ez-input, .ez-textfield):has(:is(.ez-error, :invalid):focus, :is(.ez-error, :invalid):not(:placeholder-shown)) > label {
+  color: var(--md-sys-color-error, red);
+}
+
+/*
+ * Leading/trailing icons
+ * ----------------------- */
+:where(ez-input, .ez-input, .ez-textfield) > .ez-field__leading {
+  display: flex;
+  align-items: center;
+  padding-inline-start: var(--md-sys-spacing-3, 0.75rem);
+  color: var(--md-sys-color-on-surface-variant, GrayText);
+}
+
+:where(ez-input, .ez-input, .ez-textfield) > .ez-field__trailing {
+  display: flex;
+  align-items: center;
+  padding-inline-end: var(--md-sys-spacing-3, 0.75rem);
+  color: var(--md-sys-color-on-surface-variant, GrayText);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :where(ez-input, .ez-input, .ez-textfield).ez-filled > label,
+  :where(ez-input, .ez-input, .ez-textfield).ez-outlined > label {
+    transition: none;
+  }
+}
+
+/**
+ * Material Design - Input/Textfield
+ * ---------------------- */
+:where(ez-input, .ez-input, .ez-textfield):not(
+  [type="checkbox"],
+  [type="radio"]
+):where(:focus-within) {
+  border-color: var(--ez-input-highlight-color);
+}
+
+/**
+ * Material Design - Range
+ * ---------------------- */
+:where(.ez-range, [type="range"])::-webkit-slider-thumb:hover {
+  box-shadow: 0 0 0 var(--ez-5px) rgba(0, 0, 0, 0.12);
+}
+
+:where(.ez-range, [type="range"])::-moz-range-thumb:hover {
+  box-shadow: 0 0 0 var(--ez-5px) rgba(0, 0, 0, 0.12);
+}

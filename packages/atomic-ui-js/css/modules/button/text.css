@@ -1,0 +1,16 @@
+/**
+ * MD3 Variants — Text (E.g., Not "Filled" variant base)
+ * -------------------- */
+:where(.ez-btn, .ez-button):not(.ez-filled) {
+  background: transparent;
+  color: var(--md-color-theme, ButtonText);
+}
+
+:where(.ez-btn, .ez-button):not(.ez-filled):hover {
+  color: color-mix(in oklch, var(--md-color-theme), #000 13%);
+}
+
+:where(.ez-btn, .ez-button):not(.ez-filled):has(> [rippleactive]),
+:where(.ez-btn, .ez-button):not(.ez-filled):active {
+  color: color-mix(in oklch, var(--md-color-theme), #000 21%);
+}

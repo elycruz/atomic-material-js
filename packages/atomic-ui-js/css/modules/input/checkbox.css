@@ -1,0 +1,117 @@
+:where(.ez-radio, .ez-checkbox, [type="radio"], [type="checkbox"]) {
+  appearance: none;
+  display: inline-grid;
+  place-content: center;
+  cursor: pointer;
+  transition: background-color var(--ez-input-speed), border var(--ez-input-speed),
+  opacity var(--ez-input-speed);
+  background-color: var(--ez-input-bg-color);
+  border: var(--ez-input-border-width) solid var(--md-sys-color-on-surface-variant, var(--ez-input-border-color));
+  box-sizing: border-box;
+  margin: 0;
+  position: relative;
+}
+
+:where(.ez-checkbox, [type="checkbox"])::after,
+:where(.ez-radio, .ez-checkbox, [type="radio"], [type="checkbox"]) {
+  width: 1.125rem;
+  height: 1.125rem;
+}
+
+:where(.ez-radio, .ez-checkbox, [type="radio"], [type="checkbox"])::after {
+  content: "";
+  background-color: var(--ez-input-bg-color);
+}
+
+:where(.ez-radio, .ez-checkbox, [type="radio"], [type="checkbox"])[readonly] {
+  pointer-events: none;
+}
+
+/* Error state */
+:where(.ez-radio, .ez-checkbox, [type="radio"], [type="checkbox"]).ez-error {
+  border-color: var(--md-sys-color-error, red);
+}
+
+:where(.ez-checkbox, [type="checkbox"]),
+:where(.ez-checkbox, [type="checkbox"])::after {
+  border-radius: var(--md-sys-shape-corner-extra-small, var(--ez-border-radius));
+}
+
+:where(.ez-checkbox, [type="checkbox"])::after,
+:where(.ez-checkbox, [type="checkbox"]):checked::after {
+  background: transparent url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" stroke="white" stroke-width="3" d="M1.73,12.91 8.1,19.28 22.79,4.59"></path></svg>');
+  width: var(--ez-12px);
+  height: var(--ez-12px);
+}
+
+:where(.ez-checkbox, [type="checkbox"]):checked {
+  background: var(--md-sys-color-primary, var(--ez-input-highlight-color));
+  border-color: var(--md-sys-color-primary, var(--ez-input-highlight-color));
+}
+
+:where(.ez-checkbox, [type="checkbox"]).ez-error:checked {
+  background: var(--md-sys-color-error, red);
+  border-color: var(--md-sys-color-error, red);
+}
+
+/* Indeterminate state */
+:where(.ez-checkbox, [type="checkbox"]):indeterminate {
+  background: var(--md-sys-color-primary, var(--ez-input-highlight-color));
+  border-color: var(--md-sys-color-primary, var(--ez-input-highlight-color));
+}
+
+:where(.ez-checkbox, [type="checkbox"]):indeterminate::after {
+  background: transparent url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" stroke="white" stroke-width="3" d="M4,12 L20,12"></path></svg>');
+  clip-path: none;
+}
+
+:where(.ez-checkbox, [type="checkbox"]).ez-error:indeterminate {
+  background: var(--md-sys-color-error, red);
+  border-color: var(--md-sys-color-error, red);
+}
+
+:where(.ez-checkbox, [type="checkbox"])::after {
+  animation: var(--ez-input-speed) box-wipe-obscure;
+  animation-fill-mode: forwards;
+}
+
+:where(.ez-checkbox, [type="checkbox"]):checked::after {
+  animation: var(--ez-input-speed) box-wipe-reveal;
+}
+
+@keyframes box-wipe-reveal {
+  0% {
+    clip-path: inset(0 100% 0 0);
+  }
+
+  100% {
+    clip-path: inset(0);
+  }
+}
+
+@keyframes box-wipe-obscure {
+  0% {
+    clip-path: inset(0);
+  }
+
+  100% {
+    clip-path: inset(0 100% 0 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :where(.ez-checkbox, [type="checkbox"])::after,
+  :where(.ez-checkbox, [type="checkbox"]):checked::after {
+    animation: none;
+  }
+}
+
+.ez-checkbox,
+.ez-radio {
+  --ez-input-highlight-color: var(--ez-highlight-color);
+}
+
+:where(.ez-checkbox,
+.ez-radio):where(:active, :checked) {
+  border-color: var(--ez-input-highlight-color);
+}

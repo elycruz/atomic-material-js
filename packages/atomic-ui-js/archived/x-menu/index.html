@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <base href="./">
+  <title>Ez-Menu Examples</title>
+  <script src="index.js" type="module"></script>
+</head>
+<body>
+<header><h1>Ez-Menu Examples</h1></header>
+<section>
+  <header><h3>With Unordered List</h3></header>
+  <ez-menu value-textContent="ul > li > a">
+    <ul>
+      <li><a href="#link-1">Link 1</a></li>
+      <li><a href="#link-2">Link 2</a>
+        <ul>
+          <li><a href="#link-2-1">Link 2-1</a></li>
+          <li><a href="#link-2-2">Link 2-2</a></li>
+          <li><a href="#link-2-3">Link 2-3</a></li>
+        </ul>
+      </li>
+      <li><a href="#link-3">Link 3</a></li>
+      <li><a href="#link-4">Link 4</a>
+        <ul>
+          <li><a href="#link-4-1">Link 4-1</a></li>
+          <li><a href="#link-4-2">Link 4-2</a></li>
+        </ul>
+      </li>
+    </ul>
+  </ez-menu>
+</section>
+
+<section>
+  <header><h3>With ez-menu-item elements</h3></header>
+  <ez-menu value-textContent="ez-menu-item > span">
+    <ez-menu-item><span>Link 1</span></ez-menu-item>
+    <ez-menu-item><span>Link 2</span>
+      <ez-menu>
+        <ez-menu-item><span>Link 2-1</span></ez-menu-item>
+        <ez-menu-item><span>Link 2-2</span></ez-menu-item>
+        <ez-menu-item><span>Link 2-3</span></ez-menu-item>
+      </ez-menu>
+    </ez-menu-item>
+    <ez-menu-item>Link 3</ez-menu-item>
+    <ez-menu-item>Link 4</ez-menu-item>
+  </ez-menu>
+</section>
+
+<section>
+  <header><h3>With `datalist`</h3></header>
+  <ez-menu list="example-datalist"></ez-menu>
+  <datalist id="example-datalist">
+    <option value="1">Option 1</option>
+    <option value="2">Option 2</option>
+    <option value="3">Option 3</option>
+    <option value="4">Option 4</option>
+    <option value="5">Option 5</option>
+  </datalist>
+</section>
+
+<section>
+  <header><h3>With `select`</h3></header>
+  <ez-menu>
+    <select size="3" multiple>
+      <option value="1">Option 1</option>
+      <option value="2">Option 2</option>
+      <option value="3">Option 3</option>
+      <option value="4">Option 4</option>
+      <option value="5">Option 5</option>
+    </select>
+  </ez-menu>
+</section>
+</body>
+</html>

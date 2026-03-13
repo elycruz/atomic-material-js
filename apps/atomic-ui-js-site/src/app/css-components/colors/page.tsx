@@ -1,0 +1,76 @@
+import React from 'react';
+import { EzThemeVariants } from '@atomic/ui/utils/constants.js';
+
+import styles from './page.module.scss';
+
+const xColorGridCName = styles['ez-color-grid'],
+  _key = (name, index) => `colors-${name}-${index}-${_keyIndex++}`,
+  alphaForIndex = [100, 90, 80, 70, 60, 50, 40, 30, 20, 10, 5, 1, 0];
+
+let _keyIndex = Number.MIN_SAFE_INTEGER;
+
+export default function ColorsPage() {
+  const themes = Object.values(EzThemeVariants),
+    themeRange = '.'.repeat(12).split('');
+
+  return (
+    <section>
+      <table className={xColorGridCName}>
+        <thead>
+          <tr>
+            <th colSpan={themes.length}>HSL Color Table</th>
+          </tr>
+          <tr>
+            {themes.map((k, i) => (
+              <th key={_key('th', i)}>{k}</th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {themeRange.map((_, i) => (
+            <tr key={_key('tr', i)}>
+              {themes.map((k, j) => (
+                <td
+                  key={_key('td', j)}
+                  style={{ background: `var(--ez-${k}-color-${i + 1})` }}
+                  title={`--ez-${k}-color-${i + 1}`}
+                >
+                  &nbsp;
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <table className={xColorGridCName}>
+        <thead>
+          <tr>
+            <th colSpan={themes.length}>HSLA Color Table</th>
+          </tr>
+          <tr>
+            {themes.map((k, i) => (
+              <th key={_key('tr', i)}>{k}</th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {themeRange.map((_, i) => (
+            <tr key={_key('tr', i)}>
+              {themes.map((k, j) => (
+                <td
+                  key={_key('td', j)}
+                  style={{
+                    background: `oklch(from var(--ez-${k}-color-${i}) l c h / ${alphaForIndex[i]}%)`,
+                  }}
+                  title={`--ez-${k}-color-${i} @ ${alphaForIndex[i]}% alpha`}
+                >
+                  &nbsp;
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </section>
+  );
+}

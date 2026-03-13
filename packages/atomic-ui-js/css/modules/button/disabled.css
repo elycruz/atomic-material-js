@@ -1,0 +1,9 @@
+/**
+ * Disabled state
+ * -------------------- */
+:where(.ez-btn, .ez-button):disabled {
+  opacity: 0.55;
+  box-shadow: none;
+  cursor: default;
+  pointer-events: none;
+}

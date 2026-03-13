@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Back to Top Button behavior - CSS only</title>
+  <!--
+    Uses the Scroll-Driven Animations API (view-timeline / animation-timeline).
+    Supported in Chrome 115+, Edge 115+, Opera 101+.
+    Firefox & Safari do not yet support this API.
+  -->
+  <style>
+    /* Page reset */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      color: #1a1a2e;
+      background: #fafafa;
+      line-height: 1.7;
+    }
+
+    /* 1. The appearance animation */
+    @keyframes fade-in {
+      from { opacity: 0; transform: translateY(20px) scale(0.8); pointer-events: none; }
+      to { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
+    }
+
+    /* 2. The Header – we name its scroll progress */
+    header {
+      view-timeline-name: --header-visible;
+      view-timeline-axis: block;
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      color: #fff;
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      font-weight: 700;
+    }
+
+    header p {
+      margin-top: 0.5rem;
+      opacity: 0.85;
+      font-size: 1.05rem;
+    }
+
+    /* Main content */
+    main {
+      max-width: 42rem;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 6rem;
+    }
+
+    main h2 {
+      font-size: 1.4rem;
+      margin: 2rem 0 0.75rem;
+    }
+
+    main p {
+      margin-bottom: 1.25rem;
+    }
+
+    /* 3. The Button – it watches the Header's timeline */
+    .back-to-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 1000;
+
+      /* Hidden State */
+      opacity: 0;
+      transform: translateY(20px) scale(0.8);
+      pointer-events: none;
+
+      /* Animation Logic */
+      animation: fade-in linear both;
+      animation-timeline: --header-visible;
+      animation-range: exit 0% exit 100%;
+
+      /* Visual styling */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 3.25rem;
+      height: 3.25rem;
+      border-radius: 50%;
+      background: #6366f1;
+      color: #fff;
+      text-decoration: none;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+      transition: background 200ms ease, box-shadow 200ms ease, transform 200ms ease;
+    }
+
+    .back-to-top:hover {
+      background: #4f46e5;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      transform: translateY(-2px);
+    }
+
+    .back-to-top:active {
+      transform: translateY(0);
+    }
+
+    /* Arrow icon inside the button */
+    .back-to-top svg {
+      width: 1.25rem;
+      height: 1.25rem;
+      fill: currentColor;
+    }
+  </style>
+</head>
+<body>
+
+<header id="top">
+  <h1>Back to Top — CSS Only</h1>
+  <p>Scroll down to see the floating button appear. No JavaScript required.</p>
+</header>
+
+<main>
+  <h2>What is this demo?</h2>
+  <p>
+    This page demonstrates a pure CSS "back-to-top" button powered by the
+    Scroll-Driven Animations API. The button fades in once the header scrolls
+    out of view and links back to the top of the page.
+  </p>
+
+  <h2>Lorem Ipsum</h2>
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia
+    odio vitae vestibulum vestibulum. Cras vehicula, mi eget laoreet venenatis,
+    purus lectus tincidunt eros, eget luctus nisl libero at nulla. Praesent
+    egestas tristique nibh. Duis lobortis massa imperdiet quam. Donec vitae
+    orci sed dolor rutrum auctor. Fusce egestas elit eget lorem.
+  </p>
+  <p>
+    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+    doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore
+    veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim
+    ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
+    consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+  </p>
+  <p>
+    Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
+    consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt
+    ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima
+    veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi
+    ut aliquid ex ea commodi consequatur?
+  </p>
+  <p>
+    Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam
+    nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas
+    nulla pariatur? At vero eos et accusamus et iusto odio dignissimos ducimus
+    qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores
+    et quas molestias excepturi sint occaecati cupiditate non provident.
+  </p>
+
+  <h2>More Content</h2>
+  <p>
+    Similique sunt in culpa qui officia deserunt mollitia animi, id est laborum
+    et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.
+    Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit
+    quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda
+    est, omnis dolor repellendus.
+  </p>
+  <p>
+    Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus
+    saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae.
+    Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis
+    voluptatibus maiores alias consequatur aut perferendis doloribus asperiores
+    repellat.
+  </p>
+  <p>
+    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+    dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius,
+    turpis et commodo pharetra, est eros bibendum elit.
+  </p>
+  <p>
+    Nam dui ligula, fringilla a, euismod sodales, sollicitudin vel, wisi. Morbi
+    auctor lorem non justo. Nam lacus libero, pretium at, lobortis vitae, ultricies
+    et, tellus. Donec aliquet, tortor sed accumsan bibendum, erat ligula aliquet
+    magna, vitae ornare odio metus a mi.
+  </p>
+  <p>
+    Morbi ac felis. Etiam egestas wisi a erat. Donec fermentum vel magna. Aenean
+    lacinia bibendum nulla sed consectetur. Cras mattis consectetur purus sit amet
+    fermentum. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.
+    Maecenas sed diam eget risus varius blandit sit amet non magna.
+  </p>
+  <p>
+    Vestibulum id ligula porta felis euismod semper. Cum sociis natoque penatibus
+    et magnis dis parturient montes, nascetur ridiculus mus. Aenean eu leo quam.
+    Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec id elit non
+    mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula
+    ut id elit. Donec ullamcorper nulla non metus auctor fringilla.
+  </p>
+</main>
+
+<!-- Back-to-top FAB — pure CSS visibility via scroll-driven animation -->
+<a href="#top" class="back-to-top" aria-label="Back to top">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M7.41 15.41 12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
+  </svg>
+</a>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+.ez-menu,
+.ez-menu a,
+.ez-menu li:focus-within > a + ul,
+.ez-menu li:hover > a + ul {
+  display: block;
+}
+
+.ez-menu,
+.ez-menu > :where(ul, ul ul) {
+  min-width: var(--ez-144px);
+}
+
+/* .ez-menu li:not(:focus-within) > a + ul {
+  display: none;
+} */
+
+.ez-menu.ez-menu--horizontal {
+  width: 100%;
+}
+
+.ez-menu.ez-menu--horizontal ul ul {
+  position: absolute;
+  min-width: fit-content;
+}
+
+.ez-menu.ez-menu--horizontal > ul ul ul {
+  left: 100%;
+}
+
+.ez-menu.ez-menu--horizontal > ul {
+  display: flex;
+  column-gap: var(--ez-8px);
+}
+
+.ez-menu.ez-menu--horizontal > ul > li {
+  display: inline-block;
+}
+
+.ez-menu.ez-menu--horizontal li {
+  position: relative;
+}
+
+.ez-menu ul {
+  list-style: none;
+}

@@ -1,0 +1,13 @@
+:root {
+  --ez-highlight-color: Highlight;
+  --ez-focus-ring-width: 0.09375rem; /* 1.5px; */
+  --ez-focus-ring-color: currentcolor;
+  --ez-border-radius: var(--ez-3px);
+  --ez-border-width: var(--ez-1px);
+  --ez-input-speed: 0.13s;
+  --ez-input-border-width: var(--ez-1px);
+  --ez-input-highlight-color: var(--ez-highlight-color);
+  --ez-input-text-color: FieldText;
+  --ez-input-bg-color: Field;
+  --ez-input-border-color: ButtonBorder;
+}

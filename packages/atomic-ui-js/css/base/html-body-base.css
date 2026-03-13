@@ -1,0 +1,19 @@
+html, body {
+  --ez-font-family: var(--md-sys-typescale-body-large-font, system-ui, sans-serif);
+  --ez-focus-ring-color: var(--md-sys-color-secondary, currentcolor);
+
+  margin: 0;
+  padding: 0;
+  font: normal 1rem var(--ez-font-family);
+  font-optical-sizing: auto;
+  font-variation-settings: "wdth" 100;
+}
+
+@media (prefers-color-scheme: dark) {
+  html, body {
+    --ez-focus-ring-color: Field;
+
+    background: var(--md-sys-color-background, Canvas);
+    color: var(--md-sys-color-on-background, CanvasText);
+  }
+}

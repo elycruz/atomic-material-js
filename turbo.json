@@ -1,0 +1,76 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": [
+        "dist/atomic-ui-js/**/*",
+        "packages/atomic-ui-js-react/dist/**/*",
+        "packages/atomic-ui-js-next/dist/**/*",
+        "dist/**/*"
+      ]
+    },
+    "build-storybook": {
+      "outputs": [
+        "dist/atomic-ui-js/storybook"
+      ]
+    },
+    "dev": {
+      "dependsOn": [
+        "watch",
+        "storybook"
+      ]
+    },
+    "docs": {
+      "outputs": [
+        "dist/atomic-ui-js/docs"
+      ]
+    },
+    "eslint": {
+      "cache": false,
+      "dependsOn": [
+        "^build"
+      ]
+    },
+    "eslintfix": {
+      "cache": false,
+      "dependsOn": [
+        "^build"
+      ]
+    },
+    "lint": {
+      "cache": false,
+      "dependsOn": [
+        "eslint",
+        "stylelint"
+      ]
+    },
+    "lintfix": {
+      "cache": false,
+      "dependsOn": [
+        "eslintfix",
+        "stylelintfix"
+      ]
+    },
+    "stylelint": {
+      "cache": false
+    },
+    "storybook": {
+      "cache": false
+    },
+    "stylelintfix": {
+      "cache": false
+    },
+    "test": {
+      "persistent": true,
+      "dependsOn": [
+        "^build"
+      ]
+    },
+    "watch": {
+      "outputs": [
+        "dist/index.min.css"
+      ]
+    }
+  }
+}

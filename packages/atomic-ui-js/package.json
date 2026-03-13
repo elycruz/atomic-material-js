@@ -1,0 +1,154 @@
+{
+  "name": "@atomic/ui",
+  "version": "1.0.0",
+  "description": "An atomic user interface toolkit, and library, for building html user interfaces.",
+  "module": "./dist/index.js",
+  "type": "module",
+  "typings": "./dist/index.d.ts",
+  "engines": {
+    "node": ">=v24"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./ez-appbar": {
+      "types": "./dist/ez-appbar/index.d.ts",
+      "default": "./dist/ez-appbar/index.js"
+    },
+    "./ez-base": {
+      "types": "./dist/ez-base/index.d.ts",
+      "default": "./dist/ez-base/index.js"
+    },
+    "./ez-btn-surface": {
+      "types": "./dist/ez-btn-surface/index.d.ts",
+      "default": "./dist/ez-btn-surface/index.js"
+    },
+    "./ez-button": {
+      "types": "./dist/ez-button/index.d.ts",
+      "default": "./dist/ez-button/index.js"
+    },
+    "./ez-field": {
+      "types": "./dist/ez-field/index.d.ts",
+      "default": "./dist/ez-field/index.js"
+    },
+    "./ez-ripple": {
+      "types": "./dist/ez-ripple/index.d.ts",
+      "default": "./dist/ez-ripple/index.js"
+    },
+    "./ez-shape": {
+      "types": "./dist/ez-shape/index.d.ts",
+      "default": "./dist/ez-shape/index.js"
+    },
+    "./ez-surface": {
+      "types": "./dist/ez-surface/index.d.ts",
+      "default": "./dist/ez-surface/index.js"
+    },
+    "./ez-toggleonscroll": {
+      "types": "./dist/ez-toggleonscroll/index.d.ts",
+      "default": "./dist/ez-toggleonscroll/index.js"
+    },
+    "./utils": {
+      "types": "./dist/utils/index.d.ts",
+      "default": "./dist/utils/index.js"
+    },
+    "./css/modules/material-design-3": "./css/modules/material-design-3/index.css",
+    "./css/modules/material-design-3/bridge": "./css/modules/material-design-3/bridge.css",
+    "./css/modules/material-design-3/index.css": "./css/modules/material-design-3/index.css",
+    "./css/modules/material-design-3/bridge.css": "./css/modules/material-design-3/bridge.css",
+    "./*": "./dist/*"
+  },
+  "scripts": {
+    "build": "pnpm build:css && pnpm typings",
+    "build:css": "pnpm gen:css && node node_scripts/build/index.ts",
+    "watch": "node --experimental-strip-types node_scripts/watch/index.ts",
+    "docs": "pnpm typedoc",
+    "gen:css": "node node_scripts/gen-css/index.ts",
+    "eslint": "eslint .",
+    "eslintfix": "pnpm eslint --fix",
+    "stylelint": "stylelint \"**/*.css\"",
+    "stylelintfix": "pnpm stylelint --fix",
+    "typings": "tsc --project tsconfig.json",
+    "typedoc": "typedoc .",
+    "test": "vitest --run",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build -o ../../dist/atomic-ui-js/storybook"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 5 chrome version",
+      "last 5 firefox version",
+      "last 5 safari version"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elycruz/atomic-ui-js.git"
+  },
+  "keywords": [
+    "web-components",
+    "custom-elements",
+    "ui-toolkit",
+    "css",
+    "lit",
+    "atomic-design"
+  ],
+  "author": "elycruz",
+  "license": "LGPL-3.0",
+  "bugs": {
+    "url": "https://github.com/elycruz/atomic-ui-js/issues"
+  },
+  "homepage": "https://github.com/elycruz/atomic-ui-js#readme",
+  "devDependencies": {
+    "@cucumber/cucumber": "^10.9.0",
+    "@material/material-color-utilities": "0.3.0",
+    "@rollup/plugin-typescript": "^11.1.6",
+    "@storybook/addon-a11y": "^10.2.15",
+    "@storybook/addon-docs": "^10.2.15",
+    "@storybook/addon-links": "^10.2.15",
+    "@storybook/addon-vitest": "^10.2.15",
+    "@storybook/web-components-vite": "^10.2.15",
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@types/node": "^24.10.9",
+    "@types/postcss-import": "^14.0.3",
+    "@vitejs/plugin-react": "^5.1.2",
+    "@vitest/browser-playwright": "^4.0.17",
+    "@vitest/coverage-istanbul": "^4.0.17",
+    "chokidar": "^3.6.0",
+    "cssnano": "^6.1.2",
+    "eslint": "^9.39.2",
+    "happy-dom": "^20.3.1",
+    "lit": "^3.3.2",
+    "playwright": "^1.57.0",
+    "postcss": "^8.5.6",
+    "postcss-import": "^15.1.0",
+    "postcss-preset-env": "^8.5.1",
+    "prettier": "^2.8.8",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "rollup": "^4.59.0",
+    "rollup-plugin-postcss": "^4.0.2",
+    "rollup-plugin-sass": "^1.15.3",
+    "sass": "^1.97.2",
+    "storybook": "^10.2.15",
+    "stylelint": "^16.26.1",
+    "stylelint-config-standard": "^39.0.1",
+    "typedoc": "^0.24.8",
+    "typescript": "^5.9.3",
+    "vite": "^7.3.1",
+    "vitest": "^4.0.17",
+    "web-component-analyzer": "^1.1.7"
+  },
+  "peerDependencies": {
+    "@tailwindcss/vite": "^4.1.12",
+    "lit": "^3.1.0",
+    "tailwindcss": "^4.1.12"
+  }
+}

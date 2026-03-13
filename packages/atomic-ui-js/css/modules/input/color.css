@@ -1,0 +1,29 @@
+/**
+ * Color
+ * ---------------------- */
+:where(.ez-color, [type="color"]) {
+  appearance: none;
+  display: inline-block;
+  width: calc(36 / 16 * 1rem);
+  height: calc(36 / 16 * 1rem);
+  padding: var(--ez-3px);
+  border: var(--ez-border-width) solid var(--ez-input-border-color);
+  border-radius: var(--ez-border-radius);
+  background: var(--ez-input-bg-color);
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+:where(.ez-color, [type="color"])::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+:where(.ez-color, [type="color"])::-webkit-color-swatch {
+  border: none;
+  border-radius: calc(var(--ez-border-radius) - var(--ez-1px));
+}
+
+:where(.ez-color, [type="color"])::-moz-color-swatch {
+  border: none;
+  border-radius: calc(var(--ez-border-radius) - var(--ez-1px));
+}

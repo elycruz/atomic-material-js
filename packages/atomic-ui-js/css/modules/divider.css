@@ -1,0 +1,31 @@
+/**
+ * Divider
+ *
+ * MD3 divider component.
+ * Variants: full-width (default), inset, middle-inset, vertical.
+ */
+
+.ez-divider {
+  border: none;
+  border-top: 1px solid var(--md-sys-color-outline-variant, currentcolor);
+  margin: 0;
+  width: 100%;
+}
+
+.ez-divider.ez-inset {
+  margin-inline-start: var(--md-sys-spacing-4, 1rem);
+  width: auto;
+}
+
+.ez-divider.ez-middle-inset {
+  margin-inline: var(--md-sys-spacing-4, 1rem);
+  width: auto;
+}
+
+.ez-divider.ez-vertical {
+  border-top: none;
+  border-inline-start: 1px solid var(--md-sys-color-outline-variant, currentcolor);
+  width: auto;
+  height: 100%;
+  align-self: stretch;
+}

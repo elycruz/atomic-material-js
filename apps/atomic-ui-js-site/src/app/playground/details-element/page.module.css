@@ -1,0 +1,16 @@
+.ez-details,
+.ez-details > summary {
+  position: relative;
+}
+
+.ez-details > summary {
+  user-select: none;
+}
+
+.ez-details .ez-details-arrow::after {
+  content: "arrow_down"
+}
+
+.ez-details[open] .ez-details-arrow::after {
+  content: "arrow_up";
+}

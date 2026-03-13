@@ -1,0 +1,108 @@
+/**
+ * List
+ *
+ * MD3 list component with one/two/three-line items.
+ */
+
+.ez-list {
+  --_list-container-color: var(--md-sys-color-surface, Canvas);
+
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background: var(--_list-container-color);
+}
+
+/* List item */
+.ez-list-item {
+  --_list-item-height: 56px;
+
+  display: flex;
+  align-items: center;
+  min-height: var(--_list-item-height);
+  padding: var(--md-sys-spacing-2, 0.5rem) var(--md-sys-spacing-4, 1rem);
+  gap: var(--md-sys-spacing-4, 1rem);
+  position: relative;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Two-line */
+.ez-list-item.ez-two-line {
+  --_list-item-height: 72px;
+  align-items: flex-start;
+  padding-block: var(--md-sys-spacing-2, 0.5rem);
+}
+
+/* Three-line */
+.ez-list-item.ez-three-line {
+  --_list-item-height: 88px;
+  align-items: flex-start;
+  padding-block: var(--md-sys-spacing-3, 0.75rem);
+}
+
+/* Content column */
+.ez-list-item__content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+  gap: 0;
+}
+
+.ez-list-item__headline {
+  font-family: var(--md-sys-typescale-body-large-font, inherit);
+  font-size: var(--md-sys-typescale-body-large-size, 1.33333rem);
+  line-height: var(--md-sys-typescale-body-large-line-height, 2rem);
+  color: var(--md-sys-color-on-surface, CanvasText);
+}
+
+.ez-list-item__supporting-text {
+  font-family: var(--md-sys-typescale-body-medium-font, inherit);
+  font-size: var(--md-sys-typescale-body-medium-size, 1.16667rem);
+  line-height: var(--md-sys-typescale-body-medium-line-height, 1.66667rem);
+  color: var(--md-sys-color-on-surface-variant, GrayText);
+}
+
+/* Leading / trailing */
+.ez-list-item__leading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  color: var(--md-sys-color-on-surface-variant, GrayText);
+}
+
+.ez-list-item__trailing {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  font-family: var(--md-sys-typescale-label-small-font, inherit);
+  font-size: var(--md-sys-typescale-label-small-size, 0.91667rem);
+  color: var(--md-sys-color-on-surface-variant, GrayText);
+}
+
+/* State layer for interactive list items */
+.ez-list-item:is(a, button, [role="option"], [role="menuitem"], [role="listitem"])::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--md-sys-color-on-surface, currentcolor);
+  opacity: 0;
+  transition: opacity var(--md-sys-motion-duration-short2, 100ms) var(--md-sys-motion-easing-standard, ease);
+  pointer-events: none;
+}
+
+.ez-list-item:is(a, button, [role="option"], [role="menuitem"], [role="listitem"]):hover::before {
+  opacity: var(--md-sys-state-hover-state-layer-opacity, 0.08);
+}
+
+.ez-list-item:is(a, button, [role="option"], [role="menuitem"], [role="listitem"]):focus-visible::before {
+  opacity: var(--md-sys-state-focus-state-layer-opacity, 0.1);
+}
+
+.ez-list-item:is(a, button, [role="option"], [role="menuitem"], [role="listitem"]):active::before {
+  opacity: var(--md-sys-state-pressed-state-layer-opacity, 0.1);
+}

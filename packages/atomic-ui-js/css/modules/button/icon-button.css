@@ -1,0 +1,14 @@
+/**
+ * Icon button — requires `.ez-btn` as a co-class.
+ * Usage: `<button class="ez-btn ez-icon-btn">…</button>`
+ * -------------------- */
+.ez-btn.ez-icon-btn {
+  --_icon-btn-container-size: 40px;
+  --_icon-btn-container-shape: calc(var(--_icon-btn-container-size) / 2);
+
+  width: var(--_icon-btn-container-size);
+  height: var(--_icon-btn-container-size);
+  min-height: var(--_icon-btn-container-size);
+  padding: var(--md-sys-spacing-2, 0.5rem);
+  border-radius: var(--_icon-btn-container-shape);
+}

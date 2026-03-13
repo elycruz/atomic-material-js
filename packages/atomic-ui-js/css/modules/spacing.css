@@ -1,0 +1,30 @@
+/**
+ * spacing.css
+ *
+ * The library's curated spacing properties, represented as `rem` units.
+ *
+ * ====> DO NOT MANUALLY EDIT THIS FILE - This file is generated via a script ({repo-root}/scripts/gen-css/spacing.mjs).
+ */
+
+:root {
+  --ez-0px: 0rem;
+  --ez-1px: 0.0625rem;
+  --ez-2px: 0.125rem;
+  --ez-3px: 0.1875rem;
+  --ez-4px: 0.25rem;
+  --ez-5px: 0.3125rem;
+  --ez-6px: 0.375rem;
+  --ez-8px: 0.5rem;
+  --ez-9px: 0.5625rem;
+  --ez-12px: 0.75rem;
+  --ez-16px: 1rem;
+  --ez-18px: 1.125rem;
+  --ez-24px: 1.5rem;
+  --ez-32px: 2rem;
+  --ez-36px: 2.25rem;
+  --ez-48px: 3rem;
+  --ez-64px: 4rem;
+  --ez-72px: 4.5rem;
+  --ez-96px: 6rem;
+  --ez-144px: 9rem;
+}

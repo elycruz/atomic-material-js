@@ -1,0 +1,31 @@
+/**
+ * spacing.css
+ *
+ * Material Design 3 spacing tokens — 4dp baseline grid and density scale.
+ */
+
+:root {
+  /* ========================================
+   * Spacing scale (4dp increments, in rem)
+   * ======================================== */
+  --md-sys-spacing-0: 0rem;
+  --md-sys-spacing-1: 0.25rem;
+  --md-sys-spacing-2: 0.5rem;
+  --md-sys-spacing-3: 0.75rem;
+  --md-sys-spacing-4: 1rem;
+  --md-sys-spacing-5: 1.25rem;
+  --md-sys-spacing-6: 1.5rem;
+  --md-sys-spacing-8: 2rem;
+  --md-sys-spacing-10: 2.5rem;
+  --md-sys-spacing-12: 3rem;
+  --md-sys-spacing-14: 3.5rem;
+  --md-sys-spacing-16: 4rem;
+
+  /* ========================================
+   * Density scale
+   * ======================================== */
+  --md-sys-density-default: 0px;
+  --md-sys-density-comfortable: -1px;
+  --md-sys-density-compact: -2px;
+  --md-sys-density-dense: -3px;
+}

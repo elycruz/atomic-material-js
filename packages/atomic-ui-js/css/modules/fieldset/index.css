@@ -1,0 +1,14 @@
+@import url("field.css");
+@import url("fieldset.css");
+
+input,
+textarea,
+select,
+button {
+  font-size: 1rem;
+}
+
+:disabled {
+  pointer-events: none;
+  opacity: 0.55;
+}

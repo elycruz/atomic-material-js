@@ -1,0 +1,112 @@
+label {
+  user-select: none;
+  vertical-align: middle;
+}
+
+label,
+label span {
+  display: inline-block;
+}
+
+label:not(.ez-btn) > * + * {
+  margin-inline-start: 0.25rem;
+}
+
+label:has(+ *) {
+  font-weight: bold;
+}
+
+label:has(+ :required, + * :required)::before {
+  content: "*";
+  color: red;
+  margin-inline-end: 0.25rem;
+}
+
+label:has(> ez-ripple > :disabled) {
+  pointer-events: none;
+}
+
+/*
+ * ez-field
+ * ------------------ */
+:where(ez-field, .ez-field) {
+  display: inline-block;
+}
+
+:where(ez-field, .ez-field),
+:where(ez-field, .ez-field):not(.ez-field--vertical) > * {
+  vertical-align: middle;
+}
+
+:where(ez-field, .ez-field):not(.ez-field--vertical) > label:has(+ *),
+:where(ez-field, .ez-field):not(.ez-field--vertical) > label:is(label + *) {
+  margin-inline-end: 0.5rem;
+}
+
+:where(ez-field, .ez-field).ez-field--vertical > label:has(+ *) {
+  margin-block-end: 0.5rem;
+}
+
+:where(ez-field, .ez-field).ez-field--vertical,
+:where(ez-field, .ez-field).ez-field--vertical > label:has(+ *) {
+  display: block;
+}
+
+:where(ez-field, .ez-field) :is(
+  .ez-field__error-message,
+  .ez-field__help,
+  [slot="help"],
+  .ez-help,
+  .ez-error-message
+  ) {
+  margin-top: 0.5rem;
+}
+
+:where(ez-field, .ez-field) :is(.ez-field__help, [slot="help"], .ez-help) {
+  font-size: smaller;
+}
+
+:where(ez-field, .ez-field) .ez-field__flex-row {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+:where(ez-field, .ez-field) .ez-field__flex-row .ez-field__leading {
+  margin-right: 0.5rem;
+}
+
+:where(ez-field, .ez-field) .ez-field__flex-row .ez-field__trailing {
+  margin-left: 0.5rem;
+}
+
+:where(ez-field, .ez-field) :is(.ez-field__error-message, .ez-error-message) {
+  color: var(--md-sys-color-error, red);
+}
+
+/* Supporting text */
+:where(ez-field, .ez-field) .ez-field__supporting-text {
+  font-family: var(--md-sys-typescale-body-small-font, inherit), sans-serif;
+  font-size: var(--md-sys-typescale-body-small-size, smaller);
+  color: var(--md-sys-color-on-surface-variant, GrayText);
+  margin-top: 0.25rem;
+  padding-inline: var(--md-sys-spacing-4, 1rem);
+}
+
+/* Error text */
+:where(ez-field, .ez-field) .ez-field__error-text {
+  font-family: var(--md-sys-typescale-body-small-font, inherit), sans-serif;
+  font-size: var(--md-sys-typescale-body-small-size, smaller);
+  color: var(--md-sys-color-error, red);
+  margin-top: 0.25rem;
+  padding-inline: var(--md-sys-spacing-4, 1rem);
+}
+
+/* Character counter */
+:where(ez-field, .ez-field) .ez-field__counter {
+  font-family: var(--md-sys-typescale-body-small-font, inherit), sans-serif;
+  font-size: var(--md-sys-typescale-body-small-size, smaller);
+  color: var(--md-sys-color-on-surface-variant, GrayText);
+  text-align: end;
+  margin-top: 0.25rem;
+  padding-inline: var(--md-sys-spacing-4, 1rem);
+}

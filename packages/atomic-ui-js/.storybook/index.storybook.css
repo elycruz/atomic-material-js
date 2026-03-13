@@ -1,0 +1,31 @@
+/**
+ * index.storybook.css
+ *
+ * Storybook-only vertical-rhythm defaults.
+ * Component selectors (.ez-btn-group) remain wrapped in :where() for zero
+ * specificity so component and inline styles always win.
+ */
+
+/* ========================================
+ * Typography
+ * ======================================== */
+h3, h4, h5, h6, p:not(:last-child), blockquote:not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+/* ========================================
+ * Block content
+ * ======================================== */
+section { margin-bottom: 2rem; }
+
+:where(dl, ul, ol, hr,
+.ez-divider, pre, figure, table):not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+/* ========================================
+ * Components
+ * ======================================== */
+:where(.ez-btn-group):not(:last-child) {
+  margin-bottom: 1rem;
+}

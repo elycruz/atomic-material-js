@@ -1,0 +1,3 @@
+# ez-typeahead
+
+Component description.

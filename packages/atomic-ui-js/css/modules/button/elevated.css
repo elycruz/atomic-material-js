@@ -1,0 +1,18 @@
+/**
+ * MD3 Variants — Elevated
+ * -------------------- */
+
+/* Elevated */
+:where(.ez-btn, .ez-button).ez-elevated {
+  background: var(--md-sys-color-surface-container-low, ButtonFace);
+  color: var(--md-color-theme, var(--md-sys-color-primary, ButtonText));
+  box-shadow: var(--md-sys-elevation-level1, 0 1px 2px 0 rgb(0 0 0 / 30%), 0 1px 3px 1px rgb(0 0 0 / 15%));
+}
+
+:where(.ez-btn, .ez-button).ez-elevated:not(:disabled):hover {
+  box-shadow: var(--md-sys-elevation-level3, 0 1px 2px 0 rgb(0 0 0 / 30%), 0 2px 6px 2px rgb(0 0 0 / 15%));
+}
+
+:where(.ez-btn, .ez-button).ez-elevated:not(:disabled):active {
+  box-shadow: var(--md-sys-elevation-level2, 0 1px 2px 0 rgb(0 0 0 / 30%), 0 2px 6px 2px rgb(0 0 0 / 15%));
+}

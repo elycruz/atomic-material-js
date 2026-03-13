@@ -1,0 +1,17 @@
+/**
+ * ez-surface base styles.
+ *
+ * Elevation is applied via inline box-shadow by the element class.
+ * Transition uses MD3 motion tokens for smooth elevation changes.
+ */
+
+ez-surface {
+  display: inline-block;
+  position: relative;
+  border-radius: var(--ez-surface-border-radius, var(--md-sys-shape-corner-medium, 12px));
+  background: var(--ez-surface-color, var(--md-sys-color-surface, #fff));
+  transition:
+    box-shadow var(--ez-surface-animate-duration, var(--md-sys-motion-duration-medium2, 300ms))
+      var(--ez-surface-animate-easing, var(--md-sys-motion-easing-standard, cubic-bezier(0.2, 0, 0, 1)));
+  will-change: box-shadow;
+}

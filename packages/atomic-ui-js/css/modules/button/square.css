@@ -1,0 +1,14 @@
+/**
+ * Square shape variant
+ * -------------------- */
+:where(.ez-btn, .ez-button).ez-square {
+  --_btn-container-shape: 16px;
+}
+
+:where(.ez-btn, .ez-button).ez-square:is(.ez-xsmall, .ez-small) {
+  --_btn-container-shape: 12px;
+}
+
+:where(.ez-btn, .ez-button).ez-square:is(.ez-large, .ez-xlarge) {
+  --_btn-container-shape: 28px;
+}

@@ -1,0 +1,86 @@
+# "Build" workflow
+#
+name: Test Projects
+
+on:
+
+  # Runs on pull request open to listed branches
+  pull_request:
+    branches: [ "main", "dev" ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+
+  # Build job
+  test:
+    runs-on: ubuntu-latest
+    env:
+      NODE_ENV: CI/CD
+      PUPPETEER_CACHE_DIR: ~/.cache/ms-playwright
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6.0.1
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4.2.0
+
+      - name: Setup Node
+        uses: actions/setup-node@v6.1.0
+        with:
+          node-version: "24"
+          cache: pnpm
+
+      - name: Install (Vercel) Turbo
+        id: install-vercel-turbo
+        run: pnpm i -g turbo
+
+      - name: Install dependencies
+        run: pnpm i
+
+      - name: Restore Turbo Cache
+        uses: actions/cache/restore@v5
+        id: restore-turbo-cache
+        with:
+          path: .turbo
+          key: ${{ runner.os }}-turbo-${{ hashFiles('packages/**/*.ts', 'packages/**/*.tsx', 'packages/**/*.css', 'packages/**/*.js', 'packages/**/*.mjs', 'pnpm-lock.yaml', 'turbo.json') }}
+          restore-keys: |
+            ${{ runner.os }}-turbo-
+
+      - name: Restore Puppeteer Bin Cache
+        uses: actions/cache/restore@v5
+        id: restore-puppeteer-cache
+        env:
+          cache-name: restore-puppeteer-cache
+        with:
+          # Cache files in the default puppeteer cache directory (on linux)
+          path: ${{ env.PUPPETEER_CACHE_DIR }}
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+
+      - if: ${{ steps.restore-puppeteer-cache.outputs.cache-hit != 'true' }}
+        name: Install Puppeteer
+        continue-on-error: false
+        run: cd packages/atomic-ui-js && pnpm exec playwright install chromium-headless-shell --with-deps && cd ../../
+
+      - if: ${{ steps.restore-puppeteer-cache.outputs.cache-hit != 'true' }}
+        name: Save Puppeteer Bin Cache
+        id: save-puppeteer-cache
+        uses: actions/cache/save@v5
+        with:
+          path: ${{ env.PUPPETEER_CACHE_DIR }}
+          key: ${{ steps.restore-puppeteer-cache.outputs.cache-primary-key }}
+
+      - name: Run test
+        run: turbo build test
+
+      - if: ${{ steps.restore-turbo-cache.outputs.cache-hit != 'true' }}
+        name: Save Turbo Cache
+        uses: actions/cache/save@v5
+        with:
+          path: .turbo
+          key: ${{ steps.restore-turbo-cache.outputs.cache-primary-key }}

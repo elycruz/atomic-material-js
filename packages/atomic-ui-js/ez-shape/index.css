@@ -1,0 +1,23 @@
+/**
+ * ez-shape element styles.
+ *
+ * Provides base styling for the ez-shape custom element,
+ * including transition setup and SVG positioning.
+ */
+
+ez-shape {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  transition:
+    clip-path var(--ez-shape-transition-duration, 300ms) var(--ez-shape-transition-easing, cubic-bezier(0.38, 1.21, 0.22, 1.00)),
+    border-radius var(--ez-shape-transition-duration, 300ms) var(--ez-shape-transition-easing, cubic-bezier(0.38, 1.21, 0.22, 1.00));
+}
+
+ez-shape > svg[aria-hidden="true"] {
+  position: absolute;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  overflow: hidden;
+}

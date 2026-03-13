@@ -1,0 +1,85 @@
+{
+  "name": "@atomic/ui-monorepo",
+  "version": "1.0.0",
+  "description": "Atomic-Ui-Js Monorepo.",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=v24"
+  },
+  "scripts": {
+    "dev": "pnpm gen:site:navitems && turbo dev",
+    "start": "turbo start",
+    "build": "turbo build",
+    "build:lib": "cd packages/atomic-ui-js && pnpm build",
+    "eslint": "turbo eslint",
+    "eslintfix": "turbo eslintfix",
+    "stylelint": "turbo stylelint",
+    "stylelintfix": "turbo stylelintfix",
+    "lint": "turbo lint",
+    "lintfix": "turbo lintfix",
+    "new:element": "node node_scripts/new-element/index.mjs",
+    "gen:site:navitems": "cd apps/atomic-ui-js-site/ && pnpm gen-navitems && cd ../../",
+    "docs": "turbo docs",
+    "test": "turbo test",
+    "watch:lib": "cd packages/atomic-ui-js/ && pnpm watch && cd ../../",
+    "prepare": "husky install",
+    "storybook": "pnpm --filter @atomic/ui storybook",
+    "build-storybook": "pnpm --filter @atomic/ui build-storybook"
+  },
+  "browserslist": [
+    "defaults",
+    "> 0.5% and not dead"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elycruz/atomic-ui-js.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/elycruz/atomic-ui-js/issues"
+  },
+  "homepage": "https://github.com/elycruz/atomic-ui-js#readme",
+  "dependencies": {
+    "@lit/react": "^1.0.8",
+    "@tailwindcss/vite": "^4.2.1",
+    "lit": "^3.3.2",
+    "tailwindcss": "^4.2.1"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.3.4",
+    "@eslint/js": "^9.39.3",
+    "@next/eslint-plugin-next": "^16.1.6",
+    "@types/eslint-plugin-jsx-a11y": "^6.10.1",
+    "@types/node": "^24.11.0",
+    "eslint": "^9.39.3",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-prettier": "^5.5.5",
+    "eslint-plugin-storybook": "^10.2.15",
+    "globals": "^17.4.0",
+    "husky": "^9.1.7",
+    "next": "^16.1.6",
+    "postcss": "^8.5.8",
+    "prettier": "^3.8.1",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "rollup": "^4.59.0",
+    "stylelint": "^16.26.1",
+    "stylelint-config-standard": "^39.0.1",
+    "stylelint-config-standard-scss": "^16.0.0",
+    "turbo": "^2.8.13",
+    "typedoc": "^0.28.17",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.56.1",
+    "webpack": "^5.105.4"
+  },
+  "packageManager": "pnpm@10.28.1",
+  "pnpm": {
+    "overrides": {
+      "eslint>ajv": "6.14.0"
+    }
+  }
+}

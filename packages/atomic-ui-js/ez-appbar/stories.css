@@ -1,0 +1,10 @@
+.scroll-pane {
+  max-height: 240px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  padding: 0;
+
+  & .lipsum {
+    padding: .5rem;
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "name": "@atomic/ui-react",
+  "version": "1.0.0",
+  "description": "",
+  "module": "./dist/index.js",
+  "typings": "./dist/index.d.ts",
+  "engines": {
+    "node": ">=v24"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./ez-appbar": {
+      "types": "./dist/ez-appbar/index.d.ts",
+      "default": "./dist/ez-appbar/index.js"
+    },
+    "./ez-btn-surface": {
+      "types": "./dist/ez-btn-surface/index.d.ts",
+      "default": "./dist/ez-btn-surface/index.js"
+    },
+    "./ez-button": {
+      "types": "./dist/ez-button/index.d.ts",
+      "default": "./dist/ez-button/index.js"
+    },
+    "./ez-field": {
+      "types": "./dist/ez-field/index.d.ts",
+      "default": "./dist/ez-field/index.js"
+    },
+    "./ez-ripple": {
+      "types": "./dist/ez-ripple/index.d.ts",
+      "default": "./dist/ez-ripple/index.js"
+    },
+    "./ez-surface": {
+      "types": "./dist/ez-surface/index.d.ts",
+      "default": "./dist/ez-surface/index.js"
+    },
+    "./ez-toggleonscroll": {
+      "types": "./dist/ez-toggleonscroll/index.d.ts",
+      "default": "./dist/ez-toggleonscroll/index.js"
+    },
+    "./*": "./dist/*"
+  },
+  "scripts": {
+    "build": "tsc --project tsconfig.json",
+    "test": "echo \"Tests not yet written\""
+  },
+  "browserslist": [
+    "defaults",
+    "> 0.2% and not dead"
+  ],
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@lit/react": "^1.0.8",
+    "@mdx-js/loader": "^3.1.1",
+    "@mdx-js/react": "^3.1.1",
+    "@types/react": "^19.2.8",
+    "@atomic/ui": "workspace:^",
+    "lit": "^3.3.2",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "typescript": "^5.9.3"
+  },
+  "peerDependencies": {
+    "@lit/react": "^1.0.4",
+    "@atomic/ui": "workspace:^",
+    "lit": "^3.1.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  }
+}

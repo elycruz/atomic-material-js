@@ -1,0 +1,159 @@
+/**
+ * themes.css
+ *
+ * Material Design 3 theme utility classes.
+ *
+ * Each `.md-theme-{family}` / `.ez-theme-{family}` class maps generic
+ * `--md-color-theme-*` custom properties to the family-specific
+ * `--md-sys-color-*` or `--md-extended-color-*` tokens defined in
+ * the active theme (e.g. material/themes/light.css).
+ *
+ * Components can use the generic properties so their colour automatically
+ * follows whichever theme class is applied to a parent element.
+ */
+
+/* ---- Standard colour roles ---- */
+
+/* If no theme class, inherits default */
+*:not([class^="ez-theme"], [class*=" ez-theme"]),
+.md-theme-primary,
+.ez-theme-primary {
+  --md-color-theme: var(--md-sys-color-primary);
+  --md-color-on-theme: var(--md-sys-color-on-primary);
+  --md-color-theme-container: var(--md-sys-color-primary-container);
+  --md-color-on-theme-container: var(--md-sys-color-on-primary-container);
+}
+
+.md-theme-secondary,
+.ez-theme-secondary {
+  --md-color-theme: var(--md-sys-color-secondary);
+  --md-color-on-theme: var(--md-sys-color-on-secondary);
+  --md-color-theme-container: var(--md-sys-color-secondary-container);
+  --md-color-on-theme-container: var(--md-sys-color-on-secondary-container);
+}
+
+.md-theme-tertiary,
+.ez-theme-tertiary {
+  --md-color-theme: var(--md-sys-color-tertiary);
+  --md-color-on-theme: var(--md-sys-color-on-tertiary);
+  --md-color-theme-container: var(--md-sys-color-tertiary-container);
+  --md-color-on-theme-container: var(--md-sys-color-on-tertiary-container);
+}
+
+.md-theme-error,
+.ez-theme-error {
+  --md-color-theme: var(--md-sys-color-error);
+  --md-color-on-theme: var(--md-sys-color-on-error);
+  --md-color-theme-container: var(--md-sys-color-error-container);
+  --md-color-on-theme-container: var(--md-sys-color-on-error-container);
+}
+
+/* ---- Extended colour roles ---- */
+
+.md-theme-success,
+.ez-theme-success {
+  --md-color-theme: var(--md-extended-color-success-color);
+  --md-color-on-theme: var(--md-extended-color-success-on-color);
+  --md-color-theme-container: var(--md-extended-color-success-color-container);
+  --md-color-on-theme-container: var(--md-extended-color-success-on-color-container);
+}
+
+.md-theme-info,
+.ez-theme-info {
+  --md-color-theme: var(--md-extended-color-info-color);
+  --md-color-on-theme: var(--md-extended-color-info-on-color);
+  --md-color-theme-container: var(--md-extended-color-info-color-container);
+  --md-color-on-theme-container: var(--md-extended-color-info-on-color-container);
+}
+
+.md-theme-warning,
+.ez-theme-warning {
+  --md-color-theme: var(--md-extended-color-warning-color);
+  --md-color-on-theme: var(--md-extended-color-warning-on-color);
+  --md-color-theme-container: var(--md-extended-color-warning-color-container);
+  --md-color-on-theme-container: var(--md-extended-color-warning-on-color-container);
+}
+
+/* ---- Surface ---- */
+
+.md-theme-surface,
+.ez-theme-surface {
+  --md-color-theme: var(--md-sys-color-surface);
+  --md-color-on-theme: var(--md-sys-color-on-surface);
+  --md-color-theme-container: var(--md-sys-color-surface-container);
+  --md-color-on-theme-container: var(--md-sys-color-on-surface);
+}
+
+/* ---- Dark scheme: swap container ↔ non-container AND on- ↔ non-on- ---- */
+
+@media (prefers-color-scheme: dark) {
+  /* Standard colour roles */
+
+  .md-theme-primary,
+  .ez-theme-primary {
+    --md-color-theme: var(--md-sys-color-on-primary-container);
+    --md-color-on-theme: var(--md-sys-color-primary-container);
+    --md-color-theme-container: var(--md-sys-color-on-primary);
+    --md-color-on-theme-container: var(--md-sys-color-primary);
+  }
+
+  .md-theme-secondary,
+  .ez-theme-secondary {
+    --md-color-theme: var(--md-sys-color-on-secondary-container);
+    --md-color-on-theme: var(--md-sys-color-secondary-container);
+    --md-color-theme-container: var(--md-sys-color-on-secondary);
+    --md-color-on-theme-container: var(--md-sys-color-secondary);
+  }
+
+  .md-theme-tertiary,
+  .ez-theme-tertiary {
+    --md-color-theme: var(--md-sys-color-on-tertiary-container);
+    --md-color-on-theme: var(--md-sys-color-tertiary-container);
+    --md-color-theme-container: var(--md-sys-color-on-tertiary);
+    --md-color-on-theme-container: var(--md-sys-color-tertiary);
+  }
+
+  .md-theme-error,
+  .ez-theme-error {
+    --md-color-theme: var(--md-sys-color-on-error-container);
+    --md-color-on-theme: var(--md-sys-color-error-container);
+    --md-color-theme-container: var(--md-sys-color-on-error);
+    --md-color-on-theme-container: var(--md-sys-color-error);
+  }
+
+  /* Extended colour roles */
+
+  .md-theme-success,
+  .ez-theme-success {
+    --md-color-theme: var(--md-extended-color-success-on-color-container);
+    --md-color-on-theme: var(--md-extended-color-success-color-container);
+    --md-color-theme-container: var(--md-extended-color-success-on-color);
+    --md-color-on-theme-container: var(--md-extended-color-success-color);
+  }
+
+  .md-theme-info,
+  .ez-theme-info {
+    --md-color-theme: var(--md-extended-color-info-on-color-container);
+    --md-color-on-theme: var(--md-extended-color-info-color-container);
+    --md-color-theme-container: var(--md-extended-color-info-on-color);
+    --md-color-on-theme-container: var(--md-extended-color-info-color);
+  }
+
+  .md-theme-warning,
+  .ez-theme-warning {
+    --md-color-theme: var(--md-extended-color-warning-on-color-container);
+    --md-color-on-theme: var(--md-extended-color-warning-color-container);
+    --md-color-theme-container: var(--md-extended-color-warning-on-color);
+    --md-color-on-theme-container: var(--md-extended-color-warning-color);
+  }
+
+  /* Surface */
+
+  .md-theme-surface,
+  .ez-theme-surface {
+    --md-color-theme: var(--md-sys-color-on-surface);
+    --md-color-on-theme: var(--md-sys-color-surface-container);
+    --md-color-theme-container: var(--md-sys-color-on-surface);
+    --md-color-on-theme-container: var(--md-sys-color-surface);
+  }
+}

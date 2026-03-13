@@ -1,0 +1,49 @@
+/**
+ * Active / Selected shape morph
+ * -------------------- */
+
+@keyframes ez-btn-pressed-morph {
+  to {
+    border-radius: var(--_btn-pressed-shape, 12px);
+  }
+}
+
+@keyframes ez-btn-pressed-unmorph {
+  from {
+    border-radius: var(--_btn-pressed-shape, 12px);
+  }
+}
+
+@keyframes ez-btn-selected-morph {
+  to {
+    border-radius: var(--_btn-selected-shape, 16px);
+  }
+}
+
+@keyframes ez-btn-selected-unmorph {
+  from {
+    border-radius: var(--_btn-selected-shape, 16px);
+  }
+}
+
+/* Default state — reverse morph (dual of active animation) */
+:where(.ez-btn, .ez-button):not(:disabled) {
+  animation: ez-btn-pressed-unmorph var(--md-sys-motion-duration-medium2, 300ms) var(--md-sys-motion-easing-expressive-default-spatial, cubic-bezier(0.38, 1.21, 0.22, 1.00));
+}
+
+/* Round (default) buttons → squarish corners when pressed */
+:where(.ez-btn, .ez-button):not(:disabled):active {
+  animation: ez-btn-pressed-morph var(--md-sys-motion-duration-medium2, 300ms) var(--md-sys-motion-easing-expressive-default-spatial, cubic-bezier(0.38, 1.21, 0.22, 1.00)) forwards;
+}
+
+:where(.ez-btn, .ez-button):not(:disabled):active:is(.ez-util, .ez-xsmall, .ez-small) {
+  --_btn-pressed-shape: 8px;
+}
+
+:where(.ez-btn, .ez-button):not(:disabled):active:not(.ez-util, .ez-xsmall, .ez-small, .ez-large, .ez-xlarge) {
+  --_btn-pressed-shape: 12px;
+}
+
+:where(.ez-btn, .ez-button):not(:disabled):active:is(.ez-large, .ez-xlarge) {
+  --_btn-pressed-shape: 16px;
+}

@@ -1,0 +1,15 @@
+:is(.ez-input, ez-input):has(
+  :is(input, select, textarea):focus-visible
+),
+:is(
+  .ez-radio, .ez-checkbox, .ez-input, ez-input, button,
+  .ez-btn, .ez-button, ez-button,
+  :is(:not(.ez-input, ez-input) > :is(select, textarea, input))
+):focus-visible {
+  outline: 3px solid var(--ez-focus-ring-color);
+  outline-offset: 2px;
+}
+
+button, a, label {
+  cursor: pointer;
+}

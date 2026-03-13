@@ -1,0 +1,18 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "declaration": true,
+    "declarationMap": true,
+    "declarationDir": "./dist",
+    "outDir": "./dist",
+    "types": [
+      "@atomic/ui",
+      "@atomic/ui-react"
+    ],
+    "jsx": "preserve"
+  },
+  "includes": [
+    "**/.ts",
+    "**/*.tsx"
+  ]
+}

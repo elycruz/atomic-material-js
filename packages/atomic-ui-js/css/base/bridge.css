@@ -1,0 +1,71 @@
+/**
+ * bridge.css
+ *
+ * Maps a subset of Material Design 3 tokens to the existing --ez-* custom
+ * properties, so that existing .ez-btn, .ez-checkbox, .ez-input, etc.
+ * adopt MD3-aligned styling for shared tokens (e.g. inputs, focus, radius)
+ * without any markup changes where they already rely on these properties.
+ *
+ * Usage:
+ *   @import url("atomic-ui-js/css/modules/material-design-3/index.css");
+ *   @import url("atomic-ui-js/css/modules/material-design-3/bridge.css");
+ */
+
+/* ---------- Light scheme bridge ---------- */
+:root {
+  --md-color-white: #fff;
+  --md-color-black: #000;
+
+  --ez-color-black: var(--md-color-black);
+  --ez-color-white: var(--md-color-white);
+
+  /* Colors */
+  --ez-highlight-color: var(--md-sys-color-primary);
+  --ez-input-highlight-color: var(--md-sys-color-primary);
+  --ez-input-border-color: var(--md-sys-color-outline);
+  --ez-input-text-color: var(--md-sys-color-on-surface);
+  --ez-input-bg-color: var(--md-sys-color-surface);
+  --ez-focus-ring-color: var(--md-sys-color-primary);
+  --ez-field: var(--md-sys-color-surface);
+  --ez-error-color-5: var(--md-sys-color-error);
+  --ez-success-color-5: var(--md-extended-color-success-color);
+  --ez-info-color-5: var(--md-extended-color-info-color);
+  --ez-warning-color-5: var(--md-extended-color-warning-color);
+
+  /* Typography */
+  --ez-font-family: var(--md-sys-typescale-body-large-font);
+
+  /* Shape */
+  --ez-border-radius: var(--md-sys-shape-corner-extra-small);
+
+  /* Motion */
+  --ez-input-speed: var(--md-sys-motion-duration-short2);
+
+  /* Elevation */
+  --ez-elevation-1: var(--md-sys-elevation-level1);
+  --ez-elevation-2: var(--md-sys-elevation-level2);
+  --ez-elevation-3: var(--md-sys-elevation-level3);
+
+  /* State layers */
+  --ez-hover-opacity: var(--md-sys-state-hover-state-layer-opacity);
+  --ez-focus-opacity: var(--md-sys-state-focus-state-layer-opacity);
+  --ez-pressed-opacity: var(--md-sys-state-pressed-state-layer-opacity);
+  --ez-disabled-container-opacity: var(--md-sys-state-disabled-container-opacity);
+  --ez-disabled-content-opacity: var(--md-sys-state-disabled-content-opacity);
+}
+
+/* ---------- Dark scheme bridge ---------- */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ez-field: var(--md-sys-color-surface-container);
+    /* Inverse white/black for dark scheme */
+    --md-color-white: black;
+    --md-color-black: white;
+    --ez-color-black: var(--md-color-white);
+    --ez-color-white: var(--md-color-black);
+  }
+}
+
+.dark {
+  --ez-field: var(--md-sys-color-surface-container);
+}

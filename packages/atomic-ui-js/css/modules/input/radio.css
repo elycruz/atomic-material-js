@@ -1,0 +1,41 @@
+:where(.ez-radio, [type="radio"]) {
+  border-radius: 1rem;
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+:where(.ez-radio, [type="radio"])::after {
+  border-radius: var(--ez-8px);
+  transition: clip-path var(--ez-input-speed);
+  width: var(--ez-8px);
+  height: var(--ez-8px);
+  clip-path: circle(0);
+  background: var(--md-sys-color-primary, var(--ez-input-highlight-color));
+}
+
+:where(.ez-radio, [type="radio"]):checked {
+  border-color: var(--md-sys-color-primary, var(--ez-input-highlight-color));
+}
+
+:where(.ez-radio, [type="radio"]):checked::after {
+  clip-path: circle(100%);
+}
+
+/* Error state */
+:where(.ez-radio, [type="radio"]).ez-error {
+  border-color: var(--md-sys-color-error, red);
+}
+
+:where(.ez-radio, [type="radio"]).ez-error::after {
+  background: var(--md-sys-color-error, red);
+}
+
+:where(.ez-radio, [type="radio"]).ez-error:checked {
+  border-color: var(--md-sys-color-error, red);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :where(.ez-radio, [type="radio"])::after {
+    transition: none;
+  }
+}

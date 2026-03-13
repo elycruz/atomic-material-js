@@ -1,0 +1,69 @@
+/**
+ * shape.css
+ *
+ * Base `.ez-shape` class and shape variant utility classes.
+ *
+ * CSS utility classes below cover simple geometric shapes using
+ * CSS `clip-path` and `border-radius`. For the full set of 35
+ * M3 Expressive shapes (with smooth cross-shape morphing), use
+ * the `ez-shape` custom element which renders SVG `<clipPath>`.
+ */
+
+:root {
+  --ez-shape-transition-duration: var(--md-sys-motion-duration-medium2, 300ms);
+  --ez-shape-transition-easing: var(--md-sys-motion-easing-expressive-default-spatial, cubic-bezier(0.38, 1.21, 0.22, 1.00));
+}
+
+.ez-shape {
+  overflow: hidden;
+  transition:
+    clip-path var(--ez-shape-transition-duration) var(--ez-shape-transition-easing),
+    border-radius var(--ez-shape-transition-duration) var(--ez-shape-transition-easing);
+}
+
+/* =========================================
+ * Shape variants
+ * ========================================= */
+
+.ez-shape-circle {
+  clip-path: circle(50% at 50% 50%);
+  border-radius: 50%;
+}
+
+.ez-shape-square {
+  clip-path: none;
+  border-radius: 0;
+}
+
+.ez-shape-pill {
+  clip-path: none;
+  border-radius: var(--md-sys-shape-corner-full, 50%);
+}
+
+.ez-shape-diamond {
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+}
+
+.ez-shape-triangle {
+  clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+}
+
+.ez-shape-oval {
+  clip-path: ellipse(50% 35% at 50% 50%);
+}
+
+/**
+ * Shapes below require SVG clipPath references.
+ * When used standalone (without the `ez-shape` custom element),
+ * provide an inline SVG with the appropriate `<clipPath id="...">`.
+ *
+ * The `ez-shape` custom element generates these automatically
+ * for all 35 M3 Expressive shapes.
+ */
+.ez-shape-arch {
+  clip-path: var(--ez-shape-arch-clip, ellipse(50% 60% at 50% 40%));
+}
+
+.ez-shape-heart {
+  clip-path: var(--ez-shape-heart-clip, url(#ez-shape-heart-clip));
+}

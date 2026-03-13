@@ -1,0 +1,24 @@
+/*
+ * Filled
+ * -------------------- */
+
+/** Ripple styles **/
+:where(.ez-btn, .ez-button).ez-filled ez-ripple::after,
+:where(.ez-btn, .ez-button).ez-filled ez-ripple::before {
+  --ez-ripple-hover-opacity: 0.55;
+  --ez-ripple-active-opacity: 0.21;
+
+  background: var(--md-color-on-theme);
+}
+
+:where(.ez-btn, .ez-button).ez-filled {
+  background-color: var(--md-color-theme, ButtonFace);
+  border-color: var(--md-color-theme, ButtonText);
+  color: var(--md-color-on-theme, ButtonText);
+}
+
+:where(.ez-btn, .ez-button).ez-filled:focus-visible {
+  --ez-focus-ring-color: var(--md-color-theme, ButtonText);
+
+  border-color: var(--md-color-theme, ButtonText);
+}

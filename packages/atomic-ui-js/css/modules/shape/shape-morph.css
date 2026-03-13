@@ -1,0 +1,89 @@
+/**
+ * shape-morph.css
+ *
+ * Interaction-driven shape morphing for `.ez-shape` elements.
+ * Follows the Material Design 3 Expressive pattern where shapes
+ * respond to user interactions with springy, lively transitions.
+ */
+
+/* =========================================
+ * Hover state — subtle shape shift
+ * ========================================= */
+
+.ez-shape-circle:not(:disabled):hover {
+  clip-path: circle(48% at 50% 50%);
+}
+
+.ez-shape-pill:not(:disabled):hover {
+  border-radius: var(--md-sys-shape-corner-extra-large, 28px);
+}
+
+.ez-shape-diamond:not(:disabled):hover {
+  clip-path: polygon(50% 3%, 97% 50%, 50% 97%, 3% 50%);
+}
+
+.ez-shape-triangle:not(:disabled):hover {
+  clip-path: polygon(50% 3%, 97% 100%, 3% 100%);
+}
+
+.ez-shape-oval:not(:disabled):hover {
+  clip-path: ellipse(48% 33% at 50% 50%);
+}
+
+/* =========================================
+ * Pressed state — more pronounced morph
+ * ========================================= */
+
+.ez-shape-circle:not(:disabled):active {
+  clip-path: circle(46% at 50% 50%);
+  transition: clip-path 0.15s var(--md-sys-motion-easing-expressive-fast-spatial, cubic-bezier(0.42, 1.67, 0.21, 0.90));
+}
+
+.ez-shape-pill:not(:disabled):active {
+  border-radius: var(--md-sys-shape-corner-large, 16px);
+  transition: border-radius 0.15s var(--md-sys-motion-easing-expressive-fast-spatial, cubic-bezier(0.42, 1.67, 0.21, 0.90));
+}
+
+.ez-shape-diamond:not(:disabled):active {
+  clip-path: polygon(50% 5%, 95% 50%, 50% 95%, 5% 50%);
+  transition: clip-path 0.15s var(--md-sys-motion-easing-expressive-fast-spatial, cubic-bezier(0.42, 1.67, 0.21, 0.90));
+}
+
+.ez-shape-triangle:not(:disabled):active {
+  clip-path: polygon(50% 5%, 95% 100%, 5% 100%);
+  transition: clip-path 0.15s var(--md-sys-motion-easing-expressive-fast-spatial, cubic-bezier(0.42, 1.67, 0.21, 0.90));
+}
+
+.ez-shape-oval:not(:disabled):active {
+  clip-path: ellipse(46% 32% at 50% 50%);
+  transition: clip-path 0.15s var(--md-sys-motion-easing-expressive-fast-spatial, cubic-bezier(0.42, 1.67, 0.21, 0.90));
+}
+
+.ez-shape-square:not(:disabled):active {
+  border-radius: var(--md-sys-shape-corner-medium, 12px);
+  transition: border-radius 0.15s var(--md-sys-motion-easing-expressive-fast-spatial, cubic-bezier(0.42, 1.67, 0.21, 0.90));
+}
+
+/* =========================================
+ * Selected state — shape inversion / shift
+ * ========================================= */
+
+/* Circle → squarish when selected */
+.ez-shape-circle:is([aria-pressed="true"], .ez-selected) {
+  clip-path: inset(4% round var(--md-sys-shape-corner-large, 16px));
+}
+
+/* Square → circular when selected */
+.ez-shape-square:is([aria-pressed="true"], .ez-selected) {
+  border-radius: var(--md-sys-shape-corner-full, 50%);
+}
+
+/* Pill → reduced rounding when selected */
+.ez-shape-pill:is([aria-pressed="true"], .ez-selected) {
+  border-radius: var(--md-sys-shape-corner-large, 16px);
+}
+
+/* Diamond → slightly rotated/expanded */
+.ez-shape-diamond:is([aria-pressed="true"], .ez-selected) {
+  clip-path: polygon(50% 2%, 98% 50%, 50% 98%, 2% 50%);
+}

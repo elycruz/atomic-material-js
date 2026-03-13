@@ -1,0 +1,85 @@
+/*
+ * Sizes — M3 Expressive button scale
+ * ------------------- */
+
+/* XSmall — 32px container */
+:where(.ez-btn, .ez-button).ez-xsmall {
+  --_btn-container-height: 32px;
+  --_btn-icon-size: 20px;
+  padding-block: 0;
+  padding-inline: 0.75rem;
+  gap: 0.5rem;
+  font-size: var(--md-sys-typescale-label-large-size, 1.16667rem);
+  font-weight: var(--md-sys-typescale-label-large-weight, 500);
+  letter-spacing: var(--md-sys-typescale-label-large-tracking, 0rem);
+  line-height: var(--md-sys-typescale-label-large-line-height, 1.66667rem);
+  min-height: var(--_btn-container-height);
+}
+
+/* Small (default) — 40px container */
+:where(.ez-btn, .ez-button):is(
+  :not(.ez-xsmall, .ez-small, .ez-medium, .ez-large, .ez-xlarge, .ez-util), .ez-small
+) {
+  --_btn-container-height: 40px;
+  --_btn-icon-size: 20px;
+  padding-block: 0;
+  padding-inline: 1rem;
+  gap: 0.5rem;
+  font-size: var(--md-sys-typescale-label-large-size, 1.16667rem);
+  font-weight: var(--md-sys-typescale-label-large-weight, 500);
+  letter-spacing: var(--md-sys-typescale-label-large-tracking, 0rem);
+  line-height: var(--md-sys-typescale-label-large-line-height, 1.66667rem);
+  min-height: var(--_btn-container-height);
+}
+
+/* Util (legacy escape hatch) */
+:where(.ez-btn, .ez-button).ez-util {
+  --_btn-container-height: 18px;
+  --_btn-container-shape: calc(var(--_btn-container-height) / 2);
+
+  font-size: var(--ez-12px);
+  line-height: var(--ez-12px);
+  padding: var(--ez-3px);
+}
+
+/* Medium — 56px container */
+:where(.ez-btn, .ez-button).ez-medium {
+  --_btn-container-height: 56px;
+  --_btn-icon-size: 24px;
+  padding-block: 0;
+  padding-inline: 1.5rem;
+  gap: 0.5rem;
+  font-size: var(--md-sys-typescale-title-medium-size, 1.33333rem);
+  font-weight: var(--md-sys-typescale-title-medium-weight, 500);
+  letter-spacing: var(--md-sys-typescale-title-medium-tracking, 0rem);
+  line-height: var(--md-sys-typescale-title-medium-line-height, 2rem);
+  min-height: var(--_btn-container-height);
+}
+
+/* Large — 96px container */
+:where(.ez-btn, .ez-button).ez-large {
+  --_btn-container-height: 96px;
+  --_btn-icon-size: 32px;
+  padding-block: 0;
+  padding-inline: 3rem;
+  gap: 0.75rem;
+  font-size: var(--md-sys-typescale-headline-small-size, 2rem);
+  font-weight: var(--md-sys-typescale-headline-small-weight, 400);
+  letter-spacing: var(--md-sys-typescale-headline-small-tracking, 0rem);
+  line-height: var(--md-sys-typescale-headline-small-line-height, 2.66667rem);
+  min-height: var(--_btn-container-height);
+}
+
+/* XLarge — 136px container */
+:where(.ez-btn, .ez-button).ez-xlarge {
+  --_btn-container-height: 136px;
+  --_btn-icon-size: 40px;
+  padding-block: 0;
+  padding-inline: 4rem;
+  gap: 1rem;
+  font-size: var(--md-sys-typescale-headline-large-size, 2.66667rem);
+  font-weight: var(--md-sys-typescale-headline-large-weight, 400);
+  letter-spacing: var(--md-sys-typescale-headline-large-tracking, 0rem);
+  line-height: var(--md-sys-typescale-headline-large-line-height, 3.33333rem);
+  min-height: var(--_btn-container-height);
+}
