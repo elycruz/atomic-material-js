@@ -343,12 +343,12 @@ force: ${force}
   // ----
   // Write ui lib. files
   return (
-    scaffoldFilesUsing(getCustomElementContent, 'packages/atomic-ui-js')
+    scaffoldFilesUsing(getCustomElementContent, 'packages/ui-js')
       // Write React lib. files
       .then(collectedFilePaths =>
         scaffoldFilesUsing(
           getReactComponentContent,
-          'packages/atomic-ui-js-react',
+          'packages/ui-react',
           collectedFilePaths
         )
       )
@@ -357,7 +357,7 @@ force: ${force}
       .then(collectedFilePaths =>
         scaffoldFilesUsing(
           writeNextJsComponentFiles,
-          'packages/atomic-ui-js-next',
+          'packages/ui-next',
           collectedFilePaths
         )
       )
@@ -366,7 +366,7 @@ force: ${force}
       .then(collectedFilePaths =>
         scaffoldFilesUsing(
           writeSitePageFiles,
-          'apps/atomic-ui-js-site/src/app/custom-elements',
+          'apps/ui-site/src/app/custom-elements',
           collectedFilePaths
         )
       )
