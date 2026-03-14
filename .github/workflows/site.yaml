@@ -57,7 +57,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
         with:
-          path: dist/atomic-ui-js/storybook
+          path: dist/ui-js/storybook
 
   # Deployment job
   deploy:

@@ -4,15 +4,15 @@
     "build": {
       "dependsOn": ["^build"],
       "outputs": [
-        "dist/atomic-ui-js/**/*",
-        "packages/atomic-ui-js-react/dist/**/*",
-        "packages/atomic-ui-js-next/dist/**/*",
+        "dist/ui-js/**/*",
+        "packages/ui-react/dist/**/*",
+        "packages/ui-next/dist/**/*",
         "dist/**/*"
       ]
     },
     "build-storybook": {
       "outputs": [
-        "dist/atomic-ui-js/storybook"
+        "dist/ui-js/storybook"
       ]
     },
     "dev": {
@@ -23,7 +23,7 @@
     },
     "docs": {
       "outputs": [
-        "dist/atomic-ui-js/docs"
+        "dist/ui-js/docs"
       ]
     },
     "eslint": {

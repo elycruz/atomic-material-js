@@ -18,7 +18,7 @@ const __dirname = url.fileURLToPath(new URL('.', import.meta.url)),
   }),
   /** @type {import('next').NextConfig} */
   nextConfig = {
-    distDir: '../../dist/atomic-ui-js',
+    distDir: '../../dist/ui-js',
     basePath: '/atomic-ui-js',
     trailingSlash: true,
     // Configure pageExtensions to include md and mdx

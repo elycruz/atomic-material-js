@@ -103,17 +103,17 @@ importers:
         specifier: ^5.105.4
         version: 5.105.4
 
-  apps/atomic-ui-js-site:
+  apps/ui-site:
     dependencies:
       '@atomic/ui':
         specifier: workspace:^
-        version: link:../../packages/atomic-ui-js
+        version: link:../../packages/ui-js
       '@atomic/ui-next':
         specifier: workspace:^
-        version: link:../../packages/atomic-ui-js-next
+        version: link:../../packages/ui-next
       '@atomic/ui-react':
         specifier: workspace:^
-        version: link:../../packages/atomic-ui-js-react
+        version: link:../../packages/ui-react
       '@lit/react':
         specifier: ^1.0.8
         version: 1.0.8(@types/react@19.2.14)
@@ -215,7 +215,7 @@ importers:
         specifier: ^8.53.0
         version: 8.57.0(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3)
 
-  packages/atomic-ui-js:
+  packages/ui-js:
     dependencies:
       '@tailwindcss/vite':
         specifier: ^4.1.12
@@ -342,14 +342,14 @@ importers:
         specifier: ^1.1.7
         version: 1.1.7
 
-  packages/atomic-ui-js-next:
+  packages/ui-next:
     devDependencies:
       '@atomic/ui':
         specifier: workspace:^
-        version: link:../atomic-ui-js
+        version: link:../ui-js
       '@atomic/ui-react':
         specifier: workspace:^
-        version: link:../atomic-ui-js-react
+        version: link:../ui-react
       '@lit/react':
         specifier: ^1.0.8
         version: 1.0.8(@types/react@19.2.14)
@@ -378,11 +378,11 @@ importers:
         specifier: ^19.2.3
         version: 19.2.4(react@19.2.4)
 
-  packages/atomic-ui-js-react:
+  packages/ui-react:
     devDependencies:
       '@atomic/ui':
         specifier: workspace:^
-        version: link:../atomic-ui-js
+        version: link:../ui-js
       '@lit/react':
         specifier: ^1.0.8
         version: 1.0.8(@types/react@19.2.14)
