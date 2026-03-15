@@ -22,10 +22,15 @@ const __dirname = url.fileURLToPath(new URL('.', import.meta.url)),
       .process(result.css, {
         from: inFilePath,
         to: outFilePath,
-        map: { inline: false, prev: result.sourceMap ? JSON.stringify(result.sourceMap) : undefined }
+        map: { 
+          inline: false, 
+          prev: result.sourceMap ? JSON.stringify(result.sourceMap) : undefined 
+        }
       })
       .then(postcssResult =>
-        fs.writeFile(outFilePath, postcssResult.css).then(() => postcssResult.map)
+        fs
+          .writeFile(outFilePath, postcssResult.css)
+          .then(() => postcssResult.map)
       )
       .then(map => {
         if (map) {
