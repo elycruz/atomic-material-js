@@ -33,3 +33,14 @@ An atomic user interface toolkit, and library, experiment for building custom el
 ### Scripts
 
 See root `package.json`, and `packages/**/package.json`, 'scripts', and any package's `node_scripts` dir.
+
+### Playwright related
+
+- Run `pnpm exec playwright install --with-deps` to install the default playwright browser (for running storybook tests (e.g., `pnpm test`, etc.)).
+
+
+## License 
+
+GPL-v3 (for now)
+
+
