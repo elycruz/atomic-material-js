@@ -1,0 +1,22 @@
+@import "reset.scss";
+@import "html-body-base.scss";
+@import "copy.scss";
+
+/**
+ * Material Design 3 tokens — barrel import.
+ *
+ * Import this file to get all MD3 design tokens (color, typography,
+ * shape, elevation, motion, spacing).
+ *
+ * For automatic bridging to existing --ez-* components, also import bridge.css:
+ *   @import "atomic-ui-js/css/modules/material-design-3/bridge.scss";
+ */
+@import "../material/themes/light.scss";
+@import "../material/themes/dark.scss";
+@import "themes.scss";
+@import "typography.scss";
+@import "shape.scss";
+@import "elevation.scss";
+@import "motion.scss";
+@import "spacing.scss";
+@import "state.scss";

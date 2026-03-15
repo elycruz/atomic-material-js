@@ -53,10 +53,10 @@
       "types": "./dist/utils/index.d.ts",
       "default": "./dist/utils/index.js"
     },
-    "./css/modules/material-design-3": "./css/modules/material-design-3/index.css",
-    "./css/modules/material-design-3/bridge": "./css/modules/material-design-3/bridge.css",
-    "./css/modules/material-design-3/index.css": "./css/modules/material-design-3/index.css",
-    "./css/modules/material-design-3/bridge.css": "./css/modules/material-design-3/bridge.css",
+    "./css/modules/material-design-3": "./css/base/index.scss",
+    "./css/modules/material-design-3/bridge": "./css/base/bridge.scss",
+    "./css/modules/material-design-3/index.css": "./css/base/index.scss",
+    "./css/modules/material-design-3/bridge.css": "./css/base/bridge.scss",
     "./*": "./dist/*"
   },
   "scripts": {
@@ -67,7 +67,7 @@
     "gen:css": "node node_scripts/gen-css/index.ts",
     "eslint": "eslint .",
     "eslintfix": "pnpm eslint --fix",
-    "stylelint": "stylelint \"**/*.css\"",
+    "stylelint": "stylelint \"**/*.scss\"",
     "stylelintfix": "pnpm stylelint --fix",
     "typings": "tsc --project tsconfig.json",
     "typedoc": "typedoc .",
