@@ -24,7 +24,7 @@ const __dirname = url.fileURLToPath(new URL('.', import.meta.url)),
         to: outFilePath,
         map: {
           inline: false,
-          prev: result.sourceMap ? JSON.stringify(result.sourceMap) : undefined
+          prev: result.sourceMap ? JSON.stringify(result.sourceMap) : undefined,
         },
       })
       .then(postcssResult =>
