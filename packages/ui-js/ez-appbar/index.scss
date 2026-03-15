@@ -1,0 +1,200 @@
+/* ========================================
+ * Base appbar styles (common to all sizes)
+ * ======================================== */
+
+:where(.ez-appbar, ez-appbar) {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding-inline: var(--md-sys-spacing-1, 0.25rem);
+  box-shadow: var(--md-sys-elevation-level0, none);
+  border-radius: var(--md-sys-shape-corner-none, 0);
+}
+
+/* ========================================
+ * Style variants (filled, outlined, elevated)
+ * ======================================== */
+
+/** Filled Variant (default) **/
+:where(.ez-appbar, ez-appbar):not([class^="ez-theme"], [class*=" ez-theme"]),
+:where(.ez-appbar, ez-appbar).ez-filled {
+  background: var(--md-color-theme, var(--md-sys-color-primary, ButtonFace));
+  color: var(--md-color-on-theme, var(--md-sys-color-on-primary, ButtonText));
+}
+
+:where(.ez-appbar, ez-appbar).ez-outlined {
+  border: var(--ez-border-width) solid var(--md-sys-color-outline, ButtonBorder);
+  color: var(--md-color-theme, var(--md-sys-color-primary, ButtonText));
+}
+
+:where(.ez-appbar, ez-appbar).ez-elevated {
+  border: var(--ez-border-width) solid var(--md-sys-color-outline, ButtonBorder);
+  color: var(--md-color-theme, var(--md-sys-color-primary, ButtonText));
+  box-shadow: var(--md-sys-elevation-level2, 0 var(--ez-2px) var(--ez-3px) rgb(0 0 0 / 12%), 0 var(--ez-3px) var(--ez-5px) rgb(0 0 0 / 12%));
+}
+
+/* Filled variant: subtitle & icon colors inherit themed contrast color */
+:where(.ez-appbar, ez-appbar):not([class^="ez-theme"], [class*=" ez-theme"]),
+:where(.ez-appbar, ez-appbar).ez-filled :is(p, .ez-appbar-subtitle) {
+  color: var(--md-color-on-theme, var(--md-sys-color-on-primary, ButtonText));
+}
+
+:where(.ez-appbar, ez-appbar):not([class^="ez-theme"], [class*=" ez-theme"]),
+:where(.ez-appbar, ez-appbar).ez-filled :is(.ez-appbar-leading, .ez-appbar-trailing, .md-icon) {
+  color: var(--md-color-on-theme, var(--md-sys-color-on-primary, ButtonText));
+}
+
+/* ========================================
+ * Size variant: Small (default)
+ * Container height: 64dp
+ * ======================================== */
+
+:where(.ez-appbar, ez-appbar):not([class^="ez-theme"], [class*=" ez-theme"]),
+:where(.ez-appbar, ez-appbar):not(.ez-medium, .ez-large) {
+  min-height: 4rem;
+}
+
+:where(.ez-appbar, ez-appbar):not([class^="ez-theme"], [class*=" ez-theme"]),
+:where(.ez-appbar, ez-appbar):not(.ez-medium, .ez-large) :is(h1, h2, h3, h4, h5, h6, .ez-appbar-title) {
+  font-family: var(--md-sys-typescale-title-large-font), sans-serif;
+  font-size: var(--md-sys-typescale-title-large-size);
+  font-weight: var(--md-sys-typescale-title-large-weight);
+  line-height: var(--md-sys-typescale-title-large-line-height);
+  letter-spacing: var(--md-sys-typescale-title-large-tracking);
+  margin: 0;
+}
+
+:where(.ez-appbar, ez-appbar):not([class^="ez-theme"], [class*=" ez-theme"]),
+:where(.ez-appbar, ez-appbar):not(.ez-medium, .ez-large) :is(p, .ez-appbar-subtitle) {
+  font-family: var(--md-sys-typescale-label-medium-font), sans-serif;
+  font-size: var(--md-sys-typescale-label-medium-size);
+  font-weight: var(--md-sys-typescale-label-medium-weight);
+  line-height: var(--md-sys-typescale-label-medium-line-height);
+  letter-spacing: var(--md-sys-typescale-label-medium-tracking);
+  margin: 0;
+}
+
+/* ========================================
+ * Size variant: Medium
+ * Container height: 112dp (136dp with subtitle)
+ * ======================================== */
+
+:where(.ez-appbar, ez-appbar).ez-medium {
+  min-height: 7rem;
+  flex-wrap: wrap;
+  align-content: flex-end;
+}
+
+:where(.ez-appbar, ez-appbar).ez-medium.ez-has-subtitle {
+  min-height: 8.5rem;
+}
+
+:where(.ez-appbar, ez-appbar).ez-medium :is(h1, h2, h3, h4, h5, h6, .ez-appbar-title) {
+  font-family: var(--md-sys-typescale-headline-medium-font), sans-serif;
+  font-size: var(--md-sys-typescale-headline-medium-size);
+  font-weight: var(--md-sys-typescale-headline-medium-weight);
+  line-height: var(--md-sys-typescale-headline-medium-line-height);
+  letter-spacing: var(--md-sys-typescale-headline-medium-tracking);
+  margin: 0;
+}
+
+:where(.ez-appbar, ez-appbar).ez-medium :is(p, .ez-appbar-subtitle) {
+  font-family: var(--md-sys-typescale-title-small-font), sans-serif;
+  font-size: var(--md-sys-typescale-title-small-size);
+  font-weight: var(--md-sys-typescale-title-small-weight);
+  line-height: var(--md-sys-typescale-title-small-line-height);
+  letter-spacing: var(--md-sys-typescale-title-small-tracking);
+  margin: 0;
+}
+
+/* ========================================
+ * Size variant: Large
+ * Container height: 120dp (152dp with subtitle)
+ * ======================================== */
+
+:where(.ez-appbar, ez-appbar).ez-large {
+  min-height: 7.5rem;
+  flex-wrap: wrap;
+  align-content: flex-end;
+}
+
+:where(.ez-appbar, ez-appbar).ez-large.ez-has-subtitle {
+  min-height: 9.5rem;
+}
+
+:where(.ez-appbar, ez-appbar).ez-large :is(h1, h2, h3, h4, h5, h6, .ez-appbar-title) {
+  font-family: var(--md-sys-typescale-display-small-font), sans-serif;
+  font-size: var(--md-sys-typescale-display-small-size);
+  font-weight: var(--md-sys-typescale-display-small-weight);
+  line-height: var(--md-sys-typescale-display-small-line-height);
+  letter-spacing: var(--md-sys-typescale-display-small-tracking);
+  margin: 0;
+}
+
+:where(.ez-appbar, ez-appbar).ez-large :is(p, .ez-appbar-subtitle) {
+  font-family: var(--md-sys-typescale-title-medium-font), sans-serif;
+  font-size: var(--md-sys-typescale-title-medium-size);
+  font-weight: var(--md-sys-typescale-title-medium-weight);
+  line-height: var(--md-sys-typescale-title-medium-line-height);
+  letter-spacing: var(--md-sys-typescale-title-medium-tracking);
+  margin: 0;
+}
+
+/* ========================================
+ * Leading/trailing icon colors
+ * ======================================== */
+
+:where(.ez-appbar, ez-appbar) :is(.ez-appbar-leading, .md-icon:first-child) {
+  color: var(--md-color-on-theme, CanvasText);
+}
+
+:where(.ez-appbar, ez-appbar) :is(.ez-appbar-trailing, .md-icon:last-child) {
+  color: var(--md-color-on-theme, GrayText);
+}
+
+/* ========================================
+ * Custom element: sticky behavior & transitions
+ * ======================================== */
+
+ez-appbar {
+  --ez-ani-speed: 0.21s;
+
+  position: sticky;
+  display: flex;
+  transition: transform var(--ez-ani-speed) ease-in-out, opacity var(--ez-ani-speed);
+}
+
+ez-appbar:not(.ez--bottom),
+ez-appbar.ez--top {
+  top: 0;
+}
+
+ez-appbar.ez--bottom {
+  bottom: 0;
+}
+
+/* On-scroll state: container color & elevation change */
+ez-appbar.ez--scrolled:not(.ez-filled, .ez-outlined, .ez-elevated) {
+  box-shadow: var(--md-sys-elevation-level2, 0 1px 2px 0 rgb(0 0 0 / 30%), 0 1px 3px 1px rgb(0 0 0 / 15%));
+}
+
+ez-appbar.ez--hidden {
+  pointer-events: none;
+  opacity: 0;
+}
+
+ez-appbar.ez--hidden:not(.ez--bottom, .ez--visible) {
+  transform: translateY(-100%);
+}
+
+ez-appbar.ez--hidden.ez--bottom {
+  transform: translateY(100%);
+}
+
+ez-appbar:focus-within,
+ez-appbar.ez--visible {
+  transform: translateY(0%);
+  pointer-events: all;
+  opacity: 1;
+}

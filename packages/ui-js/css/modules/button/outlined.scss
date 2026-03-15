@@ -1,0 +1,53 @@
+/**
+ * MD3 Variants — Outlined
+ * -------------------- */
+
+/* Outlined */
+:where(.ez-btn, .ez-button).ez-outlined {
+  --_btn-border-width: var(--ez-border-width, 1px);
+
+  background: transparent;
+  color: var(--md-color-theme, ButtonText);
+  border: var(--_btn-border-width) solid var(--md-color-theme, ButtonBorder);
+}
+
+/**
+ * Padding adjustments for 'outlined' button variant.
+ */
+
+/** For xsmall size **/
+:where(.ez-btn, .ez-button).ez-outlined.ez-xsmall {
+  padding-inline: calc(0.75rem - var(--_btn-border-width));
+}
+
+/** For small/unsized size **/
+:where(.ez-btn, .ez-button).ez-outlined:where(
+  .ez-small,
+   :not(.ez-xsmall, .ez-small, .ez-medium, .ez-large, .ez-xlarge, .ez-util)
+) {
+  padding-inline: calc(1rem - var(--_btn-border-width));
+}
+
+/** For util size **/
+:where(.ez-btn, .ez-button).ez-outlined.ez-util {
+  padding: calc(var(--ez-3px) - var(--_btn-border-width));
+}
+
+/** For medium size **/
+:where(.ez-btn, .ez-button).ez-outlined.ez-medium {
+  padding-inline: calc(1.5rem - var(--_btn-border-width));
+}
+
+/** For large size — 2px outline **/
+:where(.ez-btn, .ez-button).ez-outlined.ez-large {
+  --_btn-border-width: 2px;
+
+  padding-inline: calc(3rem - var(--_btn-border-width));
+}
+
+/** For xlarge size — 3px outline **/
+:where(.ez-btn, .ez-button).ez-outlined.ez-xlarge {
+  --_btn-border-width: 3px;
+
+  padding-inline: calc(4rem - var(--_btn-border-width));
+}
