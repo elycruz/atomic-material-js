@@ -16,9 +16,6 @@
 .ez-dialog {
   --_dialog-container-shape: var(--ez-dialog-container-shape, var(--md-sys-shape-corner-extra-large, 28px));
 
-  position: fixed;
-  display: flex;
-  flex-direction: column;
   background: var(--md-sys-color-surface-container-high, Canvas);
   color: var(--md-sys-color-on-surface, CanvasText);
   border-radius: var(--_dialog-container-shape);
@@ -30,6 +27,11 @@
   padding: 0;
   margin: auto;
   overflow: hidden;
+}
+
+.ez-dialog[open] {
+  display: flex;
+  flex-direction: column;
 }
 
 /* ========================================
