@@ -1,2 +1,1 @@
-# Note: This hook uses pnpm which may not be available in all environments
-# pnpm lintfix && pnpm test
+pnpm lintfix && pnpm test
