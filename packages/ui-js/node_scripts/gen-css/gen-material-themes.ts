@@ -5,7 +5,7 @@
  * @material/material-color-utilities for accurate HCT-based color generation.
  *
  * Outputs 6 theme files to css/material/:
- *   light.css, dark.css, light-mc.css, dark-mc.css, light-hc.css, dark-hc.css
+ *   light.scss, dark.scss, light-mc.scss, dark-mc.scss, light-hc.scss, dark-hc.scss
  *
  * Seed hues derived from colors.ts:
  *   primary=240, success=120, info=180, warning=60
@@ -89,28 +89,28 @@ interface ThemeVariant {
 }
 
 const VARIANTS: ThemeVariant[] = [
-  { fileName: 'light.css', selector: '.light', isDark: false, contrast: 0 },
-  { fileName: 'dark.css', selector: '.dark', isDark: true, contrast: 0 },
+  { fileName: 'light.scss', selector: '.light', isDark: false, contrast: 0 },
+  { fileName: 'dark.scss', selector: '.dark', isDark: true, contrast: 0 },
   {
-    fileName: 'light-mc.css',
+    fileName: 'light-mc.scss',
     selector: '.light-medium-contrast',
     isDark: false,
     contrast: 0.5,
   },
   {
-    fileName: 'dark-mc.css',
+    fileName: 'dark-mc.scss',
     selector: '.dark-medium-contrast',
     isDark: true,
     contrast: 0.5,
   },
   {
-    fileName: 'light-hc.css',
+    fileName: 'light-hc.scss',
     selector: '.light-high-contrast',
     isDark: false,
     contrast: 1.0,
   },
   {
-    fileName: 'dark-hc.css',
+    fileName: 'dark-hc.scss',
     selector: '.dark-high-contrast',
     isDark: true,
     contrast: 1.0,

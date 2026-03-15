@@ -9,7 +9,7 @@ import url from 'url';
 
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url)),
   { log, error } = console,
-  fileName = 'spacing.css',
+  fileName = 'spacing.scss',
   spacingNums = [
     0, 1, 2, 3, 4, 5, 6, 8, 9, 12, 16, 18, 24, 32, 36, 48, 64, 72, 96, 144,
   ],
@@ -20,11 +20,11 @@ const __dirname = url.fileURLToPath(new URL('.', import.meta.url)),
         ''
       ),
       content = `/**
- * spacing.css
+ * spacing.scss
  *
  * The library's curated spacing properties, represented as \`rem\` units.
  *
- * ====> DO NOT MANUALLY EDIT THIS FILE - This file is generated via a script ({repo-root}/scripts/gen-css/spacing.mjs).
+ * ====> DO NOT MANUALLY EDIT THIS FILE - This file is generated via a script ({repo-root}/node_scripts/gen-css/spacing.ts).
  */
 
 :root {
