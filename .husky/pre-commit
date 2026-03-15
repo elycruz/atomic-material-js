@@ -1,2 +1,2 @@
+# Note: This hook uses pnpm which may not be available in all environments
 # pnpm lintfix && pnpm test
-# Temporarily disabled during SCSS conversion
