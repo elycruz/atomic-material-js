@@ -67,9 +67,10 @@
 
 .ez-dialog__headline {
   font-family: var(--md-sys-typescale-headline-small-font, inherit);
-  font-size: var(--md-sys-typescale-headline-small-size, 1.5rem);
+  font-size: var(--md-sys-typescale-headline-small-size, 2rem);
   font-weight: var(--md-sys-typescale-headline-small-weight, 400);
-  line-height: var(--md-sys-typescale-headline-small-line-height, 2rem);
+  line-height: var(--md-sys-typescale-headline-small-line-height, 2.66667rem);
+  letter-spacing: var(--md-sys-typescale-headline-small-tracking, 0);
   color: var(--md-sys-color-on-surface, CanvasText);
   padding: var(--md-sys-spacing-6, 1.5rem) var(--md-sys-spacing-6, 1.5rem) 0;
   margin: 0;
@@ -103,8 +104,10 @@
 
 .ez-dialog__content {
   font-family: var(--md-sys-typescale-body-medium-font, inherit);
-  font-size: var(--md-sys-typescale-body-medium-size, 0.875rem);
-  line-height: var(--md-sys-typescale-body-medium-line-height, 1.25rem);
+  font-size: var(--md-sys-typescale-body-medium-size, 1.16667rem);
+  font-weight: var(--md-sys-typescale-body-medium-weight, 400);
+  line-height: var(--md-sys-typescale-body-medium-line-height, 1.66667rem);
+  letter-spacing: var(--md-sys-typescale-body-medium-tracking, 0);
   color: var(--md-sys-color-on-surface-variant, GrayText);
   padding: var(--md-sys-spacing-6, 1.5rem);
   overflow-y: auto;
@@ -222,13 +225,18 @@
 .ez-dialog__header {
   display: flex;
   align-items: center;
-  gap: var(--md-sys-spacing-4, 1rem);
+  gap: var(--md-sys-spacing-2, 0.5rem);
   min-height: 56px;
   padding-inline: var(--md-sys-spacing-4, 1rem);
   flex-shrink: 0;
 }
 
 .ez-dialog__header .ez-dialog__headline {
+  font-family: var(--md-sys-typescale-title-large-font, inherit);
+  font-size: var(--md-sys-typescale-title-large-size, 1.83333rem);
+  font-weight: var(--md-sys-typescale-title-large-weight, 400);
+  line-height: var(--md-sys-typescale-title-large-line-height, 2.33333rem);
+  letter-spacing: var(--md-sys-typescale-title-large-tracking, 0);
   flex: 1;
   padding: 0;
   margin: 0;
