@@ -1,0 +1,275 @@
+/**
+ * dialog.css
+ *
+ * Material Design 3 Dialog — CSS-only module.
+ * Styles the native <dialog> element with .ez-dialog class names.
+ *
+ * Variants:
+ *   - Basic dialog (default)
+ *   - Full-screen dialog (.ez-dialog--fullscreen or auto via container query)
+ */
+
+/* ========================================
+ * Basic Dialog
+ * ======================================== */
+
+.ez-dialog {
+  --_dialog-container-shape: var(--ez-dialog-container-shape, var(--md-sys-shape-corner-extra-large, 28px));
+
+  background: var(--md-sys-color-surface-container-high, Canvas);
+  color: var(--md-sys-color-on-surface, CanvasText);
+  border-radius: var(--_dialog-container-shape);
+  border: none;
+  box-shadow: var(--md-sys-elevation-level3, 0 1px 3px 0 rgb(0 0 0 / 30%), 0 4px 8px 3px rgb(0 0 0 / 15%));
+  min-width: 280px;
+  max-width: min(560px, calc(100vw - 48px));
+  max-height: min(560px, calc(100vh - 48px));
+  padding: 0;
+  margin: auto;
+  overflow: hidden;
+}
+
+.ez-dialog[open] {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ========================================
+ * Scrim (backdrop)
+ * ======================================== */
+
+.ez-dialog::backdrop {
+  background: var(--md-sys-color-scrim, #000) ;
+  opacity: 0.32;
+}
+
+/* ========================================
+ * Icon (optional)
+ * ======================================== */
+
+.ez-dialog__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--md-sys-spacing-6, 1.5rem) var(--md-sys-spacing-6, 1.5rem) 0;
+  color: var(--md-sys-color-secondary, LinkText);
+  font-size: 24px;
+  line-height: 1;
+}
+
+.ez-dialog__icon:empty {
+  display: none;
+}
+
+/* ========================================
+ * Headline
+ * ======================================== */
+
+.ez-dialog__headline {
+  font-family: var(--md-sys-typescale-headline-small-font, inherit);
+  font-size: var(--md-sys-typescale-headline-small-size, 1.5rem);
+  font-weight: var(--md-sys-typescale-headline-small-weight, 400);
+  line-height: var(--md-sys-typescale-headline-small-line-height, 2rem);
+  color: var(--md-sys-color-on-surface, CanvasText);
+  padding: var(--md-sys-spacing-6, 1.5rem) var(--md-sys-spacing-6, 1.5rem) 0;
+  margin: 0;
+}
+
+/* When icon is present, reduce headline top padding */
+.ez-dialog__icon + .ez-dialog__headline {
+  padding-top: var(--md-sys-spacing-4, 1rem);
+}
+
+/* ========================================
+ * Divider (scroll separator)
+ * ======================================== */
+
+.ez-dialog__divider {
+  border: none;
+  border-top: 1px solid var(--md-sys-color-outline, currentcolor);
+  margin: 0;
+  width: 100%;
+  opacity: 0;
+  transition: opacity var(--md-sys-motion-duration-short2, 100ms) var(--md-sys-motion-easing-standard, ease);
+}
+
+.ez-dialog__divider.active {
+  opacity: 1;
+}
+
+/* ========================================
+ * Content (supporting text / body)
+ * ======================================== */
+
+.ez-dialog__content {
+  font-family: var(--md-sys-typescale-body-medium-font, inherit);
+  font-size: var(--md-sys-typescale-body-medium-size, 0.875rem);
+  line-height: var(--md-sys-typescale-body-medium-line-height, 1.25rem);
+  color: var(--md-sys-color-on-surface-variant, GrayText);
+  padding: var(--md-sys-spacing-6, 1.5rem);
+  overflow-y: auto;
+  flex: 1;
+}
+
+/* Remove top padding when headline is present */
+.ez-dialog__headline + .ez-dialog__content,
+.ez-dialog__headline + .ez-dialog__divider + .ez-dialog__content,
+.ez-dialog__divider + .ez-dialog__content {
+  padding-top: var(--md-sys-spacing-4, 1rem);
+}
+
+/* ========================================
+ * Actions (button container)
+ * ======================================== */
+
+.ez-dialog__actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--md-sys-spacing-2, 0.5rem);
+  padding: 0 var(--md-sys-spacing-6, 1.5rem) var(--md-sys-spacing-6, 1.5rem);
+}
+
+.ez-dialog__actions:empty {
+  display: none;
+}
+
+/* Stacked actions for long button labels */
+.ez-dialog__actions.ez-stacked {
+  flex-direction: column-reverse;
+  align-items: flex-end;
+}
+
+/* ========================================
+ * Animations
+ * ======================================== */
+
+.ez-dialog[open] {
+  animation:
+    ez-dialog-open var(--md-sys-motion-duration-medium2, 300ms) var(--md-sys-motion-easing-emphasized-decelerate, cubic-bezier(0.05, 0.7, 0.1, 1));
+}
+
+.ez-dialog[open]::backdrop {
+  animation:
+    ez-dialog-scrim-in var(--md-sys-motion-duration-medium2, 300ms) ease forwards;
+}
+
+@keyframes ez-dialog-open {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes ez-dialog-scrim-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 0.32;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .ez-dialog[open] {
+    animation: none;
+  }
+
+  .ez-dialog[open]::backdrop {
+    animation: none;
+  }
+}
+
+/* ========================================
+ * Full-Screen Dialog
+ * ======================================== */
+
+.ez-dialog.ez-dialog--fullscreen {
+  width: 100vw;
+  height: 100dvh;
+  max-width: none;
+  max-height: none;
+  border-radius: 0;
+  box-shadow: none;
+  margin: 0;
+}
+
+.ez-dialog.ez-dialog--fullscreen[open] {
+  animation:
+    ez-dialog-slide-up var(--md-sys-motion-duration-medium4, 400ms) var(--md-sys-motion-easing-emphasized-decelerate, cubic-bezier(0.05, 0.7, 0.1, 1));
+}
+
+@keyframes ez-dialog-slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Full-screen header bar */
+.ez-dialog__header {
+  display: flex;
+  align-items: center;
+  gap: var(--md-sys-spacing-4, 1rem);
+  min-height: 56px;
+  padding-inline: var(--md-sys-spacing-4, 1rem);
+  flex-shrink: 0;
+}
+
+.ez-dialog__header .ez-dialog__headline {
+  flex: 1;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ez-dialog__close {
+  flex-shrink: 0;
+}
+
+.ez-dialog__confirm {
+  flex-shrink: 0;
+  margin-inline-start: auto;
+}
+
+/* Full-screen content fills remaining space */
+.ez-dialog--fullscreen .ez-dialog__content {
+  flex: 1;
+  padding: var(--md-sys-spacing-6, 1.5rem);
+}
+
+/* ========================================
+ * Container Query — Auto fullscreen on mobile
+ * ======================================== */
+
+@container (max-width: 600px) {
+  .ez-dialog:not(.ez-dialog--no-auto-fullscreen) {
+    width: 100vw;
+    height: 100dvh;
+    max-width: none;
+    max-height: none;
+    border-radius: 0;
+    box-shadow: none;
+    margin: 0;
+  }
+
+  .ez-dialog:not(.ez-dialog--no-auto-fullscreen)[open] {
+    animation:
+      ez-dialog-slide-up var(--md-sys-motion-duration-medium4, 400ms) var(--md-sys-motion-easing-emphasized-decelerate, cubic-bezier(0.05, 0.7, 0.1, 1));
+  }
+}
