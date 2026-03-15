@@ -370,9 +370,9 @@ html[dir="rtl"] :where(ez-input, .ez-input, .ez-textfield) > *:not(
  * Material Design - Range
  * ---------------------- */
 :where(.ez-range, [type="range"])::-webkit-slider-thumb:hover {
-  box-shadow: 0 0 0 var(--ez-5px) rgba(0, 0, 0, 0.12);
+  box-shadow: 0 0 0 var(--ez-5px) rgb(0 0 0 / 12%);
 }
 
 :where(.ez-range, [type="range"])::-moz-range-thumb:hover {
-  box-shadow: 0 0 0 var(--ez-5px) rgba(0, 0, 0, 0.12);
+  box-shadow: 0 0 0 var(--ez-5px) rgb(0 0 0 / 12%);
 }

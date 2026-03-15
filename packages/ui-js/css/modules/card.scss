@@ -10,6 +10,7 @@
 
 /** Orientation
  ------------------- **/
+
 /** Horizontal **/
 :where(html[dir="ltr"], html:not([dir])) .ez-card:not(.ez-layout-horizontal) {
   flex-flow: column nowrap;
@@ -56,6 +57,7 @@ html[dir="rtl"] .ez-card:not(.ez-layout-vertical) {
 .ez-card:is(a, button, [role="button"]) > ez-ripple::after,
 .ez-card:is(a, button, [role="button"]) > ez-ripple::before {
   background: var(--md-sys-color-on-surface, currentcolor);
+
   --ez-ripple-active-opacity: 0.10;
 }
 
@@ -63,6 +65,7 @@ html[dir="rtl"] .ez-card:not(.ez-layout-vertical) {
 .ez-card:is([disabled], [aria-disabled="true"]) {
   opacity: var(--md-sys-state-disabled-content-opacity, 0.38);
   cursor: default;
+
   &, & * {
     pointer-events: none;
   }

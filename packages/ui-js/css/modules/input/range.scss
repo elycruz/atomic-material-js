@@ -30,6 +30,7 @@
   border: none;
   cursor: pointer;
 }
+
 :where(.ez-range, [type="range"])::-webkit-slider-thumb {
   appearance: none;
   width: 1rem;

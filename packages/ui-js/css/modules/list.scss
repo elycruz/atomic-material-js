@@ -30,6 +30,7 @@
 /* Two-line */
 .ez-list-item.ez-two-line {
   --_list-item-height: 72px;
+
   align-items: flex-start;
   padding-block: var(--md-sys-spacing-2, 0.5rem);
 }
@@ -37,6 +38,7 @@
 /* Three-line */
 .ez-list-item.ez-three-line {
   --_list-item-height: 88px;
+
   align-items: flex-start;
   padding-block: var(--md-sys-spacing-3, 0.75rem);
 }

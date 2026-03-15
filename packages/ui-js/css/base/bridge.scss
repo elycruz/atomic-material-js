@@ -15,7 +15,6 @@
 :root {
   --md-color-white: #fff;
   --md-color-black: #000;
-
   --ez-color-black: var(--md-color-black);
   --ez-color-white: var(--md-color-white);
 
@@ -58,6 +57,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --ez-field: var(--md-sys-color-surface-container);
+
     /* Inverse white/black for dark scheme */
     --md-color-white: black;
     --md-color-black: white;

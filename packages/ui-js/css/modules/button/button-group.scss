@@ -112,7 +112,9 @@
 /**
  * Spring expand/contract — immediate siblings only.
  * -------------------- */
+
 /* Active/selected button expands */
+
 /*
 :where(.ez-btn-group) > :where(.ez-btn, .ez-button):is(:not(:disabled):active, [aria-pressed="true"], .ez-selected, :has(input:checked)) {
   --_btn-scale: 1.08;
@@ -156,6 +158,7 @@
 
 /** Selection/Not-Selected Colors
  ------------------------ **/
+
 /* Color: filled not-selected state */
 .ez-btn-group:has(input[type]) > :where(.ez-btn, .ez-button).ez-filled:not([aria-pressed="true"], .ez-selected, :has(input:checked)) {
   background-color: oklch(from var(--md-color-on-theme) calc(l - 0.1) c h);
@@ -173,17 +176,25 @@
   color: var(--md-color-on-theme);
 
   /** Dark mode **/
-  /*@media (prefers-color-scheme: dark) {*/
-  /*  background-color: oklch(from var(--md-color-theme) calc(l - 0.55) c h);*/
-  /*  color: oklch(from var(--md-color-on-theme) calc(l + 0.55) c h);*/
-  /*}*/
+
+  /* @media (prefers-color-scheme: dark) { */
+
+  /*  background-color: oklch(from var(--md-color-theme) calc(l - 0.55) c h); */
+
+  /*  color: oklch(from var(--md-color-on-theme) calc(l + 0.55) c h); */
+
+  /* } */
 }
 
 /* Color: non-filled (text, outlined, elevated, tonal) not-selected state */
-/*.ez-btn-group:has(input[type]) > :where(.ez-btn, .ez-button):not(.ez-filled):not([aria-pressed="true"], .ez-selected, :has(input:checked)) {*/
-/*  background-color: oklch(from var(--md-color-on-theme) l c h);*/
-/*  color: var(--md-color-theme);*/
-/*}*/
+
+/* .ez-btn-group:has(input[type]) > :where(.ez-btn, .ez-button):not(.ez-filled):not([aria-pressed="true"], .ez-selected, :has(input:checked)) { */
+
+/*  background-color: oklch(from var(--md-color-on-theme) l c h); */
+
+/*  color: var(--md-color-theme); */
+
+/* } */
 
 /* Color: non-filled (text, outlined, elevated, tonal) selected state */
 .ez-btn-group:has(input[type]) > :where(.ez-btn, .ez-button):not(.ez-filled):is([aria-pressed="true"], .ez-selected, :has(input:checked)) {
@@ -193,6 +204,7 @@
 
 /* Selection Border
  -------------------------- */
+
 /* Color: outlined selected state — update border */
 .ez-btn-group:has(input[type]) > :where(.ez-btn, .ez-button).ez-outlined:is([aria-pressed="true"], .ez-selected, :has(input:checked)) {
   border-color: oklch(from var(--md-color-theme) calc(l - 0.13) c h);

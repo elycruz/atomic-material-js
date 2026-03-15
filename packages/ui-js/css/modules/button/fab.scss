@@ -95,8 +95,7 @@
 
   width: auto;
   height: var(--_fab-container-size);
-  padding-inline-start: var(--_fab-leading-space);
-  padding-inline-end: var(--_fab-trailing-space);
+  padding-inline: var(--_fab-leading-space) var(--_fab-trailing-space);
   gap: var(--_fab-icon-label-space);
   font-size: 1rem; /* 16pt */
   font-weight: 500;
