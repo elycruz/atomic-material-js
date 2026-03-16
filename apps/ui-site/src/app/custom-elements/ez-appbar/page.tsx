@@ -122,9 +122,8 @@ export default function EzAppBarPage() {
 
             <div className={styles.text}>
               <p>
-                Scroll down to see the appbar hide and show behavior. The
-                appbar will hide when scrolling down and reappear when
-                scrolling up.
+                Scroll down to see the appbar hide and show behavior. The appbar
+                will hide when scrolling down and reappear when scrolling up.
               </p>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -165,9 +164,8 @@ export default function EzAppBarPage() {
                 Praesent fringilla nunc quis varius vulputate.
               </p>
               <p>
-                Curabitur tincidunt nisi scelerisque suscipit euismod.
-                Curabitur fringilla pretium neque, eleifend vulputate neque
-                cursus ornare.
+                Curabitur tincidunt nisi scelerisque suscipit euismod. Curabitur
+                fringilla pretium neque, eleifend vulputate neque cursus ornare.
               </p>
             </div>
           </div>
