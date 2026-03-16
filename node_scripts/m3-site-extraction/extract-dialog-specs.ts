@@ -10,111 +10,26 @@
  * Usage (from repo root):
  *   node --experimental-strip-types node_scripts/m3-site-extraction/extract-dialog-specs.ts
  */
-import { chromium } from 'playwright';
 import type { Page } from 'playwright';
-import { writeFileSync, mkdirSync } from 'fs';
-import { resolve, dirname } from 'path';
-import { fileURLToPath } from 'url';
 
-// ── Types ──────────────────────────────────────────────────────────────────
+import {
+  launchBrowser,
+  expandAllTokenFolders,
+  clickInteractiveTokens,
+  getTokenViewerText,
+  cleanSpecsText,
+  parseTokens,
+  renderTokenSections,
+  writeOutput,
+} from './utils.ts';
 
-interface TokenEntry {
-  humanName: string;
-  tokenKey: string;
-  value: string;
-  deprecated: boolean;
-}
+const URL = 'https://m3.material.io/components/dialogs/specs';
 
-interface TokenSection {
-  name: string;
-  tokens: TokenEntry[];
-}
+// ── Dialog-Specific Helpers ────────────────────────────────────────────────
 
-const URL = 'https://m3.material.io/components/dialogs/specs',
-  __dirname = dirname(fileURLToPath(import.meta.url)),
-  REPO_ROOT = resolve(__dirname, '../..'),
-  OUTPUT_DIR = resolve(REPO_ROOT, 'md/generated-specs'),
-  OUTPUT_FILE = resolve(OUTPUT_DIR, 'm3-dialog-tokens-and-specs.md');
-
-// ── Helpers ────────────────────────────────────────────────────────────────
-
-/** Click `expand_all` inside the token viewer to open every folder. */
-async function expandAllTokenFolders(page: Page): Promise<void> {
-  const expandBtn = page.locator('.main-token-viewer').getByText('expand_all');
-
-  if (await expandBtn.isVisible({ timeout: 3000 }).catch(() => false)) {
-    await expandBtn.click();
-    await page.waitForTimeout(2500);
-  }
-}
-
-/** Click every elevation/shape/font/type interactive token to capture popover content. */
-async function clickInteractiveTokens(
-  page: Page
-): Promise<Record<string, string>> {
-  const interactiveSpans = await page
-      .locator('.main-token-viewer span.mat-mdc-tooltip-trigger.text-value')
-      .all(),
-    popoverTexts: Record<string, string> = {};
-
-  for (const span of interactiveSpans) {
-    const tokenName = (await span.textContent())?.trim() ?? '';
-
-    if (
-      !tokenName.includes('elevation') &&
-      !tokenName.includes('shape') &&
-      !tokenName.includes('.font') &&
-      !tokenName.includes('.type')
-    ) {
-      continue;
-    }
-
-    try {
-      await span.click({ timeout: 1500 });
-      await page.waitForTimeout(800);
-
-      // Look for a popover / overlay that appeared
-      const popoverText = await page.evaluate(() => {
-        const overlay = document.querySelector('.cdk-overlay-container'),
-          popover = overlay?.querySelector(
-            '.token-popover, .mat-mdc-tooltip, [class*="popover"], [class*="detail"], [class*="panel"]'
-          );
-
-        return (popover as HTMLElement)?.innerText?.trim() || '';
-      });
-
-      if (popoverText) {
-        popoverTexts[tokenName] = popoverText;
-      }
-
-      // Close by clicking elsewhere
-      await page
-        .locator('.main-token-viewer')
-        .click({ position: { x: 5, y: 5 } });
-      await page.waitForTimeout(300);
-    } catch {
-      // Ignore click failures
-    }
-  }
-
-  return popoverTexts;
-}
-
-/** Read the full innerText of the `.main-token-viewer`. */
-async function getTokenViewerText(page: Page): Promise<string> {
-  return page.evaluate(
-    () =>
-      document.querySelector<HTMLElement>('.main-token-viewer')?.innerText ?? ''
-  );
-}
-
-/** Read the specs content from the sections BELOW the token viewer. */
-async function getSpecsSectionsText(page: Page): Promise<string> {
+/** Read the specs content from the sections BELOW the token viewer (dialog-specific fallback). */
+async function getDialogSpecsSectionsText(page: Page): Promise<string> {
   return page.evaluate(() => {
-    // The specs sections live in elements AFTER the .main-token-viewer
-    // They are sibling sections within the page content area.
-    // We want everything from "Basic dialogs" heading through the measurements,
-    // but NOT the token viewer content.
     const sections = document.querySelectorAll(
       'mio-component-specs-section, [class*="specs-section"]'
     );
@@ -132,16 +47,12 @@ async function getSpecsSectionsText(page: Page): Promise<string> {
         document.querySelector('[role="main"]') ??
         document.body,
       fullText = (allContent as HTMLElement)?.innerText ?? '',
-      // Find content after the token viewer ends
       tokenText = (tokenViewer as HTMLElement)?.innerText ?? '',
       lastTokenLine =
         tokenText
           .split('\n')
           .filter(l => l.trim())
           .pop() ?? '',
-      // Find where specs content starts (after the token viewer)
-      // Look for the "Basic dialogs" heading that appears in the specs section
-      // The token viewer might also contain text, so find the SECOND occurrence
       tokenViewerEnd = fullText.indexOf(lastTokenLine) + lastTokenLine.length,
       afterTokens = fullText.substring(tokenViewerEnd),
       basicIdx = afterTokens.indexOf('Basic dialogs');
@@ -157,242 +68,18 @@ async function getSpecsSectionsText(page: Page): Promise<string> {
   });
 }
 
-// ── Token Parsing ──────────────────────────────────────────────────────────
+// ── Specs Section Parsing (dialog-specific) ────────────────────────────────
 
-/**
- * Parse the raw token viewer text into structured data.
- *
- * The text follows a repeating pattern:
- *   <human-readable name>
- *   [warning]?                      ← optional deprecated marker
- *   md.comp.dialog.<token>
- *   [content_copy]?                 ← skip
- *   <value>                         ← e.g. #ECE6F0, 24dp, Roboto, 0.08
- *
- * Folder headers look like:
- *   folder_open
- *   <Section Name>
- *   keyboard_arrow_down
- */
-function parseTokens(rawText: string): TokenSection[] {
-  const lines = rawText
-      .split('\n')
-      .map(l => l.trim())
-      .filter(l => l.length > 0),
-    sections: TokenSection[] = [];
+function parseDialogSpecs(rawText: string): string {
+  const cleaned = cleanSpecsText(rawText, [
+    /Dialogs: Overview\n?/g,
+    /Dialogs: Guidelines\n?/g,
+  ]);
 
-  let currentSection: TokenSection | null = null,
-    i = 0;
-
-  // Skip the header lines (variant name, nav icons, column header)
-  while (i < lines.length && !lines[i].startsWith('folder')) {
-    i++;
-  }
-
-  while (i < lines.length) {
-    const line = lines[i];
-
-    // Folder header
-    if (line === 'folder_open' || line === 'folder') {
-      i++;
-
-      const sectionName = lines[i] ?? '';
-
-      i++; // skip keyboard_arrow_down
-      if (lines[i] === 'keyboard_arrow_down') i++;
-      currentSection = { name: sectionName, tokens: [] };
-      sections.push(currentSection);
-      continue;
-    }
-
-    // Skip UI chrome
-    if (
-      [
-        'keyboard_arrow_down',
-        'content_copy',
-        'collapse_all',
-        'expand_all',
-        'search',
-        'visibility',
-        'grid_view',
-        'arrow_drop_down',
-        'Aa',
-      ].includes(line)
-    ) {
-      i++;
-      continue;
-    }
-
-    // Token entry: human name, optional warning, token key, optional value
-    const humanName = line;
-
-    i++;
-
-    let deprecated = false;
-
-    if (i < lines.length && lines[i] === 'warning') {
-      deprecated = true;
-      i++;
-    }
-
-    // Token key (starts with md.comp.)
-    let tokenKey = '';
-
-    if (i < lines.length && lines[i]?.startsWith('md.comp.')) {
-      tokenKey = lines[i];
-      i++;
-    } else {
-      // Not a token entry — may be noise; skip
-      continue;
-    }
-
-    // Skip content_copy
-    if (i < lines.length && lines[i] === 'content_copy') i++;
-
-    // Value — could be a color (#hex), dimension (Ndp), number, font name, etc.
-    // Or could be empty (for elevation/shape/type references)
-    let value = '';
-
-    if (
-      i < lines.length &&
-      !lines[i]?.startsWith('folder') &&
-      !lines[i]?.startsWith('md.comp.') &&
-      !['warning', 'keyboard_arrow_down', 'Aa'].includes(lines[i])
-    ) {
-      // Check if the next line looks like another human-readable token name
-      // by checking if two lines ahead is md.comp.* or warning
-      const nextIsTokenName =
-        (i + 1 < lines.length &&
-          (lines[i + 1]?.startsWith('md.comp.') ||
-            lines[i + 1] === 'warning')) ||
-        (i + 2 < lines.length &&
-          lines[i + 1] === 'warning' &&
-          lines[i + 2]?.startsWith('md.comp.'));
-
-      if (!nextIsTokenName) {
-        value = lines[i];
-        i++;
-      }
-    }
-
-    if (currentSection) {
-      currentSection.tokens.push({ humanName, tokenKey, value, deprecated });
-    }
-  }
-
-  return sections;
+  return cleaned;
 }
 
-// ── Specs Section Parsing ──────────────────────────────────────────────────
-
-function parseSpecsSections(rawText: string): string {
-  // Clean up noise lines
-  const cleaned = rawText
-    .replace(/^link\n?/gm, '')
-    .replace(/^Copy link\n?/gm, '')
-    .replace(/^arrow_left_alt\n?/gm, '')
-    .replace(/^arrow_right_alt\n?/gm, '')
-    .replace(/^Previous\n?/gm, '')
-    .replace(/^Up next\n?/gm, '')
-    .replace(/Dialogs: Overview\n?/g, '')
-    .replace(/Dialogs: Guidelines\n?/g, '')
-    .replace(/Collapse all\n?/g, '')
-    .replace(/folder_open\n?/g, '')
-    .replace(/folder\n?/g, '')
-    .replace(/keyboard_arrow_down\n?/g, '')
-    .replace(/expand_all\n?/g, '')
-    .replace(/collapse_all\n?/g, '')
-    .replace(/grid_view\n?/g, '')
-    .replace(/visibility\n?/g, '')
-    .replace(/search\n?/g, '')
-    .replace(/arrow_drop_down\n?/g, '');
-
-  return cleaned.trim();
-}
-
-// ── Markdown Generation ────────────────────────────────────────────────────
-
-function generateMarkdown(
-  basicSections: TokenSection[],
-  fullScreenSections: TokenSection[],
-  popoverDataBasic: Record<string, string>,
-  popoverDataFull: Record<string, string>,
-  specsContent: string
-): string {
-  const lines: string[] = [];
-
-  lines.push('# M3 Dialog — Tokens & Specs');
-  lines.push('');
-  lines.push(`> Source: [m3.material.io/components/dialogs/specs](${URL})`);
-  lines.push('');
-  lines.push('---');
-  lines.push('');
-
-  // ── Basic Dialog Tokens ──
-  lines.push('## Dialog — Basic');
-  lines.push('');
-  renderTokenSections(lines, basicSections, popoverDataBasic);
-
-  // ── Full Screen Dialog Tokens ──
-  lines.push('## Dialog — Full Screen');
-  lines.push('');
-  renderTokenSections(lines, fullScreenSections, popoverDataFull);
-
-  // ── Specs Content ──
-  if (specsContent) {
-    lines.push('---');
-    lines.push('');
-    lines.push('## Specs');
-    lines.push('');
-    lines.push(specsContent);
-    lines.push('');
-  }
-
-  lines.push('---');
-  lines.push('');
-  lines.push(
-    `*Extracted from the Material Design 3 website on ${new Date().toISOString().slice(0, 10)}.*`
-  );
-  lines.push('');
-
-  return lines.join('\n');
-}
-
-function renderTokenSections(
-  lines: string[],
-  sections: TokenSection[],
-  popoverData: Record<string, string>
-): void {
-  for (const section of sections) {
-    // Skip empty parent sections (e.g. "Enabled", "Hovered" with no direct tokens)
-    if (section.tokens.length === 0) continue;
-
-    lines.push(`### ${section.name}`);
-    lines.push('');
-    lines.push('| Description | Token | Value | Deprecated |');
-    lines.push('|---|---|---|---|');
-
-    for (const token of section.tokens) {
-      const dep = token.deprecated ? '⚠️ Yes' : '';
-
-      let val = token.value || popoverData[token.tokenKey] || '*(reference)*';
-
-      // Don't repeat the token key as the value
-      if (val === token.tokenKey) val = '*(reference)*';
-      lines.push(
-        `| ${escMd(token.humanName)} | \`${token.tokenKey}\` | ${escMd(val)} | ${dep} |`
-      );
-    }
-
-    lines.push('');
-  }
-}
-
-function escMd(str: string): string {
-  return str.replace(/\|/g, '\\|').replace(/\n/g, ' ');
-}
-
-// ── Specs Formatting ───────────────────────────────────────────────────────
+// ── Specs Formatting (dialog-specific) ─────────────────────────────────────
 
 function formatSpecsAsMarkdown(rawSpecs: string): string {
   const lines = rawSpecs.split('\n'),
@@ -525,7 +212,6 @@ function formatSpecsAsMarkdown(rawSpecs: string): string {
       continue;
     }
     if (!inColorRolesList && colorRoles.has(trimmed)) {
-      // Check if this starts a color roles section (previous output mentions "color roles")
       const prevLines = output.slice(-5).join(' ');
 
       if (prevLines.includes('color roles')) {
@@ -535,7 +221,6 @@ function formatSpecsAsMarkdown(rawSpecs: string): string {
         continue;
       }
 
-      // Check if next line is also a color role
       const nextTrimmed = i + 1 < lines.length ? lines[i + 1].trim() : '';
 
       if (colorRoles.has(nextTrimmed)) {
@@ -565,10 +250,7 @@ function formatSpecsAsMarkdown(rawSpecs: string): string {
 // ── Main ───────────────────────────────────────────────────────────────────
 
 async function main(): Promise<void> {
-  const browser = await chromium.launch({ headless: true }),
-    page = await browser.newPage({
-      viewport: { width: 1440, height: 900 },
-    });
+  const { browser, page } = await launchBrowser();
 
   console.log('Navigating to', URL);
   await page.goto(URL, { waitUntil: 'networkidle', timeout: 60000 });
@@ -608,7 +290,7 @@ async function main(): Promise<void> {
   // ── Extract specs content (anatomy, colors, measurements) ──
   console.log('Extracting specs content...');
 
-  const rawSpecs = await getSpecsSectionsText(page);
+  const rawSpecs = await getDialogSpecsSectionsText(page);
 
   await browser.close();
 
@@ -617,24 +299,51 @@ async function main(): Promise<void> {
 
   const basicSections = parseTokens(basicRawText),
     fullScreenSections = parseTokens(fullScreenRawText),
-    cleanedSpecs = parseSpecsSections(rawSpecs),
+    cleanedSpecs = parseDialogSpecs(rawSpecs),
     formattedSpecs = formatSpecsAsMarkdown(cleanedSpecs);
 
   // ── Generate markdown ──
   console.log('Generating markdown...');
 
-  const markdown = generateMarkdown(
-    basicSections,
-    fullScreenSections,
-    basicPopoverData,
-    fullScreenPopoverData,
-    formattedSpecs
+  const lines: string[] = [];
+
+  lines.push('# M3 Dialog — Tokens & Specs');
+  lines.push('');
+  lines.push(`> Source: [m3.material.io/components/dialogs/specs](${URL})`);
+  lines.push('');
+  lines.push('---');
+  lines.push('');
+
+  lines.push('## Dialog — Basic');
+  lines.push('');
+  renderTokenSections(lines, basicSections, basicPopoverData);
+
+  lines.push('## Dialog — Full Screen');
+  lines.push('');
+  renderTokenSections(lines, fullScreenSections, fullScreenPopoverData);
+
+  if (formattedSpecs) {
+    lines.push('---');
+    lines.push('');
+    lines.push('## Specs');
+    lines.push('');
+    lines.push(formattedSpecs);
+    lines.push('');
+  }
+
+  lines.push('---');
+  lines.push('');
+  lines.push(
+    `*Extracted from the Material Design 3 website on ${new Date().toISOString().slice(0, 10)}.*`
   );
+  lines.push('');
+
+  const markdown = lines.join('\n');
 
   // ── Write output ──
-  mkdirSync(OUTPUT_DIR, { recursive: true });
-  writeFileSync(OUTPUT_FILE, markdown, 'utf-8');
-  console.log(`\nDone! Output written to ${OUTPUT_FILE}`);
+  const outputPath = writeOutput('m3-dialog-tokens-and-specs.md', markdown);
+
+  console.log(`\nDone! Output written to ${outputPath}`);
   console.log(`  Basic sections: ${basicSections.length}`);
   console.log(`  Full screen sections: ${fullScreenSections.length}`);
   console.log(`  Specs content: ${formattedSpecs.length} chars`);
