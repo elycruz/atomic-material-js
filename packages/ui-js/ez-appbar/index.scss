@@ -1,3 +1,5 @@
+@import "../css/component";
+
 /* ========================================
  * Base appbar styles (common to all sizes)
  * ======================================== */
@@ -57,21 +59,15 @@
 
 :where(.ez-appbar, ez-appbar):not([class^="ez-theme"], [class*=" ez-theme"]),
 :where(.ez-appbar, ez-appbar):not(.ez-medium, .ez-large) :is(h1, h2, h3, h4, h5, h6, .ez-appbar-title) {
-  font-family: var(--md-sys-typescale-title-large-font), sans-serif;
-  font-size: var(--md-sys-typescale-title-large-size);
-  font-weight: var(--md-sys-typescale-title-large-weight);
-  line-height: var(--md-sys-typescale-title-large-line-height);
-  letter-spacing: var(--md-sys-typescale-title-large-tracking);
+  @extend %md-typescale-title-large;
+
   margin: 0;
 }
 
 :where(.ez-appbar, ez-appbar):not([class^="ez-theme"], [class*=" ez-theme"]),
 :where(.ez-appbar, ez-appbar):not(.ez-medium, .ez-large) :is(p, .ez-appbar-subtitle) {
-  font-family: var(--md-sys-typescale-label-medium-font), sans-serif;
-  font-size: var(--md-sys-typescale-label-medium-size);
-  font-weight: var(--md-sys-typescale-label-medium-weight);
-  line-height: var(--md-sys-typescale-label-medium-line-height);
-  letter-spacing: var(--md-sys-typescale-label-medium-tracking);
+  @extend %md-typescale-label-medium;
+
   margin: 0;
 }
 
@@ -91,20 +87,14 @@
 }
 
 :where(.ez-appbar, ez-appbar).ez-medium :is(h1, h2, h3, h4, h5, h6, .ez-appbar-title) {
-  font-family: var(--md-sys-typescale-headline-medium-font), sans-serif;
-  font-size: var(--md-sys-typescale-headline-medium-size);
-  font-weight: var(--md-sys-typescale-headline-medium-weight);
-  line-height: var(--md-sys-typescale-headline-medium-line-height);
-  letter-spacing: var(--md-sys-typescale-headline-medium-tracking);
+  @extend %md-typescale-headline-medium;
+
   margin: 0;
 }
 
 :where(.ez-appbar, ez-appbar).ez-medium :is(p, .ez-appbar-subtitle) {
-  font-family: var(--md-sys-typescale-title-small-font), sans-serif;
-  font-size: var(--md-sys-typescale-title-small-size);
-  font-weight: var(--md-sys-typescale-title-small-weight);
-  line-height: var(--md-sys-typescale-title-small-line-height);
-  letter-spacing: var(--md-sys-typescale-title-small-tracking);
+  @extend %md-typescale-title-small;
+
   margin: 0;
 }
 
@@ -124,20 +114,14 @@
 }
 
 :where(.ez-appbar, ez-appbar).ez-large :is(h1, h2, h3, h4, h5, h6, .ez-appbar-title) {
-  font-family: var(--md-sys-typescale-display-small-font), sans-serif;
-  font-size: var(--md-sys-typescale-display-small-size);
-  font-weight: var(--md-sys-typescale-display-small-weight);
-  line-height: var(--md-sys-typescale-display-small-line-height);
-  letter-spacing: var(--md-sys-typescale-display-small-tracking);
+  @extend %md-typescale-display-small;
+
   margin: 0;
 }
 
 :where(.ez-appbar, ez-appbar).ez-large :is(p, .ez-appbar-subtitle) {
-  font-family: var(--md-sys-typescale-title-medium-font), sans-serif;
-  font-size: var(--md-sys-typescale-title-medium-size);
-  font-weight: var(--md-sys-typescale-title-medium-weight);
-  line-height: var(--md-sys-typescale-title-medium-line-height);
-  letter-spacing: var(--md-sys-typescale-title-medium-tracking);
+  @extend %md-typescale-title-medium;
+
   margin: 0;
 }
 
