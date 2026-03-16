@@ -258,8 +258,8 @@
  * Container Query — Auto fullscreen on mobile
  * ======================================== */
 
-@container (max-width: 600px) {
-  .ez-dialog:not(.ez-dialog--no-auto-fullscreen) {
+@media (width <= 600px) {
+  .ez-dialog.ez-dialog--auto-fullscreen {
     width: 100vw;
     height: 100dvh;
     max-width: none;
@@ -269,7 +269,7 @@
     margin: 0;
   }
 
-  .ez-dialog:not(.ez-dialog--no-auto-fullscreen)[open] {
+  .ez-dialog.ez-dialog--auto-fullscreen[open] {
     animation:
       ez-dialog-slide-up var(--md-sys-motion-duration-medium4, 400ms) var(--md-sys-motion-easing-emphasized-decelerate, cubic-bezier(0.05, 0.7, 0.1, 1));
   }

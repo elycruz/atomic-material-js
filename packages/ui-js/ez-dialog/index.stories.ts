@@ -675,9 +675,9 @@ export const ResponsiveFullscreen: StoryObj = {
     <section>
       <header><h2>Responsive Auto-Fullscreen</h2></header>
       <p style="margin: 0 0 1rem; opacity: 0.7;">
-        On small viewports (≤600px), dialogs automatically switch to fullscreen
-        via CSS Container Query. Resize the browser to see the effect. Add
-        <code>.ez-dialog--no-auto-fullscreen</code> to opt out.
+        On small viewports (≤600px), dialogs with
+        \`.ez-dialog--auto-fullscreen\` automatically switch to fullscreen via
+        CSS Media Query. Resize the browser to see the effect.
       </p>
       <div
         class="ez-section-body"
@@ -706,7 +706,7 @@ export const ResponsiveFullscreen: StoryObj = {
       </div>
 
       <dialog
-        class="ez-dialog"
+        class="ez-dialog ez-dialog--auto-fullscreen"
         id="responsive-dialog"
         aria-labelledby="responsive-dialog-title"
       >
@@ -734,7 +734,7 @@ export const ResponsiveFullscreen: StoryObj = {
       </dialog>
 
       <dialog
-        class="ez-dialog ez-dialog--no-auto-fullscreen"
+        class="ez-dialog"
         id="responsive-dialog-opt-out"
         aria-labelledby="responsive-dialog-opt-out-title"
       >
@@ -746,8 +746,8 @@ export const ResponsiveFullscreen: StoryObj = {
           id="responsive-opt-out-form"
           method="dialog"
         >
-          This dialog has <code>.ez-dialog--no-auto-fullscreen</code> so it
-          stays centered regardless of viewport size.
+          This dialog doesn't have <code>.ez-dialog--auto-fullscreen</code> so
+          it stays centered regardless of viewport size.
         </form>
         <div class="ez-dialog__actions">
           <button
@@ -778,7 +778,7 @@ export const ResponsiveFullscreen: StoryObj = {
     if (!optOutDialog) return;
 
     await expect(optOutDialog).toBeInTheDocument();
-    await expect(optOutDialog).toHaveClass('ez-dialog--no-auto-fullscreen');
+    await expect(optOutDialog).not.toHaveClass('ez-dialog--auto-fullscreen');
   },
 };
 
