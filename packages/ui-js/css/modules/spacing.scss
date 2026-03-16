@@ -2,29 +2,13 @@
  * spacing.scss
  *
  * The library's curated spacing properties, represented as `rem` units.
- *
- * ====> DO NOT MANUALLY EDIT THIS FILE - This file is generated via a script ({repo-root}/node_scripts/gen-css/spacing.ts).
  */
+@use "sass:math";
+
+$spacing-values: (0, 1, 2, 3, 4, 5, 6, 8, 9, 12, 16, 18, 24, 32, 36, 48, 64, 72, 96, 144);
 
 :root {
-  --ez-0px: 0rem;
-  --ez-1px: 0.0625rem;
-  --ez-2px: 0.125rem;
-  --ez-3px: 0.1875rem;
-  --ez-4px: 0.25rem;
-  --ez-5px: 0.3125rem;
-  --ez-6px: 0.375rem;
-  --ez-8px: 0.5rem;
-  --ez-9px: 0.5625rem;
-  --ez-12px: 0.75rem;
-  --ez-16px: 1rem;
-  --ez-18px: 1.125rem;
-  --ez-24px: 1.5rem;
-  --ez-32px: 2rem;
-  --ez-36px: 2.25rem;
-  --ez-48px: 3rem;
-  --ez-64px: 4rem;
-  --ez-72px: 4.5rem;
-  --ez-96px: 6rem;
-  --ez-144px: 9rem;
+  @each $px in $spacing-values {
+    --ez-#{$px}px: #{math.div($px, 16)}rem;
+  }
 }
