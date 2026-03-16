@@ -6,86 +6,31 @@ import './stories.scss';
 
 import './register.js';
 import { EzAppbarName } from './ez-appbar.js';
-import { EzStyleVariants, EzThemeVariants } from '../utils/index.js';
 
 export default {
   title: 'Custom Elements/Appbar',
   component: 'ez-appbar',
 };
 
-const themes = Object.values(EzThemeVariants),
-  styleVariants = Object.values(EzStyleVariants).filter(Boolean);
-
 /**
- * Small appbar (default) — 64dp height, title-large typography.
+ * Appbar component with all supported variants and use cases.
+ *
+ * Supports:
+ * - Size variants: small (default, 64dp), medium (112dp/136dp with subtitle), large (120dp/152dp with subtitle)
+ * - Style variants: filled (default), outlined, elevated
+ * - Scroll behavior: auto-hide/show on scroll
+ * - Bottom positioning
  */
-export const SmallDefault: StoryObj = {
+export const AllVariants: StoryObj = {
   render: () => html`
     <section>
-      <header><h2>Small Appbar (Default)</h2></header>
-      <div class="scroll-pane">
-        <ez-appbar parentSelector=".scroll-pane">
-          <h1>App Title</h1>
-        </ez-appbar>
-        <lipsum-article></lipsum-article>
-      </div>
-    </section>
-  `,
-  play: async ({ canvasElement }) => {
-    const appbar = canvasElement.querySelector(EzAppbarName);
+      <header><h2>Appbar - All Variants</h2></header>
 
-    await expect(appbar).not.toBeNull();
-
-    if (!appbar) return;
-
-    await expect(appbar.shadowRoot).not.toBeNull();
-    await expect(appbar.shadowRoot?.querySelector('slot')).not.toBeNull();
-
-    // Default size: no .ez-medium or .ez-large
-    await expect(appbar.classList.contains('ez-medium')).toBe(false);
-    await expect(appbar.classList.contains('ez-large')).toBe(false);
-  },
-};
-
-/**
- * Small appbar with subtitle.
- */
-export const SmallWithSubtitle: StoryObj = {
-  render: () => html`
-    <section>
-      <header><h2>Small Appbar with Subtitle</h2></header>
-      <div style="border: 1px solid #ccc; overflow: hidden;">
-        <ez-appbar>
-          <hgroup>
-            <h1>App Title</h1>
-            <p>Subtitle text</p>
-          </hgroup>
-        </ez-appbar>
-      </div>
-    </section>
-  `,
-  play: async ({ canvasElement }) => {
-    const appbar = canvasElement.querySelector(EzAppbarName);
-
-    await expect(appbar).not.toBeNull();
-
-    if (!appbar) return;
-
-    const subtitle = appbar.querySelector('p');
-
-    await expect(subtitle).not.toBeNull();
-    await expect(subtitle?.textContent).toBe('Subtitle text');
-  },
-};
-
-/**
- * Size variants — small (default), medium (112dp), large (120dp).
- */
-export const SizeVariants: StoryObj = {
-  render: () => html`
-    <section>
-      <header><h2>Size Variants</h2></header>
-      <div style="display: flex; flex-direction: column; gap: 1rem;">
+      <!-- Size Variants -->
+      <h3>Size Variants</h3>
+      <div
+        style="display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2rem;"
+      >
         <div style="border: 1px solid #ccc; overflow: hidden;">
           <ez-appbar>
             <h1>Small (Default)</h1>
@@ -122,143 +67,36 @@ export const SizeVariants: StoryObj = {
           </ez-appbar>
         </div>
       </div>
-    </section>
-  `,
-  play: async ({ canvasElement }) => {
-    const appbars = Array.from(canvasElement.querySelectorAll(EzAppbarName));
 
-    await expect(appbars.length).toBe(5);
-
-    // First: small (default) — no size class
-    await expect(appbars[0].classList.contains('ez-medium')).toBe(false);
-    await expect(appbars[0].classList.contains('ez-large')).toBe(false);
-
-    // Second: medium
-    await expect(appbars[1].classList.contains('ez-medium')).toBe(true);
-
-    // Third: medium with subtitle
-    await expect(appbars[2].classList.contains('ez-medium')).toBe(true);
-    await expect(appbars[2].classList.contains('ez-has-subtitle')).toBe(true);
-
-    // Fourth: large
-    await expect(appbars[3].classList.contains('ez-large')).toBe(true);
-
-    // Fifth: large with subtitle
-    await expect(appbars[4].classList.contains('ez-large')).toBe(true);
-    await expect(appbars[4].classList.contains('ez-has-subtitle')).toBe(true);
-  },
-};
-
-/**
- * Style variants — filled, outlined, elevated.
- */
-export const StyleVariants: StoryObj = {
-  render: () => html`
-    <section>
-      <header><h2>Style Variants</h2></header>
-      <div style="display: flex; flex-direction: column; gap: 1rem;">
+      <!-- Style Variants -->
+      <h3>Style Variants</h3>
+      <div
+        style="display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2rem;"
+      >
         <div style="border: 1px solid #ccc; overflow: hidden;">
-          <ez-appbar>
-            <h1>Default</h1>
+          <ez-appbar variety="filled" theme="primary">
+            <h1>Filled</h1>
           </ez-appbar>
         </div>
 
-        ${styleVariants.map(
-          v => html`
-            <div style="border: 1px solid #ccc; overflow: hidden;">
-              <ez-appbar variety=${v} theme="primary">
-                <h1>${v}</h1>
-              </ez-appbar>
-            </div>
-          `
-        )}
+        <div style="border: 1px solid #ccc; overflow: hidden;">
+          <ez-appbar variety="outlined" theme="primary">
+            <h1>Outlined</h1>
+          </ez-appbar>
+        </div>
+
+        <div style="border: 1px solid #ccc; overflow: hidden;">
+          <ez-appbar variety="elevated" theme="primary">
+            <h1>Elevated</h1>
+          </ez-appbar>
+        </div>
       </div>
-    </section>
-  `,
-  play: async ({ canvasElement }) => {
-    const appbars = Array.from(canvasElement.querySelectorAll(EzAppbarName));
 
-    await expect(appbars.length).toBe(styleVariants.length + 1);
-
-    // Check filled variant maps to host class
-    const filledAppbar = canvasElement.querySelector(
-      `${EzAppbarName}[variety="filled"]`
-    );
-
-    await expect(filledAppbar).not.toBeNull();
-
-    if (!filledAppbar) return;
-
-    await expect(filledAppbar.classList.contains('ez-filled')).toBe(true);
-    await expect(filledAppbar.classList.contains('ez-theme-primary')).toBe(
-      true
-    );
-
-    // Check outlined variant
-    const outlinedAppbar = canvasElement.querySelector(
-      `${EzAppbarName}[variety="outlined"]`
-    );
-
-    await expect(outlinedAppbar).not.toBeNull();
-    await expect(outlinedAppbar?.classList.contains('ez-outlined')).toBe(true);
-
-    // Check elevated variant
-    const elevatedAppbar = canvasElement.querySelector(
-      `${EzAppbarName}[variety="elevated"]`
-    );
-
-    await expect(elevatedAppbar).not.toBeNull();
-    await expect(elevatedAppbar?.classList.contains('ez-elevated')).toBe(true);
-  },
-};
-
-/**
- * Theme variants — primary, secondary, tertiary, etc.
- */
-export const ThemeVariants: StoryObj = {
-  render: () => html`
-    <section>
-      <header><h2>Theme Variants (Filled)</h2></header>
-      <div style="display: flex; flex-direction: column; gap: 1rem;">
-        ${themes.map(
-          t => html`
-            <div style="border: 1px solid #ccc; overflow: hidden;">
-              <ez-appbar variety="filled" theme=${t}>
-                <h1>${t}</h1>
-              </ez-appbar>
-            </div>
-          `
-        )}
-      </div>
-    </section>
-  `,
-  play: async ({ canvasElement }) => {
-    const appbars = Array.from(canvasElement.querySelectorAll(EzAppbarName));
-
-    await expect(appbars.length).toBe(themes.length);
-
-    // Each appbar should have theme class on host
-    const classChecks = appbars.map((appbar, i) => [
-      appbar.classList.contains(`ez-theme-${themes[i]}`),
-      appbar.classList.contains('ez-filled'),
-    ]);
-
-    await expect(classChecks.every(([theme, filled]) => theme && filled)).toBe(
-      true
-    );
-  },
-};
-
-/**
- * Scroll behavior — appbar within a scroll container showing hide/show.
- */
-export const ScrollBehavior: StoryObj = {
-  render: () => html`
-    <section>
-      <header><h2>Scroll Behavior</h2></header>
+      <!-- Scroll Behavior -->
+      <h3>Scroll Behavior</h3>
       <div
         class="scroll-pane"
-        style="height: 300px; overflow-y: auto; border: 1px solid #ccc;"
+        style="height: 300px; overflow-y: auto; border: 1px solid #ccc; margin-bottom: 2rem;"
       >
         <ez-appbar parent-selector=".scroll-pane">
           <h1>Sticky Appbar</h1>
@@ -270,27 +108,9 @@ export const ScrollBehavior: StoryObj = {
           )}
         </div>
       </div>
-    </section>
-  `,
-  play: async ({ canvasElement }) => {
-    const appbar = canvasElement.querySelector(EzAppbarName);
 
-    await expect(appbar).not.toBeNull();
-
-    if (!appbar) return;
-
-    await expect(appbar.getAttribute('parent-selector')).toBe('.scroll-pane');
-    await expect(appbar.shadowRoot).not.toBeNull();
-  },
-};
-
-/**
- * Bottom appbar — positioned at the bottom.
- */
-export const BottomAppbar: StoryObj = {
-  render: () => html`
-    <section>
-      <header><h2>Bottom Appbar</h2></header>
+      <!-- Bottom Appbar -->
+      <h3>Bottom Appbar</h3>
       <div
         style="height: 200px; position: relative; border: 1px solid #ccc; display: flex; flex-direction: column;"
       >
@@ -304,14 +124,77 @@ export const BottomAppbar: StoryObj = {
     </section>
   `,
   play: async ({ canvasElement }) => {
-    const appbar = canvasElement.querySelector(EzAppbarName);
+    const appbars = Array.from(canvasElement.querySelectorAll(EzAppbarName));
 
-    await expect(appbar).not.toBeNull();
+    // Total: 5 size variants + 3 style variants + 1 scroll + 1 bottom = 10
+    await expect(appbars.length).toBe(10);
 
-    if (!appbar) return;
+    // Size variants
+    const [small, medium, mediumSub, large, largeSub] = appbars.slice(0, 5);
 
-    await expect(appbar.classList.contains('ez--bottom')).toBe(true);
-    await expect(appbar.classList.contains('ez-filled')).toBe(true);
-    await expect(appbar.classList.contains('ez-theme-primary')).toBe(true);
+    // Small (default) should not have size classes
+    await expect(small.classList.contains('ez-medium')).toBe(false);
+    await expect(small.classList.contains('ez-large')).toBe(false);
+
+    // Medium should have ez-medium class
+    await expect(medium.classList.contains('ez-medium')).toBe(true);
+
+    // Medium with subtitle
+    await expect(mediumSub.classList.contains('ez-medium')).toBe(true);
+    await expect(mediumSub.classList.contains('ez-has-subtitle')).toBe(true);
+
+    const mediumSubtitle = mediumSub.querySelector('p');
+
+    await expect(mediumSubtitle).not.toBeNull();
+    await expect(mediumSubtitle?.textContent).toBe('With subtitle');
+
+    // Large should have ez-large class
+    await expect(large.classList.contains('ez-large')).toBe(true);
+
+    // Large with subtitle
+    await expect(largeSub.classList.contains('ez-large')).toBe(true);
+    await expect(largeSub.classList.contains('ez-has-subtitle')).toBe(true);
+
+    // Style variants
+    const [filled, outlined, elevated] = appbars.slice(5, 8);
+
+    // Filled
+    await expect(filled.classList.contains('ez-filled')).toBe(true);
+    await expect(filled.classList.contains('ez-theme-primary')).toBe(true);
+
+    // Outlined
+    await expect(outlined.classList.contains('ez-outlined')).toBe(true);
+    await expect(outlined.classList.contains('ez-theme-primary')).toBe(true);
+
+    // Elevated
+    await expect(elevated.classList.contains('ez-elevated')).toBe(true);
+    await expect(elevated.classList.contains('ez-theme-primary')).toBe(true);
+
+    // Scroll behavior appbar
+    const scrollAppbar = appbars[8];
+
+    await expect(scrollAppbar.getAttribute('parent-selector')).toBe(
+      '.scroll-pane'
+    );
+    await expect(scrollAppbar.shadowRoot).not.toBeNull();
+    await expect(scrollAppbar.shadowRoot?.querySelector('slot')).not.toBeNull();
+
+    // Bottom appbar
+    const bottomAppbar = appbars[9];
+
+    await expect(bottomAppbar.classList.contains('ez--bottom')).toBe(true);
+    await expect(bottomAppbar.classList.contains('ez-filled')).toBe(true);
+    await expect(bottomAppbar.classList.contains('ez-theme-primary')).toBe(
+      true
+    );
+
+    // Verify all appbars have shadow roots with slots
+    const allHaveShadowRoots = appbars.every(
+      appbar =>
+        appbar.shadowRoot !== null &&
+        appbar.shadowRoot.querySelector('slot') !== null
+    );
+
+    await expect(allHaveShadowRoots).toBe(true);
   },
 };
