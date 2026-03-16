@@ -13,7 +13,7 @@ import {
   type EventListenerTuple,
 } from '../utils/dom/events.js';
 
-import styles from './ez-field.css.js';
+import styles from './ez-field.style.js';
 
 export const EzFieldName = 'ez-field';
 
