@@ -1,0 +1,150 @@
+/**
+ * _typescale.scss
+ *
+ * SASS placeholder selectors for Material Design 3 typescale styles.
+ * 5 roles (display, headline, title, body, label) × 3 sizes (large, medium, small)
+ * = 15 placeholders.
+ *
+ * Placeholders own their fallback values.  Call-sites use `@extend` and
+ * do *not* repeat fallbacks.
+ */
+
+/* ========================================
+ * Display
+ * ======================================== */
+
+%md-typescale-display-large {
+  font-family: var(--md-sys-typescale-display-large-font, roboto, system-ui, sans-serif);
+  font-size: var(--md-sys-typescale-display-large-size, 4.75rem);
+  font-weight: var(--md-sys-typescale-display-large-weight, 400);
+  line-height: var(--md-sys-typescale-display-large-line-height, 5.33333rem);
+  letter-spacing: var(--md-sys-typescale-display-large-tracking, 0);
+}
+
+%md-typescale-display-medium {
+  font-family: var(--md-sys-typescale-display-medium-font, roboto, system-ui, sans-serif);
+  font-size: var(--md-sys-typescale-display-medium-size, 3.75rem);
+  font-weight: var(--md-sys-typescale-display-medium-weight, 400);
+  line-height: var(--md-sys-typescale-display-medium-line-height, 4.33333rem);
+  letter-spacing: var(--md-sys-typescale-display-medium-tracking, 0);
+}
+
+%md-typescale-display-small {
+  font-family: var(--md-sys-typescale-display-small-font, roboto, system-ui, sans-serif);
+  font-size: var(--md-sys-typescale-display-small-size, 3rem);
+  font-weight: var(--md-sys-typescale-display-small-weight, 400);
+  line-height: var(--md-sys-typescale-display-small-line-height, 3.66667rem);
+  letter-spacing: var(--md-sys-typescale-display-small-tracking, 0);
+}
+
+/* ========================================
+ * Headline
+ * ======================================== */
+
+%md-typescale-headline-large {
+  font-family: var(--md-sys-typescale-headline-large-font, roboto, system-ui, sans-serif);
+  font-size: var(--md-sys-typescale-headline-large-size, 2.66667rem);
+  font-weight: var(--md-sys-typescale-headline-large-weight, 400);
+  line-height: var(--md-sys-typescale-headline-large-line-height, 3.33333rem);
+  letter-spacing: var(--md-sys-typescale-headline-large-tracking, 0);
+}
+
+%md-typescale-headline-medium {
+  font-family: var(--md-sys-typescale-headline-medium-font, roboto, system-ui, sans-serif);
+  font-size: var(--md-sys-typescale-headline-medium-size, 2.33333rem);
+  font-weight: var(--md-sys-typescale-headline-medium-weight, 400);
+  line-height: var(--md-sys-typescale-headline-medium-line-height, 3rem);
+  letter-spacing: var(--md-sys-typescale-headline-medium-tracking, 0);
+}
+
+%md-typescale-headline-small {
+  font-family: var(--md-sys-typescale-headline-small-font, roboto, system-ui, sans-serif);
+  font-size: var(--md-sys-typescale-headline-small-size, 2rem);
+  font-weight: var(--md-sys-typescale-headline-small-weight, 400);
+  line-height: var(--md-sys-typescale-headline-small-line-height, 2.66667rem);
+  letter-spacing: var(--md-sys-typescale-headline-small-tracking, 0);
+}
+
+/* ========================================
+ * Title
+ * ======================================== */
+
+%md-typescale-title-large {
+  font-family: var(--md-sys-typescale-title-large-font, roboto, system-ui, sans-serif);
+  font-size: var(--md-sys-typescale-title-large-size, 1.83333rem);
+  font-weight: var(--md-sys-typescale-title-large-weight, 400);
+  line-height: var(--md-sys-typescale-title-large-line-height, 2.33333rem);
+  letter-spacing: var(--md-sys-typescale-title-large-tracking, 0);
+}
+
+%md-typescale-title-medium {
+  font-family: var(--md-sys-typescale-title-medium-font, roboto, system-ui, sans-serif);
+  font-size: var(--md-sys-typescale-title-medium-size, 1.33333rem);
+  font-weight: var(--md-sys-typescale-title-medium-weight, 500);
+  line-height: var(--md-sys-typescale-title-medium-line-height, 2rem);
+  letter-spacing: var(--md-sys-typescale-title-medium-tracking, 0);
+}
+
+%md-typescale-title-small {
+  font-family: var(--md-sys-typescale-title-small-font, roboto, system-ui, sans-serif);
+  font-size: var(--md-sys-typescale-title-small-size, 1.16667rem);
+  font-weight: var(--md-sys-typescale-title-small-weight, 500);
+  line-height: var(--md-sys-typescale-title-small-line-height, 1.66667rem);
+  letter-spacing: var(--md-sys-typescale-title-small-tracking, 0);
+}
+
+/* ========================================
+ * Body
+ * ======================================== */
+
+%md-typescale-body-large {
+  font-family: var(--md-sys-typescale-body-large-font, roboto, system-ui, sans-serif);
+  font-size: var(--md-sys-typescale-body-large-size, 1.33333rem);
+  font-weight: var(--md-sys-typescale-body-large-weight, 400);
+  line-height: var(--md-sys-typescale-body-large-line-height, 2rem);
+  letter-spacing: var(--md-sys-typescale-body-large-tracking, 0);
+}
+
+%md-typescale-body-medium {
+  font-family: var(--md-sys-typescale-body-medium-font, roboto, system-ui, sans-serif);
+  font-size: var(--md-sys-typescale-body-medium-size, 1.16667rem);
+  font-weight: var(--md-sys-typescale-body-medium-weight, 400);
+  line-height: var(--md-sys-typescale-body-medium-line-height, 1.66667rem);
+  letter-spacing: var(--md-sys-typescale-body-medium-tracking, 0);
+}
+
+%md-typescale-body-small {
+  font-family: var(--md-sys-typescale-body-small-font, roboto, system-ui, sans-serif);
+  font-size: var(--md-sys-typescale-body-small-size, 1rem);
+  font-weight: var(--md-sys-typescale-body-small-weight, 400);
+  line-height: var(--md-sys-typescale-body-small-line-height, 1.33333rem);
+  letter-spacing: var(--md-sys-typescale-body-small-tracking, 0.00833rem);
+}
+
+/* ========================================
+ * Label
+ * ======================================== */
+
+%md-typescale-label-large {
+  font-family: var(--md-sys-typescale-label-large-font, roboto, system-ui, sans-serif);
+  font-size: var(--md-sys-typescale-label-large-size, 1.16667rem);
+  font-weight: var(--md-sys-typescale-label-large-weight, 500);
+  line-height: var(--md-sys-typescale-label-large-line-height, 1.66667rem);
+  letter-spacing: var(--md-sys-typescale-label-large-tracking, 0);
+}
+
+%md-typescale-label-medium {
+  font-family: var(--md-sys-typescale-label-medium-font, roboto, system-ui, sans-serif);
+  font-size: var(--md-sys-typescale-label-medium-size, 1rem);
+  font-weight: var(--md-sys-typescale-label-medium-weight, 500);
+  line-height: var(--md-sys-typescale-label-medium-line-height, 1.33333rem);
+  letter-spacing: var(--md-sys-typescale-label-medium-tracking, 0.00833rem);
+}
+
+%md-typescale-label-small {
+  font-family: var(--md-sys-typescale-label-small-font, roboto, system-ui, sans-serif);
+  font-size: var(--md-sys-typescale-label-small-size, 0.91667rem);
+  font-weight: var(--md-sys-typescale-label-small-weight, 500);
+  line-height: var(--md-sys-typescale-label-small-line-height, 1.33333rem);
+  letter-spacing: var(--md-sys-typescale-label-small-tracking, 0.00833rem);
+}
