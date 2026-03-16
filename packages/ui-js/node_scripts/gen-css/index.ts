@@ -1,9 +1,7 @@
-import { genSpacingCss } from './spacing.ts';
-
-await (async () =>
-  Promise.all([genSpacingCss()])
-    .then(() => {
-      // eslint-disable-next-line no-console
-      console.log('\ngen-css completed successfully\n');
-    })
-    .catch(console.error))();
+/**
+ * gen-css orchestrator.
+ *
+ * Currently no generators are active. Add future generators here.
+ */
+// eslint-disable-next-line no-console
+console.log('\ngen-css completed successfully (no generators active)\n');
