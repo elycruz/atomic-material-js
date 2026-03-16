@@ -1,9 +1,30 @@
+.variants-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.variant-example {
+  h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+  }
+}
+
+.appbar-wrapper {
+  border: var(--ez-border-width) solid var(--md-sys-color-outline, #ccc);
+  border-radius: var(--ez-border-radius);
+  overflow: hidden;
+}
+
 .example-scroll-pane {
   position: relative;
-  max-height: 33vh;
+  height: 300px;
   overflow: auto;
   border-radius: var(--ez-border-radius);
-  border: var(--ez-border-width) solid;
+  border: var(--ez-border-width) solid var(--md-sys-color-outline, #ccc);
 }
 
 .example-scroll-pane > .text {
