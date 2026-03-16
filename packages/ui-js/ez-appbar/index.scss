@@ -31,18 +31,18 @@
 }
 
 :where(.ez-appbar, ez-appbar).ez-elevated {
-  border: var(--ez-border-width) solid var(--md-sys-color-outline, ButtonBorder);
+  background: var(--md-sys-color-surface-container-low, Canvas);
   color: var(--md-color-theme, var(--md-sys-color-primary, ButtonText));
   box-shadow: var(--md-sys-elevation-level2, 0 var(--ez-2px) var(--ez-3px) rgb(0 0 0 / 12%), 0 var(--ez-3px) var(--ez-5px) rgb(0 0 0 / 12%));
 }
 
 /* Filled variant: subtitle & icon colors inherit themed contrast color */
-:where(.ez-appbar, ez-appbar):not([class^="ez-theme"], [class*=" ez-theme"]),
+:where(.ez-appbar, ez-appbar):not([class^="ez-theme"], [class*=" ez-theme"]) :is(p, .ez-appbar-subtitle),
 :where(.ez-appbar, ez-appbar).ez-filled :is(p, .ez-appbar-subtitle) {
   color: var(--md-color-on-theme, var(--md-sys-color-on-primary, ButtonText));
 }
 
-:where(.ez-appbar, ez-appbar):not([class^="ez-theme"], [class*=" ez-theme"]),
+:where(.ez-appbar, ez-appbar):not([class^="ez-theme"], [class*=" ez-theme"]) :is(.ez-appbar-leading, .ez-appbar-trailing, .md-icon),
 :where(.ez-appbar, ez-appbar).ez-filled :is(.ez-appbar-leading, .ez-appbar-trailing, .md-icon) {
   color: var(--md-color-on-theme, var(--md-sys-color-on-primary, ButtonText));
 }
@@ -52,20 +52,17 @@
  * Container height: 64dp
  * ======================================== */
 
-:where(.ez-appbar, ez-appbar):not([class^="ez-theme"], [class*=" ez-theme"]),
-:where(.ez-appbar, ez-appbar):not(.ez-medium, .ez-large) {
+:where(.ez-appbar, ez-appbar):not(.ez-small, .ez-medium, .ez-large) {
   min-height: 4rem;
 }
 
-:where(.ez-appbar, ez-appbar):not([class^="ez-theme"], [class*=" ez-theme"]),
-:where(.ez-appbar, ez-appbar):not(.ez-medium, .ez-large) :is(h1, h2, h3, h4, h5, h6, .ez-appbar-title) {
+:where(.ez-appbar, ez-appbar):not(.ez-small, .ez-medium, .ez-large) :is(h1, h2, h3, h4, h5, h6, .ez-appbar-title) {
   @extend %md-typescale-title-large;
 
   margin: 0;
 }
 
-:where(.ez-appbar, ez-appbar):not([class^="ez-theme"], [class*=" ez-theme"]),
-:where(.ez-appbar, ez-appbar):not(.ez-medium, .ez-large) :is(p, .ez-appbar-subtitle) {
+:where(.ez-appbar, ez-appbar):not(.ez-small, .ez-medium, .ez-large) :is(p, .ez-appbar-subtitle) {
   @extend %md-typescale-label-medium;
 
   margin: 0;
