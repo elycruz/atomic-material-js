@@ -52,17 +52,17 @@
  * Container height: 64dp
  * ======================================== */
 
-:where(.ez-appbar, ez-appbar):not(.ez-medium, .ez-large) {
+:where(.ez-appbar, ez-appbar):not(.ez-small, .ez-medium, .ez-large) {
   min-height: 4rem;
 }
 
-:where(.ez-appbar, ez-appbar):not(.ez-medium, .ez-large) :is(h1, h2, h3, h4, h5, h6, .ez-appbar-title) {
+:where(.ez-appbar, ez-appbar):not(.ez-small, .ez-medium, .ez-large) :is(h1, h2, h3, h4, h5, h6, .ez-appbar-title) {
   @extend %md-typescale-title-large;
 
   margin: 0;
 }
 
-:where(.ez-appbar, ez-appbar):not(.ez-medium, .ez-large) :is(p, .ez-appbar-subtitle) {
+:where(.ez-appbar, ez-appbar):not(.ez-small, .ez-medium, .ez-large) :is(p, .ez-appbar-subtitle) {
   @extend %md-typescale-label-medium;
 
   margin: 0;
