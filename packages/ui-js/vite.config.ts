@@ -85,6 +85,10 @@ export default defineConfig({
     },
     rollupOptions: {
       external: ['lit', /^lit\//, /^@lit\//, 'tailwindcss', /^@tailwindcss\//],
+      output: {
+        preserveModules: true,
+        preserveModulesRoot: dirname,
+      },
     },
   },
   // More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon
