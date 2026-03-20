@@ -18,6 +18,9 @@
 .ez-dialog {
   --_dialog-container-shape: var(--ez-dialog-container-shape, var(--md-sys-shape-corner-extra-large, 28px));
 
+  display: none;
+  opacity: 0;
+  transform: scale(0.8);
   background: var(--md-sys-color-surface-container-high, Canvas);
   color: var(--md-sys-color-on-surface, CanvasText);
   border-radius: var(--_dialog-container-shape);
@@ -29,11 +32,15 @@
   padding: 0;
   margin: auto;
   overflow: hidden;
+  animation:
+    ez-dialog-close var(--md-sys-motion-duration-short4, 200ms) var(--md-sys-motion-easing-emphasized-accelerate, cubic-bezier(0.3, 0, 0.8, 0.15));
 }
 
 .ez-dialog[open] {
   display: flex;
   flex-direction: column;
+  opacity: 1;
+  transform: scale(1);
 }
 
 /* ========================================
@@ -41,7 +48,15 @@
  * ======================================== */
 
 .ez-dialog::backdrop {
-  background: var(--md-sys-color-scrim, #000) ;
+  display: none;
+  background: var(--md-sys-color-scrim, #000);
+  opacity: 0;
+  animation:
+    ez-dialog-scrim-out var(--md-sys-motion-duration-short4, 200ms) ease;
+}
+
+.ez-dialog[open]::backdrop {
+  display: block;
   opacity: 0.32;
 }
 
@@ -175,12 +190,40 @@
   }
 }
 
+@keyframes ez-dialog-close {
+  from {
+    display: flex;
+    opacity: 1;
+    transform: scale(1);
+    overlay: auto;
+  }
+
+  to {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+}
+
+@keyframes ez-dialog-scrim-out {
+  from {
+    display: block;
+    opacity: 0.32;
+    overlay: auto;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
+  .ez-dialog,
   .ez-dialog[open] {
     animation: none;
   }
 
+  .ez-dialog::backdrop,
   .ez-dialog[open]::backdrop {
     animation: none;
   }
@@ -198,9 +241,13 @@
   border-radius: 0;
   box-shadow: none;
   margin: 0;
+  transform: translateY(100%);
+  animation:
+    ez-dialog-slide-down var(--md-sys-motion-duration-short4, 200ms) var(--md-sys-motion-easing-emphasized-accelerate, cubic-bezier(0.3, 0, 0.8, 0.15));
 }
 
 .ez-dialog.ez-dialog--fullscreen[open] {
+  transform: translateY(0);
   animation:
     ez-dialog-slide-up var(--md-sys-motion-duration-medium4, 400ms) var(--md-sys-motion-easing-emphasized-decelerate, cubic-bezier(0.05, 0.7, 0.1, 1));
 }
@@ -214,6 +261,20 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes ez-dialog-slide-down {
+  from {
+    display: flex;
+    opacity: 1;
+    transform: translateY(0);
+    overlay: auto;
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(100%);
   }
 }
 
@@ -267,9 +328,13 @@
     border-radius: 0;
     box-shadow: none;
     margin: 0;
+    transform: translateY(100%);
+    animation:
+      ez-dialog-slide-down var(--md-sys-motion-duration-short4, 200ms) var(--md-sys-motion-easing-emphasized-accelerate, cubic-bezier(0.3, 0, 0.8, 0.15));
   }
 
   .ez-dialog.ez-dialog--auto-fullscreen[open] {
+    transform: translateY(0);
     animation:
       ez-dialog-slide-up var(--md-sys-motion-duration-medium4, 400ms) var(--md-sys-motion-easing-emphasized-decelerate, cubic-bezier(0.05, 0.7, 0.1, 1));
   }
