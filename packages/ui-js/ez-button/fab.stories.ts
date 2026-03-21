@@ -182,7 +182,10 @@ export const ExtendedFAB: StoryObj = {
 
       <div class="ez-section-body">
         <h3>Themes</h3>
-        <div class="ez-button-group" style="flex-wrap: wrap; align-items: center;">
+        <div
+          class="ez-button-group"
+          style="flex-wrap: wrap; align-items: center;"
+        >
           ${Object.entries(EzThemeVariants).map(
             ([name, cls]) => html`
               <button
@@ -200,7 +203,10 @@ export const ExtendedFAB: StoryObj = {
 
       <div class="ez-section-body">
         <h3>Variants</h3>
-        <div class="ez-button-group" style="flex-wrap: wrap; align-items: center;">
+        <div
+          class="ez-button-group"
+          style="flex-wrap: wrap; align-items: center;"
+        >
           <button
             class="ez-btn ez-fab ez-extended ez-tonal ez-theme-secondary"
             type="button"

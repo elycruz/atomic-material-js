@@ -395,7 +395,10 @@ export const CheckboxControlGroup: StoryObj = {
 
       <div class="ez-section-body">
         <h3>Connected Group (Filled)</h3>
-        <div class="ez-button-group ez-connected" data-testid="checkbox-connected">
+        <div
+          class="ez-button-group ez-connected"
+          data-testid="checkbox-connected"
+        >
           ${['Sans', 'Serif', 'Mono'].map(
             label => html`
               <label

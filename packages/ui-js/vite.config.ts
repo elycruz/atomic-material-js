@@ -44,7 +44,7 @@ function componentScssPlugin(): Plugin {
 
       const filePath = id.slice(COMPONENT_SCSS_PREFIX.length) + '.scss',
         result = sassCompiler.compile(filePath, {
-          loadPaths: [path.resolve(dirname, 'css')],
+          loadPaths: [path.resolve(dirname, 'scss')],
         });
 
       return `export default ${JSON.stringify(result.css)};`;

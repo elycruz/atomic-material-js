@@ -49,10 +49,10 @@
       "types": "./dist/utils/index.d.ts",
       "default": "./dist/utils/index.js"
     },
-    "./css/modules/material-design-3": "./css/base/index.scss",
-    "./css/modules/material-design-3/bridge": "./css/base/bridge.scss",
-    "./css/modules/material-design-3/index.css": "./css/base/index.scss",
-    "./css/modules/material-design-3/bridge.css": "./css/base/bridge.scss",
+    "./scss/modules/material-design-3": "./scss/base/index.scss",
+    "./scss/modules/material-design-3/bridge": "./scss/base/bridge.scss",
+    "./scss/modules/material-design-3/index.css": "./scss/base/index.scss",
+    "./scss/modules/material-design-3/bridge.css": "./scss/base/bridge.scss",
     "./*": "./dist/*"
   },
   "scripts": {
