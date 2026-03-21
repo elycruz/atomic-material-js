@@ -17,7 +17,14 @@
 
 .ez-dialog {
   --_dialog-container-shape: var(--ez-dialog-container-shape, var(--md-sys-shape-corner-extra-large, 28px));
+  --_close-dur: var(--md-sys-motion-duration-short4, 200ms);
+  --_close-ease: var(--md-sys-motion-easing-emphasized-accelerate, cubic-bezier(0.3, 0, 0.8, 0.15));
+  --_open-dur: var(--md-sys-motion-duration-medium2, 300ms);
+  --_open-ease: var(--md-sys-motion-easing-emphasized-decelerate, cubic-bezier(0.05, 0.7, 0.1, 1));
 
+  display: none;
+  opacity: 0;
+  transform: scale(0.8);
   background: var(--md-sys-color-surface-container-high, Canvas);
   color: var(--md-sys-color-on-surface, CanvasText);
   border-radius: var(--_dialog-container-shape);
@@ -29,11 +36,32 @@
   padding: 0;
   margin: auto;
   overflow: hidden;
+
+  /* Dialog OUT: starts immediately, backdrop waits */
+  transition:
+    opacity var(--_close-dur) var(--_close-ease) 0ms,
+    transform var(--_close-dur) var(--_close-ease) 0ms,
+    display calc(var(--_close-dur) * 2) allow-discrete,
+    overlay calc(var(--_close-dur) * 2) allow-discrete;
 }
 
 .ez-dialog[open] {
   display: flex;
   flex-direction: column;
+  opacity: 1;
+  transform: scale(1);
+
+  /* Dialog IN: waits for backdrop to fade in first */
+  transition:
+    opacity var(--_open-dur) var(--_open-ease) var(--_open-dur),
+    transform var(--_open-dur) var(--_open-ease) var(--_open-dur),
+    display calc(var(--_open-dur) * 2) allow-discrete,
+    overlay calc(var(--_open-dur) * 2) allow-discrete;
+
+  @starting-style {
+    opacity: 0;
+    transform: scale(0.8);
+  }
 }
 
 /* ========================================
@@ -41,8 +69,28 @@
  * ======================================== */
 
 .ez-dialog::backdrop {
-  background: var(--md-sys-color-scrim, #000) ;
+  background: var(--md-sys-color-scrim, #000);
+  opacity: 0;
+
+  /* Backdrop OUT: waits for dialog to close first */
+  transition:
+    opacity var(--_close-dur) var(--md-sys-motion-easing-standard, ease) var(--_close-dur),
+    display calc(var(--_close-dur) * 2) allow-discrete,
+    overlay calc(var(--_close-dur) * 2) allow-discrete;
+}
+
+.ez-dialog[open]::backdrop {
   opacity: 0.32;
+
+  /* Backdrop IN: starts immediately */
+  transition:
+    opacity var(--_open-dur) var(--md-sys-motion-easing-standard, ease) 0ms,
+    display calc(var(--_open-dur) * 2) allow-discrete,
+    overlay calc(var(--_open-dur) * 2) allow-discrete;
+
+  @starting-style {
+    opacity: 0;
+  }
 }
 
 /* ========================================
@@ -139,50 +187,16 @@
   align-items: flex-end;
 }
 
-/* ========================================
- * Animations
- * ======================================== */
-
-.ez-dialog[open] {
-  animation:
-    ez-dialog-open var(--md-sys-motion-duration-medium2, 300ms) var(--md-sys-motion-easing-emphasized-decelerate, cubic-bezier(0.05, 0.7, 0.1, 1));
-}
-
-.ez-dialog[open]::backdrop {
-  animation:
-    ez-dialog-scrim-in var(--md-sys-motion-duration-medium2, 300ms) ease forwards;
-}
-
-@keyframes ez-dialog-open {
-  from {
-    opacity: 0;
-    transform: scale(0.8);
-  }
-
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes ez-dialog-scrim-in {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 0.32;
-  }
-}
-
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
+  .ez-dialog,
   .ez-dialog[open] {
-    animation: none;
+    transition: none;
   }
 
+  .ez-dialog::backdrop,
   .ez-dialog[open]::backdrop {
-    animation: none;
+    transition: none;
   }
 }
 
@@ -198,22 +212,20 @@
   border-radius: 0;
   box-shadow: none;
   margin: 0;
+  transform: translateY(100%);
 }
 
 .ez-dialog.ez-dialog--fullscreen[open] {
-  animation:
-    ez-dialog-slide-up var(--md-sys-motion-duration-medium4, 400ms) var(--md-sys-motion-easing-emphasized-decelerate, cubic-bezier(0.05, 0.7, 0.1, 1));
-}
+  transform: translateY(0);
+  transition:
+    opacity var(--md-sys-motion-duration-medium4, 400ms) var(--_open-ease) var(--_open-dur),
+    transform var(--md-sys-motion-duration-medium4, 400ms) var(--_open-ease) var(--_open-dur),
+    display calc(var(--_open-dur) + var(--md-sys-motion-duration-medium4, 400ms)) allow-discrete,
+    overlay calc(var(--_open-dur) + var(--md-sys-motion-duration-medium4, 400ms)) allow-discrete;
 
-@keyframes ez-dialog-slide-up {
-  from {
+  @starting-style {
     opacity: 0;
     transform: translateY(100%);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
   }
 }
 
@@ -267,10 +279,20 @@
     border-radius: 0;
     box-shadow: none;
     margin: 0;
+    transform: translateY(100%);
   }
 
   .ez-dialog.ez-dialog--auto-fullscreen[open] {
-    animation:
-      ez-dialog-slide-up var(--md-sys-motion-duration-medium4, 400ms) var(--md-sys-motion-easing-emphasized-decelerate, cubic-bezier(0.05, 0.7, 0.1, 1));
+    transform: translateY(0);
+    transition:
+      opacity var(--md-sys-motion-duration-medium4, 400ms) var(--_open-ease) var(--_open-dur),
+      transform var(--md-sys-motion-duration-medium4, 400ms) var(--_open-ease) var(--_open-dur),
+      display calc(var(--_open-dur) + var(--md-sys-motion-duration-medium4, 400ms)) allow-discrete,
+      overlay calc(var(--_open-dur) + var(--md-sys-motion-duration-medium4, 400ms)) allow-discrete;
+
+    @starting-style {
+      opacity: 0;
+      transform: translateY(100%);
+    }
   }
 }
