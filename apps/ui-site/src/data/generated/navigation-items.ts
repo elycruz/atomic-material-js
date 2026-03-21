@@ -73,11 +73,6 @@ export const navigationItems: NavItem[] = [{
           'alias': 'ez-btn-surface'
         },
         {
-          'label': 'Ez-button',
-          'uri': '/custom-elements/ez-button/',
-          'alias': 'ez-button'
-        },
-        {
           'label': 'Ez-field',
           'uri': '/custom-elements/ez-field/',
           'alias': 'ez-field'
