@@ -19,8 +19,8 @@ import {
   isNullable,
 } from '../utils/index.js';
 
-export const EzToggleOnScrollName = 'ez-toggleonscroll',
-  EzToggleOnScrollIntersectionEvName = `${EzToggleOnScrollName}-intersection`;
+export const EzIntersectionObserverName = 'ez-intersection-observer',
+  EzIntersectionObserverIntersectionEvName = `${EzIntersectionObserverName}-intersection`;
 
 const // Flags
   INITIALIZED = 0x02,
@@ -29,16 +29,16 @@ const // Flags
   { isArray } = Array;
 
 /**
- * @class EzToggleOnScrollElement
- * @element ez-toggleonscroll
+ * @class EzIntersectionObserverElement
+ * @element ez-intersection-observer
  *
- * An element for quickly setting up a classname toggle when an intersecting target element scrolls in/out from view.
+ * An element for quickly setting up a classname toggle when an intersecting target element enters/exits the viewport or a scrollable ancestor.
  *
  * @extends {ReactiveElement & HTMLElement}
  *
  * @shadowdom - None.
  *
- * @event 'ez-toggleonscroll-intersection' {CustomEvent<{records: IntersectionObserverEntry}>} - Custom intersection event.
+ * @event 'ez-intersection-observer-intersection' {CustomEvent<{records: IntersectionObserverEntry[]}>} - Custom intersection event.
  *
  * @attr {string} classNameToToggle
  * @attr {string} classNameToToggleTarget
@@ -48,13 +48,13 @@ const // Flags
  * @attr {boolean} reverse
  * @attr {number|number[]} threshold
  *
- * @fires 'ez-toggleonscroll-intersection' - Triggered on intersection.
+ * @fires 'ez-intersection-observer-intersection' - Triggered on intersection.
  */
-export class EzToggleOnScrollElement extends ReactiveElement {
+export class EzIntersectionObserverElement extends ReactiveElement {
   /**
    * Element name.
    */
-  static localName = EzToggleOnScrollName;
+  static localName = EzIntersectionObserverName;
 
   /**
    * Property instantiation options used by `ReactiveElement`.
@@ -385,17 +385,17 @@ export class EzToggleOnScrollElement extends ReactiveElement {
     if (
       this.#flags & CLASSNAME_SHOWING &&
       prevClassNameToToggle &&
-      (this.intersectingTarget as Element)?.classList // If is `Element`
+      (this.classNameToToggleTarget as Element)?.classList // If is `Element`
     ) {
       // eslint-disable-next-line @typescript-eslint/no-unused-expressions
       replaceClass(
         prevClassNameToToggle,
         classNameToToggle,
-        this.intersectingTarget as Element
+        this.classNameToToggleTarget as Element
       ) ||
         toggleClass(
           classNameToToggle,
-          this.intersectingTarget as Element,
+          this.classNameToToggleTarget as Element,
           true
         );
     }
@@ -500,19 +500,17 @@ export class EzToggleOnScrollElement extends ReactiveElement {
             this.performClassNameToggle(shouldTriggerAction);
           });
 
-          // Dispatch ez-toggleonscroll-intersection event
+          // Dispatch ez-intersection-observer-intersection event
           this.dispatchEvent(
-            new CustomEvent(EzToggleOnScrollIntersectionEvName, {
+            new CustomEvent(EzIntersectionObserverIntersectionEvName, {
               composed: true,
               bubbles: false,
+              detail: { records },
             })
           );
         }
 
-        (this.observerCallback?.bind(this) as IntersectionObserverCallback)(
-          records,
-          observer
-        );
+        this.observerCallback?.call(this, records, observer);
       },
       observerOptions
     );
@@ -525,6 +523,6 @@ export class EzToggleOnScrollElement extends ReactiveElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'ez-toggleonscroll': EzToggleOnScrollElement;
+    'ez-intersection-observer': EzIntersectionObserverElement;
   }
 }

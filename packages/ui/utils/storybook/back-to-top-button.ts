@@ -1,7 +1,7 @@
 import { LitElement, html, css } from 'lit';
 import { registerCustomElement } from '../dom/registerCustomElement.js';
 
-import '../../ez-toggleonscroll/register.js';
+import '../../ez-intersection-observer/register.js';
 import '../../ez-ripple/register.js';
 
 export const BackToTopButtonName = 'back-to-top-button';
@@ -21,7 +21,7 @@ export class BackToTopButtonElement extends LitElement {
       bottom: 1rem;
     }
 
-    ez-toggleonscroll > * {
+    ez-intersection-observer > * {
       transition:
         transform 0.21s ease-in-out,
         opacity 0.21s;
@@ -31,7 +31,7 @@ export class BackToTopButtonElement extends LitElement {
       opacity: 0;
     }
 
-    ez-toggleonscroll.visible > * {
+    ez-intersection-observer.visible > * {
       pointer-events: all;
       transform: translateX(0);
       opacity: 1;
@@ -60,7 +60,7 @@ export class BackToTopButtonElement extends LitElement {
     const toggleId = this.#id;
 
     return html`
-      <ez-toggleonscroll
+      <ez-intersection-observer
         id="${toggleId}"
         classNameToToggle="visible"
         classNameToToggleTarget="#${toggleId}"
@@ -77,7 +77,7 @@ export class BackToTopButtonElement extends LitElement {
           <ez-ripple></ez-ripple>
           <slot><span>Back to top</span></slot>
         </a>
-      </ez-toggleonscroll>
+      </ez-intersection-observer>
     `;
   }
 }

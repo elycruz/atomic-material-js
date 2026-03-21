@@ -1,3 +1,0 @@
-# EzToggleOnScrollComponent
-
-Component description.

@@ -1,7 +1,7 @@
 'use client';
 
 import { PropsWithChildren } from 'react';
-import EzToggleOnScrollComponent from '@atomic/ui-next/ez-toggleonscroll';
+import EzIntersectionObserverComponent from '@atomic/ui-next/ez-intersection-observer';
 import EzRippleComponent from '@atomic/ui-next/ez-ripple';
 
 import styles from './back-to-top-btn.module.scss';
@@ -39,7 +39,7 @@ export function BackToTopBtn({
   const id = `back-to-top-btn-${_uuid++}`;
 
   return (
-    <EzToggleOnScrollComponent
+    <EzIntersectionObserverComponent
       id={id}
       className={[defaultClassName, inClassName ?? ''].join(' ')}
       classNameToToggle={classNameToToggle}
@@ -57,6 +57,6 @@ export function BackToTopBtn({
         <EzRippleComponent></EzRippleComponent>
         {children ?? <span>Back to top</span>}
       </a>
-    </EzToggleOnScrollComponent>
+    </EzIntersectionObserverComponent>
   );
 }

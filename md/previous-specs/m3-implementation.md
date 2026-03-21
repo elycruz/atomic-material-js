@@ -33,7 +33,7 @@ Update the `@atomic/ui` package (`./packages/atomic-ui-js`) to be a full impleme
 - `<ez-appbar>` — scroll-aware show/hide decorator (ReactiveElement)
 - `<ez-field>` — form field wrapper with validation (LitElement)
 - `<ez-ripple>` — MD3 ripple effect (HTMLElement)
-- `<ez-toggleonscroll>` — IntersectionObserver class toggler (ReactiveElement)
+- `<ez-intersection-observer>` — IntersectionObserver class toggler (ReactiveElement)
 
 #### Build Pipeline
 - `pnpm gen:css` generates color-scheme, colors, spacing CSS from TypeScript

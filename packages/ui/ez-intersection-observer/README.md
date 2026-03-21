@@ -1,4 +1,4 @@
-# ez-toggleonscroll
+# ez-intersection-observer
 
 Allows triggering an action when an observed element's intersection occurs;  E.g., a `root` element's container boundary has (or hasn't) been intersected. Additionally, allows a classname to be easily toggled on/off when the intersection, or a lack thereof (via `reverse` prop./attrib.), has occurred (via `classNameToToggle`, `toggleTarget*`.
 
@@ -8,8 +8,8 @@ Internally the element manages an `IntersectionObserver` instance and updates it
 
 ## Potential Alternate Names
 
-- `ez-with-intersection-observer`.
-- `ez-intersection-observer`.
+- ~~`ez-with-intersection-observer`~~ (previously considered)
+- ~~`ez-toggleonscroll`~~ (original name; renamed to `ez-intersection-observer`)
 
 ## Design
 
@@ -34,7 +34,7 @@ Internally the element manages an `IntersectionObserver` instance and updates it
 
 ### Events
 
-- `'ez-toggleonscroll-intersection': CustomEvent<{records: IntersectionObserverEntry}>`  - Triggered when an intersection occurs.
+- `'ez-intersection-observer-intersection': CustomEvent<{records: IntersectionObserverEntry[]}>`  - Triggered when an intersection occurs.
 
 ### Basic Use Case Example
 
@@ -82,7 +82,7 @@ In this example component should toggle `.some-css-class`, on itself. whenever t
   <p>...</p>
 </main>
 
-<ez-toggleonscroll
+<ez-intersection-observer
   classNameToToggle="back-to-top-btn--visible"
   classNameToToggleTarget="back-to-top-btn"
   class="back-to-top-container"
@@ -93,16 +93,16 @@ In this example component should toggle `.some-css-class`, on itself. whenever t
     <ez-ripple></ez-ripple>
     <span>Back to top</span>
   </a>
-</ez-toggleonscroll>
+</ez-intersection-observer>
 
 <script type="module">
-  import {EzToggleOnScrollElement} from "@atomic/ui/ez-toggleonscroll";
+  import {EzIntersectionObserverElement} from "@atomic/ui/ez-intersection-observer";
 
-  const {localName: xToggleOnScrollName} = EzToggleOnScrollElement;
+  const {localName: xIntersectionObserverName} = EzIntersectionObserverElement;
   
   window.addEventListener('DOMContentLoaded', () => {
-      document.querySelector(xToggleOnScrollName)
-              .addEventListener(`${xToggleOnScrollName}-intersection`, e => {
+      document.querySelector(xIntersectionObserverName)
+              .addEventListener(`${xIntersectionObserverName}-intersection`, e => {
                   const {currentTarget, detail: {records}} = e;
                   // Handle intersection observer callback result (records)
                   records.forEach(r => {

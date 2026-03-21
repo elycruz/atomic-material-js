@@ -1,6 +1,7 @@
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { defineConfig, type Plugin } from 'vite';
+import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import storybookTest from '@storybook/addon-vitest/vitest-plugin';
 import { playwright } from '@vitest/browser-playwright';
@@ -53,7 +54,7 @@ function componentScssPlugin(): Plugin {
 }
 
 export default defineConfig({
-  plugins: [componentScssPlugin(), react()],
+  plugins: [tailwindcss(), componentScssPlugin(), react()],
   resolve: {
     alias: {
       '@': dirname,
@@ -73,9 +74,9 @@ export default defineConfig({
         'ez-field/index': path.resolve(dirname, 'ez-field/index.ts'),
         'ez-ripple/index': path.resolve(dirname, 'ez-ripple/index.ts'),
         'ez-shape/index': path.resolve(dirname, 'ez-shape/index.ts'),
-        'ez-toggleonscroll/index': path.resolve(
+        'ez-intersection-observer/index': path.resolve(
           dirname,
-          'ez-toggleonscroll/index.ts'
+          'ez-intersection-observer/index.ts'
         ),
         'utils/index': path.resolve(dirname, 'utils/index.ts'),
       },

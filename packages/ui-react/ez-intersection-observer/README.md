@@ -1,0 +1,3 @@
+# EzIntersectionObserverComponent
+
+Component description.
