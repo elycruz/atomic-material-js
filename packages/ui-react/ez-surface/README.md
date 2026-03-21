@@ -1,3 +1,0 @@
-# EzSurfaceComponent
-
-Component description.

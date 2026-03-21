@@ -41,10 +41,6 @@
       "types": "./dist/ez-shape/index.d.ts",
       "default": "./dist/ez-shape/index.js"
     },
-    "./ez-surface": {
-      "types": "./dist/ez-surface/index.d.ts",
-      "default": "./dist/ez-surface/index.js"
-    },
     "./ez-toggleonscroll": {
       "types": "./dist/ez-toggleonscroll/index.d.ts",
       "default": "./dist/ez-toggleonscroll/index.js"
