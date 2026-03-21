@@ -103,11 +103,6 @@ export const navigationItems: NavItem[] = [{
           'label': 'Ez-surface',
           'uri': '/custom-elements/ez-surface/',
           'alias': 'ez-surface'
-        },
-        {
-          'label': 'Ez-intersection-observer',
-          'uri': '/custom-elements/ez-intersection-observer/',
-          'alias': 'ez-intersection-observer'
         }
       ]
     },

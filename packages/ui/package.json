@@ -37,10 +37,6 @@
       "types": "./dist/ez-shape/index.d.ts",
       "default": "./dist/ez-shape/index.js"
     },
-    "./ez-intersection-observer": {
-      "types": "./dist/ez-intersection-observer/index.d.ts",
-      "default": "./dist/ez-intersection-observer/index.js"
-    },
     "./utils": {
       "types": "./dist/utils/index.d.ts",
       "default": "./dist/utils/index.js"
