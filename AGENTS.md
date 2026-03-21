@@ -3,7 +3,7 @@
 
 ## Git
 
-- If on 'main' branch create a feature branch for your task.
+- If on 'main' branch, or active branch doesn't match ticket/task description, create a feature branch for your task.
 - Include github issue ticket number in commit messages (e.g., `feat(ez-button): #7-hello-world ....`).  If the issue is not known ask the user if they would like you to create an issue ticket for the changes.
 
 ## When creating Custom Elements
