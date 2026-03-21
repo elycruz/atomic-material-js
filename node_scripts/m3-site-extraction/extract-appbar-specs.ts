@@ -196,7 +196,7 @@ async function main(): Promise<void> {
   });
 
   // ── Write output ──
-  const outputPath = writeOutput('m3-appbar-tokens-and-specs.md', markdown);
+  const outputPath = writeOutput('m3-appbar.specs.md', markdown);
 
   console.log(`\nDone! Output written to ${outputPath}`);
   for (const v of variants) {

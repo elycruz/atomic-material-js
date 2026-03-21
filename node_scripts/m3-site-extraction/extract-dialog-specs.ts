@@ -341,7 +341,7 @@ async function main(): Promise<void> {
   const markdown = lines.join('\n');
 
   // ── Write output ──
-  const outputPath = writeOutput('m3-dialog-tokens-and-specs.md', markdown);
+  const outputPath = writeOutput('m3-dialog.specs.md', markdown);
 
   console.log(`\nDone! Output written to ${outputPath}`);
   console.log(`  Basic sections: ${basicSections.length}`);
