@@ -22,7 +22,7 @@ An atomic user interface toolkit, and library, experiment for building custom el
 - [ ] `ez-appbar`
 - [ ] `ez-field`
 - [x] `ez-ripple`
-- [ ] `ez-toggleonscroll`
+- [ ] `ez-intersection-observer`
 
 ## Development
 

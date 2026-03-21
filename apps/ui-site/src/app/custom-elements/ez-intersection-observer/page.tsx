@@ -286,12 +286,12 @@ const lipsumArticle = (
   );
 };
 
-export default function EzToggleonscrollPage() {
+export default function EzIntersectionObserverPage() {
   return (
     <section className={styles['main-section']}>
       <header>
         <hgroup>
-          <h2>EzToggleOnScroll Page</h2>
+          <h2>EzIntersectionObserver Page</h2>
         </hgroup>
       </header>
 

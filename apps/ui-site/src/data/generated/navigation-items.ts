@@ -105,9 +105,9 @@ export const navigationItems: NavItem[] = [{
           'alias': 'ez-surface'
         },
         {
-          'label': 'Ez-toggleonscroll',
-          'uri': '/custom-elements/ez-toggleonscroll/',
-          'alias': 'ez-toggleonscroll'
+          'label': 'Ez-intersection-observer',
+          'uri': '/custom-elements/ez-intersection-observer/',
+          'alias': 'ez-intersection-observer'
         }
       ]
     },

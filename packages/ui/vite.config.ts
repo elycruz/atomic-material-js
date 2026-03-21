@@ -74,9 +74,9 @@ export default defineConfig({
         'ez-field/index': path.resolve(dirname, 'ez-field/index.ts'),
         'ez-ripple/index': path.resolve(dirname, 'ez-ripple/index.ts'),
         'ez-shape/index': path.resolve(dirname, 'ez-shape/index.ts'),
-        'ez-toggleonscroll/index': path.resolve(
+        'ez-intersection-observer/index': path.resolve(
           dirname,
-          'ez-toggleonscroll/index.ts'
+          'ez-intersection-observer/index.ts'
         ),
         'utils/index': path.resolve(dirname, 'utils/index.ts'),
       },

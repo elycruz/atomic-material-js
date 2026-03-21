@@ -28,9 +28,9 @@
       "types": "./dist/ez-ripple/index.d.ts",
       "default": "./dist/ez-ripple/index.js"
     },
-    "./ez-toggleonscroll": {
-      "types": "./dist/ez-toggleonscroll/index.d.ts",
-      "default": "./dist/ez-toggleonscroll/index.js"
+    "./ez-intersection-observer": {
+      "types": "./dist/ez-intersection-observer/index.d.ts",
+      "default": "./dist/ez-intersection-observer/index.js"
     },
     "./*": "./dist/*"
   },
