@@ -253,7 +253,7 @@ function generateVariantCss(variant: ThemeVariant): string {
 /* ── Orchestrator ─────────────────────────────────────────────────── */
 
 async function genMaterialThemes(
-  outputDir = path.join(__dirname, '../../css/material')
+  outputDir = path.join(__dirname, '../../scss/material')
 ): Promise<void> {
   await fs.promises.mkdir(outputDir, { recursive: true });
 

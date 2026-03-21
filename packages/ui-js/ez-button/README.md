@@ -146,10 +146,10 @@ Place an `<ez-ripple>` element within the button component for Material Design h
 
 ## Button Group
 
-Wrap button sets within an `.ez-btn-group` for a flex row layout with consistent gap spacing.
+Wrap button sets within an `.ez-button-group` for a flex row layout with consistent gap spacing.
 
 ```html
-<div class="ez-btn-group">
+<div class="ez-button-group">
   <button class="ez-btn ez-filled ez-theme-primary" type="button">
     <ez-ripple></ez-ripple><span>Save</span>
   </button>

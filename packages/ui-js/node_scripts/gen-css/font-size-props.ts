@@ -13,7 +13,7 @@ const __dirname = url.fileURLToPath(new URL('.', import.meta.url)),
 export const genFontSizeCssProps = async () => {
   const outputFilePath = path.join(
       __dirname,
-      '../css/modules/font-size-props.scss'
+      '../scss/modules/font-size-props.scss'
     ),
     out = [],
     content = `/**

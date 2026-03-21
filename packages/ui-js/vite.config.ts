@@ -44,7 +44,7 @@ function componentScssPlugin(): Plugin {
 
       const filePath = id.slice(COMPONENT_SCSS_PREFIX.length) + '.scss',
         result = sassCompiler.compile(filePath, {
-          loadPaths: [path.resolve(dirname, 'css')],
+          loadPaths: [path.resolve(dirname, 'scss')],
         });
 
       return `export default ${JSON.stringify(result.css)};`;
@@ -66,15 +66,14 @@ export default defineConfig({
         index: path.resolve(dirname, 'index.ts'),
         'ez-appbar/index': path.resolve(dirname, 'ez-appbar/index.ts'),
         'ez-base/index': path.resolve(dirname, 'ez-base/index.ts'),
-        'ez-btn-surface/index': path.resolve(
+        'ez-button-surface/index': path.resolve(
           dirname,
-          'ez-btn-surface/index.ts'
+          'ez-button-surface/index.ts'
         ),
         'ez-button/index': path.resolve(dirname, 'ez-button/index.ts'),
         'ez-field/index': path.resolve(dirname, 'ez-field/index.ts'),
         'ez-ripple/index': path.resolve(dirname, 'ez-ripple/index.ts'),
         'ez-shape/index': path.resolve(dirname, 'ez-shape/index.ts'),
-        'ez-surface/index': path.resolve(dirname, 'ez-surface/index.ts'),
         'ez-toggleonscroll/index': path.resolve(
           dirname,
           'ez-toggleonscroll/index.ts'

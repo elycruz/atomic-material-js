@@ -1,4 +1,4 @@
-export const ezBtnSurfaceName = 'ez-btn-surface';
+export const ezButtonSurfaceName = 'ez-button-surface';
 
 const _surfaceHtml = `
   <div class="head end-part" part="head"></div>
@@ -24,7 +24,7 @@ _styles.replaceSync(`
   }
 
   .end-part {
-    width: var(--ez-btn-surface-end-size, 1.5rem);
+    width: var(--ez-button-surface-end-size, 1.5rem);
     flex-shrink: 0;
   }
 
@@ -47,7 +47,7 @@ _styles.replaceSync(`
 
 const _resizeObserver = new ResizeObserver(entries => {
   for (const entry of entries) {
-    const el = entry.target as EzBtnSurfaceElement,
+    const el = entry.target as EzButtonSurfaceElement,
       parent = el.parentElement;
 
     if (!parent) continue;
@@ -66,25 +66,25 @@ const _resizeObserver = new ResizeObserver(entries => {
  * to scale via `transform: scaleX(...)` while preserving border-radius
  * on the head and tail end-caps.
  *
- * @element ez-btn-surface
+ * @element ez-button-surface
  *
  * @csspart head - Leading end-cap that preserves border-radius.
  * @csspart center - Center section that can be scaled.
  * @csspart tail - Trailing end-cap that preserves border-radius.
  *
- * @cssprop --ez-btn-surface-end-size - Width of head/tail end-caps (default: 1.5rem).
+ * @cssprop --ez-button-surface-end-size - Width of head/tail end-caps (default: 1.5rem).
  *
  * @example
  * ```html
- * <button class="ez-btn ez-theme-info _ez-with-btn-surface">
+ * <button class="ez-btn ez-theme-info _ez-with-button-surface">
  *   <ez-ripple></ez-ripple>
- *   <ez-btn-surface></ez-btn-surface>
+ *   <ez-button-surface></ez-button-surface>
  *   <span>Info</span>
  * </button>
  * ```
  */
-export class EzBtnSurfaceElement extends HTMLElement {
-  static localName = ezBtnSurfaceName;
+export class EzButtonSurfaceElement extends HTMLElement {
+  static localName = ezButtonSurfaceName;
 
   #initialized = false;
 
@@ -114,6 +114,6 @@ export class EzBtnSurfaceElement extends HTMLElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'ez-btn-surface': EzBtnSurfaceElement;
+    'ez-button-surface': EzButtonSurfaceElement;
   }
 }

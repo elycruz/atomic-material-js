@@ -35,7 +35,7 @@ export interface VariantData {
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 export const REPO_ROOT = resolve(__dirname, '../..');
-export const OUTPUT_DIR = resolve(REPO_ROOT, 'md/generated-specs');
+export const OUTPUT_DIR = resolve(REPO_ROOT, 'md/specs');
 
 // ── File I/O ───────────────────────────────────────────────────────────────
 

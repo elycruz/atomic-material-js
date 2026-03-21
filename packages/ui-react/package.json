@@ -16,9 +16,9 @@
       "types": "./dist/ez-appbar/index.d.ts",
       "default": "./dist/ez-appbar/index.js"
     },
-    "./ez-btn-surface": {
-      "types": "./dist/ez-btn-surface/index.d.ts",
-      "default": "./dist/ez-btn-surface/index.js"
+    "./ez-button-surface": {
+      "types": "./dist/ez-button-surface/index.d.ts",
+      "default": "./dist/ez-button-surface/index.js"
     },
     "./ez-button": {
       "types": "./dist/ez-button/index.d.ts",
@@ -31,10 +31,6 @@
     "./ez-ripple": {
       "types": "./dist/ez-ripple/index.d.ts",
       "default": "./dist/ez-ripple/index.js"
-    },
-    "./ez-surface": {
-      "types": "./dist/ez-surface/index.d.ts",
-      "default": "./dist/ez-surface/index.js"
     },
     "./ez-toggleonscroll": {
       "types": "./dist/ez-toggleonscroll/index.d.ts",

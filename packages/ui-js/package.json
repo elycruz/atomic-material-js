@@ -21,9 +21,9 @@
       "types": "./dist/ez-base/index.d.ts",
       "default": "./dist/ez-base/index.js"
     },
-    "./ez-btn-surface": {
-      "types": "./dist/ez-btn-surface/index.d.ts",
-      "default": "./dist/ez-btn-surface/index.js"
+    "./ez-button-surface": {
+      "types": "./dist/ez-button-surface/index.d.ts",
+      "default": "./dist/ez-button-surface/index.js"
     },
     "./ez-button": {
       "types": "./dist/ez-button/index.d.ts",
@@ -41,10 +41,6 @@
       "types": "./dist/ez-shape/index.d.ts",
       "default": "./dist/ez-shape/index.js"
     },
-    "./ez-surface": {
-      "types": "./dist/ez-surface/index.d.ts",
-      "default": "./dist/ez-surface/index.js"
-    },
     "./ez-toggleonscroll": {
       "types": "./dist/ez-toggleonscroll/index.d.ts",
       "default": "./dist/ez-toggleonscroll/index.js"
@@ -53,10 +49,10 @@
       "types": "./dist/utils/index.d.ts",
       "default": "./dist/utils/index.js"
     },
-    "./css/modules/material-design-3": "./css/base/index.scss",
-    "./css/modules/material-design-3/bridge": "./css/base/bridge.scss",
-    "./css/modules/material-design-3/index.css": "./css/base/index.scss",
-    "./css/modules/material-design-3/bridge.css": "./css/base/bridge.scss",
+    "./scss/modules/material-design-3": "./scss/base/index.scss",
+    "./scss/modules/material-design-3/bridge": "./scss/base/bridge.scss",
+    "./scss/modules/material-design-3/index.css": "./scss/base/index.scss",
+    "./scss/modules/material-design-3/bridge.css": "./scss/base/bridge.scss",
     "./*": "./dist/*"
   },
   "scripts": {

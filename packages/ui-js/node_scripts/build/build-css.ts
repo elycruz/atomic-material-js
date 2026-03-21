@@ -7,14 +7,14 @@ import cssnano from 'cssnano';
 
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url)),
   distPath = path.join(__dirname, '../../dist'),
-  inFilePath = path.join(__dirname, '../../css/index.scss'),
+  inFilePath = path.join(__dirname, '../../scss/index.scss'),
   outFilePath = path.join(distPath, 'css/index.min.css'),
   compileCss = async () => {
     // Compile SCSS to CSS using Sass
     const result = sass.compile(inFilePath, {
       style: 'expanded',
       sourceMap: true,
-      loadPaths: [path.join(__dirname, '../../css')],
+      loadPaths: [path.join(__dirname, '../../scss')],
     });
 
     // Minify the compiled CSS using cssnano
@@ -48,7 +48,7 @@ const __dirname = url.fileURLToPath(new URL('.', import.meta.url)),
       .then(compileCss, compileCss),
   copyCssToDist = async () => {
     return fs
-      .cp(path.join(__dirname, '../../css'), path.join(distPath, 'css'), {
+      .cp(path.join(__dirname, '../../scss'), path.join(distPath, 'css'), {
         recursive: true,
       })
       .then(() => {
