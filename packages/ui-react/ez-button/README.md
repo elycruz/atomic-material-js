@@ -1,3 +1,0 @@
-# EzButtonComponent
-
-Component description.

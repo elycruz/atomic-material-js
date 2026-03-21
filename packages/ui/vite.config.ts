@@ -70,7 +70,6 @@ export default defineConfig({
           dirname,
           'ez-button-surface/index.ts'
         ),
-        'ez-button/index': path.resolve(dirname, 'ez-button/index.ts'),
         'ez-field/index': path.resolve(dirname, 'ez-field/index.ts'),
         'ez-ripple/index': path.resolve(dirname, 'ez-ripple/index.ts'),
         'ez-shape/index': path.resolve(dirname, 'ez-shape/index.ts'),

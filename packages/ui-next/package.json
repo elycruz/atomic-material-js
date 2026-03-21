@@ -20,10 +20,6 @@
       "types": "./dist/ez-button-surface/index.d.ts",
       "default": "./dist/ez-button-surface/index.js"
     },
-    "./ez-button": {
-      "types": "./dist/ez-button/index.d.ts",
-      "default": "./dist/ez-button/index.js"
-    },
     "./ez-field": {
       "types": "./dist/ez-field/index.d.ts",
       "default": "./dist/ez-field/index.js"
