@@ -343,7 +343,7 @@ force: ${force}
   // ----
   // Write ui lib. files
   return (
-    scaffoldFilesUsing(getCustomElementContent, 'packages/ui-js')
+    scaffoldFilesUsing(getCustomElementContent, 'packages/ui')
       // Write React lib. files
       .then(collectedFilePaths =>
         scaffoldFilesUsing(

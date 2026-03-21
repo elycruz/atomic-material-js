@@ -1,7 +1,7 @@
 # #15 — Replace spacing.scss JS Generator with Native SASS
 
 > **Issue:** https://github.com/elycruz/atomic-material-js/issues/15
-> **Package:** `@atomic/ui` (`packages/ui-js`)
+> **Package:** `@atomic/ui` (`packages/ui`)
 
 ## Problem
 
@@ -13,7 +13,7 @@ Replace the JS generator with a SASS `@each` loop that produces identical CSS ou
 
 ## Detailed Steps
 
-### 1. Rewrite `packages/ui-js/css/modules/spacing.scss`
+### 1. Rewrite `packages/ui/css/modules/spacing.scss`
 
 Replace the generated file with native SASS:
 
@@ -36,11 +36,11 @@ $spacing-values: (0, 1, 2, 3, 4, 5, 6, 8, 9, 12, 16, 18, 24, 32, 36, 48, 64, 72,
 
 This produces the same 20 custom properties (`--ez-0px: 0rem` through `--ez-144px: 9rem`).
 
-### 2. Remove `packages/ui-js/node_scripts/gen-css/spacing.ts`
+### 2. Remove `packages/ui/node_scripts/gen-css/spacing.ts`
 
 Delete the JS generator script entirely.
 
-### 3. Update `packages/ui-js/node_scripts/gen-css/index.ts`
+### 3. Update `packages/ui/node_scripts/gen-css/index.ts`
 
 Remove the `genSpacingCss` import and invocation. Since `spacing.ts` was the only generator called, the orchestrator becomes empty. Leave as a minimal stub for future generators:
 
@@ -54,7 +54,7 @@ await Promise.resolve();
 console.log('\ngen-css completed successfully (no generators active)\n');
 ```
 
-### 4. Update `packages/ui-js/package.json`
+### 4. Update `packages/ui/package.json`
 
 Remove `pnpm gen:css &&` from the `build:css` script since there are no active generators:
 
@@ -76,7 +76,7 @@ Keep the `gen:css` script entry for future use (the other files in `gen-css/` li
 
 | Action | File |
 |--------|------|
-| Rewrite | `packages/ui-js/css/modules/spacing.scss` |
-| Remove | `packages/ui-js/node_scripts/gen-css/spacing.ts` |
-| Update | `packages/ui-js/node_scripts/gen-css/index.ts` |
-| Update | `packages/ui-js/package.json` |
+| Rewrite | `packages/ui/css/modules/spacing.scss` |
+| Remove | `packages/ui/node_scripts/gen-css/spacing.ts` |
+| Update | `packages/ui/node_scripts/gen-css/index.ts` |
+| Update | `packages/ui/package.json` |

@@ -1,6 +1,6 @@
 # General Issues
 
-## In `{repo-root}/packages/ui-js`
+## In `{repo-root}/packages/ui`
 
 - [x] Rename 'css/component.scss' to '.../component-prelude.scss'.
 - [x] Rename `ez-btn-group/` to `ez-button-group`.

@@ -4,7 +4,7 @@
     "build": {
       "dependsOn": ["^build"],
       "outputs": [
-        "dist/ui-js/**/*",
+        "dist/ui/**/*",
         "packages/ui-react/dist/**/*",
         "packages/ui-next/dist/**/*",
         "dist/**/*"
@@ -12,7 +12,7 @@
     },
     "build-storybook": {
       "outputs": [
-        "dist/ui-js/storybook"
+        "dist/ui/storybook"
       ]
     },
     "dev": {
@@ -23,7 +23,7 @@
     },
     "docs": {
       "outputs": [
-        "dist/ui-js/docs"
+        "dist/ui/docs"
       ]
     },
     "eslint": {
