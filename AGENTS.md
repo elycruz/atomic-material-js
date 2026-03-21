@@ -40,7 +40,7 @@ Ignore the following directories:
 
 ## CSS Related:
 
-- Use Size, Theme, and Style variant [control] classes in conjunction with others to acheive the desired results (see [css/modules/button/sizes.css](packages/ui-js/css/modules/button/sizes.css) for example).
+- Use Size, Theme, and Style variant [control] classes in conjunction with others to acheive the desired results (see [css/modules/button/sizes.css](packages/ui/css/modules/button/sizes.css) for example).
 - Only create css properties for properties that need to be dynamic due to javascript interaction, theme switching, style variant switching, and/or size variant switching.
 - Favor direct styling over creating properties to apply styles (only use properties if it lessens the required work;  E.g., if the properties just create bloat with no real benefit, favor direct styling instead).
 

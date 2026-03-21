@@ -57,7 +57,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
         with:
-          path: dist/ui-js/storybook
+          path: dist/ui/storybook
 
   # Deployment job
   deploy:

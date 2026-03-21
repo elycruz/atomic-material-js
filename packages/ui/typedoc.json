@@ -1,5 +1,5 @@
 {
-  "out": "../../dist/ui-js/docs",
+  "out": "../../dist/ui/docs",
   "entryPoints": ["./index.js"]
 }
 

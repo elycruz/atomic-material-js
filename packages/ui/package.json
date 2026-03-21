@@ -70,7 +70,7 @@
     "typedoc": "typedoc .",
     "test": "vitest --run",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build -o ../../dist/ui-js/storybook"
+    "build-storybook": "storybook build -o ../../dist/ui/storybook"
   },
   "browserslist": {
     "production": [
