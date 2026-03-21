@@ -1,4 +1,5 @@
 import type {Preview} from "@storybook/web-components-vite";
+import 'tailwindcss';
 import '../scss/roboto.scss';
 import '../scss/index.scss';
 import '../scss/material/symbol-icons-base.scss';

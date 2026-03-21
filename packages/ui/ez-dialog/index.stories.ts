@@ -871,3 +871,126 @@ export const WithThemes: StoryObj = {
     );
   },
 };
+
+export const DialogWithHeader: StoryObj = {
+  render: () => html`
+    <section>
+      <header><h2>Dialog with Header (Tailwind Flex)</h2></header>
+      <div class="ez-section-body">
+        <button
+          class="ez-btn ez-filled ez-theme-primary"
+          type="button"
+          @click=${() => {
+            openDialog('header-dialog');
+          }}
+        >
+          <ez-ripple></ez-ripple>
+          Open Dialog with Header
+        </button>
+
+        <dialog
+          class="ez-dialog"
+          id="header-dialog"
+          aria-labelledby="header-dialog-title"
+        >
+          <div class="flex flex-row items-center justify-between px-6 pt-6">
+            <h2
+              class="ez-dialog__headline"
+              id="header-dialog-title"
+              style="padding: 0; margin: 0;"
+            >
+              Dialog Title
+            </h2>
+            <button
+              class="ez-btn ez-icon-btn"
+              type="button"
+              aria-label="Close"
+              @click=${() => {
+                closeDialog('header-dialog');
+              }}
+            >
+              <ez-ripple></ez-ripple>
+              <span class="material-symbols-outlined" aria-hidden="true"
+                >close</span
+              >
+            </button>
+          </div>
+          <form
+            class="ez-dialog__content"
+            id="header-dialog-form"
+            method="dialog"
+          >
+            This dialog uses a header div with Tailwind flex utilities to
+            position the title and close button. The close button sits in the
+            upper-right corner via <code>justify-between</code>.
+          </form>
+          <div class="ez-dialog__actions">
+            <button
+              class="ez-btn ez-theme-primary"
+              form="header-dialog-form"
+              value="cancel"
+            >
+              <ez-ripple></ez-ripple>
+              Cancel
+            </button>
+            <button
+              class="ez-btn ez-filled ez-theme-primary"
+              form="header-dialog-form"
+              value="confirm"
+            >
+              <ez-ripple></ez-ripple>
+              Confirm
+            </button>
+          </div>
+        </dialog>
+      </div>
+    </section>
+  `,
+  play: async ({ canvasElement }) => {
+    const dialog =
+      canvasElement.querySelector<HTMLDialogElement>('#header-dialog');
+
+    if (!dialog) return;
+
+    await expect(dialog).toBeInTheDocument();
+    await expect(dialog).toHaveClass('ez-dialog');
+
+    // Verify header structure
+    const header = dialog.querySelector('div.flex');
+
+    await expect(header).toBeInTheDocument();
+    await expect(header).toHaveClass('flex-row');
+    await expect(header).toHaveClass('items-center');
+    await expect(header).toHaveClass('justify-between');
+
+    // Verify title is in header
+    const headline = header?.querySelector('.ez-dialog__headline');
+
+    await expect(headline).toBeInTheDocument();
+    await expect(headline?.textContent?.trim()).toBe('Dialog Title');
+
+    // Verify close button is in header
+    const closeBtn = header?.querySelector('button[aria-label="Close"]');
+
+    await expect(closeBtn).toBeInTheDocument();
+
+    // Verify content and actions
+    const content = dialog.querySelector('.ez-dialog__content');
+
+    await expect(content).toBeInTheDocument();
+
+    const actions = dialog.querySelector('.ez-dialog__actions');
+
+    await expect(actions).toBeInTheDocument();
+    await expect(actions?.children.length).toBe(2);
+
+    // Open and verify
+    dialog.showModal();
+    await expect(dialog).toHaveAttribute('open');
+
+    // Close via button and verify
+    dialog.close('confirm');
+    await expect(dialog.open).toBe(false);
+    await expect(dialog.returnValue).toBe('confirm');
+  },
+};

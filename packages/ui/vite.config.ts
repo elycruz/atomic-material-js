@@ -1,6 +1,7 @@
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { defineConfig, type Plugin } from 'vite';
+import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import storybookTest from '@storybook/addon-vitest/vitest-plugin';
 import { playwright } from '@vitest/browser-playwright';
@@ -53,7 +54,7 @@ function componentScssPlugin(): Plugin {
 }
 
 export default defineConfig({
-  plugins: [componentScssPlugin(), react()],
+  plugins: [tailwindcss(), componentScssPlugin(), react()],
   resolve: {
     alias: {
       '@': dirname,
