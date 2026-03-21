@@ -115,7 +115,7 @@ _buttonStyles.replaceSync(`
  * Setup \`ez-ripple\` element for animations.
  */
 .ez-btn, .ez-button,
-:where(.ez-btn, .ez-button) > *:not(ez-ripple, ez-btn-surface) {
+:where(.ez-btn, .ez-button) > *:not(ez-ripple, ez-button-surface) {
   position: relative;
 }
 

@@ -1,4 +1,4 @@
-# ez-btn-surface
+# ez-button-surface
 
 A three-part surface element for buttons that allows the center section to scale
 via `transform: scaleX(...)` while preserving the border-radius on the head and
@@ -7,9 +7,9 @@ tail end-caps.
 ## Usage
 
 ```html
-<button class="ez-btn ez-filled ez-theme-primary _ez-with-btn-surface">
+<button class="ez-btn ez-filled ez-theme-primary _ez-with-button-surface">
   <ez-ripple></ez-ripple>
-  <ez-btn-surface></ez-btn-surface>
+  <ez-button-surface></ez-button-surface>
   <span>Primary</span>
 </button>
 ```
@@ -26,4 +26,4 @@ tail end-caps.
 
 | Property                     | Default  | Description                    |
 |------------------------------|----------|--------------------------------|
-| `--ez-btn-surface-end-size`  | `1.5rem` | Width of head/tail end-caps    |
+| `--ez-button-surface-end-size`  | `1.5rem` | Width of head/tail end-caps    |

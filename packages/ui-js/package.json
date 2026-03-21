@@ -21,9 +21,9 @@
       "types": "./dist/ez-base/index.d.ts",
       "default": "./dist/ez-base/index.js"
     },
-    "./ez-btn-surface": {
-      "types": "./dist/ez-btn-surface/index.d.ts",
-      "default": "./dist/ez-btn-surface/index.js"
+    "./ez-button-surface": {
+      "types": "./dist/ez-button-surface/index.d.ts",
+      "default": "./dist/ez-button-surface/index.js"
     },
     "./ez-button": {
       "types": "./dist/ez-button/index.d.ts",

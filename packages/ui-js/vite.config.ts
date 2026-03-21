@@ -66,9 +66,9 @@ export default defineConfig({
         index: path.resolve(dirname, 'index.ts'),
         'ez-appbar/index': path.resolve(dirname, 'ez-appbar/index.ts'),
         'ez-base/index': path.resolve(dirname, 'ez-base/index.ts'),
-        'ez-btn-surface/index': path.resolve(
+        'ez-button-surface/index': path.resolve(
           dirname,
-          'ez-btn-surface/index.ts'
+          'ez-button-surface/index.ts'
         ),
         'ez-button/index': path.resolve(dirname, 'ez-button/index.ts'),
         'ez-field/index': path.resolve(dirname, 'ez-field/index.ts'),
