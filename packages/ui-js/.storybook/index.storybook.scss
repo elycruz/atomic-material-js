@@ -2,7 +2,7 @@
  * index.storybook.css
  *
  * Storybook-only vertical-rhythm defaults.
- * Component selectors (.ez-btn-group) remain wrapped in :where() for zero
+ * Component selectors (.ez-button-group) remain wrapped in :where() for zero
  * specificity so component and inline styles always win.
  */
 
@@ -26,6 +26,6 @@ section { margin-bottom: 2rem; }
 /* ========================================
  * Components
  * ======================================== */
-:where(.ez-btn-group):not(:last-child) {
+:where(.ez-button-group):not(:last-child) {
   margin-bottom: 1rem;
 }

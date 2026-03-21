@@ -23,7 +23,7 @@ export const PureButton = {
 
       <div class="ez-section-body">
         <h5>Default</h5>
-        <div class="ez-btn-group">
+        <div class="ez-button-group">
           ${numbers.map(
             (_, i) => html`
               <button
@@ -41,7 +41,7 @@ export const PureButton = {
       <div class="ez-section-body">
         <h3>Connected (with \`.ez-connected')</h3>
 
-        <div class="ez-btn-group ez-connected">
+        <div class="ez-button-group ez-connected">
           ${['One', 'Two', 'Three', 'Four', 'Five'].map(
             (_, i) => html`
               <button
@@ -65,7 +65,7 @@ export const PureButton = {
               <dl>
                 <dt>Default</dt>
                 <dd>
-                  <div class="ez-btn-group">
+                  <div class="ez-button-group">
                     ${numbers.slice(0, numbers.length - i).map(
                       btnLabel => html`
                         <button
@@ -83,7 +83,7 @@ export const PureButton = {
                 </dd>
                 <dt>Connected</dt>
                 <dd>
-                  <div class="ez-btn-group ez-connected">
+                  <div class="ez-button-group ez-connected">
                     ${numbers.slice(0, numbers.length - i).map(
                       btnLabel => html`
                         <button
@@ -120,7 +120,7 @@ export const ConnectedGroup = {
 
       <div class="ez-section-body">
         <h3>Default / Small (40dp)</h3>
-        <div class="ez-btn-group ez-connected">
+        <div class="ez-button-group ez-connected">
           ${['One', 'Two', 'Three', 'Four'].map(
             label => html`
               <button class="ez-btn ez-outlined ez-theme-primary" type="button">
@@ -134,7 +134,7 @@ export const ConnectedGroup = {
 
       <div class="ez-section-body">
         <h3>XSmall (32dp)</h3>
-        <div class="ez-btn-group ez-connected ez-xsmall">
+        <div class="ez-button-group ez-connected ez-xsmall">
           ${['A', 'B', 'C', 'D'].map(
             label => html`
               <button
@@ -151,7 +151,7 @@ export const ConnectedGroup = {
 
       <div class="ez-section-body">
         <h3>Medium (56dp)</h3>
-        <div class="ez-btn-group ez-connected ez-medium">
+        <div class="ez-button-group ez-connected ez-medium">
           ${['Alpha', 'Beta', 'Gamma'].map(
             label => html`
               <button
@@ -168,7 +168,7 @@ export const ConnectedGroup = {
 
       <div class="ez-section-body">
         <h3>Large (96dp)</h3>
-        <div class="ez-btn-group ez-connected ez-large">
+        <div class="ez-button-group ez-connected ez-large">
           ${['Left', 'Center', 'Right'].map(
             label => html`
               <button
@@ -185,7 +185,7 @@ export const ConnectedGroup = {
 
       <div class="ez-section-body">
         <h3>XLarge (136dp)</h3>
-        <div class="ez-btn-group ez-connected ez-xlarge">
+        <div class="ez-button-group ez-connected ez-xlarge">
           ${['First', 'Second', 'Third'].map(
             label => html`
               <button
@@ -202,7 +202,7 @@ export const ConnectedGroup = {
 
       <div class="ez-section-body">
         <h3>Radio Button Group</h3>
-        <div class="ez-btn-group ez-connected">
+        <div class="ez-button-group ez-connected">
           ${Array.from({ length: 3 }).map(
             (_, i) => html`
               <label
@@ -225,7 +225,7 @@ export const ConnectedGroup = {
       </div>
       <div class="ez-section-body">
         <h3>Checkbox Button Group</h3>
-        <div class="ez-btn-group ez-connected">
+        <div class="ez-button-group ez-connected">
           ${Array.from({ length: 3 }).map(
             (_, i) => html`
               <label
@@ -249,7 +249,7 @@ export const ConnectedGroup = {
 
       <div class="ez-section-body">
         <h3>Themes</h3>
-        <div class="ez-btn-group ez-connected">
+        <div class="ez-button-group ez-connected">
           ${Object.entries(EzThemeVariants).map(
             ([name, theme]) => html`
               <button class="ez-btn ez-filled ez-theme-${theme}" type="button">
@@ -281,7 +281,7 @@ export const RadioControlGroup: StoryObj = {
 
       <div class="ez-section-body">
         <h3>"Filled Button" Group</h3>
-        <div class="ez-btn-group" data-testid="radio-standard">
+        <div class="ez-button-group" data-testid="radio-standard">
           ${['Bold', 'Italic', 'Underline'].map(
             (label, i) => html`
               <label
@@ -305,7 +305,7 @@ export const RadioControlGroup: StoryObj = {
 
       <div class="ez-section-body">
         <h3>"Outlined Button" Connected Group</h3>
-        <div class="ez-btn-group ez-connected" data-testid="radio-connected">
+        <div class="ez-button-group ez-connected" data-testid="radio-connected">
           ${['Left', 'Center', 'Right'].map(
             (label, i) => html`
               <label
@@ -329,7 +329,7 @@ export const RadioControlGroup: StoryObj = {
 
       <div class="ez-section-body">
         <h3>"Elevated Button" Connected Group</h3>
-        <div class="ez-btn-group ez-connected">
+        <div class="ez-button-group ez-connected">
           ${Object.entries(EzThemeVariants).map(
             ([name, theme], i) => html`
               <label
@@ -371,7 +371,7 @@ export const CheckboxControlGroup: StoryObj = {
 
       <div class="ez-section-body">
         <h3>Standard Group (Outlined)</h3>
-        <div class="ez-btn-group" data-testid="checkbox-standard">
+        <div class="ez-button-group" data-testid="checkbox-standard">
           ${['A', 'B', 'C', 'D', 'E'].map(
             label => html`
               <label
@@ -395,7 +395,7 @@ export const CheckboxControlGroup: StoryObj = {
 
       <div class="ez-section-body">
         <h3>Connected Group (Filled)</h3>
-        <div class="ez-btn-group ez-connected" data-testid="checkbox-connected">
+        <div class="ez-button-group ez-connected" data-testid="checkbox-connected">
           ${['Sans', 'Serif', 'Mono'].map(
             label => html`
               <label
@@ -419,7 +419,7 @@ export const CheckboxControlGroup: StoryObj = {
 
       <div class="ez-section-body">
         <h3>All Themes (Connected)</h3>
-        <div class="ez-btn-group ez-connected">
+        <div class="ez-button-group ez-connected">
           ${Object.entries(EzThemeVariants).map(
             ([name, theme]) => html`
               <label

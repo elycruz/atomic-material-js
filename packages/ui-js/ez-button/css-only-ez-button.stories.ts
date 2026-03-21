@@ -31,7 +31,7 @@ export const ButtonSizes: StoryObj = {
       <header><h2>Button Sizes</h2></header>
 
       <div class="ez-section-body">
-        <div class="ez-btn-group" style="align-items: center;">
+        <div class="ez-button-group" style="align-items: center;">
           ${sizes.map(
             s => html`
               <button
@@ -69,7 +69,7 @@ export const ButtonColors: StoryObj = {
           v => html`
             <h3>${v.label}</h3>
             <div
-              class="ez-btn-group"
+              class="ez-button-group"
               style="flex-wrap: wrap; margin-bottom: 1rem;"
             >
               ${themes.map(
@@ -115,7 +115,7 @@ export const ButtonVariants: StoryObj = {
         ${variants.map(
           v => html`
             <h3>${v.label}</h3>
-            <div class="ez-btn-group" style="margin-bottom: 1rem;">
+            <div class="ez-button-group" style="margin-bottom: 1rem;">
               <button class="ez-btn ${v.cls} ez-theme-primary" type="button">
                 <ez-ripple></ez-ripple>
                 <span>Default</span>
@@ -139,7 +139,7 @@ export const ButtonVariants: StoryObj = {
     </section>
   `,
   play: async ({ canvasElement }) => {
-    const groups = canvasElement.querySelectorAll('.ez-btn-group');
+    const groups = canvasElement.querySelectorAll('.ez-button-group');
 
     await expect(groups.length).toBe(variants.length);
 
@@ -162,7 +162,7 @@ export const IconButtons: StoryObj = {
       <header><h2>Icon Buttons</h2></header>
 
       <div class="ez-section-body">
-        <div class="ez-btn-group">
+        <div class="ez-button-group">
           <button
             class="ez-btn ez-icon-btn ez-theme-secondary"
             type="button"
@@ -224,7 +224,7 @@ export const RTLButtons: StoryObj = {
 
       <div class="ez-section-body">
         <h3>LTR (default)</h3>
-        <div class="ez-btn-group" dir="ltr">
+        <div class="ez-button-group" dir="ltr">
           <button class="ez-btn ez-filled ez-theme-primary" type="button">
             <ez-ripple></ez-ripple>
             <span class="md-icon">send</span>
@@ -250,7 +250,7 @@ export const RTLButtons: StoryObj = {
 
       <div class="ez-section-body">
         <h3>RTL</h3>
-        <div class="ez-btn-group" dir="rtl">
+        <div class="ez-button-group" dir="rtl">
           <button class="ez-btn ez-filled ez-theme-primary" type="button">
             <ez-ripple></ez-ripple>
             <span class="md-icon">send</span>

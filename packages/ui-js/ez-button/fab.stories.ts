@@ -19,7 +19,7 @@ export const FABSizes: StoryObj = {
       <header><h2>FAB Sizes</h2></header>
 
       <div class="ez-section-body">
-        <div class="ez-btn-group" style="align-items: center;">
+        <div class="ez-button-group" style="align-items: center;">
           <button
             class="ez-btn ez-fab ez-xsmall ez-tonal ez-theme-primary"
             type="button"
@@ -78,7 +78,7 @@ export const FABVariants: StoryObj = {
           ([name, cls]) => html`
             <h3>${name}</h3>
             <div
-              class="ez-btn-group"
+              class="ez-button-group"
               style="margin-bottom: 1rem; align-items: center;"
             >
               <button
@@ -152,7 +152,7 @@ export const ExtendedFAB: StoryObj = {
 
       <div class="ez-section-body">
         <h3>Sizes</h3>
-        <div class="ez-btn-group" style="align-items: center;">
+        <div class="ez-button-group" style="align-items: center;">
           <button
             class="ez-btn ez-fab ez-extended ez-tonal ez-theme-primary"
             type="button"
@@ -182,7 +182,7 @@ export const ExtendedFAB: StoryObj = {
 
       <div class="ez-section-body">
         <h3>Themes</h3>
-        <div class="ez-btn-group" style="flex-wrap: wrap; align-items: center;">
+        <div class="ez-button-group" style="flex-wrap: wrap; align-items: center;">
           ${Object.entries(EzThemeVariants).map(
             ([name, cls]) => html`
               <button
@@ -200,7 +200,7 @@ export const ExtendedFAB: StoryObj = {
 
       <div class="ez-section-body">
         <h3>Variants</h3>
-        <div class="ez-btn-group" style="flex-wrap: wrap; align-items: center;">
+        <div class="ez-button-group" style="flex-wrap: wrap; align-items: center;">
           <button
             class="ez-btn ez-fab ez-extended ez-tonal ez-theme-secondary"
             type="button"
@@ -247,7 +247,7 @@ export const ExtendedFAB: StoryObj = {
       <div class="ez-section-body">
         <h3>RTL</h3>
         <div
-          class="ez-btn-group"
+          class="ez-button-group"
           dir="rtl"
           style="flex-wrap: wrap; align-items: center;"
         >
