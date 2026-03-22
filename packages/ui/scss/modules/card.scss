@@ -39,17 +39,39 @@ html[dir="rtl"] .ez-card:not(.ez-layout-vertical) {
 /* Filled */
 .ez-card.ez-filled {
   background: var(--md-sys-color-surface-container-highest, Canvas);
+  transition: box-shadow var(--md-sys-motion-duration-short2, 100ms) var(--md-sys-motion-easing-standard, ease);
+}
+
+.ez-card.ez-filled:is(a, button, [role="button"]):hover {
+  box-shadow: var(--md-sys-elevation-level1, 0 1px 2px 0 rgb(0 0 0 / 30%), 0 1px 3px 1px rgb(0 0 0 / 15%));
+}
+
+.ez-card.ez-filled:is(a, button, [role="button"]):active {
+  box-shadow: var(--md-sys-elevation-level0, none);
 }
 
 /* Outlined */
 .ez-card.ez-outlined {
   background: var(--md-sys-color-surface, Canvas);
   border: var(--ez-border-width, 1px) solid var(--md-sys-color-outline-variant, currentcolor);
+  transition: box-shadow var(--md-sys-motion-duration-short2, 100ms) var(--md-sys-motion-easing-standard, ease);
+}
+
+.ez-card.ez-outlined:is(a, button, [role="button"]):hover {
+  box-shadow: var(--md-sys-elevation-level1, 0 1px 2px 0 rgb(0 0 0 / 30%), 0 1px 3px 1px rgb(0 0 0 / 15%));
+}
+
+.ez-card.ez-outlined:is(a, button, [role="button"]):active {
+  box-shadow: var(--md-sys-elevation-level0, none);
+}
+
+.ez-card.ez-outlined:is(a, button, [role="button"]):focus-visible {
+  border-color: var(--md-sys-color-on-surface, CanvasText);
 }
 
 /* Focus indicator for interactive cards */
 .ez-card:is(a, button, [role="button"]):focus-visible {
-  outline: 3px solid var(--ez-focus-ring-color);
+  outline: 3px solid var(--md-sys-color-secondary, Highlight);
   outline-offset: 2px;
 }
 
@@ -71,9 +93,18 @@ html[dir="rtl"] .ez-card:not(.ez-layout-vertical) {
   }
 }
 
+.ez-card.ez-outlined:is([disabled], [aria-disabled="true"]) {
+  border-color: color-mix(in oklch, var(--md-sys-color-outline, currentcolor) 12%, transparent);
+}
+
 /* Dragged */
 .ez-card.ez-elevated.ez-dragged {
   box-shadow: var(--md-sys-elevation-level4, 0 2px 3px 0 rgb(0 0 0 / 30%), 0 6px 10px 4px rgb(0 0 0 / 15%));
+}
+
+.ez-card.ez-filled.ez-dragged,
+.ez-card.ez-outlined.ez-dragged {
+  box-shadow: var(--md-sys-elevation-level3, 0 1px 3px 0 rgb(0 0 0 / 30%), 0 4px 8px 3px rgb(0 0 0 / 15%));
 }
 
 /* Card sub-elements */
