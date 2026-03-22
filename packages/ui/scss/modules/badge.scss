@@ -1,0 +1,62 @@
+@import "../component-prelude";
+
+/**
+ * Badge
+ *
+ * MD3 badge component.
+ * Variants: small dot (default, when empty), large (when has content).
+ *
+ * Usage:
+ *   <div class="ez-badge-wrapper">
+ *     <button>...</button>
+ *     <span class="ez-badge"></span>           <!-- small dot -->
+ *     <span class="ez-badge">3</span>          <!-- large with number -->
+ *     <span class="ez-badge">999+</span>       <!-- large with text -->
+ *   </div>
+ */
+
+.ez-badge-wrapper {
+  position: relative;
+  display: inline-flex;
+}
+
+.ez-badge {
+  --_badge-shape: var(--md-sys-shape-corner-full, calc(infinity * 1px));
+  --_badge-size: 6px;
+
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-end: 0;
+  translate: 50% -50%;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  min-width: var(--_badge-size);
+  height: var(--_badge-size);
+  border-radius: var(--_badge-shape);
+  background: var(--md-color-theme);
+  color: var(--md-color-on-theme);
+
+  /* Empty (small dot) badges have no padding or text styles */
+  padding: 0;
+}
+
+/* Large badge — when the element has content */
+.ez-badge:not(:empty) {
+  @extend %md-typescale-label-small;
+
+  --_badge-size: 16px;
+
+  color: var(--md-color-on-theme, white);
+  padding-inline: 4px;
+}
+
+/* Color theme */
+
+/* Default Color */
+.ez-badge:not([class^="ez-theme"], [class*="ez-theme"]) {
+  --md-color-theme: var(--md-sys-color-error, red);
+  --md-color-on-theme: var(--md-sys-color-on-error, white);
+}
