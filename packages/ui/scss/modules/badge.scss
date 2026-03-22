@@ -15,13 +15,12 @@
  *   </div>
  */
 
-:where(.ez-badge-wrapper) {
+.ez-badge-wrapper {
   position: relative;
   display: inline-flex;
 }
 
-:where(.ez-badge) {
-  --_badge-color: var(--md-sys-color-error, red);
+.ez-badge {
   --_badge-shape: var(--md-sys-shape-corner-full, calc(infinity * 1px));
   --_badge-size: 6px;
 
@@ -37,18 +36,27 @@
   min-width: var(--_badge-size);
   height: var(--_badge-size);
   border-radius: var(--_badge-shape);
-  background: var(--_badge-color);
+  background: var(--md-color-theme);
+  color: var(--md-color-on-theme);
 
   /* Empty (small dot) badges have no padding or text styles */
   padding: 0;
 }
 
 /* Large badge — when the element has content */
-:where(.ez-badge):not(:empty) {
+.ez-badge:not(:empty) {
   @extend %md-typescale-label-small;
 
   --_badge-size: 16px;
 
-  color: var(--md-sys-color-on-error, white);
+  color: var(--md-color-on-theme, white);
   padding-inline: 4px;
+}
+
+/* Color theme */
+
+/* Default Color */
+.ez-badge:not([class^="ez-theme"], [class*="ez-theme"]) {
+  --md-color-theme: var(--md-sys-color-error, red);
+  --md-color-on-theme: var(--md-sys-color-on-error, white);
 }
