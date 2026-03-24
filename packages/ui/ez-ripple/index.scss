@@ -124,17 +124,28 @@ ez-ripple::before {
   z-index: 1;
 }
 
+ez-ripple:where(
+    [rippleactive]
+  )::before,
+ez-ripple:has(
+    :hover,
+    :focus,
+    :active
+  )::before,
+*:has(> ez-ripple:empty):where(:hover, :active, :focus) > ez-ripple:empty::before {
+  transform: translate(
+      var(--ez-ripple-x),
+      var(--ez-ripple-y)
+  ) scale(
+      var(--ez-ripple-active-scale)
+  );
+}
+
 /* Hover state layer */
 ez-ripple:has(
     :hover
   )::before,
 *:has(> ez-ripple:empty):where(:hover) > ez-ripple:empty::before {
-  transform: translate(
-    var(--ez-ripple-x),
-    var(--ez-ripple-y)
-  ) scale(
-    var(--ez-ripple-active-scale)
-  );
   opacity: var(--ez-ripple-hover-opacity);
 }
 
@@ -143,12 +154,6 @@ ez-ripple:has(
     :focus-visible
   )::before,
 *:has(> ez-ripple:empty):where(:focus-visible) > ez-ripple:empty::before {
-  transform: translate(
-    var(--ez-ripple-x),
-    var(--ez-ripple-y)
-  ) scale(
-    var(--ez-ripple-active-scale)
-  );
   opacity: var(--ez-ripple-focus-opacity);
 }
 
@@ -159,13 +164,7 @@ ez-ripple:where(
 ez-ripple:has(
     :active
   )::before,
-*:has(> ez-ripple:empty):where(:active) > ez-ripple:empty::before {
-  transform: translate(
-    var(--ez-ripple-x),
-    var(--ez-ripple-y)
-  ) scale(
-    var(--ez-ripple-active-scale)
-  );
+*:has(> ez-ripple:empty):active > ez-ripple:empty::before {
   opacity: var(--ez-ripple-pressed-opacity);
 }
 
@@ -174,12 +173,6 @@ ez-ripple:where(
     [dragged]
   )::before,
 *:has(> ez-ripple:empty):where(.ez-dragged) > ez-ripple:empty::before {
-  transform: translate(
-    var(--ez-ripple-x),
-    var(--ez-ripple-y)
-  ) scale(
-    var(--ez-ripple-active-scale)
-  );
   opacity: var(--ez-ripple-dragged-opacity);
 }
 
