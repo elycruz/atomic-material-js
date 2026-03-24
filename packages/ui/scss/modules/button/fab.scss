@@ -17,8 +17,7 @@
   --_fab-icon-size: 24px;
   --_fab-container-shape: 16px;
 
-  width: var(--_fab-container-size);
-  height: var(--_fab-container-size);
+  min-width: var(--_fab-container-size);
   min-height: var(--_fab-container-size);
   padding: 0;
   border-radius: var(--_fab-container-shape);
@@ -93,8 +92,6 @@
   --_fab-trailing-space: 16px;
   --_fab-icon-label-space: 8px;
 
-  width: auto;
-  height: var(--_fab-container-size);
   padding-inline: var(--_fab-leading-space) var(--_fab-trailing-space);
   gap: var(--_fab-icon-label-space);
   font-size: 1rem; /* 16pt */
