@@ -1,0 +1,3 @@
+# EzBadgeComponent
+
+Component description.

@@ -16,6 +16,10 @@
       "types": "./dist/ez-appbar/index.d.ts",
       "default": "./dist/ez-appbar/index.js"
     },
+    "./ez-badge": {
+      "types": "./dist/ez-badge/index.d.ts",
+      "default": "./dist/ez-badge/index.js"
+    },
     "./ez-button-surface": {
       "types": "./dist/ez-button-surface/index.d.ts",
       "default": "./dist/ez-button-surface/index.js"
