@@ -1,3 +1,5 @@
+@import "../scss/component-prelude";
+
 :host {
   position: relative;
   display: inline-flex;
@@ -27,13 +29,10 @@
 }
 
 .badge.large {
+  @extend %md-typescale-label-small;
+
   --_badge-size: 16px;
 
-  font-family: var(--md-sys-typescale-label-small-font, roboto, system-ui, sans-serif);
-  font-size: var(--md-sys-typescale-label-small-size, 0.91667rem);
-  font-weight: var(--md-sys-typescale-label-small-weight, 500);
-  line-height: var(--md-sys-typescale-label-small-line-height, 1.33333rem);
-  letter-spacing: var(--md-sys-typescale-label-small-tracking, 0.00833rem);
   color: var(--_badge-color);
   padding-inline: 4px;
 }
