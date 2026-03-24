@@ -162,9 +162,10 @@ ez-ripple:where(
     [rippleactive]
   )::before,
 ez-ripple:has(
-    :active
+    :active,
+    :focus
   )::before,
-*:has(> ez-ripple:empty):active > ez-ripple:empty::before {
+*:has(> ez-ripple:empty):where(:active, :focus) > ez-ripple:empty::before {
   opacity: var(--ez-ripple-pressed-opacity);
 }
 

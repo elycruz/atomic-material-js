@@ -60,18 +60,6 @@
   pointer-events: none;
 }
 
-.ez-btn-bg {
-  position: absolute;
-  inset: 0;
-  background-color: var(--md-sys-color-primary-container);
-  opacity: 0;
-  transform: scale(0.9);
-  transition:
-    opacity 300ms ease,
-    transform var(--md-sys-motion-duration-long) var(--md-sys-motion-easing-spring);
-  border-radius: inherit;
-}
-
 :where(
   .ez-btn,
   .ez-button
@@ -87,7 +75,7 @@
  * Setup `ez-ripple` element for animations.
  */
 .ez-btn, .ez-button,
-:where(.ez-btn, .ez-button) > *:not(ez-ripple, ez-button-surface) {
+:where(.ez-btn, .ez-button) > *:not(ez-ripple) {
   position: relative;
 }
 
@@ -110,26 +98,6 @@
   font-size: var(--_btn-icon-size);
   width: var(--_btn-icon-size);
   height: var(--_btn-icon-size);
-}
-
-/**
- * Selected-state background
- * ------------------- */
-:where(.ez-btn, .ez-button) > .ez-btn-bg {
-  position: absolute;
-  inset: 0;
-
-  /* opacity: 0; */
-
-  /* transform: scale(0.9); */
-  transition:
-    opacity var(--md-sys-motion-duration-short4, 200ms) ease,
-    transform var(--md-sys-motion-duration-medium2, 300ms) var(--md-sys-motion-easing-expressive-default-spatial, cubic-bezier(0.38, 1.21, 0.22, 1.00));
-}
-
-:where(.ez-btn, .ez-button):is([aria-pressed="true"], .ez-selected, :has(input:checked)) > .ez-btn-bg {
-  opacity: 1;
-  transform: scale(1);
 }
 
 /**

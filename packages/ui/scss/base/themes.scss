@@ -15,7 +15,7 @@
 /* ---- Standard colour roles ---- */
 
 /* If no theme class, inherits default */
-*:not([class^="ez-theme"], [class*=" ez-theme"]),
+:not([class^="ez-theme"], [class*=" ez-theme"]) :not(:where([class^="ez-theme"], [class*=" ez-theme"]) *),
 .md-theme-primary,
 .ez-theme-primary {
   --md-color-theme: var(--md-sys-color-primary);
