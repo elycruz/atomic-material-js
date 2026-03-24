@@ -113,3 +113,40 @@ export const RtlVariation: StoryObj = {
     await expect(ripple2).toHaveProperty('shadowRoot', null);
   },
 };
+
+export const DraggedStateVariation: StoryObj = {
+  render: () => html`
+    <p style="margin-bottom: 0.5rem;">
+      The dragged state uses a higher opacity (0.16) per M3 spec. The button
+      below has its parent marked as <code>.ez-dragged</code>.
+    </p>
+
+    <div class="ez-dragged" style="display: inline-block; position: relative;">
+      <button type="button" class="ez-btn ez-theme-primary">
+        <ez-ripple data-testid="ripple-dragged"></ez-ripple>
+        Dragged Button
+      </button>
+    </div>
+
+    <div style="display: inline-block; position: relative; margin-left: 1rem;">
+      <button type="button" class="ez-btn ez-theme-primary">
+        <ez-ripple dragged data-testid="ripple-dragged-attr"></ez-ripple>
+        Dragged (attr)
+      </button>
+    </div>
+  `,
+  play: async ({ canvas }) => {
+    const draggedBtn = canvas.getByTestId('ripple-dragged');
+
+    await expect(draggedBtn).toBeInTheDocument();
+    await expect(draggedBtn).toHaveProperty(
+      'nodeName',
+      EzRippleName.toUpperCase()
+    );
+
+    const draggedAttrBtn = canvas.getByTestId('ripple-dragged-attr');
+
+    await expect(draggedAttrBtn).toBeInTheDocument();
+    await expect(draggedAttrBtn).toHaveAttribute('dragged');
+  },
+};
