@@ -7,15 +7,17 @@
 }
 
 .md-icon {
+  --_icon-size: 24px;
+
   font-family: 'Material Symbols Rounded', "Sans Serif Collection", sans-serif;
   font-weight: normal;
   font-style: normal;
-  font-size: var(--ez-16px);
+  font-size: var(--_icon-size);
   font-feature-settings: 'liga';
   font-variation-settings: 'FILL' 1,
   'wght' 400,
   'GRAD' 0,
-  'opsz' 48;
+  'opsz' 24;
   -webkit-font-smoothing: antialiased;
   line-height: 1;
   letter-spacing: normal;
@@ -23,6 +25,8 @@
   display: inline-block;
   white-space: nowrap;
   align-content: center;
+  width: var(--_icon-size);
+  height: var(--_icon-size);
 
   /* word-wrap: normal; */
   overflow-wrap: normal;
@@ -30,4 +34,29 @@
   padding: 0;
   pointer-events: none;
   user-select: none;
+}
+
+/*
+ * Optical size variants
+ * ------------------- */
+
+/* 20dp — desktop, dense layouts, small-scale visuals */
+:where(.md-icon).ez-small {
+  --_icon-size: 20px;
+
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+}
+
+/* 40dp — display or headline type, larger screens */
+:where(.md-icon).ez-large {
+  --_icon-size: 40px;
+
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 40;
+}
+
+/* 48dp — display contexts, largest screens */
+:where(.md-icon).ez-xlarge {
+  --_icon-size: 48px;
+
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 48;
 }
