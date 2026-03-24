@@ -14,11 +14,11 @@ const themes = Object.keys(EzThemeVariants),
  * Reactive button group — hover, press, or focus a button
  * and watch neighbors react with spring easing.
  */
-export const PureButton = {
+export const PlainButtons = {
   render: () => html`
     <section>
       <header>
-        <h2>(Pure Button) Button Groups</h2>
+        <h2>With Plain Buttons</h2>
       </header>
 
       <div class="ez-section-body">
