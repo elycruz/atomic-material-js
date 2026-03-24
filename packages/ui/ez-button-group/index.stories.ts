@@ -1,4 +1,5 @@
 import { html } from 'lit';
+import { expect } from 'storybook/test';
 import type { StoryObj } from '@storybook/web-components-vite';
 import { EzThemeVariants, EzSizeVariants } from '../utils/constants.js';
 import '../ez-ripple';
@@ -445,4 +446,119 @@ export const CheckboxControlGroup: StoryObj = {
       </div>
     </section>
   `,
+};
+
+/**
+ * Vertical (block) layout — buttons stacked in a column using `.ez-layout-block`.
+ */
+export const VerticalLayout: StoryObj = {
+  render: () => html`
+    <section>
+      <header>
+        <h2>Vertical Layout (<code>.ez-layout-block</code>)</h2>
+      </header>
+
+      <div
+        class="ez-section-body"
+        style="display:flex;gap:2rem;flex-wrap:wrap;align-items:start;"
+      >
+        <div>
+          <h3>Default (spaced)</h3>
+          <div
+            class="ez-button-group ez-layout-block"
+            data-testid="vertical-default"
+          >
+            ${['Top', 'Middle', 'Bottom'].map(
+              label => html`
+                <button class="ez-btn ez-filled ez-theme-primary" type="button">
+                  <ez-ripple></ez-ripple>
+                  <span>${label}</span>
+                </button>
+              `
+            )}
+          </div>
+        </div>
+
+        <div>
+          <h3>Connected</h3>
+          <div
+            class="ez-button-group ez-layout-block ez-connected"
+            data-testid="vertical-connected"
+          >
+            ${['Top', 'Middle', 'Bottom'].map(
+              label => html`
+                <button
+                  class="ez-btn ez-outlined ez-theme-secondary"
+                  type="button"
+                >
+                  <ez-ripple></ez-ripple>
+                  <span>${label}</span>
+                </button>
+              `
+            )}
+          </div>
+        </div>
+
+        <div>
+          <h3>Connected Radio</h3>
+          <div
+            class="ez-button-group ez-layout-block ez-connected"
+            data-testid="vertical-radio"
+          >
+            ${['Option A', 'Option B', 'Option C'].map(
+              (label, i) => html`
+                <label
+                  class="ez-btn ez-filled ez-theme-primary"
+                  for="vert-radio-${i}"
+                >
+                  <input
+                    type="radio"
+                    name="vert-radio"
+                    id="vert-radio-${i}"
+                    value="${label}"
+                    ?checked=${i === 0}
+                  />
+                  <ez-ripple></ez-ripple>
+                  <span>${label}</span>
+                </label>
+              `
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
+  `,
+
+  play: async ({ canvasElement }) => {
+    const defaultGroup = canvasElement.querySelector(
+        '[data-testid="vertical-default"]'
+      ),
+      connectedGroup = canvasElement.querySelector(
+        '[data-testid="vertical-connected"]'
+      ),
+      radioGroup = canvasElement.querySelector(
+        '[data-testid="vertical-radio"]'
+      );
+
+    if (!defaultGroup || !connectedGroup || !radioGroup) return;
+
+    // Verify groups exist and have correct layout class
+    await expect(defaultGroup).toBeInTheDocument();
+    await expect(defaultGroup).toHaveClass('ez-layout-block');
+
+    await expect(connectedGroup).toBeInTheDocument();
+    await expect(connectedGroup).toHaveClass('ez-layout-block');
+    await expect(connectedGroup).toHaveClass('ez-connected');
+
+    // Verify flex-direction is column
+    await expect(getComputedStyle(defaultGroup).flexDirection).toBe('column');
+    await expect(getComputedStyle(connectedGroup).flexDirection).toBe('column');
+
+    // Verify radio group renders with vertical layout
+    await expect(radioGroup).toBeInTheDocument();
+    await expect(
+      radioGroup.querySelectorAll('input[type="radio"]').length
+    ).toBe(3);
+    await expect(getComputedStyle(radioGroup).flexDirection).toBe('column');
+  },
 };
