@@ -1,11 +1,6 @@
 @import "../scss/component-prelude";
 
 :host {
-  position: relative;
-  display: inline-flex;
-}
-
-.badge {
   --_badge-shape: var(--md-sys-shape-corner-full, calc(infinity * 1px));
   --_badge-size: 6px;
   --_badge-bg: var(--md-color-theme, var(--md-sys-color-error, red));
@@ -16,6 +11,10 @@
   inset-inline-end: 0;
   translate: 50% -50%;
   z-index: 1;
+  display: inline-flex;
+}
+
+.badge {
   display: inline-flex;
   align-items: center;
   justify-content: center;

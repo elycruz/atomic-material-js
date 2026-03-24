@@ -21,15 +21,17 @@ export const SmallBadge: StoryObj = {
         class="ez-section-body"
         style="display: flex; gap: 2rem; align-items: center;"
       >
-        <ez-badge data-testid="small-icon">
+        <span style="position: relative;">
           <span class="md-icon" aria-hidden="true">notifications</span>
-        </ez-badge>
+          <ez-badge data-testid="small-icon"></ez-badge>
+        </span>
 
-        <ez-badge data-testid="small-button">
+        <span style="position: relative;">
           <button class="ez-btn ez-outlined ez-theme-primary" type="button">
             Notifications
           </button>
-        </ez-badge>
+          <ez-badge data-testid="small-button"></ez-badge>
+        </span>
       </div>
     </section>
   `,
@@ -63,20 +65,20 @@ export const LargeBadge: StoryObj = {
         class="ez-section-body"
         style="display: flex; gap: 2rem; align-items: center;"
       >
-        <ez-badge data-testid="badge-3">
-          3
+        <span style="position: relative;">
           <span class="md-icon" aria-hidden="true">notifications</span>
-        </ez-badge>
+          <ez-badge data-testid="badge-3">3</ez-badge>
+        </span>
 
-        <ez-badge data-testid="badge-99">
-          99
+        <span style="position: relative;">
           <span class="md-icon" aria-hidden="true">notifications</span>
-        </ez-badge>
+          <ez-badge data-testid="badge-99">99</ez-badge>
+        </span>
 
-        <ez-badge data-testid="badge-999">
-          999+
+        <span style="position: relative;">
           <span class="md-icon" aria-hidden="true">notifications</span>
-        </ez-badge>
+          <ez-badge data-testid="badge-999">999+</ez-badge>
+        </span>
       </div>
     </section>
   `,
@@ -118,19 +120,32 @@ export const Positioning: StoryObj = {
         class="ez-section-body"
         style="display: flex; gap: 3rem; align-items: center; padding: 1rem;"
       >
-        <ez-badge data-testid="pos-notif" aria-label="Notifications: 5">
-          5
+        <span
+          style="position: relative;"
+          data-testid="pos-notif"
+          aria-label="Notifications: 5"
+        >
           <span class="md-icon" aria-hidden="true">notifications</span>
-        </ez-badge>
+          <ez-badge>5</ez-badge>
+        </span>
 
-        <ez-badge data-testid="pos-mail" aria-label="Messages: new">
+        <span
+          style="position: relative;"
+          data-testid="pos-mail"
+          aria-label="Messages: new"
+        >
           <span class="md-icon" aria-hidden="true">mail</span>
-        </ez-badge>
+          <ez-badge></ez-badge>
+        </span>
 
-        <ez-badge data-testid="pos-cart" aria-label="Cart: 12 items">
-          12
+        <span
+          style="position: relative;"
+          data-testid="pos-cart"
+          aria-label="Cart: 12 items"
+        >
           <span class="md-icon" aria-hidden="true">shopping_cart</span>
-        </ez-badge>
+          <ez-badge>12</ez-badge>
+        </span>
       </div>
     </section>
   `,
@@ -172,10 +187,12 @@ export const WithThemes: StoryObj = {
         ${themes.map(
           theme => html`
             <div style="text-align: center;">
-              <ez-badge class="${theme ? `ez-theme-${theme}` : ''}">
-                7
+              <span style="position: relative;">
                 <span class="md-icon" aria-hidden="true">notifications</span>
-              </ez-badge>
+                <ez-badge class="${theme ? `ez-theme-${theme}` : ''}">
+                  7
+                </ez-badge>
+              </span>
               <div style="margin-top: 0.5rem; font-size: 0.75rem;">
                 ${theme || 'default'}
               </div>

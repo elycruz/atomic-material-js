@@ -7,21 +7,17 @@ export const ezBadgeName = 'ez-badge';
 /**
  * `<ez-badge>` — MD3 badge custom element.
  *
- * Wraps content and displays a badge indicator (small dot or large badge).
- * Badge content is provided as child text content of the element.
+ * Displays a badge indicator (small dot or large badge with text).
+ * Badge content is the element's text content.
  *
  * @example
  * ```html
  * <!-- Small dot badge (no text content) -->
- * <ez-badge>
- *   <button>Notifications</button>
- * </ez-badge>
+ * <ez-badge></ez-badge>
  *
  * <!-- Large badge with count -->
- * <ez-badge>
- *   3
- *   <button>Notifications</button>
- * </ez-badge>
+ * <ez-badge>3</ez-badge>
+ * <ez-badge>999+</ez-badge>
  * ```
  */
 export class EzBadgeElement extends LitElement {
@@ -42,9 +38,9 @@ export class EzBadgeElement extends LitElement {
   connectedCallback() {
     super.connectedCallback();
     this.#applyParentPosition();
-    this.#extractBadgeText();
+    this.#updateBadgeText();
     this.#observer = new MutationObserver(() => {
-      this.#extractBadgeText();
+      this.#updateBadgeText();
     });
     this.#observer.observe(this, {
       childList: true,
@@ -71,19 +67,12 @@ export class EzBadgeElement extends LitElement {
     }
   }
 
-  #extractBadgeText() {
-    const text = Array.from(this.childNodes)
-      .filter(node => node.nodeType === Node.TEXT_NODE)
-      .map(node => node.textContent?.trim() ?? '')
-      .join('')
-      .trim();
-
-    this._badgeText = text;
+  #updateBadgeText() {
+    this._badgeText = this.textContent?.trim() ?? '';
   }
 
   render() {
     return html`
-      <slot></slot>
       <span class="badge${this._badgeText ? ' large' : ''}" part="badge">
         ${this._badgeText}
       </span>
