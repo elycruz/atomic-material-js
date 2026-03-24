@@ -5,7 +5,6 @@
 /** Ripple styles **/
 :where(.ez-btn, .ez-button).ez-filled ez-ripple::after,
 :where(.ez-btn, .ez-button).ez-filled ez-ripple::before {
-  --ez-ripple-hover-opacity: 0.55;
   --ez-ripple-active-opacity: 0.21;
 
   background: var(--md-color-on-theme);

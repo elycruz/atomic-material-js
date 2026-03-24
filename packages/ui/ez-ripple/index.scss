@@ -38,9 +38,16 @@
 ez-ripple {
   --ez-ripple-x: 50%;
   --ez-ripple-y: 50%;
-  --ez-ripple-opacity: 0.08;
+
+  /* M3 state-layer opacities (per-state) */
+  --ez-ripple-hover-opacity: var(--md-sys-state-hover-state-layer-opacity, 0.08);
+  --ez-ripple-focus-opacity: var(--md-sys-state-focus-state-layer-opacity, 0.1);
+  --ez-ripple-pressed-opacity: var(--md-sys-state-pressed-state-layer-opacity, 0.1);
+  --ez-ripple-dragged-opacity: var(--md-sys-state-dragged-state-layer-opacity, 0.16);
+
+  /* Ripple wave animation opacities */
   --ez-ripple-active-opacity: 0.16;
-  --ez-ripple-active-opacity-end: 0.1;
+  --ez-ripple-active-opacity-end: var(--ez-ripple-pressed-opacity);
   --ez-ripple-inactive-opacity: 0;
   --ez-ripple-active-scale: 1;
   --ez-ripple-inactive-scale: 0;
@@ -85,7 +92,7 @@ ez-ripple:not(:empty) > :first-child {
 }
 
 ez-ripple:not(:empty):hover {
-  background: oklch(from var(--md-color-on-theme) l c h / 10%);
+  background: oklch(from var(--md-color-on-theme) l c h / var(--ez-ripple-hover-opacity));
 }
 
 ez-ripple::after,
@@ -117,22 +124,63 @@ ez-ripple::before {
   z-index: 1;
 }
 
-ez-ripple:where(
-    [rippleactive]
-  )::before,
+/* Hover state layer */
 ez-ripple:has(
-    :hover,
-    :focus,
-    :active
+    :hover
   )::before,
-*:has(> ez-ripple:empty):where(:hover, :active, :focus) > ez-ripple:empty::before {
+*:has(> ez-ripple:empty):where(:hover) > ez-ripple:empty::before {
   transform: translate(
     var(--ez-ripple-x),
     var(--ez-ripple-y)
   ) scale(
     var(--ez-ripple-active-scale)
   );
-  opacity: var(--ez-ripple-opacity);
+  opacity: var(--ez-ripple-hover-opacity);
+}
+
+/* Focus state layer */
+ez-ripple:has(
+    :focus-visible
+  )::before,
+*:has(> ez-ripple:empty):where(:focus-visible) > ez-ripple:empty::before {
+  transform: translate(
+    var(--ez-ripple-x),
+    var(--ez-ripple-y)
+  ) scale(
+    var(--ez-ripple-active-scale)
+  );
+  opacity: var(--ez-ripple-focus-opacity);
+}
+
+/* Pressed state layer */
+ez-ripple:where(
+    [rippleactive]
+  )::before,
+ez-ripple:has(
+    :active
+  )::before,
+*:has(> ez-ripple:empty):where(:active) > ez-ripple:empty::before {
+  transform: translate(
+    var(--ez-ripple-x),
+    var(--ez-ripple-y)
+  ) scale(
+    var(--ez-ripple-active-scale)
+  );
+  opacity: var(--ez-ripple-pressed-opacity);
+}
+
+/* Dragged state layer */
+ez-ripple:where(
+    [dragged]
+  )::before,
+*:has(> ez-ripple:empty):where(.ez-dragged) > ez-ripple:empty::before {
+  transform: translate(
+    var(--ez-ripple-x),
+    var(--ez-ripple-y)
+  ) scale(
+    var(--ez-ripple-active-scale)
+  );
+  opacity: var(--ez-ripple-dragged-opacity);
 }
 
 ez-ripple::after {
