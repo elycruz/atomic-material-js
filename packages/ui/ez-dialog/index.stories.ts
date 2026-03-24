@@ -1,7 +1,6 @@
 import { html } from 'lit';
 import { expect } from 'storybook/test';
 import type { StoryObj } from '@storybook/web-components-vite';
-import { EzThemeVariants } from '../utils/constants.js';
 import './../ez-ripple';
 
 export default {
@@ -103,6 +102,124 @@ export const BasicDialog: StoryObj = {
     await expect(dialog).toHaveAttribute('open');
 
     // Close and verify
+    dialog.close('confirm');
+    await expect(dialog.open).toBe(false);
+    await expect(dialog.returnValue).toBe('confirm');
+  },
+};
+
+export const DialogWithHeader: StoryObj = {
+  render: () => html`
+    <section>
+      <header><h2>Dialog with Header (Tailwind Flex)</h2></header>
+      <div class="ez-section-body">
+        <button
+          class="ez-btn ez-filled ez-theme-primary"
+          type="button"
+          @click=${() => {
+            openDialog('header-dialog');
+          }}
+        >
+          <ez-ripple></ez-ripple>
+          Open Dialog with Header
+        </button>
+
+        <dialog
+          class="ez-dialog"
+          id="header-dialog"
+          aria-labelledby="header-dialog-title"
+        >
+          <div class="ez-dialog__header">
+            <h2
+              class="ez-dialog__headline"
+              id="header-dialog-title"
+              style="padding: 0; margin: 0;"
+            >
+              Dialog Title
+            </h2>
+            <button
+              class="ez-btn ez-icon-btn"
+              type="button"
+              aria-label="Close"
+              @click=${() => {
+                closeDialog('header-dialog');
+              }}
+            >
+              <ez-ripple></ez-ripple>
+              <span class="md-icon" aria-hidden="true">close</span>
+            </button>
+          </div>
+          <form
+            class="ez-dialog__content"
+            id="header-dialog-form"
+            method="dialog"
+          >
+            This dialog uses a header div with Tailwind flex utilities to
+            position the title and close button. The close button sits in the
+            upper-right corner via <code>justify-between</code>.
+          </form>
+          <div class="ez-dialog__actions">
+            <button
+              class="ez-btn ez-theme-primary"
+              form="header-dialog-form"
+              value="cancel"
+            >
+              <ez-ripple></ez-ripple>
+              Cancel
+            </button>
+            <button
+              class="ez-btn ez-filled ez-theme-primary"
+              form="header-dialog-form"
+              value="confirm"
+            >
+              <ez-ripple></ez-ripple>
+              Confirm
+            </button>
+          </div>
+        </dialog>
+      </div>
+    </section>
+  `,
+  play: async ({ canvasElement }) => {
+    const dialog =
+      canvasElement.querySelector<HTMLDialogElement>('#header-dialog');
+
+    if (!dialog) return;
+
+    await expect(dialog).toBeInTheDocument();
+    await expect(dialog).toHaveClass('ez-dialog');
+
+    // Verify header structure
+    const header = dialog.querySelector('.ez-dialog__header');
+
+    await expect(header).toBeInTheDocument();
+
+    // Verify title is in header
+    const headline = header?.querySelector('.ez-dialog__headline');
+
+    await expect(headline).toBeInTheDocument();
+    await expect(headline?.textContent?.trim()).toBe('Dialog Title');
+
+    // Verify close button is in header
+    const closeBtn = header?.querySelector('button[aria-label="Close"]');
+
+    await expect(closeBtn).toBeInTheDocument();
+
+    // Verify content and actions
+    const content = dialog.querySelector('.ez-dialog__content');
+
+    await expect(content).toBeInTheDocument();
+
+    const actions = dialog.querySelector('.ez-dialog__actions');
+
+    await expect(actions).toBeInTheDocument();
+    await expect(actions?.children.length).toBe(2);
+
+    // Open and verify
+    dialog.showModal();
+    await expect(dialog).toHaveAttribute('open');
+
+    // Close via button and verify
     dialog.close('confirm');
     await expect(dialog.open).toBe(false);
     await expect(dialog.returnValue).toBe('confirm');
@@ -296,10 +413,11 @@ export const ScrollableContent: StoryObj = {
           id="scroll-dialog"
           aria-labelledby="scroll-dialog-title"
         >
-          <h2 class="ez-dialog__headline" id="scroll-dialog-title">
-            Terms of Service
-          </h2>
-          <hr class="ez-dialog__divider" id="scroll-divider-top" />
+          <div class="ez-dialog__header">
+            <h2 class="ez-dialog__headline" id="scroll-dialog-title">
+              Terms of Service
+            </h2>
+          </div>
           <div
             class="ez-dialog__content"
             id="scroll-dialog-content"
@@ -317,7 +435,6 @@ export const ScrollableContent: StoryObj = {
               `
             )}
           </div>
-          <hr class="ez-dialog__divider active" id="scroll-divider-bottom" />
           <div class="ez-dialog__actions">
             <button
               class="ez-btn ez-theme-primary"
@@ -355,15 +472,6 @@ export const ScrollableContent: StoryObj = {
     const content = dialog.querySelector('.ez-dialog__content');
 
     await expect(content).toBeInTheDocument();
-
-    const dividers = dialog.querySelectorAll('.ez-dialog__divider');
-
-    await expect(dividers.length).toBe(2);
-
-    // Bottom divider should have active class (content overflows)
-    const bottomDivider = dialog.querySelector('#scroll-divider-bottom');
-
-    await expect(bottomDivider).toHaveClass('active');
   },
 };
 
@@ -779,213 +887,5 @@ export const ResponsiveFullscreen: StoryObj = {
 
     await expect(optOutDialog).toBeInTheDocument();
     await expect(optOutDialog).not.toHaveClass('ez-dialog--auto-fullscreen');
-  },
-};
-
-export const WithThemes: StoryObj = {
-  render: () => html`
-    <section>
-      <header><h2>Dialogs with Themed Actions</h2></header>
-      <p style="margin: 0 0 1rem; opacity: 0.7;">
-        Dialog action buttons inherit theme colors from theme classes.
-      </p>
-      <div
-        class="ez-section-body"
-        style="display: flex; gap: 1rem; flex-wrap: wrap;"
-      >
-        ${Object.entries(EzThemeVariants).map(
-          ([label, suffix]) => html`
-            <div>
-              <button
-                class="ez-btn ez-filled ez-theme-${suffix}"
-                type="button"
-                @click=${() => {
-                  openDialog(`theme-dialog-${suffix}`);
-                }}
-              >
-                <ez-ripple></ez-ripple>
-                ${label}
-              </button>
-
-              <dialog
-                class="ez-dialog"
-                id="theme-dialog-${suffix}"
-                aria-labelledby="theme-dialog-${suffix}-title"
-              >
-                <h2
-                  class="ez-dialog__headline"
-                  id="theme-dialog-${suffix}-title"
-                >
-                  ${label} Theme
-                </h2>
-                <form
-                  class="ez-dialog__content"
-                  id="theme-dialog-${suffix}-form"
-                  method="dialog"
-                >
-                  Dialog with <strong>ez-theme-${suffix}</strong> action
-                  buttons.
-                </form>
-                <div class="ez-dialog__actions">
-                  <button
-                    class="ez-btn ez-theme-${suffix}"
-                    form="theme-dialog-${suffix}-form"
-                    value="cancel"
-                  >
-                    <ez-ripple></ez-ripple>
-                    Cancel
-                  </button>
-                  <button
-                    class="ez-btn ez-filled ez-theme-${suffix}"
-                    form="theme-dialog-${suffix}-form"
-                    value="ok"
-                  >
-                    <ez-ripple></ez-ripple>
-                    Confirm
-                  </button>
-                </div>
-              </dialog>
-            </div>
-          `
-        )}
-      </div>
-    </section>
-  `,
-  play: async ({ canvasElement }) => {
-    const dialogs = canvasElement.querySelectorAll('.ez-dialog'),
-      themeCount = Object.keys(EzThemeVariants).length;
-
-    await expect(dialogs.length).toBe(themeCount);
-
-    // Verify each dialog has proper structure
-    await Promise.all(
-      Array.from(dialogs).map(async dialog => {
-        const headline = dialog.querySelector('.ez-dialog__headline');
-
-        await expect(headline).toBeInTheDocument();
-
-        const actions = dialog.querySelector('.ez-dialog__actions');
-
-        await expect(actions).toBeInTheDocument();
-      })
-    );
-  },
-};
-
-export const DialogWithHeader: StoryObj = {
-  render: () => html`
-    <section>
-      <header><h2>Dialog with Header (Tailwind Flex)</h2></header>
-      <div class="ez-section-body">
-        <button
-          class="ez-btn ez-filled ez-theme-primary"
-          type="button"
-          @click=${() => {
-            openDialog('header-dialog');
-          }}
-        >
-          <ez-ripple></ez-ripple>
-          Open Dialog with Header
-        </button>
-
-        <dialog
-          class="ez-dialog"
-          id="header-dialog"
-          aria-labelledby="header-dialog-title"
-        >
-          <div class="ez-dialog__header">
-            <h2
-              class="ez-dialog__headline"
-              id="header-dialog-title"
-              style="padding: 0; margin: 0;"
-            >
-              Dialog Title
-            </h2>
-            <button
-              class="ez-btn ez-icon-btn"
-              type="button"
-              aria-label="Close"
-              @click=${() => {
-                closeDialog('header-dialog');
-              }}
-            >
-              <ez-ripple></ez-ripple>
-              <span class="md-icon" aria-hidden="true">close</span>
-            </button>
-          </div>
-          <form
-            class="ez-dialog__content"
-            id="header-dialog-form"
-            method="dialog"
-          >
-            This dialog uses a header div with Tailwind flex utilities to
-            position the title and close button. The close button sits in the
-            upper-right corner via <code>justify-between</code>.
-          </form>
-          <div class="ez-dialog__actions">
-            <button
-              class="ez-btn ez-theme-primary"
-              form="header-dialog-form"
-              value="cancel"
-            >
-              <ez-ripple></ez-ripple>
-              Cancel
-            </button>
-            <button
-              class="ez-btn ez-filled ez-theme-primary"
-              form="header-dialog-form"
-              value="confirm"
-            >
-              <ez-ripple></ez-ripple>
-              Confirm
-            </button>
-          </div>
-        </dialog>
-      </div>
-    </section>
-  `,
-  play: async ({ canvasElement }) => {
-    const dialog =
-      canvasElement.querySelector<HTMLDialogElement>('#header-dialog');
-
-    if (!dialog) return;
-
-    await expect(dialog).toBeInTheDocument();
-    await expect(dialog).toHaveClass('ez-dialog');
-
-    // Verify header structure
-    const header = dialog.querySelector('.ez-dialog__header');
-
-    await expect(header).toBeInTheDocument();
-
-    // Verify title is in header
-    const headline = header?.querySelector('.ez-dialog__headline');
-
-    await expect(headline).toBeInTheDocument();
-    await expect(headline?.textContent?.trim()).toBe('Dialog Title');
-
-    // Verify close button is in header
-    const closeBtn = header?.querySelector('button[aria-label="Close"]');
-
-    await expect(closeBtn).toBeInTheDocument();
-
-    // Verify content and actions
-    const content = dialog.querySelector('.ez-dialog__content');
-
-    await expect(content).toBeInTheDocument();
-
-    const actions = dialog.querySelector('.ez-dialog__actions');
-
-    await expect(actions).toBeInTheDocument();
-    await expect(actions?.children.length).toBe(2);
-
-    // Open and verify
-    dialog.showModal();
-    await expect(dialog).toHaveAttribute('open');
-
-    // Close via button and verify
-    dialog.close('confirm');
-    await expect(dialog.open).toBe(false);
-    await expect(dialog.returnValue).toBe('confirm');
   },
 };
