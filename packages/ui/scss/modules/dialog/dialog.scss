@@ -149,10 +149,37 @@
 }
 
 /* ========================================
- * Content (supporting text / body)
+ * With-dividers control class
+ *
+ * Use `.with-dividers` on `.ez-dialog` instead of manual `<hr>` divider
+ * elements to separate header, body, and footer sections.
  * ======================================== */
 
-.ez-dialog__content {
+.ez-dialog.with-dividers > .ez-dialog__body {
+  border-top: 1px solid var(--md-sys-color-outline, currentcolor);
+  padding-block: 11px;
+}
+
+.ez-dialog.with-dividers > .ez-dialog__footer {
+  border-top: 1px solid var(--md-sys-color-outline, currentcolor);
+  padding-top: 12px;
+}
+
+.ez-dialog.with-dividers > .ez-dialog__headline,
+.ez-dialog.with-dividers > .ez-dialog__header {
+  padding-bottom: 12px;
+}
+
+/* Hide manual divider elements when .with-dividers is present */
+.ez-dialog.with-dividers > .ez-dialog__divider {
+  display: none;
+}
+
+/* ========================================
+ * Body (supporting text / scrollable content)
+ * ======================================== */
+
+.ez-dialog__body {
   @extend %md-typescale-body-medium;
 
   color: var(--md-sys-color-on-surface-variant, GrayText);
@@ -162,17 +189,17 @@
 }
 
 /* Change top padding when unwrapped headline is present */
-.ez-dialog__headline + .ez-dialog__content,
-.ez-dialog__headline + .ez-dialog__divider + .ez-dialog__content,
-.ez-dialog__divider + .ez-dialog__content {
+.ez-dialog__headline + .ez-dialog__body,
+.ez-dialog__headline + .ez-dialog__divider + .ez-dialog__body,
+.ez-dialog__divider + .ez-dialog__body {
   padding-top: var(--md-sys-spacing-4, 1rem);
 }
 
 /* ========================================
- * Actions (button container)
+ * Footer (button container)
  * ======================================== */
 
-.ez-dialog__actions {
+.ez-dialog__footer {
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -180,12 +207,12 @@
   padding: 0 var(--md-sys-spacing-6, 1.5rem) var(--md-sys-spacing-6, 1.5rem);
 }
 
-.ez-dialog__actions:empty {
+.ez-dialog__footer:empty {
   display: none;
 }
 
-/* Stacked actions for long button labels */
-.ez-dialog__actions.ez-stacked {
+/* Stacked footer for long button labels */
+.ez-dialog__footer.ez-stacked {
   flex-direction: column-reverse;
   align-items: flex-end;
 }
@@ -263,8 +290,8 @@
   margin-inline-start: auto;
 }
 
-/* Full-screen content fills remaining space */
-.ez-dialog--fullscreen .ez-dialog__content {
+/* Full-screen body fills remaining space */
+.ez-dialog--fullscreen .ez-dialog__body {
   flex: 1;
   padding: var(--md-sys-spacing-6, 1.5rem);
 }

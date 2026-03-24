@@ -42,16 +42,12 @@ export const BasicDialog: StoryObj = {
           <h2 class="ez-dialog__headline" id="basic-dialog-title">
             Basic dialog title
           </h2>
-          <form
-            class="ez-dialog__content"
-            id="basic-dialog-form"
-            method="dialog"
-          >
+          <form class="ez-dialog__body" id="basic-dialog-form" method="dialog">
             A dialog is a type of modal window that appears in front of app
             content to provide critical information, or prompt for a decision to
             be made.
           </form>
-          <div class="ez-dialog__actions">
+          <div class="ez-dialog__footer">
             <button
               class="ez-btn ez-theme-primary"
               form="basic-dialog-form"
@@ -88,11 +84,11 @@ export const BasicDialog: StoryObj = {
     await expect(headline).toBeInTheDocument();
     await expect(headline?.textContent?.trim()).toBe('Basic dialog title');
 
-    const content = dialog.querySelector('.ez-dialog__content');
+    const content = dialog.querySelector('.ez-dialog__body');
 
     await expect(content).toBeInTheDocument();
 
-    const actions = dialog.querySelector('.ez-dialog__actions');
+    const actions = dialog.querySelector('.ez-dialog__footer');
 
     await expect(actions).toBeInTheDocument();
     await expect(actions?.children.length).toBe(2);
@@ -149,16 +145,12 @@ export const DialogWithHeader: StoryObj = {
               <span class="md-icon" aria-hidden="true">close</span>
             </button>
           </div>
-          <form
-            class="ez-dialog__content"
-            id="header-dialog-form"
-            method="dialog"
-          >
+          <form class="ez-dialog__body" id="header-dialog-form" method="dialog">
             This dialog uses a header div with Tailwind flex utilities to
             position the title and close button. The close button sits in the
             upper-right corner via <code>justify-between</code>.
           </form>
-          <div class="ez-dialog__actions">
+          <div class="ez-dialog__footer">
             <button
               class="ez-btn ez-theme-primary"
               form="header-dialog-form"
@@ -206,11 +198,11 @@ export const DialogWithHeader: StoryObj = {
     await expect(closeBtn).toBeInTheDocument();
 
     // Verify content and actions
-    const content = dialog.querySelector('.ez-dialog__content');
+    const content = dialog.querySelector('.ez-dialog__body');
 
     await expect(content).toBeInTheDocument();
 
-    const actions = dialog.querySelector('.ez-dialog__actions');
+    const actions = dialog.querySelector('.ez-dialog__footer');
 
     await expect(actions).toBeInTheDocument();
     await expect(actions?.children.length).toBe(2);
@@ -252,17 +244,13 @@ export const AlertDialog: StoryObj = {
           <h2 class="ez-dialog__headline" id="alert-dialog-title">
             Confirm deletion
           </h2>
-          <form
-            class="ez-dialog__content"
-            id="alert-dialog-form"
-            method="dialog"
-          >
+          <form class="ez-dialog__body" id="alert-dialog-form" method="dialog">
             <p id="alert-dialog-desc" style="margin: 0;">
               Are you sure you wish to delete this item? This action cannot be
               undone.
             </p>
           </form>
-          <div class="ez-dialog__actions">
+          <div class="ez-dialog__footer">
             <button
               class="ez-btn ez-theme-primary"
               form="alert-dialog-form"
@@ -337,7 +325,7 @@ export const DialogWithIcon: StoryObj = {
             Permanently delete?
           </h2>
           <form
-            class="ez-dialog__content"
+            class="ez-dialog__body"
             id="icon-dialog-form"
             method="dialog"
             style="text-align: center;"
@@ -345,7 +333,7 @@ export const DialogWithIcon: StoryObj = {
             Deleting the selected photos will also remove them from all synced
             devices.
           </form>
-          <div class="ez-dialog__actions">
+          <div class="ez-dialog__footer">
             <button
               class="ez-btn ez-theme-primary"
               form="icon-dialog-form"
@@ -419,7 +407,7 @@ export const ScrollableContent: StoryObj = {
             </h2>
           </div>
           <div
-            class="ez-dialog__content"
+            class="ez-dialog__body"
             id="scroll-dialog-content"
             style="max-height: 200px;"
           >
@@ -435,7 +423,7 @@ export const ScrollableContent: StoryObj = {
               `
             )}
           </div>
-          <div class="ez-dialog__actions">
+          <div class="ez-dialog__footer">
             <button
               class="ez-btn ez-theme-primary"
               type="button"
@@ -469,7 +457,7 @@ export const ScrollableContent: StoryObj = {
 
     await expect(dialog).toBeInTheDocument();
 
-    const content = dialog.querySelector('.ez-dialog__content');
+    const content = dialog.querySelector('.ez-dialog__body');
 
     await expect(content).toBeInTheDocument();
   },
@@ -492,7 +480,7 @@ export const FullScreenDialog: StoryObj = {
         </button>
 
         <dialog
-          class="ez-dialog ez-dialog--fullscreen"
+          class="ez-dialog ez-dialog--fullscreen with-dividers"
           id="fullscreen-dialog"
           aria-labelledby="fullscreen-dialog-title"
         >
@@ -522,8 +510,7 @@ export const FullScreenDialog: StoryObj = {
               Save
             </button>
           </div>
-          <hr class="ez-dialog__divider active" />
-          <div class="ez-dialog__content">
+          <div class="ez-dialog__body">
             <p>
               Full-screen dialogs fill the entire screen and are typically used
               for complex tasks on mobile, such as creating a new calendar event
@@ -590,7 +577,7 @@ export const FullScreenDialog: StoryObj = {
 
     await expect(confirmBtn).toBeInTheDocument();
 
-    const content = dialog.querySelector('.ez-dialog__content');
+    const content = dialog.querySelector('.ez-dialog__body');
 
     await expect(content).toBeInTheDocument();
   },
@@ -627,11 +614,7 @@ export const FormIntegration: StoryObj = {
           <h2 class="ez-dialog__headline" id="form-dialog-title">
             Phone ringtone
           </h2>
-          <form
-            class="ez-dialog__content"
-            id="form-dialog-form"
-            method="dialog"
-          >
+          <form class="ez-dialog__body" id="form-dialog-form" method="dialog">
             <div style="display: flex; flex-direction: column; gap: 0.75rem;">
               ${['Default', 'Callisto', 'Ganymede', 'Luna', 'Oberon'].map(
                 name => html`
@@ -650,7 +633,7 @@ export const FormIntegration: StoryObj = {
               )}
             </div>
           </form>
-          <div class="ez-dialog__actions">
+          <div class="ez-dialog__footer">
             <button
               class="ez-btn ez-theme-primary"
               form="form-dialog-form"
@@ -711,7 +694,7 @@ export const StackedActions: StoryObj = {
       <header><h2>Stacked Actions</h2></header>
       <p style="margin: 0 0 1rem; opacity: 0.7;">
         When button labels are too long for side-by-side layout, use
-        <code>.ez-stacked</code> on the actions container.
+        <code>.ez-stacked</code> on the footer container.
       </p>
       <div class="ez-section-body">
         <button
@@ -734,14 +717,14 @@ export const StackedActions: StoryObj = {
             Turn on travel mode?
           </h2>
           <form
-            class="ez-dialog__content"
+            class="ez-dialog__body"
             id="stacked-dialog-form"
             method="dialog"
           >
             Travel mode adds estimated transit time to calendar events based on
             your home and work addresses.
           </form>
-          <div class="ez-dialog__actions ez-stacked">
+          <div class="ez-dialog__footer ez-stacked">
             <button
               class="ez-btn ez-theme-primary"
               form="stacked-dialog-form"
@@ -771,7 +754,7 @@ export const StackedActions: StoryObj = {
 
     await expect(dialog).toBeInTheDocument();
 
-    const actions = dialog.querySelector('.ez-dialog__actions');
+    const actions = dialog.querySelector('.ez-dialog__footer');
 
     await expect(actions).toBeInTheDocument();
     await expect(actions).toHaveClass('ez-stacked');
@@ -822,14 +805,14 @@ export const ResponsiveFullscreen: StoryObj = {
           Responsive dialog
         </h2>
         <form
-          class="ez-dialog__content"
+          class="ez-dialog__body"
           id="responsive-dialog-form"
           method="dialog"
         >
           This dialog automatically goes fullscreen on small viewports (≤600px).
           Try resizing your browser window to see it switch.
         </form>
-        <div class="ez-dialog__actions">
+        <div class="ez-dialog__footer">
           <button
             class="ez-btn ez-theme-primary"
             form="responsive-dialog-form"
@@ -850,14 +833,14 @@ export const ResponsiveFullscreen: StoryObj = {
           Opt-out dialog
         </h2>
         <form
-          class="ez-dialog__content"
+          class="ez-dialog__body"
           id="responsive-opt-out-form"
           method="dialog"
         >
           This dialog doesn't have <code>.ez-dialog--auto-fullscreen</code> so
           it stays centered regardless of viewport size.
         </form>
-        <div class="ez-dialog__actions">
+        <div class="ez-dialog__footer">
           <button
             class="ez-btn ez-theme-primary"
             form="responsive-opt-out-form"
@@ -887,5 +870,97 @@ export const ResponsiveFullscreen: StoryObj = {
 
     await expect(optOutDialog).toBeInTheDocument();
     await expect(optOutDialog).not.toHaveClass('ez-dialog--auto-fullscreen');
+  },
+};
+
+/**
+ * Dialog with dividers — uses `.with-dividers` control class instead of `<hr>`
+ * elements. Borders and padding are automatically applied between sections.
+ */
+export const WithDividers: StoryObj = {
+  render: () => html`
+    <section>
+      <header>
+        <h2>Dialog with Dividers</h2>
+        <p>
+          Use the <code>.with-dividers</code> class on <code>.ez-dialog</code>
+          to automatically add borders between header, body, and footer — no
+          <code>&lt;hr&gt;</code> elements needed.
+        </p>
+      </header>
+      <div class="ez-section-body">
+        <button
+          class="ez-btn ez-filled ez-theme-primary"
+          type="button"
+          @click=${() => {
+            openDialog('dividers-dialog');
+          }}
+        >
+          <ez-ripple></ez-ripple>
+          Open Dialog with Dividers
+        </button>
+
+        <dialog
+          class="ez-dialog with-dividers"
+          id="dividers-dialog"
+          aria-labelledby="dividers-dialog-title"
+        >
+          <h2 class="ez-dialog__headline" id="dividers-dialog-title">
+            With Dividers
+          </h2>
+          <form
+            class="ez-dialog__body"
+            id="dividers-dialog-form"
+            method="dialog"
+          >
+            This dialog uses the <code>.with-dividers</code> control class.
+            Borders are automatically applied between the headline, body, and
+            footer sections without needing manual divider elements.
+          </form>
+          <div class="ez-dialog__footer">
+            <button
+              class="ez-btn ez-theme-primary"
+              form="dividers-dialog-form"
+              value="cancel"
+            >
+              <ez-ripple></ez-ripple>
+              Cancel
+            </button>
+            <button
+              class="ez-btn ez-theme-primary"
+              form="dividers-dialog-form"
+              value="confirm"
+            >
+              <ez-ripple></ez-ripple>
+              Confirm
+            </button>
+          </div>
+        </dialog>
+      </div>
+    </section>
+  `,
+
+  play: async ({ canvasElement }) => {
+    const dialog =
+      canvasElement.querySelector<HTMLDialogElement>('#dividers-dialog');
+
+    if (!dialog) return;
+
+    await expect(dialog).toBeInTheDocument();
+    await expect(dialog).toHaveClass('ez-dialog');
+    await expect(dialog).toHaveClass('with-dividers');
+
+    const body = dialog.querySelector('.ez-dialog__body'),
+      footer = dialog.querySelector('.ez-dialog__footer'),
+      headline = dialog.querySelector('.ez-dialog__headline');
+
+    await expect(body).toBeInTheDocument();
+    await expect(footer).toBeInTheDocument();
+    await expect(headline).toBeInTheDocument();
+
+    // Verify no <hr> divider elements exist
+    const dividers = dialog.querySelectorAll('hr, .ez-dialog__divider');
+
+    await expect(dividers.length).toBe(0);
   },
 };
