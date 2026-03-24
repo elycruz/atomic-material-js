@@ -4,11 +4,12 @@
  * dialog.css
  *
  * Material Design 3 Dialog — CSS-only module.
- * Styles the native <dialog> element with .ez-dialog class names.
+ * Styles the native <dialog> element with `.ez-dialog*` class names.
  *
  * Variants:
  *   - Basic dialog (default)
  *   - Full-screen dialog (.ez-dialog--fullscreen or auto via container query)
+ *   - Dialog with header, body, and footer dividers (`.with-dividers` class).
  */
 
 /* ========================================
@@ -113,6 +114,8 @@
 
 /* ========================================
  * Headline
+ * - Can be placed alongside body, and/or
+ *   in an `.ez-dialog__header` element.
  * ======================================== */
 
 .ez-dialog__headline {
@@ -158,7 +161,7 @@
   flex: 1;
 }
 
-/* Remove top padding when headline is present */
+/* Change top padding when unwrapped headline is present */
 .ez-dialog__headline + .ez-dialog__content,
 .ez-dialog__headline + .ez-dialog__divider + .ez-dialog__content,
 .ez-dialog__divider + .ez-dialog__content {
