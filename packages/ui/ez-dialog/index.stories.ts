@@ -208,7 +208,7 @@ export const DialogWithIcon: StoryObj = {
           aria-labelledby="icon-dialog-title"
         >
           <div class="ez-dialog__icon">
-            <span class="material-symbols-outlined" aria-hidden="true"
+            <span class="material-symbols-rounded" aria-hidden="true"
               >delete</span
             >
           </div>
@@ -893,7 +893,7 @@ export const DialogWithHeader: StoryObj = {
           id="header-dialog"
           aria-labelledby="header-dialog-title"
         >
-          <div class="flex flex-row items-center justify-between px-6 pt-6">
+          <div class="ez-dialog__header">
             <h2
               class="ez-dialog__headline"
               id="header-dialog-title"
@@ -910,9 +910,7 @@ export const DialogWithHeader: StoryObj = {
               }}
             >
               <ez-ripple></ez-ripple>
-              <span class="material-symbols-outlined" aria-hidden="true"
-                >close</span
-              >
+              <span class="md-icon" aria-hidden="true">close</span>
             </button>
           </div>
           <form
@@ -956,12 +954,9 @@ export const DialogWithHeader: StoryObj = {
     await expect(dialog).toHaveClass('ez-dialog');
 
     // Verify header structure
-    const header = dialog.querySelector('div.flex');
+    const header = dialog.querySelector('.ez-dialog__header');
 
     await expect(header).toBeInTheDocument();
-    await expect(header).toHaveClass('flex-row');
-    await expect(header).toHaveClass('items-center');
-    await expect(header).toHaveClass('justify-between');
 
     // Verify title is in header
     const headline = header?.querySelector('.ez-dialog__headline');

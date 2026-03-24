@@ -235,7 +235,7 @@
   align-items: center;
   gap: var(--md-sys-spacing-2, 0.5rem);
   min-height: 56px;
-  padding-inline: var(--md-sys-spacing-4, 1rem);
+  padding: var(--md-sys-spacing-6, 1.5rem)  var(--md-sys-spacing-6, 1.5rem) 0;
   flex-shrink: 0;
 }
 

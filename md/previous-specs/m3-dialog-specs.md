@@ -284,7 +284,7 @@ The native `<dialog>` element provides these built-in capabilities (no custom Ja
 ```html
 <dialog class="ez-dialog" id="my-dialog" aria-labelledby="dialog-title">
   <div class="ez-dialog__icon">
-    <span class="material-symbols-outlined">info</span>
+    <span class="material-symbols-rounded">info</span>
   </div>
   <h2 class="ez-dialog__headline" id="dialog-title">Dialog title</h2>
   <form class="ez-dialog__content" id="dialog-form" method="dialog">
@@ -323,7 +323,7 @@ The native `<dialog>` element provides these built-in capabilities (no custom Ja
     <button class="ez-dialog__close ez-btn ez-icon-btn" type="button"
             onclick="this.closest('dialog').close()">
       <ez-ripple></ez-ripple>
-      <span class="material-symbols-outlined">close</span>
+      <span class="material-symbols-rounded">close</span>
     </button>
     <h2 class="ez-dialog__headline" id="fs-title">New event</h2>
     <button class="ez-dialog__confirm ez-btn ez-theme-primary" type="button"
