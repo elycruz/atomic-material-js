@@ -1,4 +1,4 @@
-import { beforeAll } from 'vitest';
+import { beforeAll } from 'vite-plus/test';
 
 import '@testing-library/dom';
 import '@testing-library/jest-dom/vitest';
