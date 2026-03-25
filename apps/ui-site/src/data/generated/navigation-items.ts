@@ -68,6 +68,11 @@ export const navigationItems: NavItem[] = [{
           'alias': 'ez-appbar'
         },
         {
+          'label': 'Ez-badge',
+          'uri': '/custom-elements/ez-badge/',
+          'alias': 'ez-badge'
+        },
+        {
           'label': 'Ez-btn-surface',
           'uri': '/custom-elements/ez-btn-surface/',
           'alias': 'ez-btn-surface'

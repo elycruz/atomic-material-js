@@ -9,54 +9,53 @@
  * Usage:
  *   <div class="ez-badge-wrapper">
  *     <button>...</button>
- *     <span class="ez-badge"></span>           <!-- small dot -->
- *     <span class="ez-badge">3</span>          <!-- large with number -->
- *     <span class="ez-badge">999+</span>       <!-- large with text -->
+ *     <span class="ez-badge ez-theme-warning"></span>  <!-- small dot -->
+ *     <span class="ez-badge ez-theme-error">3</span>   <!-- large with number -->
+ *     <span class="ez-badge">999+</span>               <!-- large with text -->
  *   </div>
  */
 
-.ez-badge-wrapper {
+:has(> .ez-badge, > ez-badge) {
   position: relative;
+}
+
+ez-badge,
+.ez-badge,
+.ez-badge-wrapper,
+:has(> .ez-badge, > ez-badge){
   display: inline-flex;
 }
 
+ez-badge,
 .ez-badge {
   --_badge-shape: var(--md-sys-shape-corner-full, calc(infinity * 1px));
-  --_badge-size: 6px;
+  --_badge-size: 0.375rem; // 6px;
+
+  @extend %md-typescale-label-small;
 
   position: absolute;
   inset-block-start: 0;
   inset-inline-end: 0;
   translate: 50% -50%;
   z-index: 1;
-  display: inline-flex;
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
   min-width: var(--_badge-size);
   height: var(--_badge-size);
   border-radius: var(--_badge-shape);
-  background: var(--md-color-theme);
-  color: var(--md-color-on-theme);
+  background: var(--md-color-theme, var(--md-sys-color-error, red));
+  color: var(--md-color-on-theme, var(--md-sys-color-on-error, white));
 
   /* Empty (small dot) badges have no padding or text styles */
   padding: 0;
 }
 
+
 /* Large badge — when the element has content */
-.ez-badge:not(:empty) {
-  @extend %md-typescale-label-small;
+:is(.ez-badge, ez-badge):not(:empty) {
+  --_badge-size: 1rem;
 
-  --_badge-size: 16px;
-
-  color: var(--md-color-on-theme, white);
-  padding-inline: 4px;
-}
-
-/* Color theme */
-
-/* Default Color */
-.ez-badge:not([class^="ez-theme"], [class*="ez-theme"]) {
-  --md-color-theme: var(--md-sys-color-error, red);
-  --md-color-on-theme: var(--md-sys-color-on-error, white);
+  font-size: 0.6875rem; // 11px;
+  padding-inline: 0.25rem;
 }
