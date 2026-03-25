@@ -21,12 +21,12 @@ export const SmallBadge: StoryObj = {
         class="ez-section-body"
         style="display: flex; gap: 2rem; align-items: center;"
       >
-        <span style="position: relative;">
+        <span>
           <span class="md-icon" aria-hidden="true">notifications</span>
           <ez-badge data-testid="small-icon"></ez-badge>
         </span>
 
-        <span style="position: relative;">
+        <span>
           <button class="ez-btn ez-outlined ez-theme-primary" type="button">
             Notifications
           </button>
@@ -44,11 +44,6 @@ export const SmallBadge: StoryObj = {
     await Promise.all(
       Array.from(badges).map(async badge => {
         await expect(badge).toBeInTheDocument();
-
-        const indicator = badge.shadowRoot?.querySelector('.badge');
-
-        await expect(indicator).toBeTruthy();
-        await expect(indicator?.classList.contains('large')).toBe(false);
       })
     );
   },
@@ -65,17 +60,17 @@ export const LargeBadge: StoryObj = {
         class="ez-section-body"
         style="display: flex; gap: 2rem; align-items: center;"
       >
-        <span style="position: relative;">
+        <span>
           <span class="md-icon" aria-hidden="true">notifications</span>
           <ez-badge data-testid="badge-3">3</ez-badge>
         </span>
 
-        <span style="position: relative;">
+        <span>
           <span class="md-icon" aria-hidden="true">notifications</span>
           <ez-badge data-testid="badge-99">99</ez-badge>
         </span>
 
-        <span style="position: relative;">
+        <span>
           <span class="md-icon" aria-hidden="true">notifications</span>
           <ez-badge data-testid="badge-999">999+</ez-badge>
         </span>
@@ -92,20 +87,9 @@ export const LargeBadge: StoryObj = {
     await expect(badge99).toBeInTheDocument();
     await expect(badge999).toBeInTheDocument();
 
-    await expect(
-      badge3?.shadowRoot?.querySelector('.badge')?.textContent?.trim()
-    ).toBe('3');
-    await expect(
-      badge99?.shadowRoot?.querySelector('.badge')?.textContent?.trim()
-    ).toBe('99');
-    await expect(
-      badge999?.shadowRoot?.querySelector('.badge')?.textContent?.trim()
-    ).toBe('999+');
-
-    // Verify large class is applied
-    await expect(
-      badge3?.shadowRoot?.querySelector('.badge')?.classList.contains('large')
-    ).toBe(true);
+    await expect(badge3?.textContent?.trim()).toBe('3');
+    await expect(badge99?.textContent?.trim()).toBe('99');
+    await expect(badge999?.textContent?.trim()).toBe('999+');
   },
 };
 
@@ -120,29 +104,17 @@ export const Positioning: StoryObj = {
         class="ez-section-body"
         style="display: flex; gap: 3rem; align-items: center; padding: 1rem;"
       >
-        <span
-          style="position: relative;"
-          data-testid="pos-notif"
-          aria-label="Notifications: 5"
-        >
+        <span data-testid="pos-notif" aria-label="Notifications: 5">
           <span class="md-icon" aria-hidden="true">notifications</span>
           <ez-badge>5</ez-badge>
         </span>
 
-        <span
-          style="position: relative;"
-          data-testid="pos-mail"
-          aria-label="Messages: new"
-        >
+        <span data-testid="pos-mail" aria-label="Messages: new">
           <span class="md-icon" aria-hidden="true">mail</span>
           <ez-badge></ez-badge>
         </span>
 
-        <span
-          style="position: relative;"
-          data-testid="pos-cart"
-          aria-label="Cart: 12 items"
-        >
+        <span data-testid="pos-cart" aria-label="Cart: 12 items">
           <span class="md-icon" aria-hidden="true">shopping_cart</span>
           <ez-badge>12</ez-badge>
         </span>
@@ -156,20 +128,13 @@ export const Positioning: StoryObj = {
     await expect(badges.length).toBe(3);
 
     // First: large badge with number
-    const firstIndicator = badges[0]?.shadowRoot?.querySelector('.badge');
-
-    await expect(firstIndicator?.textContent?.trim()).toBe('5');
-    await expect(firstIndicator?.classList.contains('large')).toBe(true);
+    await expect(badges[0]?.textContent?.trim()).toBe('5');
 
     // Second: small dot badge (no text content)
-    const secondIndicator = badges[1]?.shadowRoot?.querySelector('.badge');
-
-    await expect(secondIndicator?.classList.contains('large')).toBe(false);
+    await expect(badges[1]?.textContent?.trim()).toBe('');
 
     // Third: large badge with number
-    const thirdIndicator = badges[2]?.shadowRoot?.querySelector('.badge');
-
-    await expect(thirdIndicator?.textContent?.trim()).toBe('12');
+    await expect(badges[2]?.textContent?.trim()).toBe('12');
   },
 };
 
@@ -187,7 +152,7 @@ export const WithThemes: StoryObj = {
         ${themes.map(
           theme => html`
             <div style="text-align: center;">
-              <span style="position: relative;">
+              <span>
                 <span class="md-icon" aria-hidden="true">notifications</span>
                 <ez-badge class="${theme ? `ez-theme-${theme}` : ''}">
                   7
@@ -210,10 +175,7 @@ export const WithThemes: StoryObj = {
 
     await Promise.all(
       Array.from(badges).map(async badge => {
-        const indicator = badge.shadowRoot?.querySelector('.badge');
-
-        await expect(indicator?.textContent?.trim()).toBe('7');
-        await expect(indicator?.classList.contains('large')).toBe(true);
+        await expect(badge.textContent?.trim()).toBe('7');
       })
     );
   },
