@@ -15,12 +15,12 @@
 | List list item label text color | `md.comp.list.list-item.label-text.color` | #1D1B20 |
 | List list item supporting text color | `md.comp.list.list-item.supporting-text.color` | #49454F |
 | List list item overline color | `md.comp.list.list-item.overline.color` | #49454F |
-| List list item divider color | `md.comp.list.divider.color` | #79747E |
-| List list item divider height | `md.comp.list.divider.height` | 1dp |
-| List list item container height | `md.comp.list.list-item.container.height` | 56dp |
-| One line list item container height | `md.comp.list.md.comp.list.list-item.one-line.container.height` | 56dp |
-| Three lines list item container height | `md.comp.list.md.comp.list.list-item.three-line.container.height` | 88dp |
-| Two lines list item container height | `md.comp.list.md.comp.list.list-item.two-line.container.height` | 72dp |
+| ~~List list item divider color~~ | ~~`md.comp.list.divider.color`~~ | ~~#79747E~~ | **Deprecated** — use shared divider component |
+| ~~List list item divider height~~ | ~~`md.comp.list.divider.height`~~ | ~~1dp~~ | **Deprecated** — use shared divider component |
+| ~~List list item container height~~ | ~~`md.comp.list.list-item.container.height`~~ | ~~56dp~~ | **Deprecated** — use min-height + padding |
+| ~~One line list item container height~~ | ~~`md.comp.list.md.comp.list.list-item.one-line.container.height`~~ | ~~56dp~~ | **Deprecated** — use min-height + padding |
+| ~~Three lines list item container height~~ | ~~`md.comp.list.md.comp.list.list-item.three-line.container.height`~~ | ~~88dp~~ | **Deprecated** — use min-height + padding |
+| ~~Two lines list item container height~~ | ~~`md.comp.list.md.comp.list.list-item.two-line.container.height`~~ | ~~72dp~~ | **Deprecated** — use min-height + padding |
 | List list item leading icon color | `md.comp.list.list-item.leading-icon.color` | #49454F |
 | List list item trailing icon color | `md.comp.list.list-item.trailing-icon.color` | #49454F |
 | List list item unselected trailing icon color | `md.comp.list.list-item.unselected.trailing-icon.color` | #1D1B20 |
