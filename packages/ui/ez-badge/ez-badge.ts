@@ -37,6 +37,7 @@ export class EzBadgeElement extends LitElement {
 
   firstUpdated() {
     this.#slotElement = this.shadowRoot?.querySelector('slot') ?? null;
+
     this.#updateBadgeText();
 
     // Listen to slotchange events to update badge text when content changes
@@ -47,11 +48,13 @@ export class EzBadgeElement extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
+
     this.#applyParentPosition();
   }
 
   disconnectedCallback() {
     super.disconnectedCallback();
+
     this.#slotElement?.removeEventListener('slotchange', this.#updateBadgeText);
   }
 
@@ -72,6 +75,7 @@ export class EzBadgeElement extends LitElement {
 
     // Get text content from the slot's assigned nodes
     const assignedNodes = this.#slotElement.assignedNodes({ flatten: true });
+
     const text = assignedNodes
       .map(node => node.textContent?.trim() ?? '')
       .join('')
