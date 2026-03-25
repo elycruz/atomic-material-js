@@ -1,1 +1,5 @@
-pnpm lintfix && pnpm test
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# Run lint-staged to lint and fix only changed files
+pnpm lint-staged

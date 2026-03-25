@@ -1,4 +1,8 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-pnpm lint
+# Run build (full build is still needed)
+pnpm build
+
+# Run tests only on changed files
+node node_scripts/test-changed-files.mjs
