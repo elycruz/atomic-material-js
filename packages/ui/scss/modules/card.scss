@@ -1,3 +1,5 @@
+@import "../component-prelude";
+
 .ez-card {
   --_card-container-shape: var(--md-sys-shape-corner-medium, 12px);
 
@@ -124,12 +126,25 @@ html[dir="rtl"] .ez-card:not(.ez-layout-vertical) {
   padding: var(--md-sys-spacing-4, 1rem);
 }
 
-.ez-card__content {
-  padding: 0 var(--md-sys-spacing-4, 1rem) var(--md-sys-spacing-4, 1rem);
-  height: 100%;
+.ez-card__title {
+  @extend %md-typescale-title-medium;
+
+  margin: 0;
 }
 
-.ez-card__actions {
+.ez-card__subtitle {
+  @extend %md-typescale-body-medium;
+
+  margin: 0;
+  color: var(--md-sys-color-on-surface-variant, GrayText);
+}
+
+:where(.ez-card__body, .ez-card__content) {
+  padding: 0 var(--md-sys-spacing-4, 1rem) var(--md-sys-spacing-4, 1rem);
+  flex: 1;
+}
+
+:where(.ez-card__footer, .ez-card__actions) {
   display: flex;
   align-items: center;
   justify-content: flex-end;
