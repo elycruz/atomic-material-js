@@ -29,6 +29,19 @@ const config: StorybookConfig = {
     options: {},
   },
   docs: {},
+  async viteFinal(config) {
+    return {
+      ...config,
+      css: {
+        ...config.css,
+        preprocessorOptions: {
+          scss: {
+            api: 'modern-compiler',
+          },
+        },
+      },
+    };
+  },
 };
 
 export default config;

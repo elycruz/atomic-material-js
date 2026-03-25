@@ -2,7 +2,6 @@ import { html } from 'lit';
 import { expect } from 'storybook/test';
 import type { StoryObj } from '@storybook/web-components-vite';
 import '../utils/storybook';
-import './stories.scss';
 
 import './register.js';
 import { EzAppbarName } from './ez-appbar.js';

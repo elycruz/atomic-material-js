@@ -5,7 +5,6 @@ import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import storybookTest from '@storybook/addon-vitest/vitest-plugin';
 import { playwright } from 'vite-plus/test/browser-playwright';
-import sass from 'rollup-plugin-sass';
 
 import type { TestProjectInlineConfiguration } from 'vite-plus/test/config';
 
@@ -14,13 +13,14 @@ const { NODE_ENV } = process.env,
   dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
-  plugins: [
-    tailwindcss(),
-    react(),
-    sass({
-      insert: true, // Inject CSS into the page
-    }),
-  ],
+  plugins: [tailwindcss(), react()],
+  css: {
+    preprocessorOptions: {
+      scss: {
+        api: 'modern-compiler',
+      },
+    },
+  },
   resolve: {
     alias: {
       '@': dirname,
