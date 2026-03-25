@@ -35,16 +35,20 @@ The following custom elements are complete and ready to use:
 ### Usage Example
 
 ```typescript
-import '@atomic/ui/ez-button-surface';
-import '@atomic/ui/ez-ripple';
+import '@atomic/ui/ez-appbar';
 
 // Use in HTML
-<ez-button-surface>
-  <button>
-    <ez-ripple></ez-ripple>
-    Click me
-  </button>
-</ez-button-surface>
+<ez-appbar>
+  <h1>My Application</h1>
+</ez-appbar>
+
+// With size and style variants
+<ez-appbar size="medium" class="ez-outlined">
+  <hgroup>
+    <h1>My Application</h1>
+    <p>Subtitle text</p>
+  </hgroup>
+</ez-appbar>
 ```
 
 ### Available Exports
@@ -262,16 +266,13 @@ pnpm add @atomic/ui-react
 ```
 
 ```tsx
-import { EzRipple, EzButtonSurface } from '@atomic/ui-react';
+import { EzAppbar } from '@atomic/ui-react';
 
 function App() {
   return (
-    <EzButtonSurface>
-      <button>
-        <EzRipple />
-        Click me
-      </button>
-    </EzButtonSurface>
+    <EzAppbar size="medium">
+      <h1>My Application</h1>
+    </EzAppbar>
   );
 }
 ```
