@@ -3,6 +3,7 @@
  *
  * MD3 list component with one/two/three-line items.
  */
+@import "../component-prelude";
 
 .ez-list {
   --_list-container-color: var(--md-sys-color-surface, Canvas);
@@ -11,6 +12,13 @@
   margin: 0;
   padding: 0;
   background: var(--_list-container-color);
+  border-radius: var(--md-sys-shape-corner-large, 16px);
+  overflow: hidden;
+}
+
+/* Dividers within list */
+.ez-list > .ez-divider {
+  margin-inline: var(--md-sys-spacing-4, 1rem);
 }
 
 /* List item */
@@ -20,8 +28,8 @@
   display: flex;
   align-items: center;
   min-height: var(--_list-item-height);
-  padding: var(--md-sys-spacing-2, 0.5rem) var(--md-sys-spacing-4, 1rem);
-  gap: var(--md-sys-spacing-4, 1rem);
+  padding: 10px var(--md-sys-spacing-4, 1rem);
+  gap: 12px;
   position: relative;
   text-decoration: none;
   color: inherit;
@@ -32,7 +40,6 @@
   --_list-item-height: 72px;
 
   align-items: flex-start;
-  padding-block: var(--md-sys-spacing-2, 0.5rem);
 }
 
 /* Three-line */
@@ -40,7 +47,6 @@
   --_list-item-height: 88px;
 
   align-items: flex-start;
-  padding-block: var(--md-sys-spacing-3, 0.75rem);
 }
 
 /* Content column */
@@ -52,17 +58,21 @@
   gap: 0;
 }
 
+.ez-list-item__overline {
+  @extend %md-typescale-label-small;
+
+  color: var(--md-sys-color-on-surface-variant, GrayText);
+}
+
 .ez-list-item__headline {
-  font-family: var(--md-sys-typescale-body-large-font, inherit);
-  font-size: var(--md-sys-typescale-body-large-size, 1.33333rem);
-  line-height: var(--md-sys-typescale-body-large-line-height, 2rem);
+  @extend %md-typescale-body-large;
+
   color: var(--md-sys-color-on-surface, CanvasText);
 }
 
 .ez-list-item__supporting-text {
-  font-family: var(--md-sys-typescale-body-medium-font, inherit);
-  font-size: var(--md-sys-typescale-body-medium-size, 1.16667rem);
-  line-height: var(--md-sys-typescale-body-medium-line-height, 1.66667rem);
+  @extend %md-typescale-body-medium;
+
   color: var(--md-sys-color-on-surface-variant, GrayText);
 }
 
@@ -72,18 +82,77 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  width: 24px;
-  height: 24px;
   color: var(--md-sys-color-on-surface-variant, GrayText);
 }
 
+.ez-list-item__leading > .md-icon {
+  color: var(--md-sys-color-on-surface-variant, GrayText);
+}
+
+/* Leading: avatar */
+.ez-list-item__leading.ez-avatar {
+  @extend %md-typescale-title-medium;
+
+  width: 40px;
+  height: 40px;
+  border-radius: var(--md-sys-shape-corner-full, 50%);
+  background: var(--md-sys-color-secondary-container, Canvas);
+  color: var(--md-sys-color-on-secondary-container, CanvasText);
+}
+
+/* Leading: image */
+.ez-list-item__leading.ez-image {
+  width: 56px;
+  height: 56px;
+  overflow: hidden;
+}
+
+/* Leading: video */
+.ez-list-item__leading.ez-video {
+  width: 100px;
+  border-radius: var(--md-sys-shape-corner-small, 8px);
+  overflow: hidden;
+}
+
 .ez-list-item__trailing {
+  @extend %md-typescale-label-small;
+
   display: flex;
   align-items: center;
   flex-shrink: 0;
-  font-family: var(--md-sys-typescale-label-small-font, inherit);
-  font-size: var(--md-sys-typescale-label-small-size, 0.91667rem);
   color: var(--md-sys-color-on-surface-variant, GrayText);
+}
+
+.ez-list-item__trailing > .md-icon {
+  color: var(--md-sys-color-on-surface-variant, GrayText);
+}
+
+/* Selected state */
+.ez-list-item:is(.ez-selected, [aria-selected="true"]) {
+  background: var(--md-sys-color-secondary-container, Highlight);
+  border-radius: var(--md-sys-shape-corner-large, 16px);
+}
+
+.ez-list-item:is(.ez-selected, [aria-selected="true"]) :is(
+  .ez-list-item__headline,
+  .ez-list-item__supporting-text,
+  .ez-list-item__overline,
+  .ez-list-item__trailing
+) {
+  color: var(--md-sys-color-on-secondary-container, HighlightText);
+}
+
+.ez-list-item:is(.ez-selected, [aria-selected="true"]) :is(
+  .ez-list-item__leading,
+  .ez-list-item__trailing
+) > .md-icon {
+  color: var(--md-sys-color-on-secondary-container, HighlightText);
+}
+
+/* Disabled state */
+.ez-list-item:is([disabled], [aria-disabled="true"]) {
+  opacity: var(--md-sys-state-disabled-content-opacity, 0.38);
+  pointer-events: none;
 }
 
 /* State layer for interactive list items */
@@ -91,6 +160,7 @@
   content: "";
   position: absolute;
   inset: 0;
+  border-radius: inherit;
   background: var(--md-sys-color-on-surface, currentcolor);
   opacity: 0;
   transition: opacity var(--md-sys-motion-duration-short2, 100ms) var(--md-sys-motion-easing-standard, ease);
@@ -107,4 +177,65 @@
 
 .ez-list-item:is(a, button, [role="option"], [role="menuitem"], [role="listitem"]):active::before {
   opacity: var(--md-sys-state-pressed-state-layer-opacity, 0.1);
+}
+
+/* Focus indicator */
+.ez-list-item:is(a, button, [role="option"], [role="menuitem"], [role="listitem"]):focus-visible {
+  outline: 3px solid var(--md-sys-color-secondary, Highlight);
+  outline-offset: -3px;
+}
+
+/* ---- Extended (expandable) list ---- */
+
+.ez-list-expand {
+  border-radius: var(--md-sys-shape-corner-large, 16px);
+  overflow: hidden;
+}
+
+/* Toggle row (the clickable expand/collapse trigger) */
+.ez-list-expand__toggle {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 56px;
+  padding: 10px var(--md-sys-spacing-4, 1rem);
+  gap: 12px;
+  cursor: pointer;
+  background: var(--md-sys-color-surface, Canvas);
+  border: none;
+  color: inherit;
+  text-align: start;
+}
+
+/* Trailing icon container (circular affordance) */
+.ez-list-expand__toggle-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-inline-start: auto;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--md-sys-shape-corner-full, 50%);
+  background: var(--md-sys-color-surface, Canvas);
+  color: var(--md-sys-color-on-surface, CanvasText);
+  transition: transform var(--md-sys-motion-duration-short2, 100ms) var(--md-sys-motion-easing-standard, ease);
+}
+
+/* Expanded state */
+.ez-list-expand__toggle:is([aria-expanded="true"], .ez-expanded)
+  .ez-list-expand__toggle-icon {
+  background: var(--md-sys-color-surface-container-low, #F3EDF7);
+  transform: rotate(180deg);
+}
+
+/* Collapsible content region */
+.ez-list-expand__content {
+  display: none;
+  background: var(--md-sys-color-surface, Canvas);
+}
+
+.ez-list-expand__toggle:is([aria-expanded="true"], .ez-expanded)
+  ~ .ez-list-expand__content {
+  display: block;
 }
