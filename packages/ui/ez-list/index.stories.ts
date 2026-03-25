@@ -269,10 +269,11 @@ export const LeadingVariants: Story = {
     await expect(image).toBeInTheDocument();
     await expect(video).toBeInTheDocument();
 
-    // Avatar should be circular
-    const avatarStyle = avatar ? getComputedStyle(avatar) : null;
+    // Avatar should be circular (border-radius >= half of 40px width)
+    const avatarStyle = avatar ? getComputedStyle(avatar) : null,
+      borderRadius = parseFloat(avatarStyle?.borderRadius ?? '0');
 
-    await expect(avatarStyle?.borderRadius).toMatch(/50%|9999/);
+    await expect(borderRadius).toBeGreaterThanOrEqual(20);
   },
 };
 
