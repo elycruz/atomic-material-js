@@ -1,0 +1,337 @@
+/**
+ * .ez-m3-textfield — Material Design 3 Text Field (CSS-only)
+ *
+ * Adapted from ec-input (https://github.com/extensible-cms/ecms-ui/tree/dev/src/ec-input).
+ *
+ * Supported input types: text, date, datetime-local, email, month,
+ * number, password, search, tel, time, url, week.
+ *
+ * Structure:
+ *   .ez-m3-textfield[.ez-filled|.ez-outlined][.ez-has-value][.ez-has-label]…
+ *     .ez-m3-tf-wrapper
+ *       .ez-m3-tf-field
+ *         .ez-m3-tf-leading   (optional)
+ *         .ez-m3-tf-center
+ *           input.ez-m3-tf-input[placeholder=" "]
+ *           span.ez-m3-tf-label
+ *         .ez-m3-tf-trailing  (optional)
+ *     .ez-m3-tf-help          (optional)
+ *     ul.ez-m3-tf-messages    (optional)
+ */
+
+/* -------------------------------------------------------
+ * Custom properties (scoped to .ez-m3-textfield)
+ * ------------------------------------------------------- */
+:where(.ez-m3-textfield) {
+  --_tf-font-size: var(--md-sys-typescale-body-large-size, 1rem);
+  --_tf-font-family: var(--md-sys-typescale-body-large-font, inherit), sans-serif;
+  --_tf-font-size-small: calc(var(--_tf-font-size) / 3 * 2);
+  --_tf-line-height: calc(var(--_tf-font-size) + var(--_tf-font-size) / 3);
+  --_tf-padding: calc(var(--_tf-font-size) / 2);
+  --_tf-label-padding: calc(var(--_tf-font-size) / 3);
+  --_tf-border-radius: var(--md-sys-shape-corner-extra-small, var(--ez-border-radius, 0.1875rem));
+  --_tf-border-width: var(--ez-input-border-width, var(--ez-1px, 1px));
+  --_tf-speed: var(--md-sys-motion-duration-short4, var(--ez-input-speed, 200ms));
+  --_tf-easing: var(--md-sys-motion-easing-standard, ease);
+  --_tf-surface-color: var(--md-sys-color-surface, Canvas);
+  --_tf-wrapper-bg: var(--md-sys-color-surface-container-highest, var(--ez-input-bg-color, Field));
+  --_tf-border-color: var(--md-sys-color-on-surface-variant, currentcolor);
+  --_tf-focus-color: var(--md-sys-color-primary, var(--ez-input-highlight-color, Highlight));
+  --_tf-text-color: var(--md-sys-color-on-surface, var(--ez-input-text-color, FieldText));
+  --_tf-label-color: var(--md-sys-color-on-surface-variant, GrayText);
+  --_tf-icon-color: var(--md-sys-color-on-surface-variant, GrayText);
+  --_tf-error-color: var(--md-sys-color-error, red);
+  --_tf-label-active-translateX: calc(-1 * var(--_tf-label-padding) - var(--_tf-border-width));
+  --_tf-label-active-translateY: calc((var(--_tf-padding) + var(--_tf-font-size-small)) * -1);
+  --_tf-label-active-transform: scale(0.89, 0.89) translate(var(--_tf-label-active-translateX), var(--_tf-label-active-translateY));
+}
+
+/* -------------------------------------------------------
+ * Base (replaces :host)
+ * ------------------------------------------------------- */
+:where(.ez-m3-textfield) {
+  position: relative;
+  display: inline-block;
+  user-select: none;
+  font: normal var(--_tf-font-size) var(--_tf-font-family);
+  line-height: var(--_tf-line-height);
+  color: var(--_tf-text-color);
+
+  &, * {
+    box-sizing: border-box;
+  }
+}
+
+/* -------------------------------------------------------
+ * Disabled
+ * ------------------------------------------------------- */
+:where(.ez-m3-textfield):where([disabled], .ez-disabled, :has(:disabled)) {
+  pointer-events: none;
+  opacity: 0.38;
+  cursor: not-allowed;
+}
+
+/* -------------------------------------------------------
+ * Wrapper (.text-field-component)
+ * ------------------------------------------------------- */
+:where(.ez-m3-textfield) :where(.ez-m3-tf-wrapper) {
+  position: relative;
+  background: var(--_tf-wrapper-bg);
+  transition: border-color var(--_tf-speed) var(--_tf-easing);
+  width: 100%;
+  border-radius: var(--_tf-border-radius);
+}
+
+/* -------------------------------------------------------
+ * Field (.text-field — flex row)
+ * ------------------------------------------------------- */
+:where(.ez-m3-textfield) :where(.ez-m3-tf-field) {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  transition: opacity var(--_tf-speed) var(--_tf-easing),
+              border-color var(--_tf-speed) var(--_tf-easing);
+  background-color: var(--_tf-surface-color);
+  border-radius: var(--_tf-border-radius);
+}
+
+/* -------------------------------------------------------
+ * Leading / Trailing icon areas
+ * ------------------------------------------------------- */
+:where(.ez-m3-textfield) :where(.ez-m3-tf-leading),
+:where(.ez-m3-textfield) :where(.ez-m3-tf-trailing) {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  user-select: none;
+  transition: color var(--_tf-speed) var(--_tf-easing);
+  color: var(--_tf-icon-color);
+}
+
+:where(.ez-m3-textfield) :where(.ez-m3-tf-leading) {
+  margin: 0 0 0 var(--_tf-padding);
+}
+
+:where(.ez-m3-textfield) :where(.ez-m3-tf-trailing) {
+  margin: 0 var(--_tf-padding) 0 0;
+}
+
+/* -------------------------------------------------------
+ * Center area
+ * ------------------------------------------------------- */
+:where(.ez-m3-textfield) :where(.ez-m3-tf-center) {
+  position: relative;
+  flex-basis: 100%;
+  margin: 0;
+}
+
+/* -------------------------------------------------------
+ * Input element
+ * ------------------------------------------------------- */
+:where(.ez-m3-textfield) :where(.ez-m3-tf-input) {
+  position: relative;
+  display: inline-block;
+  padding: var(--_tf-padding);
+  font-size: var(--_tf-font-size);
+  line-height: var(--_tf-font-size);
+  background: transparent;
+  transition: opacity var(--_tf-speed) var(--_tf-easing);
+  color: var(--_tf-text-color);
+  border: none;
+  border-radius: var(--_tf-border-radius);
+  width: 100%;
+  opacity: 0;
+}
+
+:where(.ez-m3-textfield) :where(.ez-m3-tf-input):focus {
+  outline: none;
+  opacity: 1;
+}
+
+/* -------------------------------------------------------
+ * Floating label (.text-field__center__placeholder)
+ * ------------------------------------------------------- */
+:where(.ez-m3-textfield) :where(.ez-m3-tf-label) {
+  position: absolute;
+  display: none;
+  top: var(--_tf-border-width);
+  left: calc(var(--_tf-border-width) + var(--_tf-padding));
+  pointer-events: none;
+  user-select: none;
+  cursor: text;
+  transition: transform var(--_tf-speed) var(--_tf-easing),
+              background var(--_tf-speed) var(--_tf-easing),
+              border-color var(--_tf-speed) var(--_tf-easing),
+              color var(--_tf-speed) var(--_tf-easing);
+  border-radius: var(--_tf-border-radius);
+  transform-origin: top left;
+  transform: scale(1) translate(calc(-1 * var(--_tf-label-padding)), 0);
+  line-height: var(--_tf-font-size);
+  margin-top: var(--_tf-padding);
+  padding: 0 var(--_tf-label-padding);
+  font-size: var(--_tf-font-size-small);
+  color: var(--_tf-label-color);
+  background: var(--_tf-surface-color);
+}
+
+:where(.ez-m3-textfield) :where(.ez-m3-tf-label):hover {
+  cursor: text;
+}
+
+/* -------------------------------------------------------
+ * Required indicator
+ * ------------------------------------------------------- */
+:where(.ez-m3-textfield):where([required], .ez-required, :has(:required)) :where(.ez-m3-tf-label)::before {
+  content: "*";
+  color: var(--_tf-error-color);
+}
+
+/* -------------------------------------------------------
+ * Focus-within — show input + activate label
+ * ------------------------------------------------------- */
+:where(.ez-m3-textfield):focus-within :where(.ez-m3-tf-field),
+:where(.ez-m3-textfield):focus-within :where(.ez-m3-tf-input) {
+  opacity: 1;
+}
+
+:where(.ez-m3-textfield):focus-within :where(.ez-m3-tf-label) {
+  transform: var(--_tf-label-active-transform);
+  color: var(--_tf-label-color);
+}
+
+/* -------------------------------------------------------
+ * Filled variant (.ez-filled)
+ * ------------------------------------------------------- */
+:where(.ez-m3-textfield).ez-filled :where(.ez-m3-tf-wrapper) {
+  border-bottom: 1px solid transparent;
+}
+
+:where(.ez-m3-textfield).ez-filled :where(.ez-m3-tf-field) {
+  opacity: 0.55;
+  border-bottom: 1px solid var(--_tf-border-color);
+}
+
+:where(.ez-m3-textfield).ez-filled:focus-within :where(.ez-m3-tf-field),
+:where(.ez-m3-textfield).ez-filled:focus-within :where(.ez-m3-tf-wrapper) {
+  border-color: var(--_tf-focus-color);
+}
+
+:where(.ez-m3-textfield).ez-filled:focus-within :where(.ez-m3-tf-field) {
+  opacity: 1;
+}
+
+:where(.ez-m3-textfield).ez-filled:hover :where(.ez-m3-tf-wrapper) {
+  border-color: var(--_tf-border-color);
+}
+
+:where(.ez-m3-textfield).ez-filled:not(:focus-within):hover :where(.ez-m3-tf-field) {
+  opacity: 0.89;
+}
+
+/* -------------------------------------------------------
+ * Outlined variant (.ez-outlined)
+ * ------------------------------------------------------- */
+:where(.ez-m3-textfield).ez-outlined :where(.ez-m3-tf-wrapper) {
+  border: 1px solid transparent;
+}
+
+:where(.ez-m3-textfield).ez-outlined :where(.ez-m3-tf-field) {
+  border: 1px solid var(--_tf-border-color);
+}
+
+:where(.ez-m3-textfield).ez-outlined:focus-within :where(.ez-m3-tf-field),
+:where(.ez-m3-textfield).ez-outlined:focus-within :where(.ez-m3-tf-wrapper) {
+  border-color: var(--_tf-focus-color);
+}
+
+:where(.ez-m3-textfield).ez-outlined:hover :where(.ez-m3-tf-wrapper) {
+  border-color: var(--_tf-border-color);
+}
+
+/* -------------------------------------------------------
+ * Has-value state
+ * ------------------------------------------------------- */
+:where(.ez-m3-textfield).ez-has-value :where(.ez-m3-tf-field) {
+  opacity: 1;
+}
+
+:where(.ez-m3-textfield).ez-has-value :where(.ez-m3-tf-input) {
+  opacity: 1;
+}
+
+:where(.ez-m3-textfield).ez-has-value :where(.ez-m3-tf-label) {
+  transform: var(--_tf-label-active-transform);
+}
+
+/* -------------------------------------------------------
+ * Help text
+ * ------------------------------------------------------- */
+:where(.ez-m3-textfield) :where(.ez-m3-tf-help) {
+  display: none;
+  font-size: var(--_tf-font-size-small);
+  margin: calc(var(--_tf-font-size) / 3) var(--_tf-padding);
+  color: var(--_tf-label-color);
+}
+
+/* -------------------------------------------------------
+ * Validation messages
+ * ------------------------------------------------------- */
+:where(.ez-m3-textfield) :where(.ez-m3-tf-messages) {
+  display: none;
+  padding: 0 0 0 var(--_tf-padding);
+  margin: 0;
+  font-size: var(--_tf-font-size-small);
+  color: var(--_tf-error-color);
+}
+
+/* -------------------------------------------------------
+ * State classes — toggle visibility
+ * ------------------------------------------------------- */
+:where(.ez-m3-textfield).ez-has-leading :where(.ez-m3-tf-center) {
+  margin-left: 0;
+}
+
+:where(.ez-m3-textfield).ez-has-trailing :where(.ez-m3-tf-center) {
+  margin-right: 0;
+}
+
+:where(.ez-m3-textfield).ez-has-help :where(.ez-m3-tf-help),
+:where(.ez-m3-textfield).ez-has-messages :where(.ez-m3-tf-messages) {
+  display: block;
+}
+
+:where(.ez-m3-textfield).ez-has-leading :where(.ez-m3-tf-leading),
+:where(.ez-m3-textfield).ez-has-trailing :where(.ez-m3-tf-trailing) {
+  display: flex;
+}
+
+:where(.ez-m3-textfield).ez-has-label :where(.ez-m3-tf-label) {
+  display: inline-block;
+}
+
+/* -------------------------------------------------------
+ * Fullwidth
+ * ------------------------------------------------------- */
+:where(.ez-m3-textfield).ez-fullwidth,
+:where(.ez-m3-textfield).ez-fullwidth :where(.ez-m3-tf-center),
+:where(.ez-m3-textfield).ez-fullwidth :where(.ez-m3-tf-input) {
+  flex-basis: 100%;
+  width: 100%;
+}
+
+/* -------------------------------------------------------
+ * Reduced motion
+ * ------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  :where(.ez-m3-textfield) :where(.ez-m3-tf-label),
+  :where(.ez-m3-textfield) :where(.ez-m3-tf-input),
+  :where(.ez-m3-textfield) :where(.ez-m3-tf-field),
+  :where(.ez-m3-textfield) :where(.ez-m3-tf-wrapper),
+  :where(.ez-m3-textfield) :where(.ez-m3-tf-leading),
+  :where(.ez-m3-textfield) :where(.ez-m3-tf-trailing) {
+    transition: none;
+  }
+}
