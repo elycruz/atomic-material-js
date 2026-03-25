@@ -1,12 +1,12 @@
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { defineConfig } from 'vite';
+import { defineConfig } from 'vite-plus';
 import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import storybookTest from '@storybook/addon-vitest/vitest-plugin';
-import { playwright } from '@vitest/browser-playwright';
+import { playwright } from 'vite-plus/test/browser-playwright';
 
-import type { TestProjectInlineConfiguration } from 'vitest/config';
+import type { TestProjectInlineConfiguration } from 'vite-plus/test/config';
 
 const { NODE_ENV } = process.env,
   isDev = !NODE_ENV || NODE_ENV === 'development',
@@ -14,6 +14,13 @@ const { NODE_ENV } = process.env,
 
 export default defineConfig({
   plugins: [tailwindcss(), react()],
+  css: {
+    preprocessorOptions: {
+      scss: {
+        api: 'modern-compiler',
+      },
+    },
+  },
   resolve: {
     alias: {
       '@': dirname,

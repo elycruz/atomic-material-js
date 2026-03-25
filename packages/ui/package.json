@@ -54,7 +54,7 @@
   "scripts": {
     "build": "pnpm build:css && pnpm build:js && pnpm typings",
     "build:css": "node node_scripts/build/index.ts",
-    "build:js": "vite build",
+    "build:js": "vp build",
     "watch": "node --experimental-strip-types node_scripts/watch/index.ts",
     "docs": "pnpm typedoc",
     "gen:css": "node node_scripts/gen-css/index.ts",
@@ -64,7 +64,7 @@
     "stylelintfix": "pnpm stylelint --fix",
     "typings": "tsc --project tsconfig.json",
     "typedoc": "typedoc .",
-    "test": "vitest --run",
+    "test": "vp test --run",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build -o ../../dist/ui/storybook"
   },
@@ -112,8 +112,7 @@
     "@types/node": "^24.10.9",
     "@types/postcss-import": "^14.0.3",
     "@vitejs/plugin-react": "^5.1.2",
-    "@vitest/browser-playwright": "^4.0.17",
-    "@vitest/coverage-istanbul": "^4.0.17",
+    "@vitest/coverage-istanbul": "4.1.0",
     "chokidar": "^3.6.0",
     "cssnano": "^6.1.2",
     "eslint": "^9.39.2",
@@ -136,8 +135,7 @@
     "stylelint-config-standard-scss": "^16.0.0",
     "typedoc": "^0.24.8",
     "typescript": "^5.9.3",
-    "vite": "^7.3.1",
-    "vitest": "^4.0.17",
+    "vite-plus": "^0.1.14",
     "web-component-analyzer": "^1.1.7"
   },
   "peerDependencies": {

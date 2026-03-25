@@ -14,11 +14,11 @@
  * Layout direction
  * -------------------- */
 :where(.ez-button-group, .ez-btn-group).ez-layout-block {
-  flex-direction: column;
+  flex-flow: column nowrap;
 }
 
 :where(.ez-button-group, .ez-btn-group).ez-layout-inline {
-  flex-direction: row;
+  flex-flow: row wrap;
 }
 
 /**
