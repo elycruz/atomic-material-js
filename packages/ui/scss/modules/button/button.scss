@@ -145,3 +145,12 @@
 :where(.ez-btn, .ez-button):not(.ez-filled) ez-ripple::before {
   background: var(--md-color-theme);
 }
+
+// Default Colors
+// ----
+:where(.ez-btn, .ez-button):not(:where([class^="ez-theme"], [class*=" ez-theme"]) *) {
+  --md-color-theme: var(--md-sys-color-primary);
+  --md-color-on-theme: var(--md-sys-color-on-primary);
+  --md-color-theme-container: var(--md-sys-color-primary-container);
+  --md-color-on-theme-container: var(--md-sys-color-on-primary-container);
+}

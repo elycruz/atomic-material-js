@@ -1,5 +1,4 @@
 import { html } from 'lit';
-import { EzThemeVariants } from '../utils/constants.js';
 import './../ez-ripple';
 
 export default {
@@ -13,7 +12,7 @@ export const Variants = {
 
       <div
         class="ez-section-body"
-        style="display: flex; gap: 1rem; flex-wrap: wrap;"
+        style="display: flex; gap: 1.5rem; flex-flow: column nowrap; max-width: 480px;"
       >
         <div class="ez-card ez-elevated">
           <div class="ez-card__header">
@@ -26,7 +25,7 @@ export const Variants = {
             </p>
           </div>
           <div class="ez-card__actions">
-            <button class="ez-btn ez-text ez-theme-secondary" type="button">
+            <button class="ez-btn ez-text" type="button">
               <ez-ripple></ez-ripple>
               Action
             </button>
@@ -45,7 +44,7 @@ export const Variants = {
             </p>
           </div>
           <div class="ez-card__actions">
-            <button class="ez-btn ez-text ez-theme-secondary" type="button">
+            <button class="ez-btn ez-text" type="button">
               <ez-ripple></ez-ripple>
               Action
             </button>
@@ -63,11 +62,11 @@ export const Variants = {
             </p>
           </div>
           <div class="ez-card__actions">
-            <button class="ez-btn ez-outlined ez-theme-secondary" type="button">
+            <button class="ez-btn" type="button">
               <ez-ripple></ez-ripple>
               Action 1
             </button>
-            <button class="ez-btn ez-filled ez-theme-primary" type="button">
+            <button class="ez-btn ez-filled" type="button">
               <ez-ripple></ez-ripple>
               Action 2
             </button>
@@ -184,7 +183,7 @@ export const InteractiveCards = {
       </p>
       <div
         class="ez-section-body"
-        style="display: flex; gap: 1rem; flex-wrap: wrap;"
+        style="display: flex; gap: 1rem; flex-wrap: wrap; max-width: 480px;"
       >
         <a
           href="javascript:void(0)"
@@ -295,13 +294,10 @@ export const HorizontalLayout = {
 
       <div
         class="ez-section-body"
-        style="display: flex; gap: 1rem; flex-wrap: wrap;"
+        style="display: flex; gap: 1rem; flex-wrap: wrap; max-width: 640px;"
       >
-        <div
-          class="ez-card ez-elevated ez-layout-horizontal"
-          style="max-width: 480px;"
-        >
-          <div class="ez-card__media" style="flex-shrink: 0;">
+        <div class="ez-card ez-elevated ez-layout-horizontal">
+          <div class="ez-card__media">
             <div
               style="width: 140px; height: 100%; min-height: 140px; background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);"
             ></div>
@@ -317,11 +313,8 @@ export const HorizontalLayout = {
           </div>
         </div>
 
-        <div
-          class="ez-card ez-filled ez-layout-horizontal"
-          style="max-width: 480px;"
-        >
-          <div class="ez-card__media" style="flex-shrink: 0;">
+        <div class="ez-card ez-filled ez-layout-horizontal">
+          <div class="ez-card__media">
             <div
               style="width: 140px; height: 100%; min-height: 140px; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"
             ></div>
@@ -337,11 +330,8 @@ export const HorizontalLayout = {
           </div>
         </div>
 
-        <div
-          class="ez-card ez-outlined ez-layout-horizontal"
-          style="max-width: 480px;"
-        >
-          <div class="ez-card__media" style="flex-shrink: 0;">
+        <div class="ez-card ez-outlined ez-layout-horizontal">
+          <div class="ez-card__media">
             <div
               style="width: 140px; height: 100%; min-height: 140px; background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);"
             ></div>
@@ -404,7 +394,7 @@ export const RTL = {
         <div class="ez-card ez-outlined">
           <div class="ez-card__media" style="flex-shrink: 0;">
             <div
-              style="width: 140px; height: 100%; min-height: 120px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"
+              style="height: 100%; min-height: 120px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"
             ></div>
           </div>
           <div style="display: flex; flex-direction: column;">
@@ -416,53 +406,6 @@ export const RTL = {
             </div>
           </div>
         </div>
-      </div>
-    </section>
-  `,
-};
-
-export const WithThemes = {
-  render: () => html`
-    <section>
-      <header><h2>Cards with Themed Actions</h2></header>
-      <p style="margin: 0 0 1rem; opacity: 0.7;">
-        Card surfaces are theme-independent. Themes apply to child elements like
-        buttons in the actions area.
-      </p>
-
-      <div
-        class="ez-section-body"
-        style="display: flex; gap: 1rem; flex-wrap: wrap;"
-      >
-        ${Object.entries(EzThemeVariants).map(
-          ([label, suffix]) => html`
-            <div class="ez-card ez-outlined" style="width: 260px;">
-              <div class="ez-card__header">
-                <h3 style="margin: 0;">${label}</h3>
-                <p style="margin: 0; opacity: 0.7;">ez-theme-${suffix}</p>
-              </div>
-              <div class="ez-card__content">
-                <p style="margin: 0;">
-                  Themed action buttons using the
-                  <strong>${label.toLowerCase()}</strong> palette.
-                </p>
-              </div>
-              <div class="ez-card__actions">
-                <button class="ez-btn ez-text ez-theme-${suffix}" type="button">
-                  <ez-ripple></ez-ripple>
-                  Text
-                </button>
-                <button
-                  class="ez-btn ez-filled ez-theme-${suffix}"
-                  type="button"
-                >
-                  <ez-ripple></ez-ripple>
-                  Filled
-                </button>
-              </div>
-            </div>
-          `
-        )}
       </div>
     </section>
   `,
