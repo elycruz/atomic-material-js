@@ -252,6 +252,27 @@
 | List list item overline tracking | `md.comp.list.list-item.overline.tracking` | 0.5pt |
 | List list item overline weight | `md.comp.list.list-item.overline.weight` | 500 |
 
+
+## Extended Lists
+
+### Color / Enabled
+
+| Description | Token | Value |
+|---|---|---|
+| List expand expanded list item container color | `md.comp.list.expand.expanded.list-item.container.color` | #FEF7FF |
+| List expand expanded list item segmented container color | `md.comp.list.expand.expanded.list-item.segmented.container.color` | #FEF7FF |
+| List expand collapsed list item trailing icon container color | `md.comp.list.expand.collapsed.list-item.trailing-icon.container.color` | #FEF7FF |
+| List expand collapsed list item trailing icon icon color | `md.comp.list.expand.collapsed.list-item.trailing-icon.icon.color` | #1D1B20 |
+| List expand expanded list item trailing icon container color | `md.comp.list.expand.expanded.list-item.trailing-icon.container.color` | #F3EDF7 |
+| List expand expanded list item trailing icon icon color | `md.comp.list.expand.expanded.list-item.trailing-icon.icon.color` | #1D1B20 |
+
+### Shape
+
+| Description | Token | Value |
+|---|---|---|
+| List expand container shape | `md.comp.list.expand.container.shape` | md.sys.shape.corner.large |
+| List expand trailing icon shape | `md.comp.list.expand.trailing-icon.shape` | md.sys.shape.corner.full |
+
 ---
 
 *Extracted from the Material Design 3 website on 2026-03-25.*

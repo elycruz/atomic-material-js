@@ -184,3 +184,58 @@
   outline: 3px solid var(--md-sys-color-secondary, Highlight);
   outline-offset: -3px;
 }
+
+/* ---- Extended (expandable) list ---- */
+
+.ez-list-expand {
+  border-radius: var(--md-sys-shape-corner-large, 16px);
+  overflow: hidden;
+}
+
+/* Toggle row (the clickable expand/collapse trigger) */
+.ez-list-expand__toggle {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 56px;
+  padding: 10px var(--md-sys-spacing-4, 1rem);
+  gap: 12px;
+  cursor: pointer;
+  background: var(--md-sys-color-surface, Canvas);
+  border: none;
+  color: inherit;
+  text-align: start;
+}
+
+/* Trailing icon container (circular affordance) */
+.ez-list-expand__toggle-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-inline-start: auto;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--md-sys-shape-corner-full, 50%);
+  background: var(--md-sys-color-surface, Canvas);
+  color: var(--md-sys-color-on-surface, CanvasText);
+  transition: transform var(--md-sys-motion-duration-short2, 100ms) var(--md-sys-motion-easing-standard, ease);
+}
+
+/* Expanded state */
+.ez-list-expand__toggle:is([aria-expanded="true"], .ez-expanded)
+  .ez-list-expand__toggle-icon {
+  background: var(--md-sys-color-surface-container-low, #F3EDF7);
+  transform: rotate(180deg);
+}
+
+/* Collapsible content region */
+.ez-list-expand__content {
+  display: none;
+  background: var(--md-sys-color-surface, Canvas);
+}
+
+.ez-list-expand__toggle:is([aria-expanded="true"], .ez-expanded)
+  ~ .ez-list-expand__content {
+  display: block;
+}
