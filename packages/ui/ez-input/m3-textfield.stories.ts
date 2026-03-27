@@ -33,6 +33,7 @@ function renderTextField({
   id = '',
   disabled = false,
   required = false,
+  error = false,
   helpText = '',
   messages = [] as string[],
   leadingIcon = '',
@@ -48,6 +49,7 @@ function renderTextField({
   id?: string;
   disabled?: boolean;
   required?: boolean;
+  error?: boolean;
   helpText?: string;
   messages?: string[];
   leadingIcon?: string;
@@ -62,6 +64,7 @@ function renderTextField({
     fullwidth ? 'ez-fullwidth' : '',
     disabled ? 'ez-disabled' : '',
     required ? 'ez-required' : '',
+    error ? 'ez-error' : '',
     value ? 'ez-has-value' : '',
     helpText ? 'ez-has-help' : '',
     messages.length ? 'ez-has-messages' : '',
@@ -560,5 +563,91 @@ export const LeadingTrailingIcons: StoryObj = {
     );
 
     await expect(bothIcons).not.toBeNull();
+  },
+};
+
+/**
+ * Error states — filled and outlined with error class, icons, and messages.
+ */
+export const ErrorStates: StoryObj = {
+  render: () => html`
+    <section>
+      <header><h2>Error States</h2></header>
+
+      <div
+        class="ez-section-body"
+        style="display: flex; flex-direction: column; gap: 1.5rem; max-width: 360px;"
+      >
+        <h3>Filled — error</h3>
+        ${renderTextField({
+          variant: 'ez-filled',
+          label: 'Email',
+          id: 'err-filled',
+          error: true,
+          messages: ['Invalid email address'],
+          trailingIcon: 'error',
+          value: 'bad@',
+        })}
+
+        <h3>Outlined — error</h3>
+        ${renderTextField({
+          variant: 'ez-outlined',
+          label: 'Username',
+          id: 'err-outlined',
+          error: true,
+          messages: ['Username is taken'],
+          trailingIcon: 'error',
+          value: 'admin',
+        })}
+
+        <h3>Filled — error with leading icon</h3>
+        ${renderTextField({
+          variant: 'ez-filled',
+          label: 'Phone',
+          id: 'err-filled-icons',
+          error: true,
+          leadingIcon: 'phone',
+          trailingIcon: 'error',
+          messages: ['Invalid phone number'],
+          value: '123',
+        })}
+
+        <h3>Outlined — error with help text</h3>
+        ${renderTextField({
+          variant: 'ez-outlined',
+          label: 'Password',
+          type: 'password',
+          id: 'err-outlined-help',
+          error: true,
+          helpText: 'Must be at least 8 characters',
+          trailingIcon: 'error',
+        })}
+      </div>
+    </section>
+  `,
+  play: async ({ canvasElement }) => {
+    const errorFields = canvasElement.querySelectorAll('.ez-error');
+
+    await expect(errorFields.length).toBe(4);
+
+    const filledError = canvasElement.querySelector('.ez-error.ez-filled');
+
+    await expect(filledError).not.toBeNull();
+
+    const outlinedError = canvasElement.querySelector('.ez-error.ez-outlined');
+
+    await expect(outlinedError).not.toBeNull();
+
+    const errorTrailing = canvasElement.querySelectorAll(
+      '.ez-error .ez-m3-tf-trailing'
+    );
+
+    await expect(errorTrailing.length).toBe(4);
+
+    const errorMessages = canvasElement.querySelectorAll(
+      '.ez-error .ez-m3-tf-messages'
+    );
+
+    await expect(errorMessages.length).toBe(3);
   },
 };

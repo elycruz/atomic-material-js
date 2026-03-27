@@ -1,7 +1,7 @@
 /**
  * .ez-m3-textfield — Material Design 3 Text Field (CSS-only)
  *
- * Adapted from ec-input (https://github.com/extensible-cms/ecms-ui/tree/dev/src/ec-input).
+ * Spec: md/specs/m3-textfield.specs.md
  *
  * Supported input types: text, date, datetime-local, email, month,
  * number, password, search, tel, time, url, week.
@@ -21,39 +21,70 @@
 
 /* -------------------------------------------------------
  * Custom properties (scoped to .ez-m3-textfield)
+ *
+ * Token priority: --md-color-* > --md-sys-color-* > --ez-* > system
  * ------------------------------------------------------- */
 :where(.ez-m3-textfield) {
+  /* Typography */
   --_tf-font-size: var(--md-sys-typescale-body-large-size, 1rem);
   --_tf-font-family: var(--md-sys-typescale-body-large-font, inherit), sans-serif;
-  --_tf-font-size-small: calc(var(--_tf-font-size) / 3 * 2);
-  --_tf-line-height: calc(var(--_tf-font-size) + var(--_tf-font-size) / 3);
+  --_tf-font-weight: var(--md-sys-typescale-body-large-weight, 400);
+  --_tf-font-tracking: var(--md-sys-typescale-body-large-tracking, 0.5px);
+  --_tf-line-height: var(--md-sys-typescale-body-large-line-height, 1.5rem);
+  --_tf-font-size-small: var(--md-sys-typescale-body-small-size, 0.75rem);
+  --_tf-line-height-small: var(--md-sys-typescale-body-small-line-height, 1rem);
+  --_tf-font-tracking-small: var(--md-sys-typescale-body-small-tracking, 0.4px);
+
+  /* Layout */
   --_tf-padding: calc(var(--_tf-font-size) / 2);
   --_tf-label-padding: calc(var(--_tf-font-size) / 3);
-  --_tf-border-radius: var(--md-sys-shape-corner-extra-small, var(--ez-border-radius, 0.1875rem));
+  --_tf-border-radius: var(--md-sys-shape-corner-extra-small, var(--ez-border-radius, 0.25rem));
   --_tf-border-width: var(--ez-input-border-width, var(--ez-1px, 1px));
+
+  /* Motion */
   --_tf-speed: var(--md-sys-motion-duration-short4, var(--ez-input-speed, 200ms));
   --_tf-easing: var(--md-sys-motion-easing-standard, ease);
+
+  /* Colors — theme-aware (--md-color-theme = primary by default) */
+  --_tf-focus-color: var(--md-color-theme, var(--md-sys-color-primary, Highlight));
   --_tf-surface-color: var(--md-sys-color-surface, Canvas);
-  --_tf-wrapper-bg: var(--md-sys-color-surface-container-highest, var(--ez-input-bg-color, Field));
-  --_tf-border-color: var(--md-sys-color-on-surface-variant, currentcolor);
-  --_tf-focus-color: var(--md-sys-color-primary, var(--ez-input-highlight-color, Highlight));
+  --_tf-container-color: var(--md-sys-color-surface-container-highest, var(--ez-input-bg-color, Field));
   --_tf-text-color: var(--md-sys-color-on-surface, var(--ez-input-text-color, FieldText));
-  --_tf-label-color: var(--md-sys-color-on-surface-variant, GrayText);
-  --_tf-icon-color: var(--md-sys-color-on-surface-variant, GrayText);
+  --_tf-on-surface-variant: var(--md-sys-color-on-surface-variant, GrayText);
+  --_tf-label-color: var(--_tf-on-surface-variant);
+  --_tf-icon-color: var(--_tf-on-surface-variant);
+  --_tf-placeholder-color: var(--_tf-on-surface-variant);
+  --_tf-caret-color: var(--_tf-focus-color);
+  --_tf-outline-color: var(--md-sys-color-outline, currentcolor);
+
+  /* Error */
   --_tf-error-color: var(--md-sys-color-error, red);
+  --_tf-error-hover-color: var(--md-sys-color-on-error-container, darkred);
+
+  /* Disabled — per-element opacity per spec */
+  --_tf-disabled-color: var(--md-sys-color-on-surface, GrayText);
+  --_tf-disabled-content-opacity: var(--md-sys-state-disabled-content-opacity, 0.38);
+  --_tf-disabled-container-opacity: var(--md-sys-state-disabled-container-opacity, 0.12);
+
+  /* Active indicator (filled) */
+  --_tf-indicator-color: var(--_tf-on-surface-variant);
+  --_tf-indicator-height: var(--_tf-border-width);
+
+  /* Label transform */
   --_tf-label-active-translateX: calc(-1 * var(--_tf-label-padding) - var(--_tf-border-width));
   --_tf-label-active-translateY: calc((var(--_tf-padding) + var(--_tf-font-size-small)) * -1);
   --_tf-label-active-transform: scale(0.89, 0.89) translate(var(--_tf-label-active-translateX), var(--_tf-label-active-translateY));
 }
 
 /* -------------------------------------------------------
- * Base (replaces :host)
+ * Base
  * ------------------------------------------------------- */
 :where(.ez-m3-textfield) {
   position: relative;
   display: inline-block;
   user-select: none;
-  font: normal var(--_tf-font-size) var(--_tf-font-family);
+  font: normal var(--_tf-font-weight) var(--_tf-font-size) var(--_tf-font-family);
+  letter-spacing: var(--_tf-font-tracking);
   line-height: var(--_tf-line-height);
   color: var(--_tf-text-color);
 
@@ -63,27 +94,18 @@
 }
 
 /* -------------------------------------------------------
- * Disabled
- * ------------------------------------------------------- */
-:where(.ez-m3-textfield):where([disabled], .ez-disabled, :has(:disabled)) {
-  pointer-events: none;
-  opacity: 0.38;
-  cursor: not-allowed;
-}
-
-/* -------------------------------------------------------
- * Wrapper (.text-field-component)
+ * Wrapper
  * ------------------------------------------------------- */
 :where(.ez-m3-textfield) :where(.ez-m3-tf-wrapper) {
   position: relative;
-  background: var(--_tf-wrapper-bg);
+  background: transparent;
   transition: border-color var(--_tf-speed) var(--_tf-easing);
   width: 100%;
   border-radius: var(--_tf-border-radius);
 }
 
 /* -------------------------------------------------------
- * Field (.text-field — flex row)
+ * Field (flex row)
  * ------------------------------------------------------- */
 :where(.ez-m3-textfield) :where(.ez-m3-tf-field) {
   position: relative;
@@ -91,14 +113,13 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  transition: opacity var(--_tf-speed) var(--_tf-easing),
-              border-color var(--_tf-speed) var(--_tf-easing);
-  background-color: var(--_tf-surface-color);
+  transition: border-color var(--_tf-speed) var(--_tf-easing);
+  background: transparent;
   border-radius: var(--_tf-border-radius);
 }
 
 /* -------------------------------------------------------
- * Leading / Trailing icon areas
+ * Leading / Trailing icon areas (24dp per spec)
  * ------------------------------------------------------- */
 :where(.ez-m3-textfield) :where(.ez-m3-tf-leading),
 :where(.ez-m3-textfield) :where(.ez-m3-tf-trailing) {
@@ -107,6 +128,7 @@
   justify-content: space-around;
   align-items: center;
   user-select: none;
+  font-size: 1.5rem;
   transition: color var(--_tf-speed) var(--_tf-easing);
   color: var(--_tf-icon-color);
 }
@@ -136,14 +158,21 @@
   display: inline-block;
   padding: var(--_tf-padding);
   font-size: var(--_tf-font-size);
+  font-weight: var(--_tf-font-weight);
+  letter-spacing: var(--_tf-font-tracking);
   line-height: var(--_tf-font-size);
   background: transparent;
   transition: opacity var(--_tf-speed) var(--_tf-easing);
   color: var(--_tf-text-color);
+  caret-color: var(--_tf-caret-color);
   border: none;
   border-radius: var(--_tf-border-radius);
   width: 100%;
   opacity: 0;
+}
+
+:where(.ez-m3-textfield) :where(.ez-m3-tf-input)::placeholder {
+  color: var(--_tf-placeholder-color);
 }
 
 :where(.ez-m3-textfield) :where(.ez-m3-tf-input):focus {
@@ -152,7 +181,7 @@
 }
 
 /* -------------------------------------------------------
- * Floating label (.text-field__center__placeholder)
+ * Floating label
  * ------------------------------------------------------- */
 :where(.ez-m3-textfield) :where(.ez-m3-tf-label) {
   position: absolute;
@@ -192,72 +221,200 @@
 /* -------------------------------------------------------
  * Focus-within — show input + activate label
  * ------------------------------------------------------- */
-:where(.ez-m3-textfield):focus-within :where(.ez-m3-tf-field),
 :where(.ez-m3-textfield):focus-within :where(.ez-m3-tf-input) {
   opacity: 1;
 }
 
 :where(.ez-m3-textfield):focus-within :where(.ez-m3-tf-label) {
   transform: var(--_tf-label-active-transform);
-  color: var(--_tf-label-color);
+  color: var(--_tf-focus-color);
+}
+
+/* -------------------------------------------------------
+ * Hover (not focused) — label / icon / input colors
+ * ------------------------------------------------------- */
+:where(.ez-m3-textfield):not(:focus-within):hover :where(.ez-m3-tf-input) {
+  color: var(--_tf-text-color);
+}
+
+/* Outlined hover: label → on-surface */
+:where(.ez-m3-textfield).ez-outlined:not(:focus-within):hover :where(.ez-m3-tf-label) {
+  color: var(--_tf-text-color);
 }
 
 /* -------------------------------------------------------
  * Filled variant (.ez-filled)
+ *
+ * Container = surface-container-highest
+ * Active indicator = bottom border on field
  * ------------------------------------------------------- */
 :where(.ez-m3-textfield).ez-filled :where(.ez-m3-tf-wrapper) {
+  background: var(--_tf-container-color);
   border-bottom: 1px solid transparent;
+  border-radius: var(--_tf-border-radius) var(--_tf-border-radius) 0 0;
 }
 
 :where(.ez-m3-textfield).ez-filled :where(.ez-m3-tf-field) {
-  opacity: 0.55;
-  border-bottom: 1px solid var(--_tf-border-color);
+  border-bottom: var(--_tf-indicator-height) solid var(--_tf-indicator-color);
+  border-radius: var(--_tf-border-radius) var(--_tf-border-radius) 0 0;
 }
 
-:where(.ez-m3-textfield).ez-filled:focus-within :where(.ez-m3-tf-field),
-:where(.ez-m3-textfield).ez-filled:focus-within :where(.ez-m3-tf-wrapper) {
-  border-color: var(--_tf-focus-color);
-}
-
-:where(.ez-m3-textfield).ez-filled:focus-within :where(.ez-m3-tf-field) {
-  opacity: 1;
-}
-
-:where(.ez-m3-textfield).ez-filled:hover :where(.ez-m3-tf-wrapper) {
-  border-color: var(--_tf-border-color);
-}
-
+/* Filled hover: active indicator → on-surface */
 :where(.ez-m3-textfield).ez-filled:not(:focus-within):hover :where(.ez-m3-tf-field) {
-  opacity: 0.89;
+  border-bottom-color: var(--_tf-text-color);
+}
+
+/* Filled focus: active indicator → primary/theme, 2px */
+:where(.ez-m3-textfield).ez-filled:focus-within :where(.ez-m3-tf-field) {
+  border-bottom-width: 2px;
+  border-bottom-color: var(--_tf-focus-color);
+}
+
+:where(.ez-m3-textfield).ez-filled:focus-within :where(.ez-m3-tf-wrapper) {
+  border-bottom-color: var(--_tf-focus-color);
 }
 
 /* -------------------------------------------------------
  * Outlined variant (.ez-outlined)
+ *
+ * Outline = border on field
  * ------------------------------------------------------- */
 :where(.ez-m3-textfield).ez-outlined :where(.ez-m3-tf-wrapper) {
   border: 1px solid transparent;
 }
 
 :where(.ez-m3-textfield).ez-outlined :where(.ez-m3-tf-field) {
-  border: 1px solid var(--_tf-border-color);
+  border: var(--_tf-border-width) solid var(--_tf-outline-color);
 }
 
-:where(.ez-m3-textfield).ez-outlined:focus-within :where(.ez-m3-tf-field),
+/* Outlined hover: outline → on-surface */
+:where(.ez-m3-textfield).ez-outlined:not(:focus-within):hover :where(.ez-m3-tf-field) {
+  border-color: var(--_tf-text-color);
+}
+
+/* Outlined focus: outline → primary/theme, thicker */
+:where(.ez-m3-textfield).ez-outlined:focus-within :where(.ez-m3-tf-field) {
+  border-width: 2px;
+  border-color: var(--_tf-focus-color);
+}
+
 :where(.ez-m3-textfield).ez-outlined:focus-within :where(.ez-m3-tf-wrapper) {
   border-color: var(--_tf-focus-color);
 }
 
-:where(.ez-m3-textfield).ez-outlined:hover :where(.ez-m3-tf-wrapper) {
-  border-color: var(--_tf-border-color);
+/* -------------------------------------------------------
+ * Disabled (per-element color/opacity per spec)
+ * ------------------------------------------------------- */
+:where(.ez-m3-textfield):where([disabled], .ez-disabled, :has(:disabled)) {
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+:where(.ez-m3-textfield):where([disabled], .ez-disabled, :has(:disabled)) :where(.ez-m3-tf-label),
+:where(.ez-m3-textfield):where([disabled], .ez-disabled, :has(:disabled)) :where(.ez-m3-tf-input),
+:where(.ez-m3-textfield):where([disabled], .ez-disabled, :has(:disabled)) :where(.ez-m3-tf-leading),
+:where(.ez-m3-textfield):where([disabled], .ez-disabled, :has(:disabled)) :where(.ez-m3-tf-trailing),
+:where(.ez-m3-textfield):where([disabled], .ez-disabled, :has(:disabled)) :where(.ez-m3-tf-help),
+:where(.ez-m3-textfield):where([disabled], .ez-disabled, :has(:disabled)) :where(.ez-m3-tf-messages) {
+  color: var(--_tf-disabled-color);
+  opacity: var(--_tf-disabled-content-opacity);
+}
+
+/* Filled disabled: container + active indicator */
+:where(.ez-m3-textfield).ez-filled:where([disabled], .ez-disabled, :has(:disabled)) :where(.ez-m3-tf-wrapper) {
+  background-color: var(--_tf-disabled-color);
+  opacity: 0.04;
+}
+
+:where(.ez-m3-textfield).ez-filled:where([disabled], .ez-disabled, :has(:disabled)) :where(.ez-m3-tf-field) {
+  border-bottom-color: var(--_tf-disabled-color);
+  opacity: var(--_tf-disabled-content-opacity);
+}
+
+/* Outlined disabled: outline */
+:where(.ez-m3-textfield).ez-outlined:where([disabled], .ez-disabled, :has(:disabled)) :where(.ez-m3-tf-field) {
+  border-color: var(--_tf-disabled-color);
+  opacity: var(--_tf-disabled-container-opacity);
+}
+
+/* -------------------------------------------------------
+ * Error state
+ * ------------------------------------------------------- */
+:where(.ez-m3-textfield):where(.ez-error, :has(:invalid)) :where(.ez-m3-tf-label) {
+  color: var(--_tf-error-color);
+}
+
+:where(.ez-m3-textfield):where(.ez-error, :has(:invalid)) :where(.ez-m3-tf-trailing) {
+  color: var(--_tf-error-color);
+}
+
+:where(.ez-m3-textfield):where(.ez-error, :has(:invalid)) :where(.ez-m3-tf-input) {
+  caret-color: var(--_tf-error-color);
+}
+
+:where(.ez-m3-textfield):where(.ez-error, :has(:invalid)) :where(.ez-m3-tf-help) {
+  color: var(--_tf-error-color);
+}
+
+:where(.ez-m3-textfield):where(.ez-error, :has(:invalid)) :where(.ez-m3-tf-messages) {
+  color: var(--_tf-error-color);
+}
+
+/* Error — filled active indicator */
+:where(.ez-m3-textfield).ez-filled:where(.ez-error, :has(:invalid)) :where(.ez-m3-tf-field) {
+  border-bottom-color: var(--_tf-error-color);
+}
+
+/* Error — outlined outline */
+:where(.ez-m3-textfield).ez-outlined:where(.ez-error, :has(:invalid)) :where(.ez-m3-tf-field) {
+  border-color: var(--_tf-error-color);
+}
+
+/* Error + Focus */
+:where(.ez-m3-textfield):where(.ez-error, :has(:invalid)):focus-within :where(.ez-m3-tf-label) {
+  color: var(--_tf-error-color);
+}
+
+:where(.ez-m3-textfield):where(.ez-error, :has(:invalid)):focus-within :where(.ez-m3-tf-trailing) {
+  color: var(--_tf-error-color);
+}
+
+:where(.ez-m3-textfield).ez-filled:where(.ez-error, :has(:invalid)):focus-within :where(.ez-m3-tf-field) {
+  border-bottom-color: var(--_tf-error-color);
+}
+
+:where(.ez-m3-textfield).ez-filled:where(.ez-error, :has(:invalid)):focus-within :where(.ez-m3-tf-wrapper) {
+  border-bottom-color: var(--_tf-error-color);
+}
+
+:where(.ez-m3-textfield).ez-outlined:where(.ez-error, :has(:invalid)):focus-within :where(.ez-m3-tf-field) {
+  border-color: var(--_tf-error-color);
+}
+
+:where(.ez-m3-textfield).ez-outlined:where(.ez-error, :has(:invalid)):focus-within :where(.ez-m3-tf-wrapper) {
+  border-color: var(--_tf-error-color);
+}
+
+/* Error + Hover (not focused) */
+:where(.ez-m3-textfield):where(.ez-error, :has(:invalid)):not(:focus-within):hover :where(.ez-m3-tf-label) {
+  color: var(--_tf-error-hover-color);
+}
+
+:where(.ez-m3-textfield):where(.ez-error, :has(:invalid)):not(:focus-within):hover :where(.ez-m3-tf-trailing) {
+  color: var(--_tf-error-hover-color);
+}
+
+:where(.ez-m3-textfield).ez-filled:where(.ez-error, :has(:invalid)):not(:focus-within):hover :where(.ez-m3-tf-field) {
+  border-bottom-color: var(--_tf-error-hover-color);
+}
+
+:where(.ez-m3-textfield).ez-outlined:where(.ez-error, :has(:invalid)):not(:focus-within):hover :where(.ez-m3-tf-field) {
+  border-color: var(--_tf-error-hover-color);
 }
 
 /* -------------------------------------------------------
  * Has-value state
  * ------------------------------------------------------- */
-:where(.ez-m3-textfield).ez-has-value :where(.ez-m3-tf-field) {
-  opacity: 1;
-}
-
 :where(.ez-m3-textfield).ez-has-value :where(.ez-m3-tf-input) {
   opacity: 1;
 }
@@ -267,23 +424,27 @@
 }
 
 /* -------------------------------------------------------
- * Help text
+ * Help text (supporting text)
  * ------------------------------------------------------- */
 :where(.ez-m3-textfield) :where(.ez-m3-tf-help) {
   display: none;
   font-size: var(--_tf-font-size-small);
+  line-height: var(--_tf-line-height-small);
+  letter-spacing: var(--_tf-font-tracking-small);
   margin: calc(var(--_tf-font-size) / 3) var(--_tf-padding);
-  color: var(--_tf-label-color);
+  color: var(--_tf-on-surface-variant);
 }
 
 /* -------------------------------------------------------
- * Validation messages
+ * Validation messages (supporting text — error)
  * ------------------------------------------------------- */
 :where(.ez-m3-textfield) :where(.ez-m3-tf-messages) {
   display: none;
   padding: 0 0 0 var(--_tf-padding);
   margin: 0;
   font-size: var(--_tf-font-size-small);
+  line-height: var(--_tf-line-height-small);
+  letter-spacing: var(--_tf-font-tracking-small);
   color: var(--_tf-error-color);
 }
 
