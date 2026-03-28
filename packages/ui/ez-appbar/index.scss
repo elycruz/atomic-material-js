@@ -9,7 +9,7 @@
   display: flex;
   align-items: center;
   gap: 0;
-  padding-inline: var(--md-sys-spacing-1, 0.25rem);
+  padding: var(--md-sys-spacing-1, 0.25rem);
   box-shadow: var(--md-sys-elevation-level0, none);
   border-radius: var(--md-sys-shape-corner-none, 0);
 }
@@ -80,7 +80,7 @@
   padding-block: var(--md-sys-spacing-2, 0.5rem) var(--md-sys-spacing-3, 0.75rem);
 }
 
-:where(.ez-appbar, ez-appbar).ez-medium.ez-has-subtitle {
+:where(.ez-appbar, ez-appbar).ez-medium:has(p, .ez-appbar-subtitle) {
   min-height: 8.5rem;
 }
 
@@ -109,7 +109,7 @@
   padding-block: var(--md-sys-spacing-2, 0.5rem) var(--md-sys-spacing-3, 0.75rem);
 }
 
-:where(.ez-appbar, ez-appbar).ez-large.ez-has-subtitle {
+:where(.ez-appbar, ez-appbar).ez-large:has(p, .ez-appbar-subtitle) {
   min-height: 9.5rem;
 }
 

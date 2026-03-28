@@ -38,7 +38,7 @@ export const AppbarSizes: StoryObj = {
         </div>
 
         <div style="border: 1px solid #ccc; overflow: hidden;">
-          <ez-appbar size="medium" class="ez-has-subtitle">
+          <ez-appbar size="medium">
             <hgroup>
               <h1>Medium</h1>
               <p>With subtitle</p>
@@ -53,7 +53,7 @@ export const AppbarSizes: StoryObj = {
         </div>
 
         <div style="border: 1px solid #ccc; overflow: hidden;">
-          <ez-appbar size="large" class="ez-has-subtitle">
+          <ez-appbar size="large">
             <hgroup>
               <h1>Large</h1>
               <p>With subtitle</p>
@@ -79,7 +79,6 @@ export const AppbarSizes: StoryObj = {
 
     // Medium with subtitle
     await expect(mediumSub.classList.contains('ez-medium')).toBe(true);
-    await expect(mediumSub.classList.contains('ez-has-subtitle')).toBe(true);
 
     const mediumSubtitle = mediumSub.querySelector('p');
 
@@ -91,7 +90,6 @@ export const AppbarSizes: StoryObj = {
 
     // Large with subtitle
     await expect(largeSub.classList.contains('ez-large')).toBe(true);
-    await expect(largeSub.classList.contains('ez-has-subtitle')).toBe(true);
 
     // Verify all appbars have shadow roots with slots
     const allHaveShadowRoots = appbars.every(
