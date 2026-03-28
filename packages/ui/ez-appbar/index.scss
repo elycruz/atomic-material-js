@@ -77,6 +77,7 @@
   min-height: 7rem;
   flex-wrap: wrap;
   align-content: flex-end;
+  padding-block: var(--md-sys-spacing-2, 0.5rem) var(--md-sys-spacing-3, 0.75rem);
 }
 
 :where(.ez-appbar, ez-appbar).ez-medium.ez-has-subtitle {
@@ -87,6 +88,7 @@
   @extend %md-typescale-headline-medium;
 
   margin: 0;
+  padding-inline-start: var(--md-sys-spacing-3, 0.75rem);
 }
 
 :where(.ez-appbar, ez-appbar).ez-medium :is(p, .ez-appbar-subtitle) {
@@ -104,6 +106,7 @@
   min-height: 7.5rem;
   flex-wrap: wrap;
   align-content: flex-end;
+  padding-block: var(--md-sys-spacing-2, 0.5rem) var(--md-sys-spacing-3, 0.75rem);
 }
 
 :where(.ez-appbar, ez-appbar).ez-large.ez-has-subtitle {
@@ -114,6 +117,7 @@
   @extend %md-typescale-display-small;
 
   margin: 0;
+  padding-inline-start: var(--md-sys-spacing-3, 0.75rem);
 }
 
 :where(.ez-appbar, ez-appbar).ez-large :is(p, .ez-appbar-subtitle) {
