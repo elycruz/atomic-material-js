@@ -5,15 +5,16 @@
  *
  * Supported input types: text, date, datetime-local, email, month,
  * number, password, search, tel, time, url, week.
+ * Also supports select and textarea elements.
  *
  * Structure:
- *   .ez-m3-textfield[.ez-filled|.ez-outlined][.ez-has-value][.ez-has-label]…
+ *   .ez-m3-textfield[.ez-filled|.ez-outlined]…
  *     .ez-m3-tf-wrapper
  *       .ez-m3-tf-field
  *         .ez-m3-tf-leading   (optional)
  *         .ez-m3-tf-center
- *           input.ez-m3-tf-input[placeholder=" "]
- *           span.ez-m3-tf-label
+ *           (input|select|textarea).ez-m3-tf-input[placeholder=" "]
+ *           label.ez-m3-tf-label
  *         .ez-m3-tf-trailing  (optional)
  *     .ez-m3-tf-help          (optional)
  *     ul.ez-m3-tf-messages    (optional)
@@ -203,7 +204,7 @@
   padding: 0 var(--_tf-label-padding);
   font-size: var(--_tf-font-size-small);
   color: var(--_tf-label-color);
-  background: var(--_tf-surface-color);
+  background: none;
 }
 
 :where(.ez-m3-textfield) :where(.ez-m3-tf-label):hover {
@@ -415,11 +416,11 @@
 /* -------------------------------------------------------
  * Has-value state
  * ------------------------------------------------------- */
-:where(.ez-m3-textfield).ez-has-value :where(.ez-m3-tf-input) {
+:where(.ez-m3-textfield):has(.ez-m3-tf-input:not(:placeholder-shown)) :where(.ez-m3-tf-input) {
   opacity: 1;
 }
 
-:where(.ez-m3-textfield).ez-has-value :where(.ez-m3-tf-label) {
+:where(.ez-m3-textfield):has(.ez-m3-tf-input:not(:placeholder-shown)) :where(.ez-m3-tf-label) {
   transform: var(--_tf-label-active-transform);
 }
 
@@ -449,27 +450,27 @@
 }
 
 /* -------------------------------------------------------
- * State classes — toggle visibility
+ * Structural / value-based visibility
  * ------------------------------------------------------- */
-:where(.ez-m3-textfield).ez-has-leading :where(.ez-m3-tf-center) {
+:where(.ez-m3-textfield):has(.ez-m3-tf-leading) :where(.ez-m3-tf-center) {
   margin-left: 0;
 }
 
-:where(.ez-m3-textfield).ez-has-trailing :where(.ez-m3-tf-center) {
+:where(.ez-m3-textfield):has(.ez-m3-tf-trailing) :where(.ez-m3-tf-center) {
   margin-right: 0;
 }
 
-:where(.ez-m3-textfield).ez-has-help :where(.ez-m3-tf-help),
-:where(.ez-m3-textfield).ez-has-messages :where(.ez-m3-tf-messages) {
+:where(.ez-m3-textfield):has(.ez-m3-tf-help) :where(.ez-m3-tf-help),
+:where(.ez-m3-textfield):has(.ez-m3-tf-messages) :where(.ez-m3-tf-messages) {
   display: block;
 }
 
-:where(.ez-m3-textfield).ez-has-leading :where(.ez-m3-tf-leading),
-:where(.ez-m3-textfield).ez-has-trailing :where(.ez-m3-tf-trailing) {
+:where(.ez-m3-textfield):has(.ez-m3-tf-leading) :where(.ez-m3-tf-leading),
+:where(.ez-m3-textfield):has(.ez-m3-tf-trailing) :where(.ez-m3-tf-trailing) {
   display: flex;
 }
 
-:where(.ez-m3-textfield).ez-has-label :where(.ez-m3-tf-label) {
+:where(.ez-m3-textfield):has(.ez-m3-tf-label) :where(.ez-m3-tf-label) {
   display: inline-block;
 }
 

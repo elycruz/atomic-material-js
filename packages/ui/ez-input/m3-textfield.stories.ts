@@ -29,7 +29,7 @@ function renderTextField({
   label = 'Label',
   type = 'text',
   placeholder = ' ',
-  stateClasses = 'ez-has-label',
+  stateClasses = '',
   id = '',
   disabled = false,
   required = false,
@@ -65,11 +65,6 @@ function renderTextField({
     disabled ? 'ez-disabled' : '',
     required ? 'ez-required' : '',
     error ? 'ez-error' : '',
-    value ? 'ez-has-value' : '',
-    helpText ? 'ez-has-help' : '',
-    messages.length ? 'ez-has-messages' : '',
-    leadingIcon ? 'ez-has-leading' : '',
-    trailingIcon ? 'ez-has-trailing' : '',
   ]
     .filter(Boolean)
     .join(' ');
@@ -93,13 +88,171 @@ function renderTextField({
               ?disabled="${disabled}"
               ?required="${required}"
             />
-            <span class="ez-m3-tf-label">${label}</span>
+            <label class="ez-m3-tf-label" for="${id}">${label}</label>
           </div>
           ${trailingIcon
             ? html`<div class="ez-m3-tf-trailing">
                 <span class="md-icon">${trailingIcon}</span>
               </div>`
             : ''}
+        </div>
+      </div>
+      ${helpText ? html`<div class="ez-m3-tf-help">${helpText}</div>` : ''}
+      ${messages.length
+        ? html`<ul class="ez-m3-tf-messages">
+            ${messages.map(m => html`<li>${m}</li>`)}
+          </ul>`
+        : ''}
+    </div>
+  `;
+}
+
+/**
+ * Helper that renders a .ez-m3-textfield wrapping a <select>.
+ */
+function renderSelectField({
+  variant = 'ez-filled',
+  label = 'Label',
+  id = '',
+  disabled = false,
+  required = false,
+  error = false,
+  helpText = '',
+  messages = [] as string[],
+  leadingIcon = '',
+  trailingIcon = '',
+  options = [] as { value: string; text: string }[],
+  value = '',
+  fullwidth = false,
+}: {
+  variant?: string;
+  label?: string;
+  id?: string;
+  disabled?: boolean;
+  required?: boolean;
+  error?: boolean;
+  helpText?: string;
+  messages?: string[];
+  leadingIcon?: string;
+  trailingIcon?: string;
+  options?: { value: string; text: string }[];
+  value?: string;
+  fullwidth?: boolean;
+} = {}) {
+  const rootClasses = [
+    'ez-m3-textfield',
+    variant,
+    fullwidth ? 'ez-fullwidth' : '',
+    disabled ? 'ez-disabled' : '',
+    required ? 'ez-required' : '',
+    error ? 'ez-error' : '',
+  ]
+    .filter(Boolean)
+    .join(' ');
+
+  return html`
+    <div class="${rootClasses}">
+      <div class="ez-m3-tf-wrapper">
+        <div class="ez-m3-tf-field">
+          ${leadingIcon
+            ? html`<div class="ez-m3-tf-leading">
+                <span class="md-icon">${leadingIcon}</span>
+              </div>`
+            : ''}
+          <div class="ez-m3-tf-center">
+            <select
+              class="ez-m3-tf-input"
+              id="${id}"
+              .value="${value}"
+              ?disabled="${disabled}"
+              ?required="${required}"
+            >
+              ${options.map(
+                o =>
+                  html`<option
+                    value="${o.value}"
+                    ?selected="${o.value === value}"
+                  >
+                    ${o.text}
+                  </option>`
+              )}
+            </select>
+            <label class="ez-m3-tf-label" for="${id}">${label}</label>
+          </div>
+          ${trailingIcon
+            ? html`<div class="ez-m3-tf-trailing">
+                <span class="md-icon">${trailingIcon}</span>
+              </div>`
+            : ''}
+        </div>
+      </div>
+      ${helpText ? html`<div class="ez-m3-tf-help">${helpText}</div>` : ''}
+      ${messages.length
+        ? html`<ul class="ez-m3-tf-messages">
+            ${messages.map(m => html`<li>${m}</li>`)}
+          </ul>`
+        : ''}
+    </div>
+  `;
+}
+
+/**
+ * Helper that renders a .ez-m3-textfield wrapping a <textarea>.
+ */
+function renderTextareaField({
+  variant = 'ez-filled',
+  label = 'Label',
+  placeholder = ' ',
+  id = '',
+  disabled = false,
+  required = false,
+  error = false,
+  helpText = '',
+  messages = [] as string[],
+  value = '',
+  rows = 4,
+  fullwidth = false,
+}: {
+  variant?: string;
+  label?: string;
+  placeholder?: string;
+  id?: string;
+  disabled?: boolean;
+  required?: boolean;
+  error?: boolean;
+  helpText?: string;
+  messages?: string[];
+  value?: string;
+  rows?: number;
+  fullwidth?: boolean;
+} = {}) {
+  const rootClasses = [
+    'ez-m3-textfield',
+    variant,
+    fullwidth ? 'ez-fullwidth' : '',
+    disabled ? 'ez-disabled' : '',
+    required ? 'ez-required' : '',
+    error ? 'ez-error' : '',
+  ]
+    .filter(Boolean)
+    .join(' ');
+
+  return html`
+    <div class="${rootClasses}">
+      <div class="ez-m3-tf-wrapper">
+        <div class="ez-m3-tf-field">
+          <div class="ez-m3-tf-center">
+            <textarea
+              class="ez-m3-tf-input"
+              placeholder="${placeholder}"
+              id="${id}"
+              rows="${rows}"
+              .value="${value}"
+              ?disabled="${disabled}"
+              ?required="${required}"
+            ></textarea>
+            <label class="ez-m3-tf-label" for="${id}">${label}</label>
+          </div>
         </div>
       </div>
       ${helpText ? html`<div class="ez-m3-tf-help">${helpText}</div>` : ''}
@@ -172,15 +325,11 @@ export const FilledTextField: StoryObj = {
 
     await expect(filled.length).toBe(6);
 
-    const helpVisible = canvasElement.querySelector(
-      '.ez-has-help .ez-m3-tf-help'
-    );
+    const helpVisible = canvasElement.querySelector('.ez-m3-tf-help');
 
     await expect(helpVisible).not.toBeNull();
 
-    const messagesVisible = canvasElement.querySelector(
-      '.ez-has-messages .ez-m3-tf-messages'
-    );
+    const messagesVisible = canvasElement.querySelector('.ez-m3-tf-messages');
 
     await expect(messagesVisible).not.toBeNull();
 
@@ -192,9 +341,11 @@ export const FilledTextField: StoryObj = {
 
     await expect(disabledField).not.toBeNull();
 
-    const hasValueField = canvasElement.querySelector('.ez-has-value');
+    const hasValueInput = canvasElement.querySelector<HTMLInputElement>(
+      '#filled-value .ez-m3-tf-input'
+    );
 
-    await expect(hasValueField).not.toBeNull();
+    await expect(hasValueInput?.value).toBe('Hello world');
   },
 };
 
@@ -258,15 +409,11 @@ export const OutlinedTextField: StoryObj = {
 
     await expect(outlined.length).toBe(6);
 
-    const helpVisible = canvasElement.querySelector(
-      '.ez-has-help .ez-m3-tf-help'
-    );
+    const helpVisible = canvasElement.querySelector('.ez-m3-tf-help');
 
     await expect(helpVisible).not.toBeNull();
 
-    const messagesVisible = canvasElement.querySelector(
-      '.ez-has-messages .ez-m3-tf-messages'
-    );
+    const messagesVisible = canvasElement.querySelector('.ez-m3-tf-messages');
 
     await expect(messagesVisible).not.toBeNull();
 
@@ -317,8 +464,8 @@ export const InputTypes: StoryObj = {
 };
 
 /**
- * Demonstrates state classes: has-value, disabled, required, has-leading,
- * has-trailing, has-help, has-messages.
+ * Demonstrates structural states: has-value, disabled, required, leading icon,
+ * trailing icon, help text, and validation messages.
  */
 export const TextFieldStates: StoryObj = {
   render: () => html`
@@ -336,7 +483,7 @@ export const TextFieldStates: StoryObj = {
           id: 'state-default',
         })}
 
-        <h3>.ez-has-value</h3>
+        <h3>Has value</h3>
         ${renderTextField({
           variant: 'ez-filled',
           label: 'Has value',
@@ -360,7 +507,7 @@ export const TextFieldStates: StoryObj = {
           required: true,
         })}
 
-        <h3>.ez-has-leading</h3>
+        <h3>Leading icon</h3>
         ${renderTextField({
           variant: 'ez-filled',
           label: 'Leading icon',
@@ -368,7 +515,7 @@ export const TextFieldStates: StoryObj = {
           leadingIcon: 'search',
         })}
 
-        <h3>.ez-has-trailing</h3>
+        <h3>Trailing icon</h3>
         ${renderTextField({
           variant: 'ez-filled',
           label: 'Trailing icon',
@@ -376,7 +523,7 @@ export const TextFieldStates: StoryObj = {
           trailingIcon: 'cancel',
         })}
 
-        <h3>.ez-has-help</h3>
+        <h3>Help text</h3>
         ${renderTextField({
           variant: 'ez-filled',
           label: 'With help',
@@ -384,7 +531,7 @@ export const TextFieldStates: StoryObj = {
           helpText: 'This is helper text',
         })}
 
-        <h3>.ez-has-messages</h3>
+        <h3>Validation messages</h3>
         ${renderTextField({
           variant: 'ez-filled',
           label: 'With errors',
@@ -395,9 +542,11 @@ export const TextFieldStates: StoryObj = {
     </section>
   `,
   play: async ({ canvasElement }) => {
-    const hasValue = canvasElement.querySelector('.ez-has-value');
+    const hasValueInput = canvasElement.querySelector<HTMLInputElement>(
+      '#state-has-value .ez-m3-tf-input'
+    );
 
-    await expect(hasValue).not.toBeNull();
+    await expect(hasValueInput?.value).toBe('Some text');
 
     const disabled = canvasElement.querySelector('.ez-disabled');
 
@@ -407,25 +556,19 @@ export const TextFieldStates: StoryObj = {
 
     await expect(required).not.toBeNull();
 
-    const hasLeading = canvasElement.querySelector(
-      '.ez-has-leading .ez-m3-tf-leading'
-    );
+    const hasLeading = canvasElement.querySelector('.ez-m3-tf-leading');
 
     await expect(hasLeading).not.toBeNull();
 
-    const hasTrailing = canvasElement.querySelector(
-      '.ez-has-trailing .ez-m3-tf-trailing'
-    );
+    const hasTrailing = canvasElement.querySelector('.ez-m3-tf-trailing');
 
     await expect(hasTrailing).not.toBeNull();
 
-    const hasHelp = canvasElement.querySelector('.ez-has-help .ez-m3-tf-help');
+    const hasHelp = canvasElement.querySelector('.ez-m3-tf-help');
 
     await expect(hasHelp).not.toBeNull();
 
-    const hasMessages = canvasElement.querySelector(
-      '.ez-has-messages .ez-m3-tf-messages'
-    );
+    const hasMessages = canvasElement.querySelector('.ez-m3-tf-messages');
 
     await expect(hasMessages).not.toBeNull();
 
@@ -550,16 +693,8 @@ export const LeadingTrailingIcons: StoryObj = {
 
     await expect(trailingIcons.length).toBe(4);
 
-    const hasLeading = canvasElement.querySelectorAll('.ez-has-leading');
-
-    await expect(hasLeading.length).toBe(4);
-
-    const hasTrailing = canvasElement.querySelectorAll('.ez-has-trailing');
-
-    await expect(hasTrailing.length).toBe(4);
-
     const bothIcons = canvasElement.querySelector(
-      '.ez-has-leading.ez-has-trailing'
+      '.ez-m3-tf-field:has(.ez-m3-tf-leading):has(.ez-m3-tf-trailing)'
     );
 
     await expect(bothIcons).not.toBeNull();
@@ -649,5 +784,230 @@ export const ErrorStates: StoryObj = {
     );
 
     await expect(errorMessages.length).toBe(3);
+  },
+};
+
+const sampleOptions = [
+  { value: '', text: 'Choose an option' },
+  { value: 'apple', text: 'Apple' },
+  { value: 'banana', text: 'Banana' },
+  { value: 'cherry', text: 'Cherry' },
+];
+
+/**
+ * Select element rendered inside .ez-m3-textfield — filled and outlined variants.
+ */
+export const SelectTextField: StoryObj = {
+  render: () => html`
+    <section>
+      <header><h2>Select Text Field</h2></header>
+
+      <div
+        class="ez-section-body"
+        style="display: flex; flex-direction: column; gap: 1.5rem; max-width: 320px;"
+      >
+        <h3>Filled</h3>
+        ${renderSelectField({
+          variant: 'ez-filled',
+          label: 'Fruit',
+          id: 'select-filled',
+          options: sampleOptions,
+        })}
+
+        <h3>Outlined</h3>
+        ${renderSelectField({
+          variant: 'ez-outlined',
+          label: 'Fruit',
+          id: 'select-outlined',
+          options: sampleOptions,
+        })}
+
+        <h3>Filled — with value</h3>
+        ${renderSelectField({
+          variant: 'ez-filled',
+          label: 'Fruit',
+          id: 'select-filled-value',
+          options: sampleOptions,
+          value: 'banana',
+        })}
+
+        <h3>Filled — with trailing icon</h3>
+        ${renderSelectField({
+          variant: 'ez-filled',
+          label: 'Fruit',
+          id: 'select-trailing',
+          options: sampleOptions,
+          trailingIcon: 'arrow_drop_down',
+        })}
+
+        <h3>Filled — disabled</h3>
+        ${renderSelectField({
+          variant: 'ez-filled',
+          label: 'Fruit',
+          id: 'select-disabled',
+          options: sampleOptions,
+          value: 'cherry',
+          disabled: true,
+        })}
+
+        <h3>Outlined — required with help text</h3>
+        ${renderSelectField({
+          variant: 'ez-outlined',
+          label: 'Fruit',
+          id: 'select-required',
+          options: sampleOptions,
+          required: true,
+          helpText: 'Pick your favourite fruit',
+        })}
+
+        <h3>Filled — error with messages</h3>
+        ${renderSelectField({
+          variant: 'ez-filled',
+          label: 'Fruit',
+          id: 'select-error',
+          options: sampleOptions,
+          error: true,
+          messages: ['Selection is required'],
+        })}
+      </div>
+    </section>
+  `,
+  play: async ({ canvasElement }) => {
+    const textfields = canvasElement.querySelectorAll('.ez-m3-textfield');
+
+    await expect(textfields.length).toBe(7);
+
+    const selects = canvasElement.querySelectorAll<HTMLSelectElement>(
+      'select.ez-m3-tf-input'
+    );
+
+    await expect(selects.length).toBe(7);
+
+    const filledValueSelect = canvasElement.querySelector<HTMLSelectElement>(
+      '#select-filled-value'
+    );
+
+    await expect(filledValueSelect?.value).toBe('banana');
+
+    const disabledSelect =
+      canvasElement.querySelector<HTMLSelectElement>('#select-disabled');
+
+    await expect(disabledSelect?.disabled).toBe(true);
+
+    const helpText = canvasElement.querySelector('.ez-m3-tf-help');
+
+    await expect(helpText).not.toBeNull();
+
+    const errorMessages = canvasElement.querySelector('.ez-m3-tf-messages');
+
+    await expect(errorMessages).not.toBeNull();
+  },
+};
+
+/**
+ * Textarea element rendered inside .ez-m3-textfield — filled and outlined variants.
+ */
+export const TextareaTextField: StoryObj = {
+  render: () => html`
+    <section>
+      <header><h2>Textarea Text Field</h2></header>
+
+      <div
+        class="ez-section-body"
+        style="display: flex; flex-direction: column; gap: 1.5rem; max-width: 320px;"
+      >
+        <h3>Filled</h3>
+        ${renderTextareaField({
+          variant: 'ez-filled',
+          label: 'Description',
+          id: 'textarea-filled',
+        })}
+
+        <h3>Outlined</h3>
+        ${renderTextareaField({
+          variant: 'ez-outlined',
+          label: 'Description',
+          id: 'textarea-outlined',
+        })}
+
+        <h3>Filled — with value</h3>
+        ${renderTextareaField({
+          variant: 'ez-filled',
+          label: 'Bio',
+          id: 'textarea-filled-value',
+          value: 'Hello, this is a multi-line\ntext area with content.',
+        })}
+
+        <h3>Outlined — with value</h3>
+        ${renderTextareaField({
+          variant: 'ez-outlined',
+          label: 'Notes',
+          id: 'textarea-outlined-value',
+          value: 'Some outlined notes here.',
+        })}
+
+        <h3>Filled — disabled</h3>
+        ${renderTextareaField({
+          variant: 'ez-filled',
+          label: 'Description',
+          id: 'textarea-disabled',
+          value: 'Cannot edit this',
+          disabled: true,
+        })}
+
+        <h3>Outlined — required with help text</h3>
+        ${renderTextareaField({
+          variant: 'ez-outlined',
+          label: 'Comments',
+          id: 'textarea-required',
+          required: true,
+          helpText: 'Enter your comments here',
+        })}
+
+        <h3>Filled — error with messages</h3>
+        ${renderTextareaField({
+          variant: 'ez-filled',
+          label: 'Feedback',
+          id: 'textarea-error',
+          error: true,
+          messages: ['Feedback is required', 'Minimum 10 characters'],
+        })}
+      </div>
+    </section>
+  `,
+  play: async ({ canvasElement }) => {
+    const textfields = canvasElement.querySelectorAll('.ez-m3-textfield');
+
+    await expect(textfields.length).toBe(7);
+
+    const textareas = canvasElement.querySelectorAll<HTMLTextAreaElement>(
+      'textarea.ez-m3-tf-input'
+    );
+
+    await expect(textareas.length).toBe(7);
+
+    const filledValueTextarea =
+      canvasElement.querySelector<HTMLTextAreaElement>(
+        '#textarea-filled-value'
+      );
+
+    await expect(filledValueTextarea?.value).toContain('multi-line');
+
+    const disabledTextarea =
+      canvasElement.querySelector<HTMLTextAreaElement>('#textarea-disabled');
+
+    await expect(disabledTextarea?.disabled).toBe(true);
+
+    const helpText = canvasElement.querySelector('.ez-m3-tf-help');
+
+    await expect(helpText).not.toBeNull();
+
+    const errorMessages = canvasElement.querySelector('.ez-m3-tf-messages');
+
+    await expect(errorMessages).not.toBeNull();
+
+    const messageLis = canvasElement.querySelectorAll('.ez-m3-tf-messages li');
+
+    await expect(messageLis.length).toBe(2);
   },
 };
