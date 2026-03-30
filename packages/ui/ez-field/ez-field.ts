@@ -49,6 +49,7 @@ export class EzFieldElement extends LitElement {
     validateOnInput: { type: Boolean },
     validityMessaging: { type: Object, state: true },
     validate: { type: Function, state: true },
+    _nested: { type: Boolean, state: true },
   };
 
   declare selectors?: string;
@@ -71,6 +72,7 @@ export class EzFieldElement extends LitElement {
   declare validate?: (
     input: EzFieldInputElement
   ) => undefined | ValidationMessage;
+  declare _nested: boolean;
 
   get localName(): typeof EzFieldName {
     return EzFieldName;
@@ -91,12 +93,15 @@ export class EzFieldElement extends LitElement {
     this.selectors = `input:not([type="hidden"]), textarea, select`;
     this.validationMessage = '';
     this.validateOnChange = true;
+    this._nested = false;
   }
 
   connectedCallback() {
     super.connectedCallback();
 
     if (!this.#_initialized && this.isConnected) {
+      this._nested = !!this.parentElement?.closest('ez-field');
+
       if (this.selectors && this.#_inputs) this.#_addEventListeners();
 
       this.#_initialized = true;
@@ -108,6 +113,7 @@ export class EzFieldElement extends LitElement {
 
     if (this.#_initialized) {
       this.#_removeEventListeners();
+      this._nested = false;
       this.#_initialized = false;
     }
   }
@@ -130,7 +136,9 @@ export class EzFieldElement extends LitElement {
         <div class="center" part="center">
           <slot></slot>
           <slot name="help" part="help"></slot>
-          <div class="error" part="error">${this.validationMessage}</div>
+          <div class="error" part="error" ?hidden=${this._nested}>
+            ${this.validationMessage}
+          </div>
           <slot name="custom" part="custom"></slot>
         </div>
         <slot name="trailing" part="trailing"></slot>

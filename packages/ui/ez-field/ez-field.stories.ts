@@ -253,7 +253,7 @@ export const ErrorPropertyStory: StoryObj = {
     // Verify error renders in shadow DOM
     const errorDiv = attrField?.shadowRoot?.querySelector('.error');
 
-    await expect(errorDiv?.textContent).toBe('Initial error message');
+    await expect(errorDiv?.textContent.trim()).toBe('Initial error message');
 
     // Test setting error property updates validationMessage
     const propField = canvasElement.querySelector<EzFieldElement>(

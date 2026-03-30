@@ -24,7 +24,9 @@
   <div slot="help">Enter your name</div>
 </ez-field>
 
-<!-- Radio set -->
+<!-- Radio set - Automatically handles showing error message only
+   on wrapping `ez-field` element (not child ones) 
+   -->
 <ez-field>
   <label for="radio-1">Radios</label>
   <ez-field>
@@ -42,14 +44,6 @@
   Enters message into `error` slot.
 -->
 <ez-field error="Rule violation.">
-  <label for="name">Name:</label>
-  <input type="text" id="name" name="name" />
-</ez-field>
-
-<!-- With error message via `validationMessage` attribute. 
-  Enters message into `error` slot.
--->
-<ez-field validationMessage="Rule violation.">
   <label for="name">Name:</label>
   <input type="text" id="name" name="name" />
 </ez-field>
