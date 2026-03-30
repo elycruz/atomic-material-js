@@ -102,6 +102,8 @@ label:has(> ez-ripple > :disabled) {
 }
 
 /* Character counter */
+
+/*
 :where(ez-field, .ez-field) .ez-field__counter {
   font-family: var(--md-sys-typescale-body-small-font, inherit), sans-serif;
   font-size: var(--md-sys-typescale-body-small-size, smaller);
@@ -110,3 +112,4 @@ label:has(> ez-ripple > :disabled) {
   margin-top: 0.25rem;
   padding-inline: var(--md-sys-spacing-4, 1rem);
 }
+*/

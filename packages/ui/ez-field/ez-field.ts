@@ -3,6 +3,7 @@ import {
   html,
   type PropertyValues,
   type CSSResultGroup,
+  unsafeCSS,
 } from 'lit';
 
 import {
@@ -13,12 +14,22 @@ import {
   type EventListenerTuple,
 } from '../utils/dom/events.js';
 
-import styles from './ez-field.style.js';
+import cssStr from './ez-field.scss?inline';
+
+const styles = unsafeCSS(cssStr);
 
 export const EzFieldName = 'ez-field';
 
-// const SELECTORS_NAME = 'selectors',
-//   VALIDATION_MESSAGE_NAME = 'validationMessage';
+export type EzFieldInputElement =
+  | HTMLInputElement
+  | HTMLTextAreaElement
+  | HTMLSelectElement;
+
+export type ValidationMessageGetter = (i: EzFieldInputElement) => string;
+export type ValidationMessage = string;
+export type ValidityMessaging = {
+  [key in keyof ValidityState]?: ValidationMessageGetter | ValidationMessage;
+};
 
 export class EzFieldElement extends LitElement {
   static localName = EzFieldName;
@@ -29,17 +40,23 @@ export class EzFieldElement extends LitElement {
 
   static properties = {
     selectors: { type: String },
-    validationMessage: { type: String },
+    validationMessage: {
+      type: String,
+      attribute: 'validationMessage',
+      reflect: true,
+    },
     validateOnChange: { type: Boolean },
     validateOnInput: { type: Boolean },
-    variant: { type: String, reflect: true },
+    validityMessaging: { type: Object, state: true },
+    validate: { type: Function, state: true },
   };
 
   selectors?: string;
   validationMessage?: string;
   validateOnChange?: boolean;
   validateOnInput?: boolean;
-  variant?: 'filled' | 'outlined' = 'outlined';
+  validityMessaging?: ValidityMessaging;
+  validate?: (input: EzFieldInputElement) => undefined | ValidationMessage;
 
   get localName(): typeof EzFieldName {
     return EzFieldName;
@@ -48,9 +65,7 @@ export class EzFieldElement extends LitElement {
   #_initialized = false;
   #_evListenersTupleList: EventListenerTuple[];
   #_form?: HTMLFormElement;
-  #_inputs?: NodeListOf<
-    HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-  >;
+  #_inputs?: NodeListOf<EzFieldInputElement>;
 
   constructor() {
     super();
@@ -59,6 +74,7 @@ export class EzFieldElement extends LitElement {
       [this.#_onInputOrChange, 'input'],
       [this.#_onInputOrChange, 'change'],
     ];
+    this.selectors = `input:not([type="hidden"]), textarea, select`;
   }
 
   connectedCallback() {
@@ -113,14 +129,32 @@ export class EzFieldElement extends LitElement {
     e.preventDefault();
 
     const { currentTarget } = e,
-      target = currentTarget as
-        | HTMLInputElement
-        | HTMLTextAreaElement
-        | HTMLSelectElement,
+      target = currentTarget as EzFieldInputElement,
       { selectors } = this;
 
-    if (selectors && target?.matches(selectors)) {
+    if (!selectors || !target?.matches(selectors)) return;
+
+    const { validity } = target;
+
+    if (!this.validityMessaging || validity.customError) {
       this.validationMessage = target.validationMessage;
+    } else {
+      (
+        Object.entries(this.validityMessaging) as [
+          keyof ValidityMessaging,
+          ValidationMessageGetter | ValidationMessage,
+        ][]
+      ).forEach(([key, messageOrGetter]) => {
+        if (key === 'valid' || !validity[key] || !messageOrGetter) return;
+
+        const message =
+          typeof messageOrGetter === 'function'
+            ? messageOrGetter(target)
+            : messageOrGetter;
+
+        target.setCustomValidity(message);
+        target.reportValidity();
+      });
     }
   };
 
@@ -133,23 +167,69 @@ export class EzFieldElement extends LitElement {
     )
       return;
 
-    const inputTarget = target as
-      | HTMLInputElement
-      | HTMLTextAreaElement
-      | HTMLSelectElement;
+    const inputTarget = target as EzFieldInputElement;
 
     if (!inputTarget.validationMessage) this.validationMessage = '';
+
     if (
-      (this.validateOnChange && e.type === 'change') ||
-      (this.validateOnInput && e.type === 'input')
-    ) {
-      this.#_inputs?.forEach(input => input.checkValidity());
-    }
+      !this.#_inputs?.length ||
+      !(
+        (this.validateOnChange && e.type === 'change') ||
+        (this.validateOnInput && e.type === 'input')
+      )
+    )
+      return;
+
+    this.#_propagateErrorMessages();
   };
 
   #_onFormReset = (): void => {
+    this.#_inputs?.forEach(input => {
+      input.setCustomValidity('');
+    });
     this.validationMessage = '';
   };
+
+  #_propagateErrorMessages(): void {
+    this.#_inputs?.forEach(input => {
+      input.setCustomValidity('');
+
+      const message = this.validate?.(input);
+
+      if (message) {
+        input.setCustomValidity(message);
+        input.reportValidity();
+        this.validationMessage = message;
+        return;
+      }
+
+      const { validity } = input;
+
+      if (validity.valid) {
+        this.validationMessage = '';
+        return;
+      }
+
+      if (this.validityMessaging && !validity.customError) {
+        (
+          Object.entries(this.validityMessaging) as [
+            keyof ValidityMessaging,
+            ValidationMessageGetter | ValidationMessage,
+          ][]
+        ).forEach(([key, messageOrGetter]) => {
+          if (key === 'valid' || !validity[key] || !messageOrGetter) return;
+
+          const msg =
+            typeof messageOrGetter === 'function'
+              ? messageOrGetter(input)
+              : messageOrGetter;
+
+          input.setCustomValidity(msg);
+          input.reportValidity();
+        });
+      }
+    });
+  }
 
   #_addEventListeners(): this {
     if (this.#_form)
