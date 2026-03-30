@@ -42,7 +42,7 @@ export class EzFieldElement extends LitElement {
     selectors: { type: String },
     validationMessage: {
       type: String,
-      attribute: 'validationMessage',
+      attribute: 'validationmessage',
       reflect: true,
     },
     validateOnChange: { type: Boolean },
@@ -51,12 +51,14 @@ export class EzFieldElement extends LitElement {
     validate: { type: Function, state: true },
   };
 
-  selectors?: string;
-  validationMessage?: string;
-  validateOnChange?: boolean;
-  validateOnInput?: boolean;
-  validityMessaging?: ValidityMessaging;
-  validate?: (input: EzFieldInputElement) => undefined | ValidationMessage;
+  declare selectors?: string;
+  declare validationMessage?: string;
+  declare validateOnChange?: boolean;
+  declare validateOnInput?: boolean;
+  declare validityMessaging?: ValidityMessaging;
+  declare validate?: (
+    input: EzFieldInputElement
+  ) => undefined | ValidationMessage;
 
   get localName(): typeof EzFieldName {
     return EzFieldName;
@@ -75,6 +77,8 @@ export class EzFieldElement extends LitElement {
       [this.#_onInputOrChange, 'change'],
     ];
     this.selectors = `input:not([type="hidden"]), textarea, select`;
+    this.validationMessage = '';
+    this.validateOnChange = true;
   }
 
   connectedCallback() {
@@ -109,16 +113,13 @@ export class EzFieldElement extends LitElement {
 
   render() {
     return html`
-      <div class="flex-container">
+      <div class="ez-field">
         <slot name="leading" part="leading"></slot>
-        <div class="center-column">
+        <div class="center" part="center">
           <slot></slot>
-          <div class="error-message" part="error">
-            ${this.validationMessage}
-          </div>
-          <slot name="supporting-text" part="supporting-text"></slot>
           <slot name="help" part="help"></slot>
-          <slot name="counter" part="counter"></slot>
+          <div class="error" part="error">${this.validationMessage}</div>
+          <slot name="custom" part="custom"></slot>
         </div>
         <slot name="trailing" part="trailing"></slot>
       </div>
@@ -134,11 +135,15 @@ export class EzFieldElement extends LitElement {
 
     if (!selectors || !target?.matches(selectors)) return;
 
+    // Handle validity custom messaging.
     const { validity } = target;
 
+    // If no custom messaging or custom message is already set
     if (!this.validityMessaging || validity.customError) {
       this.validationMessage = target.validationMessage;
-    } else {
+    }
+    // Else get custom method and re-trigger 'invalid' call
+    else {
       (
         Object.entries(this.validityMessaging) as [
           keyof ValidityMessaging,
@@ -161,6 +166,7 @@ export class EzFieldElement extends LitElement {
   #_onInputOrChange = (e: Event): void => {
     const { target } = e;
 
+    // If event target doesn't match tracked elements, bail
     if (
       !(target instanceof HTMLElement) ||
       !target.matches(this.selectors ?? '')
@@ -169,8 +175,10 @@ export class EzFieldElement extends LitElement {
 
     const inputTarget = target as EzFieldInputElement;
 
+    // Clear validation message if none
     if (!inputTarget.validationMessage) this.validationMessage = '';
 
+    // If no input elements, and/or event isn't tracked one, return
     if (
       !this.#_inputs?.length ||
       !(
@@ -210,6 +218,8 @@ export class EzFieldElement extends LitElement {
         return;
       }
 
+      // Handle validity custom messaging.
+      // If we have non "validate" custom messaging, propagate it
       if (this.validityMessaging && !validity.customError) {
         (
           Object.entries(this.validityMessaging) as [
@@ -217,6 +227,7 @@ export class EzFieldElement extends LitElement {
             ValidationMessageGetter | ValidationMessage,
           ][]
         ).forEach(([key, messageOrGetter]) => {
+          // Skip all keys except matching one
           if (key === 'valid' || !validity[key] || !messageOrGetter) return;
 
           const msg =

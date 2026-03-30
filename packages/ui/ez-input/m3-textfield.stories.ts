@@ -341,9 +341,8 @@ export const FilledTextField: StoryObj = {
 
     await expect(disabledField).not.toBeNull();
 
-    const hasValueInput = canvasElement.querySelector<HTMLInputElement>(
-      '#filled-value .ez-tf-input'
-    );
+    const hasValueInput =
+      canvasElement.querySelector<HTMLInputElement>('#filled-value');
 
     await expect(hasValueInput?.value).toBe('Hello world');
   },
@@ -457,7 +456,11 @@ export const InputTypes: StoryObj = {
 
     await Promise.all(
       textFieldInputTypes.map(async (type, i) => {
-        await expect((inputs[i] as HTMLInputElement).type).toBe(type);
+        // Skip 'week' and 'month' types - They are not supported by firefox
+        if (type === 'week' || type === 'month') {
+          return Promise.resolve();
+        }
+        return expect((inputs[i] as HTMLInputElement).type).toBe(type);
       })
     );
   },
@@ -542,9 +545,8 @@ export const TextFieldStates: StoryObj = {
     </section>
   `,
   play: async ({ canvasElement }) => {
-    const hasValueInput = canvasElement.querySelector<HTMLInputElement>(
-      '#state-has-value .ez-tf-input'
-    );
+    const hasValueInput =
+      canvasElement.querySelector<HTMLInputElement>('#state-has-value');
 
     await expect(hasValueInput?.value).toBe('Some text');
 

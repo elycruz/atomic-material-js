@@ -7,7 +7,7 @@
   flex-flow: row wrap;
 }
 
-:host [part~='leading trailing error help']:empty {
+:host [part~='leading trailing error help other custom']:empty {
   display: none;
 }
 

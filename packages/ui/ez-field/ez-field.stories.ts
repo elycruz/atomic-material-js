@@ -440,7 +440,7 @@ export const KitchenSink: StoryObj = {
     );
 
     await expect(serverErrField).toBeInTheDocument();
-    await expect(serverErrField?.getAttribute('validationmessage')).toBe(
+    await expect(serverErrField?.validationMessage).toBe(
       'Server-side Err Message'
     );
 
