@@ -22,7 +22,7 @@ const textFieldInputTypes = [
 ] as const;
 
 /**
- * Helper that renders a standard .ez-m3-textfield with options.
+ * Helper that renders a standard .ez-textfield with options.
  */
 function renderTextField({
   variant = 'ez-filled',
@@ -58,7 +58,7 @@ function renderTextField({
   fullwidth?: boolean;
 } = {}) {
   const rootClasses = [
-    'ez-m3-textfield',
+    'ez-textfield',
     variant,
     stateClasses,
     fullwidth ? 'ez-fullwidth' : '',
@@ -71,16 +71,16 @@ function renderTextField({
 
   return html`
     <div class="${rootClasses}">
-      <div class="ez-m3-tf-wrapper">
-        <div class="ez-m3-tf-field">
+      <div class="ez-tf-wrapper">
+        <div class="ez-tf-field">
           ${leadingIcon
-            ? html`<div class="ez-m3-tf-leading">
+            ? html`<div class="ez-tf-leading">
                 <span class="md-icon">${leadingIcon}</span>
               </div>`
             : ''}
-          <div class="ez-m3-tf-center">
+          <div class="ez-tf-center">
             <input
-              class="ez-m3-tf-input"
+              class="ez-tf-input"
               type="${type}"
               placeholder="${placeholder}"
               id="${id}"
@@ -88,18 +88,18 @@ function renderTextField({
               ?disabled="${disabled}"
               ?required="${required}"
             />
-            <label class="ez-m3-tf-label" for="${id}">${label}</label>
+            <label class="ez-tf-label" for="${id}">${label}</label>
           </div>
           ${trailingIcon
-            ? html`<div class="ez-m3-tf-trailing">
+            ? html`<div class="ez-tf-trailing">
                 <span class="md-icon">${trailingIcon}</span>
               </div>`
             : ''}
         </div>
       </div>
-      ${helpText ? html`<div class="ez-m3-tf-help">${helpText}</div>` : ''}
+      ${helpText ? html`<div class="ez-tf-help">${helpText}</div>` : ''}
       ${messages.length
-        ? html`<ul class="ez-m3-tf-messages">
+        ? html`<ul class="ez-tf-messages">
             ${messages.map(m => html`<li>${m}</li>`)}
           </ul>`
         : ''}
@@ -108,7 +108,7 @@ function renderTextField({
 }
 
 /**
- * Helper that renders a .ez-m3-textfield wrapping a <select>.
+ * Helper that renders a .ez-textfield wrapping a <select>.
  */
 function renderSelectField({
   variant = 'ez-filled',
@@ -140,7 +140,7 @@ function renderSelectField({
   fullwidth?: boolean;
 } = {}) {
   const rootClasses = [
-    'ez-m3-textfield',
+    'ez-textfield',
     variant,
     fullwidth ? 'ez-fullwidth' : '',
     disabled ? 'ez-disabled' : '',
@@ -152,16 +152,16 @@ function renderSelectField({
 
   return html`
     <div class="${rootClasses}">
-      <div class="ez-m3-tf-wrapper">
-        <div class="ez-m3-tf-field">
+      <div class="ez-tf-wrapper">
+        <div class="ez-tf-field">
           ${leadingIcon
-            ? html`<div class="ez-m3-tf-leading">
+            ? html`<div class="ez-tf-leading">
                 <span class="md-icon">${leadingIcon}</span>
               </div>`
             : ''}
-          <div class="ez-m3-tf-center">
+          <div class="ez-tf-center">
             <select
-              class="ez-m3-tf-input"
+              class="ez-tf-input"
               id="${id}"
               .value="${value}"
               ?disabled="${disabled}"
@@ -177,18 +177,18 @@ function renderSelectField({
                   </option>`
               )}
             </select>
-            <label class="ez-m3-tf-label" for="${id}">${label}</label>
+            <label class="ez-tf-label" for="${id}">${label}</label>
           </div>
           ${trailingIcon
-            ? html`<div class="ez-m3-tf-trailing">
+            ? html`<div class="ez-tf-trailing">
                 <span class="md-icon">${trailingIcon}</span>
               </div>`
             : ''}
         </div>
       </div>
-      ${helpText ? html`<div class="ez-m3-tf-help">${helpText}</div>` : ''}
+      ${helpText ? html`<div class="ez-tf-help">${helpText}</div>` : ''}
       ${messages.length
-        ? html`<ul class="ez-m3-tf-messages">
+        ? html`<ul class="ez-tf-messages">
             ${messages.map(m => html`<li>${m}</li>`)}
           </ul>`
         : ''}
@@ -197,7 +197,7 @@ function renderSelectField({
 }
 
 /**
- * Helper that renders a .ez-m3-textfield wrapping a <textarea>.
+ * Helper that renders a .ez-textfield wrapping a <textarea>.
  */
 function renderTextareaField({
   variant = 'ez-filled',
@@ -227,7 +227,7 @@ function renderTextareaField({
   fullwidth?: boolean;
 } = {}) {
   const rootClasses = [
-    'ez-m3-textfield',
+    'ez-textfield',
     variant,
     fullwidth ? 'ez-fullwidth' : '',
     disabled ? 'ez-disabled' : '',
@@ -239,11 +239,11 @@ function renderTextareaField({
 
   return html`
     <div class="${rootClasses}">
-      <div class="ez-m3-tf-wrapper">
-        <div class="ez-m3-tf-field">
-          <div class="ez-m3-tf-center">
+      <div class="ez-tf-wrapper">
+        <div class="ez-tf-field">
+          <div class="ez-tf-center">
             <textarea
-              class="ez-m3-tf-input"
+              class="ez-tf-input"
               placeholder="${placeholder}"
               id="${id}"
               rows="${rows}"
@@ -251,13 +251,13 @@ function renderTextareaField({
               ?disabled="${disabled}"
               ?required="${required}"
             ></textarea>
-            <label class="ez-m3-tf-label" for="${id}">${label}</label>
+            <label class="ez-tf-label" for="${id}">${label}</label>
           </div>
         </div>
       </div>
-      ${helpText ? html`<div class="ez-m3-tf-help">${helpText}</div>` : ''}
+      ${helpText ? html`<div class="ez-tf-help">${helpText}</div>` : ''}
       ${messages.length
-        ? html`<ul class="ez-m3-tf-messages">
+        ? html`<ul class="ez-tf-messages">
             ${messages.map(m => html`<li>${m}</li>`)}
           </ul>`
         : ''}
@@ -317,7 +317,7 @@ export const FilledTextField: StoryObj = {
     </section>
   `,
   play: async ({ canvasElement }) => {
-    const textfields = canvasElement.querySelectorAll('.ez-m3-textfield');
+    const textfields = canvasElement.querySelectorAll('.ez-textfield');
 
     await expect(textfields.length).toBe(6);
 
@@ -325,11 +325,11 @@ export const FilledTextField: StoryObj = {
 
     await expect(filled.length).toBe(6);
 
-    const helpVisible = canvasElement.querySelector('.ez-m3-tf-help');
+    const helpVisible = canvasElement.querySelector('.ez-tf-help');
 
     await expect(helpVisible).not.toBeNull();
 
-    const messagesVisible = canvasElement.querySelector('.ez-m3-tf-messages');
+    const messagesVisible = canvasElement.querySelector('.ez-tf-messages');
 
     await expect(messagesVisible).not.toBeNull();
 
@@ -342,7 +342,7 @@ export const FilledTextField: StoryObj = {
     await expect(disabledField).not.toBeNull();
 
     const hasValueInput = canvasElement.querySelector<HTMLInputElement>(
-      '#filled-value .ez-m3-tf-input'
+      '#filled-value .ez-tf-input'
     );
 
     await expect(hasValueInput?.value).toBe('Hello world');
@@ -401,7 +401,7 @@ export const OutlinedTextField: StoryObj = {
     </section>
   `,
   play: async ({ canvasElement }) => {
-    const textfields = canvasElement.querySelectorAll('.ez-m3-textfield');
+    const textfields = canvasElement.querySelectorAll('.ez-textfield');
 
     await expect(textfields.length).toBe(6);
 
@@ -409,11 +409,11 @@ export const OutlinedTextField: StoryObj = {
 
     await expect(outlined.length).toBe(6);
 
-    const helpVisible = canvasElement.querySelector('.ez-m3-tf-help');
+    const helpVisible = canvasElement.querySelector('.ez-tf-help');
 
     await expect(helpVisible).not.toBeNull();
 
-    const messagesVisible = canvasElement.querySelector('.ez-m3-tf-messages');
+    const messagesVisible = canvasElement.querySelector('.ez-tf-messages');
 
     await expect(messagesVisible).not.toBeNull();
 
@@ -451,7 +451,7 @@ export const InputTypes: StoryObj = {
     </section>
   `,
   play: async ({ canvasElement }) => {
-    const inputs = canvasElement.querySelectorAll('.ez-m3-tf-input');
+    const inputs = canvasElement.querySelectorAll('.ez-tf-input');
 
     await expect(inputs.length).toBe(textFieldInputTypes.length);
 
@@ -543,7 +543,7 @@ export const TextFieldStates: StoryObj = {
   `,
   play: async ({ canvasElement }) => {
     const hasValueInput = canvasElement.querySelector<HTMLInputElement>(
-      '#state-has-value .ez-m3-tf-input'
+      '#state-has-value .ez-tf-input'
     );
 
     await expect(hasValueInput?.value).toBe('Some text');
@@ -556,23 +556,23 @@ export const TextFieldStates: StoryObj = {
 
     await expect(required).not.toBeNull();
 
-    const hasLeading = canvasElement.querySelector('.ez-m3-tf-leading');
+    const hasLeading = canvasElement.querySelector('.ez-tf-leading');
 
     await expect(hasLeading).not.toBeNull();
 
-    const hasTrailing = canvasElement.querySelector('.ez-m3-tf-trailing');
+    const hasTrailing = canvasElement.querySelector('.ez-tf-trailing');
 
     await expect(hasTrailing).not.toBeNull();
 
-    const hasHelp = canvasElement.querySelector('.ez-m3-tf-help');
+    const hasHelp = canvasElement.querySelector('.ez-tf-help');
 
     await expect(hasHelp).not.toBeNull();
 
-    const hasMessages = canvasElement.querySelector('.ez-m3-tf-messages');
+    const hasMessages = canvasElement.querySelector('.ez-tf-messages');
 
     await expect(hasMessages).not.toBeNull();
 
-    const messageLis = canvasElement.querySelectorAll('.ez-m3-tf-messages li');
+    const messageLis = canvasElement.querySelectorAll('.ez-tf-messages li');
 
     await expect(messageLis.length).toBe(2);
   },
@@ -685,16 +685,16 @@ export const LeadingTrailingIcons: StoryObj = {
     </section>
   `,
   play: async ({ canvasElement }) => {
-    const leadingIcons = canvasElement.querySelectorAll('.ez-m3-tf-leading');
+    const leadingIcons = canvasElement.querySelectorAll('.ez-tf-leading');
 
     await expect(leadingIcons.length).toBe(4);
 
-    const trailingIcons = canvasElement.querySelectorAll('.ez-m3-tf-trailing');
+    const trailingIcons = canvasElement.querySelectorAll('.ez-tf-trailing');
 
     await expect(trailingIcons.length).toBe(4);
 
     const bothIcons = canvasElement.querySelector(
-      '.ez-m3-tf-field:has(.ez-m3-tf-leading):has(.ez-m3-tf-trailing)'
+      '.ez-tf-field:has(.ez-tf-leading):has(.ez-tf-trailing)'
     );
 
     await expect(bothIcons).not.toBeNull();
@@ -774,13 +774,13 @@ export const ErrorStates: StoryObj = {
     await expect(outlinedError).not.toBeNull();
 
     const errorTrailing = canvasElement.querySelectorAll(
-      '.ez-error .ez-m3-tf-trailing'
+      '.ez-error .ez-tf-trailing'
     );
 
     await expect(errorTrailing.length).toBe(4);
 
     const errorMessages = canvasElement.querySelectorAll(
-      '.ez-error .ez-m3-tf-messages'
+      '.ez-error .ez-tf-messages'
     );
 
     await expect(errorMessages.length).toBe(3);
@@ -795,7 +795,7 @@ const sampleOptions = [
 ];
 
 /**
- * Select element rendered inside .ez-m3-textfield — filled and outlined variants.
+ * Select element rendered inside .ez-textfield — filled and outlined variants.
  */
 export const SelectTextField: StoryObj = {
   render: () => html`
@@ -873,13 +873,12 @@ export const SelectTextField: StoryObj = {
     </section>
   `,
   play: async ({ canvasElement }) => {
-    const textfields = canvasElement.querySelectorAll('.ez-m3-textfield');
+    const textfields = canvasElement.querySelectorAll('.ez-textfield');
 
     await expect(textfields.length).toBe(7);
 
-    const selects = canvasElement.querySelectorAll<HTMLSelectElement>(
-      'select.ez-m3-tf-input'
-    );
+    const selects =
+      canvasElement.querySelectorAll<HTMLSelectElement>('select.ez-tf-input');
 
     await expect(selects.length).toBe(7);
 
@@ -894,18 +893,18 @@ export const SelectTextField: StoryObj = {
 
     await expect(disabledSelect?.disabled).toBe(true);
 
-    const helpText = canvasElement.querySelector('.ez-m3-tf-help');
+    const helpText = canvasElement.querySelector('.ez-tf-help');
 
     await expect(helpText).not.toBeNull();
 
-    const errorMessages = canvasElement.querySelector('.ez-m3-tf-messages');
+    const errorMessages = canvasElement.querySelector('.ez-tf-messages');
 
     await expect(errorMessages).not.toBeNull();
   },
 };
 
 /**
- * Textarea element rendered inside .ez-m3-textfield — filled and outlined variants.
+ * Textarea element rendered inside .ez-textfield — filled and outlined variants.
  */
 export const TextareaTextField: StoryObj = {
   render: () => html`
@@ -976,12 +975,12 @@ export const TextareaTextField: StoryObj = {
     </section>
   `,
   play: async ({ canvasElement }) => {
-    const textfields = canvasElement.querySelectorAll('.ez-m3-textfield');
+    const textfields = canvasElement.querySelectorAll('.ez-textfield');
 
     await expect(textfields.length).toBe(7);
 
     const textareas = canvasElement.querySelectorAll<HTMLTextAreaElement>(
-      'textarea.ez-m3-tf-input'
+      'textarea.ez-tf-input'
     );
 
     await expect(textareas.length).toBe(7);
@@ -998,15 +997,15 @@ export const TextareaTextField: StoryObj = {
 
     await expect(disabledTextarea?.disabled).toBe(true);
 
-    const helpText = canvasElement.querySelector('.ez-m3-tf-help');
+    const helpText = canvasElement.querySelector('.ez-tf-help');
 
     await expect(helpText).not.toBeNull();
 
-    const errorMessages = canvasElement.querySelector('.ez-m3-tf-messages');
+    const errorMessages = canvasElement.querySelector('.ez-tf-messages');
 
     await expect(errorMessages).not.toBeNull();
 
-    const messageLis = canvasElement.querySelectorAll('.ez-m3-tf-messages li');
+    const messageLis = canvasElement.querySelectorAll('.ez-tf-messages li');
 
     await expect(messageLis.length).toBe(2);
   },
