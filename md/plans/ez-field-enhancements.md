@@ -1,11 +1,10 @@
-# Plan: Enhance `ez-field` Component — Error Handling, Help Text, Nested Fields
+# Plan: Enhance `ez-field` Component — Error Handling, Nested Fields
 
 ## Context
 
 The `ez-field` web component wraps form inputs and captures native `invalid` events to display `validationMessage`. It needs enhancements for:
 - **Programmatic error setting** via an `error` property that propagates to the first child input (via `setCustomValidity` + `checkValidity`)
-- **Help text** via a `helpText` property (currently only slot-based `<div slot="help">`)
-- **Nested `ez-field` support** where the parent field handles error display, child fields are layout wrappers
+- **Nested `ez-field` support** where the parent field handles error display, child field error ignored by their direct `ez-field` wrappers
 - Fixing the broken `:empty` CSS selector in the shadow DOM styles
 
 ---
@@ -17,7 +16,6 @@ The `ez-field` web component wraps form inputs and captures native `invalid` eve
 | Property | Type | Attribute | Default | Purpose |
 |---|---|---|---|---|
 | `error` | `string` | `error` | `''` | When set, calls `setCustomValidity(error)` on the first input found via `selectors`, then `checkValidity()` to trigger the validation flow. When cleared (`''`), calls `setCustomValidity('')` to remove the custom error. |
-| `helpText` | `string` | `help-text` | `undefined` | Programmatic help text rendered below the input |
 
 The existing `validationMessage` property continues to hold the displayed error text (set by `#_onInvalid` handler or directly). The new `error` property is the *input* mechanism — it pushes a custom validity constraint onto the native input, which then flows through the existing `invalid` event pipeline.
 
@@ -65,30 +63,19 @@ if (_changedProperties.has('error')) {
 
 **Render updates:**
 - Error div: use `?hidden=${!this.validationMessage}` instead of broken `:empty` CSS
-- Add `<div part="help-text" ?hidden=${!this.helpText}>${this.helpText}</div>` for programmatic help
-- Keep existing `<slot name="help">` for slotted HTML help content
 
 ### 3. CSS Changes
 
 **`ez-field.scss`** (shadow DOM):
 - Remove broken `:host [part~='leading trailing...']:empty` rule (the `~=` selector with space-separated values doesn't work as intended)
 - Add `[hidden] { display: none !important; }` for `?hidden` bindings
-- Add `[part='help-text']` styling matching existing help slot style
-
-### 4. Demo Updates (`index.html`)
-
-Add examples for:
-- Setting `error` attribute/property programmatically
-- `help-text` property usage
-- Nested `ez-field` for radio group (parent handles error, children are layout wrappers)
 
 ---
 
 ## Files to Modify
 
-- `packages/ui/ez-field/ez-field.ts` — add `error` + `helpText` properties, update `#_inputs` to array, update `render()` and `updated()`
-- `packages/ui/ez-field/ez-field.scss` — fix `:empty` bug, add hidden rule, add help-text style
-- `packages/ui/ez-field/index.html` — new demo examples
+- `packages/ui/ez-field/ez-field.ts` — add `error` property, update `#_inputs` to array, update `render()` and `updated()`
+- `packages/ui/ez-field/ez-field.scss` — fix `:empty` bug, add hidden rule
 
 ---
 

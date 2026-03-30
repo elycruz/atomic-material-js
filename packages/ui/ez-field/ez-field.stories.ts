@@ -200,6 +200,93 @@ export const FormResetStory: StoryObj = {
   },
 };
 
+export const ErrorPropertyStory: StoryObj = {
+  name: 'Error Property',
+  render: () => html`
+    <form action="#" @submit="${(e: Event) => e.preventDefault()}">
+      <fieldset class="ez-grid ez-fieldset--grid-2">
+        <legend>Error Property</legend>
+
+        <label for="err-attr-input">With error attribute</label>
+        <ez-field
+          selectors="input"
+          error="Initial error message"
+          data-testid="err-attr-field"
+        >
+          <input
+            id="err-attr-input"
+            name="err-attr-input"
+            class="ez-input"
+            data-testid="err-attr-input"
+            required
+          />
+        </ez-field>
+
+        <label for="err-prop-input">Error via property</label>
+        <ez-field selectors="input" data-testid="err-prop-field">
+          <input
+            id="err-prop-input"
+            name="err-prop-input"
+            class="ez-input"
+            data-testid="err-prop-input"
+            required
+          />
+        </ez-field>
+      </fieldset>
+
+      <fieldset>
+        <button type="reset">Reset</button>
+        <button>Submit</button>
+      </fieldset>
+    </form>
+  `,
+  play: async ({ canvasElement }) => {
+    // Test error attribute sets validationMessage
+    const attrField = canvasElement.querySelector<EzFieldElement>(
+      '[data-testid="err-attr-field"]'
+    );
+
+    await expect(attrField).toBeInTheDocument();
+    await expect(attrField?.error).toBe('Initial error message');
+    await expect(attrField?.validationMessage).toBe('Initial error message');
+
+    // Verify error renders in shadow DOM
+    const errorDiv = attrField?.shadowRoot?.querySelector('.error');
+
+    await expect(errorDiv?.textContent).toBe('Initial error message');
+
+    // Test setting error property updates validationMessage
+    const propField = canvasElement.querySelector<EzFieldElement>(
+      '[data-testid="err-prop-field"]'
+    );
+
+    await expect(propField).toBeInTheDocument();
+    await expect(propField?.error).toBe('');
+
+    if (propField) {
+      propField.error = 'Property error message';
+    }
+
+    await expect(propField?.validationMessage).toBe('Property error message');
+    await expect(propField?.error).toBe('Property error message');
+
+    // Test clearing error
+    if (propField) {
+      propField.error = '';
+    }
+
+    await expect(propField?.validationMessage).toBe('');
+    await expect(propField?.error).toBe('');
+
+    // Test validationMessage also reflects via error getter
+    if (propField) {
+      propField.validationMessage = 'Via validationMessage';
+    }
+
+    await expect(propField?.error).toBe('Via validationMessage');
+  },
+};
+
 export const KitchenSink: StoryObj = {
   render: () => html`
     <section>
@@ -237,7 +324,7 @@ export const KitchenSink: StoryObj = {
             >
             <ez-field
               selectors="input"
-              validationMessage="Server-side Err Message"
+              error="Server-side Err Message"
               data-testid="ks-field-server-err"
             >
               <input

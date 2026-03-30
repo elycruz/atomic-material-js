@@ -39,10 +39,10 @@ export class EzFieldElement extends LitElement {
   }
 
   static properties = {
-    selectors: { type: String },
+    selectors: { type: String, reflect: false },
     validationMessage: {
       type: String,
-      attribute: 'validationmessage',
+      attribute: 'error',
       reflect: true,
     },
     validateOnChange: { type: Boolean },
@@ -53,6 +53,18 @@ export class EzFieldElement extends LitElement {
 
   declare selectors?: string;
   declare validationMessage?: string;
+
+  get error(): string {
+    return this.validationMessage ?? '';
+  }
+
+  set error(value: string) {
+    const prevValue = this.validationMessage;
+
+    this.validationMessage = value;
+    this.requestUpdate('validationMessage', prevValue);
+  }
+
   declare validateOnChange?: boolean;
   declare validateOnInput?: boolean;
   declare validityMessaging?: ValidityMessaging;
@@ -163,6 +175,9 @@ export class EzFieldElement extends LitElement {
     }
   };
 
+  /**
+   * Triggers error message propagation to UI
+   */
   #_onInputOrChange = (e: Event): void => {
     const { target } = e;
 
@@ -191,6 +206,9 @@ export class EzFieldElement extends LitElement {
     this.#_propagateErrorMessages();
   };
 
+  /**
+   * Clears error message on form reset.
+   */
   #_onFormReset = (): void => {
     this.#_inputs?.forEach(input => {
       input.setCustomValidity('');
@@ -198,6 +216,9 @@ export class EzFieldElement extends LitElement {
     this.validationMessage = '';
   };
 
+  /**
+   * Propagates error messages to the UI.
+   */
   #_propagateErrorMessages(): void {
     this.#_inputs?.forEach(input => {
       input.setCustomValidity('');
@@ -242,6 +263,9 @@ export class EzFieldElement extends LitElement {
     });
   }
 
+  /**
+   * Removes and adds event listeners.
+   */
   #_addEventListeners(): this {
     if (this.#_form)
       removeEventListener(this.#_onFormReset, 'reset', this.#_form);
