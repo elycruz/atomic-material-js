@@ -122,3 +122,7 @@ typings/
 # Added by cargo
 
 /target
+
+
+# LLMs
+.claude/worktrees/
