@@ -32,6 +32,10 @@
       "types": "./dist/ez-ripple/index.d.ts",
       "default": "./dist/ez-ripple/index.js"
     },
+    "./ez-textfield": {
+      "types": "./dist/ez-textfield/index.d.ts",
+      "default": "./dist/ez-textfield/index.js"
+    },
     "./*": "./dist/*"
   },
   "scripts": {
