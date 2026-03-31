@@ -19,6 +19,8 @@
   position: relative;
   display: flex;
   flex-flow: row nowrap;
+  align-items: stretch;
+  padding: 0;
   background: var(--_tabs-container-color);
   border-bottom: var(--_tabs-divider-height) solid var(--_tabs-divider-color);
   overflow: auto visible;
@@ -67,6 +69,7 @@
   gap: 4px;
   padding: 12px 16px;
   min-width: 48px;
+  min-height: 48px;
   overflow: hidden;
   cursor: pointer;
   user-select: none;
@@ -123,7 +126,6 @@
 }
 
 :where(.ez-tabs.ez-primary, ez-tabs[variant="primary"]) > :where(.ez-tab, ez-tab) {
-  min-height: 48px;
   padding-bottom: 12px;
 
   /* Icon + label stacked: taller container */
@@ -179,10 +181,6 @@
     height: 2px;
     border-radius: 0;
   }
-}
-
-:where(.ez-tabs.ez-secondary, ez-tabs[variant="secondary"]) > :where(.ez-tab, ez-tab) {
-  min-height: 48px;
 }
 
 /* Active secondary tab */
