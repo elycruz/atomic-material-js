@@ -53,20 +53,16 @@ function renderTextField({
   value?: string;
   fullwidth?: boolean;
 } = {}) {
-  const rootClasses = [
-    'ez-textfield',
-    variant,
-    stateClasses,
-    fullwidth ? 'ez-fullwidth' : '',
-    disabled ? 'ez-disabled' : '',
-    required ? 'ez-required' : '',
-    error ? 'ez-error' : '',
-  ]
-    .filter(Boolean)
-    .join(' ');
-
-  return html`
-    <div class="${rootClasses}">
+  const stateFlags = [
+      stateClasses,
+      fullwidth ? 'ez-fullwidth' : '',
+      disabled ? 'ez-disabled' : '',
+      required ? 'ez-required' : '',
+      error ? 'ez-error' : '',
+    ]
+      .filter(Boolean)
+      .join(' '),
+    inner = html`
       ${leadingIcon
         ? html`<div class="ez-textfield-leading">
             <span class="md-icon">${leadingIcon}</span>
@@ -88,8 +84,30 @@ function renderTextField({
             <span class="md-icon">${trailingIcon}</span>
           </div>`
         : ''}
-    </div>
-  `;
+    `;
+
+  /* Outlined variant: wrap with border-container to prevent layout shift on focus */
+  if (variant === 'ez-outlined') {
+    const containerClasses = [
+      'ez-textfield-border-container',
+      'ez-outlined',
+      stateFlags,
+    ]
+      .filter(Boolean)
+      .join(' ');
+
+    return html`
+      <div class="${containerClasses}">
+        <div class="ez-textfield">${inner}</div>
+      </div>
+    `;
+  }
+
+  const rootClasses = ['ez-textfield', variant, stateFlags]
+    .filter(Boolean)
+    .join(' ');
+
+  return html`<div class="${rootClasses}">${inner}</div>`;
 }
 
 /**
@@ -120,19 +138,15 @@ function renderSelectField({
   value?: string;
   fullwidth?: boolean;
 } = {}) {
-  const rootClasses = [
-    'ez-textfield',
-    variant,
-    fullwidth ? 'ez-fullwidth' : '',
-    disabled ? 'ez-disabled' : '',
-    required ? 'ez-required' : '',
-    error ? 'ez-error' : '',
-  ]
-    .filter(Boolean)
-    .join(' ');
-
-  return html`
-    <div class="${rootClasses}">
+  const stateFlags = [
+      fullwidth ? 'ez-fullwidth' : '',
+      disabled ? 'ez-disabled' : '',
+      required ? 'ez-required' : '',
+      error ? 'ez-error' : '',
+    ]
+      .filter(Boolean)
+      .join(' '),
+    inner = html`
       ${leadingIcon
         ? html`<div class="ez-textfield-leading">
             <span class="md-icon">${leadingIcon}</span>
@@ -159,8 +173,29 @@ function renderSelectField({
             <span class="md-icon">${trailingIcon}</span>
           </div>`
         : ''}
-    </div>
-  `;
+    `;
+
+  if (variant === 'ez-outlined') {
+    const containerClasses = [
+      'ez-textfield-border-container',
+      'ez-outlined',
+      stateFlags,
+    ]
+      .filter(Boolean)
+      .join(' ');
+
+    return html`
+      <div class="${containerClasses}">
+        <div class="ez-textfield">${inner}</div>
+      </div>
+    `;
+  }
+
+  const rootClasses = ['ez-textfield', variant, stateFlags]
+    .filter(Boolean)
+    .join(' ');
+
+  return html`<div class="${rootClasses}">${inner}</div>`;
 }
 
 /**
@@ -189,19 +224,15 @@ function renderTextareaField({
   rows?: number;
   fullwidth?: boolean;
 } = {}) {
-  const rootClasses = [
-    'ez-textfield',
-    variant,
-    fullwidth ? 'ez-fullwidth' : '',
-    disabled ? 'ez-disabled' : '',
-    required ? 'ez-required' : '',
-    error ? 'ez-error' : '',
-  ]
-    .filter(Boolean)
-    .join(' ');
-
-  return html`
-    <div class="${rootClasses}">
+  const stateFlags = [
+      fullwidth ? 'ez-fullwidth' : '',
+      disabled ? 'ez-disabled' : '',
+      required ? 'ez-required' : '',
+      error ? 'ez-error' : '',
+    ]
+      .filter(Boolean)
+      .join(' '),
+    inner = html`
       <div class="ez-textfield-center">
         <textarea
           placeholder="${placeholder}"
@@ -213,8 +244,29 @@ function renderTextareaField({
         ></textarea>
         <label class="ez-textfield-label" for="${id}">${label}</label>
       </div>
-    </div>
-  `;
+    `;
+
+  if (variant === 'ez-outlined') {
+    const containerClasses = [
+      'ez-textfield-border-container',
+      'ez-outlined',
+      stateFlags,
+    ]
+      .filter(Boolean)
+      .join(' ');
+
+    return html`
+      <div class="${containerClasses}">
+        <div class="ez-textfield">${inner}</div>
+      </div>
+    `;
+  }
+
+  const rootClasses = ['ez-textfield', variant, stateFlags]
+    .filter(Boolean)
+    .join(' ');
+
+  return html`<div class="${rootClasses}">${inner}</div>`;
 }
 
 /**
