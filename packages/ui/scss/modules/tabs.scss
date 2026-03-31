@@ -1,0 +1,224 @@
+/**
+ * Tabs
+ *
+ * MD3 tabs component — Primary and Secondary variants.
+ * Use `.ez-tabs.ez-primary` or `.ez-tabs.ez-secondary`.
+ */
+@import "../component-prelude";
+
+/* ─── Container ──────────────────────────────────────────────────────────── */
+
+:where(.ez-tabs, ez-tabs) {
+  --_tabs-container-color: var(--md-sys-color-surface, #fef7ff);
+  --_tabs-divider-color: var(--md-sys-color-outline-variant, #e7e0ec);
+  --_tabs-divider-height: 1px;
+  --_tabs-active-indicator-color: var(--md-sys-color-primary, #6750a4);
+  --_tabs-active-indicator-shape: 3px 3px 0 0;
+  --_tabs-icon-size: 24px;
+
+  position: relative;
+  display: flex;
+  flex-flow: row nowrap;
+  background: var(--_tabs-container-color);
+  border-bottom: var(--_tabs-divider-height) solid var(--_tabs-divider-color);
+  overflow: auto visible;
+  scrollbar-width: none; /* hide scrollbar on Firefox */
+}
+
+:where(.ez-tabs, ez-tabs)::-webkit-scrollbar {
+  display: none;
+}
+
+/* ─── Active indicator ────────────────────────────────────────────────────── */
+
+:where(.ez-tabs, ez-tabs) > .ez-tabs__indicator {
+  position: absolute;
+  bottom: -1px; /* sit on top of the container border */
+  left: 0;
+  height: 3px;
+  min-width: 24px;
+  background: var(--_tabs-active-indicator-color);
+  border-radius: var(--_tabs-active-indicator-shape);
+  pointer-events: none;
+
+  /* Animate indicator movement via JS-driven transform/width */
+  transition:
+    transform var(--md-sys-motion-duration-medium2, 300ms)
+      var(
+        --md-sys-motion-easing-expressive-default-spatial,
+        cubic-bezier(0.38, 1.21, 0.22, 1)
+      ),
+    width var(--md-sys-motion-duration-medium2, 300ms)
+      var(
+        --md-sys-motion-easing-expressive-default-spatial,
+        cubic-bezier(0.38, 1.21, 0.22, 1)
+      );
+}
+
+/* ─── Tab button ─────────────────────────────────────────────────────────── */
+
+:where(.ez-tab, ez-tab) {
+  position: relative;
+  flex: 1;
+  display: inline-flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 4px;
+  padding: 12px 16px;
+  min-width: 48px;
+  overflow: hidden;
+  cursor: pointer;
+  user-select: none;
+  border: none;
+  background: none;
+  text-decoration: none;
+  color: var(--md-sys-color-on-surface-variant, #49454f);
+
+  @extend %md-typescale-label-large;
+
+  /* Focus ring */
+  &:focus-visible {
+    outline: 3px solid var(--md-sys-color-secondary, #625b71);
+    outline-offset: -3px;
+  }
+}
+
+/* ─── Tab icon ────────────────────────────────────────────────────────────── */
+
+:where(.ez-tab, ez-tab) > .ez-tab__icon,
+:where(.ez-tab, ez-tab) > .md-icon {
+  font-size: var(--_tabs-icon-size);
+  width: var(--_tabs-icon-size);
+  height: var(--_tabs-icon-size);
+  color: inherit;
+}
+
+/* ─── Tab label ───────────────────────────────────────────────────────────── */
+
+:where(.ez-tab, ez-tab) > .ez-tab__label {
+  white-space: nowrap;
+}
+
+/* ─── Ripple positioning ──────────────────────────────────────────────────── */
+
+:where(.ez-tab, ez-tab) > ez-ripple {
+  z-index: 0;
+}
+
+:where(.ez-tab, ez-tab) > :not(ez-ripple) {
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── Primary tabs ───────────────────────────────────────────────────────── */
+
+:where(.ez-tabs.ez-primary, ez-tabs[variant="primary"]) {
+  /* Primary uses the .ez-tabs__indicator for the 3dp indicator */
+  > .ez-tabs__indicator {
+    bottom: -1px;
+    height: 3px;
+    border-radius: 3px 3px 0 0;
+  }
+}
+
+:where(.ez-tabs.ez-primary, ez-tabs[variant="primary"]) > :where(.ez-tab, ez-tab) {
+  min-height: 48px;
+  padding-bottom: 12px;
+
+  /* Icon + label stacked: taller container */
+  &:has(.ez-tab__icon):has(.ez-tab__label),
+  &:has(.md-icon):has(.ez-tab__label) {
+    min-height: 64px;
+  }
+}
+
+/* Active primary tab */
+:where(.ez-tabs.ez-primary, ez-tabs[variant="primary"])
+  > :where(.ez-tab.ez-active, ez-tab[active]) {
+  color: var(--md-sys-color-primary, #6750a4);
+}
+
+/* Inactive primary tab hover */
+:where(.ez-tabs.ez-primary, ez-tabs[variant="primary"])
+  > :where(.ez-tab, ez-tab):not(.ez-active, [active]):hover {
+  color: var(--md-sys-color-on-surface, #1d1b20);
+}
+
+/* Active primary tab ripple color */
+:where(.ez-tabs.ez-primary, ez-tabs[variant="primary"])
+  > :where(.ez-tab.ez-active, ez-tab[active])
+  > ez-ripple {
+  --ez-ripple-color: var(--md-sys-color-primary, #6750a4);
+}
+
+/* Inactive primary tab ripple color */
+:where(.ez-tabs.ez-primary, ez-tabs[variant="primary"])
+  > :where(.ez-tab, ez-tab):not(.ez-active, [active])
+  > ez-ripple {
+  --ez-ripple-color: var(--md-sys-color-on-surface, #1d1b20);
+}
+
+/* ─── Secondary tabs ─────────────────────────────────────────────────────── */
+
+:where(.ez-tabs.ez-secondary, ez-tabs[variant="secondary"]) {
+  > .ez-tabs__indicator {
+    bottom: -1px;
+    height: 2px;
+    border-radius: 0;
+  }
+}
+
+:where(.ez-tabs.ez-secondary, ez-tabs[variant="secondary"]) > :where(.ez-tab, ez-tab) {
+  min-height: 48px;
+}
+
+/* Active secondary tab */
+:where(.ez-tabs.ez-secondary, ez-tabs[variant="secondary"])
+  > :where(.ez-tab.ez-active, ez-tab[active]) {
+  color: var(--md-sys-color-on-surface, #1d1b20);
+}
+
+/* Inactive secondary tab hover */
+:where(.ez-tabs.ez-secondary, ez-tabs[variant="secondary"])
+  > :where(.ez-tab, ez-tab):not(.ez-active, [active]):hover {
+  color: var(--md-sys-color-on-surface, #1d1b20);
+}
+
+/* Active secondary tab ripple color */
+:where(.ez-tabs.ez-secondary, ez-tabs[variant="secondary"])
+  > :where(.ez-tab.ez-active, ez-tab[active])
+  > ez-ripple {
+  --ez-ripple-color: var(--md-sys-color-on-surface, #1d1b20);
+}
+
+/* Inactive secondary tab ripple color */
+:where(.ez-tabs.ez-secondary, ez-tabs[variant="secondary"])
+  > :where(.ez-tab, ez-tab):not(.ez-active, [active])
+  > ez-ripple {
+  --ez-ripple-color: var(--md-sys-color-on-surface, #1d1b20);
+}
+
+/* ─── CSS-only fallback: active indicator via pseudo-element ──────────────── */
+
+/* When .ez-tabs__indicator element is not present, use tab ::after pseudo */
+
+:where(.ez-tabs, ez-tabs):not(:has(.ez-tabs__indicator))
+  > :where(.ez-tab.ez-active, ez-tab[active])::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 2px;
+  right: 2px;
+  height: 3px;
+  background: var(--_tabs-active-indicator-color);
+  border-radius: var(--_tabs-active-indicator-shape);
+}
+
+:where(.ez-tabs.ez-secondary, ez-tabs[variant="secondary"]):not(:has(.ez-tabs__indicator))
+  > :where(.ez-tab.ez-active, ez-tab[active])::after {
+  left: 0;
+  right: 0;
+  height: 2px;
+  border-radius: 0;
+}
