@@ -65,32 +65,37 @@ label:has(> ez-ripple > :disabled) {
 }
 
 :where(ez-field, .ez-field) :is(
-  .ez-field__help,
+  .ez-field-help,
   [slot="help"],
   .ez-help
   ) {
   margin-top: 0.5rem;
 }
 
-:where(ez-field, .ez-field) :is(.ez-field__help, [slot="help"], .ez-help) {
+:where(ez-field, .ez-field) :is(.ez-field-help, [slot="help"], .ez-help) {
   font-size: smaller;
 }
 
-:where(ez-field, .ez-field) .ez-field__flex-row {
+:where(ez-field, .ez-field) .ez-field-center {
   display: flex;
-  flex-flow: row nowrap;
+  flex-direction: column;
+  flex: 1;
 }
 
-:where(ez-field, .ez-field) .ez-field__flex-row .ez-field__leading {
-  margin-right: 0.5rem;
+:where(ez-field, .ez-field) .ez-field-leading {
+  display: flex;
+  align-items: center;
+  margin-inline-end: 0.5rem;
 }
 
-:where(ez-field, .ez-field) .ez-field__flex-row .ez-field__trailing {
-  margin-left: 0.5rem;
+:where(ez-field, .ez-field) .ez-field-trailing {
+  display: flex;
+  align-items: center;
+  margin-inline-start: 0.5rem;
 }
 
 /* Error message (M3 supporting-text error style) */
-:where(ez-field, .ez-field) .ez-field__error-message {
+:where(ez-field, .ez-field) .ez-field-error {
   font-family: var(--md-sys-typescale-body-small-font, inherit), sans-serif;
   font-size: var(--md-sys-typescale-body-small-size, smaller);
   color: var(--md-sys-color-error, red);
@@ -99,7 +104,7 @@ label:has(> ez-ripple > :disabled) {
 }
 
 /* Custom content */
-:where(ez-field, .ez-field) .ez-field__custom {
+:where(ez-field, .ez-field) .ez-field-content {
   font-family: var(--md-sys-typescale-body-small-font, inherit), sans-serif;
   font-size: var(--md-sys-typescale-body-small-size, smaller);
   color: var(--md-sys-color-on-surface-variant, GrayText);
