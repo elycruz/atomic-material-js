@@ -19,7 +19,11 @@ export const FieldDefault: StoryObj = {
         <div class="ez-field">
           <label for="field-default">Username</label>
           <div class="ez-input">
-            <input id="field-default" type="text" placeholder="Enter username" />
+            <input
+              id="field-default"
+              type="text"
+              placeholder="Enter username"
+            />
           </div>
         </div>
       </div>
@@ -97,11 +101,7 @@ export const FieldWithError: StoryObj = {
           <label for="field-error">Password</label>
           <div>
             <div class="ez-input">
-              <input
-                id="field-error"
-                type="password"
-                placeholder="••••••••"
-              />
+              <input id="field-error" type="password" placeholder="••••••••" />
             </div>
             <div class="ez-field__error-text">Password is required.</div>
           </div>
@@ -149,9 +149,7 @@ export const FieldWithHelpAndError: StoryObj = {
               />
             </div>
             <div class="ez-field__supporting-text">#####(-####)</div>
-            <div class="ez-field__error-text">
-              Enter a valid US zip code.
-            </div>
+            <div class="ez-field__error-text">Enter a valid US zip code.</div>
           </div>
         </div>
       </div>
@@ -189,7 +187,10 @@ export const FieldVariants: StoryObj = {
     <section>
       <header><h2>Field — Input Variants</h2></header>
 
-      <div class="ez-section-body" style="display: flex; gap: 2rem; flex-wrap: wrap; align-items: flex-start;">
+      <div
+        class="ez-section-body"
+        style="display: flex; gap: 2rem; flex-wrap: wrap; align-items: flex-start;"
+      >
         <div class="ez-field" data-testid="field-outlined">
           <label for="field-outlined">Outlined (default)</label>
           <div>
@@ -227,9 +228,13 @@ export const FieldVariants: StoryObj = {
     </section>
   `,
   play: async ({ canvasElement }) => {
-    const outlined = canvasElement.querySelector('[data-testid="field-outlined"]');
-    const filled = canvasElement.querySelector('[data-testid="field-filled"]');
-    const underlined = canvasElement.querySelector('[data-testid="field-underlined"]');
+    const outlined = canvasElement.querySelector(
+        '[data-testid="field-outlined"]'
+      ),
+      filled = canvasElement.querySelector('[data-testid="field-filled"]'),
+      underlined = canvasElement.querySelector(
+        '[data-testid="field-underlined"]'
+      );
 
     await expect(outlined).not.toBeNull();
     await expect(filled).not.toBeNull();
