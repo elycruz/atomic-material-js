@@ -38,7 +38,9 @@ function initTabs(tabsEl: Element) {
 
     if (!tab || !tabsEl.contains(tab)) return;
 
-    tabsEl.querySelectorAll('.ez-tab').forEach(t => t.classList.remove('ez-active'));
+    tabsEl
+      .querySelectorAll('.ez-tab')
+      .forEach(t => t.classList.remove('ez-active'));
     tab.classList.add('ez-active');
     syncIndicator(tabsEl);
   }
@@ -56,7 +58,11 @@ export const PrimaryLabelOnly: Story = {
     <section>
       <header><h2>Primary Tabs — Label Only</h2></header>
 
-      <div class="ez-tabs ez-primary" role="tablist" aria-label="Primary tabs demo">
+      <div
+        class="ez-tabs ez-primary"
+        role="tablist"
+        aria-label="Primary tabs demo"
+      >
         <div class="ez-tabs__indicator"></div>
 
         <button
@@ -93,7 +99,9 @@ export const PrimaryLabelOnly: Story = {
     const active = tabs?.querySelector('.ez-tab.ez-active');
 
     await expect(active).toBeInTheDocument();
-    await expect(active?.querySelector('.ez-tab__label')?.textContent).toBe('Flights');
+    await expect(active?.querySelector('.ez-tab__label')?.textContent).toBe(
+      'Flights'
+    );
 
     if (tabs) initTabs(tabs);
   },
@@ -106,7 +114,11 @@ export const PrimaryIconAndLabel: Story = {
     <section>
       <header><h2>Primary Tabs — Icon + Label</h2></header>
 
-      <div class="ez-tabs ez-primary" role="tablist" aria-label="Primary tabs with icons">
+      <div
+        class="ez-tabs ez-primary"
+        role="tablist"
+        aria-label="Primary tabs with icons"
+      >
         <div class="ez-tabs__indicator"></div>
 
         <button
@@ -160,7 +172,11 @@ export const SecondaryLabelOnly: Story = {
     <section>
       <header><h2>Secondary Tabs — Label Only</h2></header>
 
-      <div class="ez-tabs ez-secondary" role="tablist" aria-label="Secondary tabs demo">
+      <div
+        class="ez-tabs ez-secondary"
+        role="tablist"
+        aria-label="Secondary tabs demo"
+      >
         <div class="ez-tabs__indicator"></div>
 
         <button
@@ -209,7 +225,11 @@ export const SecondaryIconAndLabel: Story = {
     <section>
       <header><h2>Secondary Tabs — Icon + Label</h2></header>
 
-      <div class="ez-tabs ez-secondary" role="tablist" aria-label="Secondary tabs with icons">
+      <div
+        class="ez-tabs ez-secondary"
+        role="tablist"
+        aria-label="Secondary tabs with icons"
+      >
         <div class="ez-tabs__indicator"></div>
 
         <button
@@ -225,7 +245,9 @@ export const SecondaryIconAndLabel: Story = {
 
         <button class="ez-tab" type="button" role="tab" aria-selected="false">
           <ez-ripple></ez-ripple>
-          <span class="md-icon ez-tab__icon" aria-hidden="true">photo_album</span>
+          <span class="md-icon ez-tab__icon" aria-hidden="true"
+            >photo_album</span
+          >
           <span class="ez-tab__label">Albums</span>
         </button>
 
