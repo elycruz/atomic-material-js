@@ -2,12 +2,18 @@
   display: inline-block;
 }
 
-:host > .flex-container {
+:host > .ez-field {
   display: flex;
   flex-flow: row wrap;
 }
 
-:host [part~='leading trailing error help other custom']:empty {
+:host .ez-field-center {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+:host [part~='leading trailing error help content']:empty {
   display: none;
 }
 
@@ -19,6 +25,13 @@
 }
 
 :host [part='help'] {
+  font-size: var(--md-sys-typescale-body-small-size, smaller);
+  color: var(--md-sys-color-on-surface-variant, GrayText);
+  margin-top: 0.25rem;
+  padding-inline: var(--md-sys-spacing-4, 1rem);
+}
+
+:host [part='content'] {
   font-size: var(--md-sys-typescale-body-small-size, smaller);
   color: var(--md-sys-color-on-surface-variant, GrayText);
   margin-top: 0.25rem;

@@ -133,13 +133,13 @@ export class EzFieldElement extends LitElement {
     return html`
       <div class="ez-field">
         <slot name="leading" part="leading"></slot>
-        <div class="center" part="center">
+        <div class="ez-field-center" part="center">
           <slot></slot>
           <slot name="help" part="help"></slot>
-          <div class="error" part="error" ?hidden=${this._nested}>
-            ${this.validationMessage}
-          </div>
-          <slot name="custom" part="custom"></slot>
+          <slot name="error" part="error" ?hidden=${this._nested}
+            >${this.validationMessage}</slot
+          >
+          <slot name="content" part="content"></slot>
         </div>
         <slot name="trailing" part="trailing"></slot>
       </div>
