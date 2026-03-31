@@ -28,7 +28,19 @@ label:has(> ez-ripple > :disabled) {
 
 /*
  * ez-field
- * ------------------ */
+ * ------------------
+ * Usage:
+ ```pseudo-css
+   .ez-field
+     .ez-field-leading   (optional)
+     .ez-field-center
+       .ez-input, .ez-textfield, etc.
+       .ez-field-help    (optional)
+       .ez-field-error   (optional)
+       .ez-field-content (optional)
+     .ez-field-trailing  (optional)
+ ```
+ */
 :where(ez-field, .ez-field) {
   display: inline-block;
 }

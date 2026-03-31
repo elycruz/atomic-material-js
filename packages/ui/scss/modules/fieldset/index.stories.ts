@@ -16,25 +16,23 @@ export const FieldDefault: StoryObj = {
 
       <div class="ez-section-body">
         <div class="ez-field">
-          <label for="field-default-1">Name</label>
-          <input
-            id="field-default-1"
-            class="ez-input"
-            type="text"
-            placeholder="Enter name"
-          />
+          <div class="ez-textfield">
+            <label for="field-default-1">Name</label>
+            <input id="field-default-1" type="text" placeholder="Enter name" />
+          </div>
         </div>
 
         <br /><br />
 
         <div class="ez-field">
-          <label for="field-default-2">Email</label>
-          <input
-            id="field-default-2"
-            class="ez-input"
-            type="email"
-            placeholder="Enter email"
-          />
+          <div class="ez-textfield">
+            <label for="field-default-2">Email</label>
+            <input
+              id="field-default-2"
+              type="email"
+              placeholder="Enter email"
+            />
+          </div>
           <div class="ez-field__help">We'll never share your email.</div>
         </div>
 

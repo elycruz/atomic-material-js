@@ -2,9 +2,9 @@
   :is(input, select, textarea):focus-visible
 ),
 :is(
-  .ez-radio, .ez-checkbox, .ez-input, ez-input, button,
+  .ez-radio, .ez-checkbox, .ez-input, ez-input, .ez-textfield, button,
   .ez-btn, .ez-button, ez-button,
-  :is(:not(.ez-input, ez-input) > :is(select, textarea, input))
+  :is(:not(.ez-input, ez-input, .ez-textfield) > :is(select, textarea, input))
 ):focus-visible {
   outline: 3px solid var(--ez-focus-ring-color);
   outline-offset: 2px;

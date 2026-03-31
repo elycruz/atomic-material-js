@@ -7,7 +7,7 @@
  * number, password, search, tel, time, url, week.
  * Also supports select and textarea elements.
  *
- * Structure:
+ * Previous Structure:
  *   .ez-textfield[.ez-filled|.ez-outlined]…
  *     .ez-tf-wrapper
  *       .ez-tf-field
@@ -18,6 +18,17 @@
  *         .ez-tf-trailing  (optional)
  *     .ez-tf-help          (optional)
  *     ul.ez-tf-messages    (optional)
+
+ New Structure:
+   .ez-textfield[.ez-filled|.ez-outlined]...
+     .ez-textfield-leading (optional)
+     .ez-textfield-center
+       :where(input:not([type="hidden"]), select, textarea)
+       label
+     .ez-textfield-trailing (optional)
+
+ Help, messages, supported text, etc., will be handled by `.ez-field`/`ez-field`.
+ *
  */
 
 /* -------------------------------------------------------
