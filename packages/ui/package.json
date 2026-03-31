@@ -53,6 +53,10 @@
     "./scss/modules/material-design-3/bridge": "./scss/base/bridge.scss",
     "./scss/modules/material-design-3/index.css": "./scss/base/index.scss",
     "./scss/modules/material-design-3/bridge.css": "./scss/base/bridge.scss",
+    "./*.js": {
+      "types": "./dist/*.d.ts",
+      "default": "./dist/*.js"
+    },
     "./*": "./dist/*"
   },
   "scripts": {
