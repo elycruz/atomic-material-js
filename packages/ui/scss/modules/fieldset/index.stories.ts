@@ -42,7 +42,7 @@ export const FieldDefault: StoryObj = {
           <label for="field-default-3">Username</label>
           <input
             id="field-default-3"
-            class="ez-input"
+            class="ez-textfield"
             type="text"
             placeholder="Enter username"
           />
@@ -73,7 +73,7 @@ export const FieldVertical: StoryObj = {
           <label for="field-vert-1">Full Name</label>
           <input
             id="field-vert-1"
-            class="ez-input"
+            class="ez-textfield"
             type="text"
             placeholder="Enter full name"
           />
@@ -86,7 +86,7 @@ export const FieldVertical: StoryObj = {
           <label for="field-vert-2">Email</label>
           <input
             id="field-vert-2"
-            class="ez-input"
+            class="ez-textfield"
             type="email"
             placeholder="Enter email"
             required
@@ -99,7 +99,7 @@ export const FieldVertical: StoryObj = {
           <label for="field-vert-3">Phone</label>
           <input
             id="field-vert-3"
-            class="ez-input"
+            class="ez-textfield"
             type="tel"
             placeholder="Enter phone"
           />
@@ -130,7 +130,7 @@ export const FieldCustomSlot: StoryObj = {
           <label for="field-custom-1">Bio</label>
           <textarea
             id="field-custom-1"
-            class="ez-input"
+            class="ez-textfield"
             placeholder="Tell us about yourself"
           ></textarea>
           <div class="ez-field-content">Max 250 characters.</div>
@@ -142,7 +142,7 @@ export const FieldCustomSlot: StoryObj = {
           <label for="field-custom-2">Password</label>
           <input
             id="field-custom-2"
-            class="ez-input"
+            class="ez-textfield"
             type="password"
             placeholder="Enter password"
             required
@@ -175,7 +175,7 @@ export const FieldLeadingTrailing: StoryObj = {
           <span class="ez-field-leading">$</span>
           <input
             id="field-flex-1"
-            class="ez-input"
+            class="ez-textfield"
             type="number"
             placeholder="0"
           />
@@ -189,7 +189,7 @@ export const FieldLeadingTrailing: StoryObj = {
           <span class="ez-field-leading md-icon">scale</span>
           <input
             id="field-flex-2"
-            class="ez-input"
+            class="ez-textfield"
             type="number"
             placeholder="0"
           />
@@ -221,7 +221,7 @@ export const FieldDisabled: StoryObj = {
           <label for="field-dis-1">Inline Disabled</label>
           <input
             id="field-dis-1"
-            class="ez-input"
+            class="ez-textfield"
             type="text"
             value="Read only value"
             disabled
@@ -234,7 +234,7 @@ export const FieldDisabled: StoryObj = {
           <label for="field-dis-2">Vertical Disabled</label>
           <input
             id="field-dis-2"
-            class="ez-input"
+            class="ez-textfield"
             type="text"
             value="Read only value"
             disabled
@@ -266,7 +266,7 @@ export const FieldsetDefault: StoryObj = {
             <label for="fset-name">Name</label>
             <input
               id="fset-name"
-              class="ez-input"
+              class="ez-textfield"
               type="text"
               placeholder="Full name"
               required
@@ -276,7 +276,7 @@ export const FieldsetDefault: StoryObj = {
             <label for="fset-email">Email</label>
             <input
               id="fset-email"
-              class="ez-input"
+              class="ez-textfield"
               type="email"
               placeholder="Email address"
               required
@@ -286,7 +286,7 @@ export const FieldsetDefault: StoryObj = {
             <label for="fset-phone">Phone</label>
             <input
               id="fset-phone"
-              class="ez-input"
+              class="ez-textfield"
               type="tel"
               placeholder="Phone number"
             />
@@ -297,7 +297,7 @@ export const FieldsetDefault: StoryObj = {
           <legend>Preferences</legend>
           <div class="ez-field ez-field--vertical">
             <label for="fset-lang">Language</label>
-            <select id="fset-lang" class="ez-input">
+            <select id="fset-lang" class="ez-textfield">
               <option>English</option>
               <option>Spanish</option>
               <option>French</option>
@@ -307,7 +307,7 @@ export const FieldsetDefault: StoryObj = {
             <label for="fset-notes">Notes</label>
             <textarea
               id="fset-notes"
-              class="ez-input"
+              class="ez-textfield"
               placeholder="Additional notes"
             ></textarea>
           </div>
@@ -343,7 +343,7 @@ export const FieldsetGrid: StoryObj = {
           <label for="grid-name">Name</label>
           <input
             id="grid-name"
-            class="ez-input"
+            class="ez-textfield"
             type="text"
             placeholder="Full name"
             required
@@ -352,7 +352,7 @@ export const FieldsetGrid: StoryObj = {
           <label for="grid-email">Email</label>
           <input
             id="grid-email"
-            class="ez-input"
+            class="ez-textfield"
             type="email"
             placeholder="Email"
             required
@@ -361,13 +361,13 @@ export const FieldsetGrid: StoryObj = {
           <label for="grid-phone">Phone</label>
           <input
             id="grid-phone"
-            class="ez-input"
+            class="ez-textfield"
             type="tel"
             placeholder="Phone"
           />
 
           <label for="grid-msg">Message</label>
-          <div class="ez-input">
+          <div class="ez-textfield">
             <textarea
               id="grid-msg"
               placeholder="Your message"
@@ -381,7 +381,7 @@ export const FieldsetGrid: StoryObj = {
   play: async ({ canvasElement }) => {
     const grid = canvasElement.querySelector('.ez-fieldset--grid-2'),
       labels = grid?.querySelectorAll('label') ?? [],
-      inputs = grid?.querySelectorAll('input, .ez-input') ?? [];
+      inputs = grid?.querySelectorAll('input, .ez-textfield') ?? [];
 
     await expect(grid).not.toBeNull();
     await expect(grid?.classList.contains('ez-grid')).toBe(true);

@@ -1,0 +1,13 @@
+/**
+ * Base form control styles
+ *
+ * Shared styles for native form controls (input, select, textarea).
+ * Component-specific styles live in their own files.
+ */
+
+:where(input:not([type="hidden"]), select, textarea) {
+  &:disabled {
+    pointer-events: none;
+    cursor: not-allowed;
+  }
+}

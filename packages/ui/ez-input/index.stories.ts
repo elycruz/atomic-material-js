@@ -13,7 +13,7 @@ export const TextInputs = {
         <dl>
           <dt>Outlined (default)</dt>
           <dd>
-            <input class="ez-input" type="text" placeholder="Text input" />
+            <input class="ez-textfield" type="text" placeholder="Text input" />
           </dd>
           <dd>
             <input
@@ -23,60 +23,59 @@ export const TextInputs = {
             />
           </dd>
           <dd>
-            <ez-input>
-              <input type="text" placeholder="ez-input element wrapper" />
-            </ez-input>
-          </dd>
-
-          <dt>Underlined</dt>
-          <dd>
-            <input
-              class="ez-input ez-underlined"
-              type="text"
-              placeholder="Underlined"
-            />
+            <div class="ez-textfield">
+              <input type="text" placeholder="ez-textfield div wrapper" />
+            </div>
           </dd>
 
           <dt>Input Types</dt>
           <dd>
-            <input class="ez-input" type="text" placeholder="type=text" />
+            <input class="ez-textfield" type="text" placeholder="type=text" />
           </dd>
           <dd>
-            <input class="ez-input" type="email" placeholder="type=email" />
+            <input class="ez-textfield" type="email" placeholder="type=email" />
           </dd>
           <dd>
             <input
-              class="ez-input"
+              class="ez-textfield"
               type="password"
               placeholder="type=password"
             />
           </dd>
           <dd>
-            <input class="ez-input" type="number" placeholder="type=number" />
+            <input
+              class="ez-textfield"
+              type="number"
+              placeholder="type=number"
+            />
           </dd>
           <dd>
-            <input class="ez-input" type="search" placeholder="type=search" />
+            <input
+              class="ez-textfield"
+              type="search"
+              placeholder="type=search"
+            />
           </dd>
           <dd>
-            <input class="ez-input" type="tel" placeholder="type=tel" />
+            <input class="ez-textfield" type="tel" placeholder="type=tel" />
           </dd>
           <dd>
-            <input class="ez-input" type="url" placeholder="type=url" />
+            <input class="ez-textfield" type="url" placeholder="type=url" />
           </dd>
           <dd>
-            <input class="ez-input" type="date" />
+            <input class="ez-textfield" type="date" />
           </dd>
           <dd>
-            <input class="ez-input" type="datetime-local" />
+            <input class="ez-textfield" type="datetime-local" />
           </dd>
           <dd>
-            <input class="ez-input" type="month" />
+            <input class="ez-textfield" type="month" />
           </dd>
           <dd>
-            <input class="ez-input" type="week" />
+            <input class="ez-textfield" type="week" />
           </dd>
           <dd>
-            <input class="ez-input" type="time" />
+            <input class="ez-textfield" type="time" />
           </dd>
         </dl>
       </div>
@@ -93,7 +92,7 @@ export const SelectAndTextarea = {
         <dl>
           <dt>Select (outlined)</dt>
           <dd>
-            <select class="ez-input">
+            <select class="ez-textfield">
               <option>Option 1</option>
               <option>Option 2</option>
               <option>Option 3</option>
@@ -111,18 +110,18 @@ export const SelectAndTextarea = {
 
           <dt>Select (with wrapper)</dt>
           <dd>
-            <ez-input>
+            <div class="ez-textfield">
               <select>
                 <option>Option 1</option>
                 <option>Option 2</option>
                 <option>Option 3</option>
               </select>
-            </ez-input>
+            </div>
           </dd>
 
           <dt>Textarea (outlined)</dt>
           <dd>
-            <textarea class="ez-input" placeholder="Textarea"></textarea>
+            <textarea class="ez-textfield" placeholder="Textarea"></textarea>
           </dd>
 
           <dt>Textarea (.ez-textfield)</dt>
@@ -135,17 +134,9 @@ export const SelectAndTextarea = {
 
           <dt>Textarea (with wrapper)</dt>
           <dd>
-            <ez-input>
+            <div class="ez-textfield">
               <textarea placeholder="Textarea in wrapper"></textarea>
-            </ez-input>
-          </dd>
-
-          <dt>Textarea (underlined)</dt>
-          <dd>
-            <textarea
-              class="ez-input ez-underlined"
-              placeholder="Underlined textarea"
-            ></textarea>
+            </div>
           </dd>
         </dl>
       </div>
@@ -179,13 +170,16 @@ export const CheckboxAndRadio = {
             >
           </dd>
 
-          <dt>Checkbox (.ez-input[type="checkbox"])</dt>
+          <dt>Checkbox (.ez-textfield[type="checkbox"])</dt>
           <dd>
-            <label><input class="ez-input" type="checkbox" /> Unchecked</label>
+            <label
+              ><input class="ez-textfield" type="checkbox" /> Unchecked</label
+            >
           </dd>
           <dd>
             <label
-              ><input class="ez-input" type="checkbox" checked /> Checked</label
+              ><input class="ez-textfield" type="checkbox" checked />
+              Checked</label
             >
           </dd>
 
@@ -227,11 +221,11 @@ export const CheckboxAndRadio = {
             >
           </dd>
 
-          <dt>Radio (.ez-input[type="radio"])</dt>
+          <dt>Radio (.ez-textfield[type="radio"])</dt>
           <dd>
             <label
               ><input
-                class="ez-input"
+                class="ez-textfield"
                 type="radio"
                 name="radio-demo-2"
                 value="1"
@@ -242,7 +236,7 @@ export const CheckboxAndRadio = {
           <dd>
             <label
               ><input
-                class="ez-input"
+                class="ez-textfield"
                 type="radio"
                 name="radio-demo-2"
                 value="2"
@@ -363,20 +357,20 @@ export const MD3TextFields = {
         <h3>Filled</h3>
         <div class="ez-vgroup">
           <div class="ez-field">
-            <div class="ez-input ez-filled" style="position: relative;">
+            <div class="ez-textfield ez-filled" style="position: relative;">
               <label for="md3-filled-1">Label</label>
               <input id="md3-filled-1" type="text" placeholder=" " />
             </div>
           </div>
           <div class="ez-field">
-            <div class="ez-input ez-filled" style="position: relative;">
+            <div class="ez-textfield ez-filled" style="position: relative;">
               <label for="md3-filled-2">With supporting text</label>
               <input id="md3-filled-2" type="text" placeholder=" " />
             </div>
             <div class="ez-field-content">Supporting text</div>
           </div>
           <div class="ez-field">
-            <div class="ez-input ez-filled" style="position: relative;">
+            <div class="ez-textfield ez-filled" style="position: relative;">
               <label for="md3-filled-err">Error state</label>
               <input id="md3-filled-err" type="text" placeholder=" " required />
             </div>
@@ -387,13 +381,13 @@ export const MD3TextFields = {
         <h3>Outlined</h3>
         <div class="ez-vgroup">
           <div class="ez-field">
-            <div class="ez-input ez-outlined" style="position: relative;">
+            <div class="ez-textfield ez-outlined" style="position: relative;">
               <label for="md3-outlined-1">Label</label>
               <input id="md3-outlined-1" type="text" placeholder=" " />
             </div>
           </div>
           <div class="ez-field">
-            <div class="ez-input ez-outlined" style="position: relative;">
+            <div class="ez-textfield ez-outlined" style="position: relative;">
               <label for="md3-outlined-2">Label</label>
               <input id="md3-outlined-2" type="text" placeholder=" " />
             </div>

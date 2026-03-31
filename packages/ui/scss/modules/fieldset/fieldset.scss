@@ -44,6 +44,6 @@ html[dir="rtl"] :is(.ez-fieldset, fieldset).ez-grid {
   grid-template-columns: auto auto;
 }
 
-:where(.ez-fieldset, fieldset).ez-grid label:has(+ .ez-input > textarea) {
+:where(.ez-fieldset, fieldset).ez-grid label:has(+ .ez-textfield > textarea) {
   align-self: flex-start;
 }

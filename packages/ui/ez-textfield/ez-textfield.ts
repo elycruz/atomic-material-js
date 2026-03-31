@@ -2,12 +2,10 @@ import { html, type CSSResultGroup, unsafeCSS, type TemplateResult } from 'lit';
 
 import { EzBaseElement } from '../ez-base/ez-base.js';
 
-import inputCssStr from '../scss/modules/input/input.scss?inline';
 import textfieldCssStr from '../scss/modules/input/textfield.scss?inline';
 import cssStr from './ez-textfield.scss?inline';
 
-const inputStyles = unsafeCSS(inputCssStr),
-  textfieldStyles = unsafeCSS(textfieldCssStr),
+const textfieldStyles = unsafeCSS(textfieldCssStr),
   styles = unsafeCSS(cssStr);
 
 export const EzTextfieldName = 'ez-textfield';
@@ -16,7 +14,7 @@ export class EzTextfieldElement extends EzBaseElement {
   static localName = EzTextfieldName;
 
   static get styles(): CSSResultGroup {
-    return [EzBaseElement.styles, inputStyles, textfieldStyles, styles];
+    return [EzBaseElement.styles, textfieldStyles, styles];
   }
 
   render(): TemplateResult {
