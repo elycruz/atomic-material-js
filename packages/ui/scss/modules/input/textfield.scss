@@ -418,6 +418,11 @@ html[dir="rtl"] :where(.ez-textfield) {
 }
 
 /* Disabled (per-element color/opacity per spec) */
+:where(.ez-textfield):where([disabled], .ez-disabled, :has(:disabled)) {
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
 :where(.ez-textfield):where([disabled], .ez-disabled, :has(:disabled)) :where(.ez-textfield-label),
 :where(.ez-textfield):where([disabled], .ez-disabled, :has(:disabled)) :where(input:not([type="hidden"]), select, textarea),
 :where(.ez-textfield):where([disabled], .ez-disabled, :has(:disabled)) :where(.ez-textfield-leading),
