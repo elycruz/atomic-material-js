@@ -4,6 +4,48 @@
 
 ---
 
+## Common
+
+### Color
+
+| Description | Token | Value |
+|---|---|---|
+| App bar container color | `md.comp.app-bar.container.color` | #FEF7FF |
+| Search container color | `md.comp.app-bar.search.container.color` | #F3EDF7 |
+| Search label color | `md.comp.app-bar.search.label.color` | #49454F |
+| Container color on scroll | `md.comp.app-bar.on-scroll.container.color` | #F3EDF7 |
+| Search container color on scroll | `md.comp.app-bar.search.on-scroll.container.color` | #E6E0E9 |
+| Container elevation | `md.comp.app-bar.container.elevation` | — |
+| Container elevation on scroll | `md.comp.app-bar.on-scroll.container.elevation` | md.sys.elevation.level2 |
+| Title text color | `md.comp.app-bar.title.color` | #1D1B20 |
+| Subtitle text color | `md.comp.app-bar.subtitle.color` | #49454F |
+| Leading icon color | `md.comp.app-bar.leading-icon.color` | #1D1B20 |
+| Trailing icon color | `md.comp.app-bar.trailing-icon.color` | #49454F |
+
+### Spacing
+
+| Description | Token | Value |
+|---|---|---|
+| Left padding | `md.comp.app-bar.leading-space` | 4dp |
+| Right padding | `md.comp.app-bar.trailing-space` | 4dp |
+| Icon button spacing | `md.comp.app-bar.icon-button-space` | 0 |
+| Search left padding | `md.comp.app-bar.search.leading-space` | 8dp |
+| Search right padding | `md.comp.app-bar.search.trailing-space` | 8dp |
+
+### Shape
+
+| Description | Token | Value |
+|---|---|---|
+| Container shape | `md.comp.app-bar.container.shape` | md.sys.shape.corner.none |
+
+### Size
+
+| Description | Token | Value |
+|---|---|---|
+| Avatar size | `md.comp.app-bar.avatar.size` | 32dp |
+| Icon size | `md.comp.app-bar.icon.size` | 24dp |
+
+
 ## App bar - Size - Small
 
 ### Tokens

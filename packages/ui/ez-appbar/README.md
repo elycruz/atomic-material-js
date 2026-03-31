@@ -25,8 +25,8 @@ Material Design 3 application bar component with scroll-aware behavior.
   <h1>My App</h1>
 </div>
 
-<!-- Medium with subtitle -->
-<div class="ez-appbar ez-medium ez-has-subtitle">
+<!-- Medium with subtitle (auto-detected via :has()) -->
+<div class="ez-appbar ez-medium">
   <hgroup>
     <h1>My App</h1>
     <p>Subtitle</p>
@@ -107,7 +107,7 @@ export function AppHeader() {
 
 - `.ez-medium` — Medium appbar (112dp, 136dp with subtitle)
 - `.ez-large` — Large appbar (120dp, 152dp with subtitle)
-- `.ez-has-subtitle` — Expands medium/large minimum height for subtitle
+- Subtitle height expansion is auto-detected via `:has(p, .ez-appbar-subtitle)`
 
 ### Style Classes
 

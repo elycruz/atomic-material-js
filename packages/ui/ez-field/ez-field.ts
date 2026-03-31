@@ -3,6 +3,7 @@ import {
   html,
   type PropertyValues,
   type CSSResultGroup,
+  unsafeCSS,
 } from 'lit';
 
 import {
@@ -13,12 +14,22 @@ import {
   type EventListenerTuple,
 } from '../utils/dom/events.js';
 
-import styles from './ez-field.style.js';
+import cssStr from './ez-field.scss?inline';
+
+const styles = unsafeCSS(cssStr);
 
 export const EzFieldName = 'ez-field';
 
-// const SELECTORS_NAME = 'selectors',
-//   VALIDATION_MESSAGE_NAME = 'validationMessage';
+export type EzFieldInputElement =
+  | HTMLInputElement
+  | HTMLTextAreaElement
+  | HTMLSelectElement;
+
+export type ValidationMessageGetter = (i: EzFieldInputElement) => string;
+export type ValidationMessage = string;
+export type ValidityMessaging = {
+  [key in keyof ValidityState]?: ValidationMessageGetter | ValidationMessage;
+};
 
 export class EzFieldElement extends LitElement {
   static localName = EzFieldName;
@@ -28,18 +39,40 @@ export class EzFieldElement extends LitElement {
   }
 
   static properties = {
-    selectors: { type: String },
-    validationMessage: { type: String },
+    selectors: { type: String, reflect: false },
+    validationMessage: {
+      type: String,
+      attribute: 'error',
+      reflect: true,
+    },
     validateOnChange: { type: Boolean },
     validateOnInput: { type: Boolean },
-    variant: { type: String, reflect: true },
+    validityMessaging: { type: Object, state: true },
+    validate: { type: Function, state: true },
+    _nested: { type: Boolean, state: true },
   };
 
-  selectors?: string;
-  validationMessage?: string;
-  validateOnChange?: boolean;
-  validateOnInput?: boolean;
-  variant?: 'filled' | 'outlined' = 'outlined';
+  declare selectors?: string;
+  declare validationMessage?: string;
+
+  get error(): string {
+    return this.validationMessage ?? '';
+  }
+
+  set error(value: string) {
+    const prevValue = this.validationMessage;
+
+    this.validationMessage = value;
+    this.requestUpdate('validationMessage', prevValue);
+  }
+
+  declare validateOnChange?: boolean;
+  declare validateOnInput?: boolean;
+  declare validityMessaging?: ValidityMessaging;
+  declare validate?: (
+    input: EzFieldInputElement
+  ) => undefined | ValidationMessage;
+  declare _nested: boolean;
 
   get localName(): typeof EzFieldName {
     return EzFieldName;
@@ -48,9 +81,7 @@ export class EzFieldElement extends LitElement {
   #_initialized = false;
   #_evListenersTupleList: EventListenerTuple[];
   #_form?: HTMLFormElement;
-  #_inputs?: NodeListOf<
-    HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-  >;
+  #_inputs?: NodeListOf<EzFieldInputElement>;
 
   constructor() {
     super();
@@ -59,12 +90,18 @@ export class EzFieldElement extends LitElement {
       [this.#_onInputOrChange, 'input'],
       [this.#_onInputOrChange, 'change'],
     ];
+    this.selectors = `input:not([type="hidden"]), textarea, select`;
+    this.validationMessage = '';
+    this.validateOnChange = true;
+    this._nested = false;
   }
 
   connectedCallback() {
     super.connectedCallback();
 
     if (!this.#_initialized && this.isConnected) {
+      this._nested = !!this.parentElement?.closest('ez-field');
+
       if (this.selectors && this.#_inputs) this.#_addEventListeners();
 
       this.#_initialized = true;
@@ -76,6 +113,7 @@ export class EzFieldElement extends LitElement {
 
     if (this.#_initialized) {
       this.#_removeEventListeners();
+      this._nested = false;
       this.#_initialized = false;
     }
   }
@@ -93,16 +131,15 @@ export class EzFieldElement extends LitElement {
 
   render() {
     return html`
-      <div class="flex-container">
+      <div class="ez-field">
         <slot name="leading" part="leading"></slot>
-        <div class="center-column">
+        <div class="ez-field-center" part="center">
           <slot></slot>
-          <div class="error-message" part="error">
-            ${this.validationMessage}
-          </div>
-          <slot name="supporting-text" part="supporting-text"></slot>
           <slot name="help" part="help"></slot>
-          <slot name="counter" part="counter"></slot>
+          <slot name="error" part="error" ?hidden=${this._nested}
+            >${this.validationMessage}</slot
+          >
+          <slot name="content" part="content"></slot>
         </div>
         <slot name="trailing" part="trailing"></slot>
       </div>
@@ -113,44 +150,130 @@ export class EzFieldElement extends LitElement {
     e.preventDefault();
 
     const { currentTarget } = e,
-      target = currentTarget as
-        | HTMLInputElement
-        | HTMLTextAreaElement
-        | HTMLSelectElement,
+      target = currentTarget as EzFieldInputElement,
       { selectors } = this;
 
-    if (selectors && target?.matches(selectors)) {
+    if (!selectors || !target?.matches(selectors)) return;
+
+    // Handle validity custom messaging.
+    const { validity } = target;
+
+    // If no custom messaging or custom message is already set
+    if (!this.validityMessaging || validity.customError) {
       this.validationMessage = target.validationMessage;
+    }
+    // Else get custom method and re-trigger 'invalid' call
+    else {
+      (
+        Object.entries(this.validityMessaging) as [
+          keyof ValidityMessaging,
+          ValidationMessageGetter | ValidationMessage,
+        ][]
+      ).forEach(([key, messageOrGetter]) => {
+        if (key === 'valid' || !validity[key] || !messageOrGetter) return;
+
+        const message =
+          typeof messageOrGetter === 'function'
+            ? messageOrGetter(target)
+            : messageOrGetter;
+
+        target.setCustomValidity(message);
+        target.reportValidity();
+      });
     }
   };
 
+  /**
+   * Triggers error message propagation to UI
+   */
   #_onInputOrChange = (e: Event): void => {
     const { target } = e;
 
+    // If event target doesn't match tracked elements, bail
     if (
       !(target instanceof HTMLElement) ||
       !target.matches(this.selectors ?? '')
     )
       return;
 
-    const inputTarget = target as
-      | HTMLInputElement
-      | HTMLTextAreaElement
-      | HTMLSelectElement;
+    const inputTarget = target as EzFieldInputElement;
 
+    // Clear validation message if none
     if (!inputTarget.validationMessage) this.validationMessage = '';
+
+    // If no input elements, and/or event isn't tracked one, return
     if (
-      (this.validateOnChange && e.type === 'change') ||
-      (this.validateOnInput && e.type === 'input')
-    ) {
-      this.#_inputs?.forEach(input => input.checkValidity());
-    }
+      !this.#_inputs?.length ||
+      !(
+        (this.validateOnChange && e.type === 'change') ||
+        (this.validateOnInput && e.type === 'input')
+      )
+    )
+      return;
+
+    this.#_propagateErrorMessages();
   };
 
+  /**
+   * Clears error message on form reset.
+   */
   #_onFormReset = (): void => {
+    this.#_inputs?.forEach(input => {
+      input.setCustomValidity('');
+    });
     this.validationMessage = '';
   };
 
+  /**
+   * Propagates error messages to the UI.
+   */
+  #_propagateErrorMessages(): void {
+    this.#_inputs?.forEach(input => {
+      input.setCustomValidity('');
+
+      const message = this.validate?.(input);
+
+      if (message) {
+        input.setCustomValidity(message);
+        input.reportValidity();
+        this.validationMessage = message;
+        return;
+      }
+
+      const { validity } = input;
+
+      if (validity.valid) {
+        this.validationMessage = '';
+        return;
+      }
+
+      // Handle validity custom messaging.
+      // If we have non "validate" custom messaging, propagate it
+      if (this.validityMessaging && !validity.customError) {
+        (
+          Object.entries(this.validityMessaging) as [
+            keyof ValidityMessaging,
+            ValidationMessageGetter | ValidationMessage,
+          ][]
+        ).forEach(([key, messageOrGetter]) => {
+          // Skip all keys except matching one
+          if (key === 'valid' || !validity[key] || !messageOrGetter) return;
+
+          const msg =
+            typeof messageOrGetter === 'function'
+              ? messageOrGetter(input)
+              : messageOrGetter;
+
+          input.setCustomValidity(msg);
+          input.reportValidity();
+        });
+      }
+    });
+  }
+
+  /**
+   * Removes and adds event listeners.
+   */
   #_addEventListeners(): this {
     if (this.#_form)
       removeEventListener(this.#_onFormReset, 'reset', this.#_form);

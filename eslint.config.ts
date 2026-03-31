@@ -124,6 +124,7 @@ export default defineConfig([
       '@typescript-eslint/no-unnecessary-condition': 'off',
       '@typescript-eslint/no-unsafe-assignment': 'off',
       '@typescript-eslint/no-unsafe-return': 'off',
+      '@typescript-eslint/no-confusing-void-expression': 'off',
     },
   },
   // Tests (Jest/Vitest) override

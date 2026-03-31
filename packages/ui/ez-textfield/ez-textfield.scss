@@ -1,0 +1,19 @@
+:host {
+  display: inline-block;
+}
+
+:host > .ez-textfield {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+}
+
+:host [part='leading']:empty,
+:host [part='trailing']:empty {
+  display: none;
+}
+
+:host [part='center'] {
+  flex: 1;
+}

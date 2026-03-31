@@ -41,6 +41,10 @@
       "types": "./dist/ez-shape/index.d.ts",
       "default": "./dist/ez-shape/index.js"
     },
+    "./ez-textfield": {
+      "types": "./dist/ez-textfield/index.d.ts",
+      "default": "./dist/ez-textfield/index.js"
+    },
     "./utils": {
       "types": "./dist/utils/index.d.ts",
       "default": "./dist/utils/index.js"

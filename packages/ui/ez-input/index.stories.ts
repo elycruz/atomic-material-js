@@ -373,14 +373,14 @@ export const MD3TextFields = {
               <label for="md3-filled-2">With supporting text</label>
               <input id="md3-filled-2" type="text" placeholder=" " />
             </div>
-            <div class="ez-field__supporting-text">Supporting text</div>
+            <div class="ez-field-content">Supporting text</div>
           </div>
           <div class="ez-field">
             <div class="ez-input ez-filled" style="position: relative;">
               <label for="md3-filled-err">Error state</label>
               <input id="md3-filled-err" type="text" placeholder=" " required />
             </div>
-            <div class="ez-field__error-text">Error message</div>
+            <div class="ez-field-error">Error message</div>
           </div>
         </div>
 
@@ -394,15 +394,9 @@ export const MD3TextFields = {
           </div>
           <div class="ez-field">
             <div class="ez-input ez-outlined" style="position: relative;">
-              <label for="md3-outlined-2">With counter</label>
-              <input
-                id="md3-outlined-2"
-                type="text"
-                placeholder=" "
-                maxlength="100"
-              />
+              <label for="md3-outlined-2">Label</label>
+              <input id="md3-outlined-2" type="text" placeholder=" " />
             </div>
-            <div class="ez-field__counter">0 / 100</div>
           </div>
         </div>
       </div>

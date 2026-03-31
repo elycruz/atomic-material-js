@@ -1,0 +1,292 @@
+/**
+ * .ez-textfield — Material Design 3 Text Field (CSS-only)
+ *
+ * Spec: md/specs/m3-textfield.specs.md
+ *
+ * Supported input types: text, date, datetime-local, email, month,
+ * number, password, search, tel, time, url, week.
+ * Also supports select and textarea elements.
+ *
+ * Structure:
+ *   .ez-textfield[.ez-filled|.ez-outlined|.ez-underlined]...
+ *     .ez-textfield-leading   (optional)
+ *     .ez-textfield-center
+ *       :where(input:not([type="hidden"]), select, textarea)
+ *       .ez-textfield-label   (optional)
+ *     .ez-textfield-trailing  (optional)
+ *
+ * Help, messages, supported text, etc., are handled by `.ez-field`/`ez-field`.
+ *
+ */
+
+/* -------------------------------------------------------
+ * Base
+ * ------------------------------------------------------- */
+:where(.ez-textfield) {
+  position: relative;
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  user-select: none;
+  font: normal var(--_tf-font-weight) var(--_tf-font-size) var(--_tf-font-family);
+  letter-spacing: var(--_tf-font-tracking);
+  line-height: var(--_tf-line-height);
+  color: var(--_tf-text-color);
+  transition: border-color var(--_tf-speed) var(--_tf-easing);
+  background: transparent;
+  border-radius: var(--_tf-border-radius);
+
+  &, * {
+    box-sizing: border-box;
+  }
+}
+
+/* -------------------------------------------------------
+ * Leading / Trailing icon areas (24dp per spec)
+ * ------------------------------------------------------- */
+:where(.ez-textfield) :where(.ez-textfield-leading),
+:where(.ez-textfield) :where(.ez-textfield-trailing) {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  user-select: none;
+  font-size: 1.5rem;
+  transition: color var(--_tf-speed) var(--_tf-easing);
+  color: var(--_tf-icon-color);
+}
+
+:where(.ez-textfield) :where(.ez-textfield-leading) {
+  margin: 0 0 0 var(--_tf-padding);
+}
+
+:where(.ez-textfield) :where(.ez-textfield-trailing) {
+  margin: 0 var(--_tf-padding) 0 0;
+  color: var(--_tf-trailing-icon-color);
+}
+
+/* -------------------------------------------------------
+ * Center area
+ * ------------------------------------------------------- */
+:where(.ez-textfield) :where(.ez-textfield-center) {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  margin: 0;
+  gap: var(--_tf-label-padding);
+}
+
+/* -------------------------------------------------------
+ * Input element
+ * ------------------------------------------------------- */
+:where(.ez-textfield) :where(input:not([type="hidden"]), select, textarea) {
+  position: relative;
+  display: inline-block;
+  padding: var(--_tf-padding);
+  font-size: var(--_tf-font-size);
+  font-weight: var(--_tf-font-weight);
+  letter-spacing: var(--_tf-font-tracking);
+  line-height: var(--_tf-font-size);
+  background: transparent;
+  transition: opacity var(--_tf-speed) var(--_tf-easing);
+  color: var(--_tf-text-color);
+  caret-color: var(--_tf-caret-color);
+  border: none;
+  border-radius: var(--_tf-border-radius);
+  width: 100%;
+  opacity: 0;
+}
+
+:where(.ez-textfield) :where(input:not([type="hidden"]), select, textarea)::placeholder {
+  color: var(--_tf-placeholder-color);
+}
+
+:where(.ez-textfield) :where(input:not([type="hidden"]), select, textarea):focus {
+  outline: none;
+  opacity: 1;
+}
+
+/* -------------------------------------------------------
+ * Floating label
+ * ------------------------------------------------------- */
+:where(.ez-textfield) :where(.ez-textfield-label) {
+  position: absolute;
+  display: none;
+  top: var(--_tf-border-width);
+  left: calc(var(--_tf-border-width) + var(--_tf-padding));
+  pointer-events: none;
+  user-select: none;
+  cursor: text;
+  transition: transform var(--_tf-speed) var(--_tf-easing),
+              background var(--_tf-speed) var(--_tf-easing),
+              border-color var(--_tf-speed) var(--_tf-easing),
+              color var(--_tf-speed) var(--_tf-easing);
+  border-radius: var(--_tf-border-radius);
+  transform-origin: top left;
+  transform: scale(1) translate(calc(-1 * var(--_tf-label-padding)), 0);
+  line-height: var(--_tf-font-size);
+  margin-top: var(--_tf-padding);
+  padding: 0 var(--_tf-label-padding);
+  font-size: var(--_tf-font-size-small);
+  color: var(--_tf-label-color);
+  background: none;
+}
+
+:where(.ez-textfield) :where(.ez-textfield-label):hover {
+  cursor: text;
+}
+
+/* -------------------------------------------------------
+ * Required indicator
+ * ------------------------------------------------------- */
+:where(.ez-textfield):where([required], .ez-required, :has(:required)) :where(.ez-textfield-label)::before {
+  content: "*";
+  color: var(--_tf-error-color);
+}
+
+/* -------------------------------------------------------
+ * Focus-within — show input + activate label
+ * ------------------------------------------------------- */
+:where(.ez-textfield):focus-within :where(input:not([type="hidden"]), select, textarea) {
+  opacity: 1;
+}
+
+:where(.ez-textfield):focus-within :where(.ez-textfield-label) {
+  transform: var(--_tf-label-active-transform);
+  color: var(--_tf-label-color);
+}
+
+/* -------------------------------------------------------
+ * Hover (not focused) — input color
+ * ------------------------------------------------------- */
+:where(.ez-textfield):not(:focus-within):hover :where(input:not([type="hidden"]), select, textarea) {
+  color: var(--_tf-text-color);
+}
+
+/* -------------------------------------------------------
+ * Filled variant (.ez-filled)
+ *
+ * Container = surface-container-highest
+ * Active indicator = bottom border on .ez-textfield
+ * ------------------------------------------------------- */
+:where(.ez-textfield).ez-filled {
+  background: var(--_tf-container-color);
+  border-bottom: var(--_tf-indicator-height) solid var(--_tf-indicator-color);
+  border-radius: var(--_tf-border-radius) var(--_tf-border-radius) 0 0;
+}
+
+/* Filled focus: active indicator visible */
+:where(.ez-textfield).ez-filled:focus-within {
+  border-bottom-color: var(--_tf-indicator-color);
+}
+
+/* -------------------------------------------------------
+ * Outlined variant (.ez-outlined)
+ *
+ * Outline = border on .ez-textfield
+ * ------------------------------------------------------- */
+:where(.ez-textfield).ez-outlined {
+  border: var(--_tf-border-width) solid var(--_tf-outline-color);
+}
+
+/* Outlined focus: border visible */
+:where(.ez-textfield).ez-outlined:focus-within {
+  border-color: var(--_tf-outline-color);
+}
+
+/* Outlined active label: surface background for notch effect */
+:where(.ez-textfield).ez-outlined:has(:where(input:not([type="hidden"]), select, textarea):not(:placeholder-shown)) :where(.ez-textfield-label),
+:where(.ez-textfield).ez-outlined:focus-within :where(.ez-textfield-label) {
+  background: var(--_tf-surface-color);
+}
+
+/* -------------------------------------------------------
+ * Error + Focus — structural borders
+ * ------------------------------------------------------- */
+:where(.ez-textfield).ez-filled:where(.ez-error, :has(:invalid)):focus-within {
+  border-bottom-color: var(--_tf-indicator-color);
+}
+
+:where(.ez-textfield).ez-outlined:where(.ez-error, :has(:invalid)):focus-within {
+  border-color: var(--_tf-outline-color);
+}
+
+/* -------------------------------------------------------
+ * Disabled (per-element color/opacity per spec)
+ * ------------------------------------------------------- */
+:where(.ez-textfield):where([disabled], .ez-disabled, :has(:disabled)) :where(.ez-textfield-label),
+:where(.ez-textfield):where([disabled], .ez-disabled, :has(:disabled)) :where(input:not([type="hidden"]), select, textarea),
+:where(.ez-textfield):where([disabled], .ez-disabled, :has(:disabled)) :where(.ez-textfield-leading),
+:where(.ez-textfield):where([disabled], .ez-disabled, :has(:disabled)) :where(.ez-textfield-trailing) {
+  color: var(--_tf-disabled-color);
+  opacity: var(--_tf-disabled-content-opacity);
+}
+
+/* Filled disabled: container + active indicator */
+:where(.ez-textfield).ez-filled:where([disabled], .ez-disabled, :has(:disabled)) {
+  background-color: var(--_tf-disabled-color);
+  border-bottom-color: var(--_tf-disabled-color);
+  opacity: 0.04;
+}
+
+/* Outlined disabled: outline */
+:where(.ez-textfield).ez-outlined:where([disabled], .ez-disabled, :has(:disabled)) {
+  border-color: var(--_tf-disabled-color);
+  opacity: var(--_tf-disabled-container-opacity);
+}
+
+/* -------------------------------------------------------
+ * Has-value state
+ * ------------------------------------------------------- */
+:where(.ez-textfield):has(:where(input:not([type="hidden"]), select, textarea):not(:placeholder-shown)) :where(input:not([type="hidden"]), select, textarea) {
+  opacity: 1;
+}
+
+:where(.ez-textfield):has(:where(input:not([type="hidden"]), select, textarea):not(:placeholder-shown)) :where(.ez-textfield-label) {
+  transform: var(--_tf-label-active-transform);
+}
+
+/* -------------------------------------------------------
+ * Structural / value-based visibility
+ * ------------------------------------------------------- */
+:where(.ez-textfield):has(.ez-textfield-leading) :where(.ez-textfield-center) {
+  margin-left: 0;
+}
+
+:where(.ez-textfield):has(.ez-textfield-trailing) :where(.ez-textfield-center) {
+  margin-right: 0;
+}
+
+:where(.ez-textfield):has(.ez-textfield-leading) :where(.ez-textfield-leading),
+:where(.ez-textfield):has(.ez-textfield-trailing) :where(.ez-textfield-trailing) {
+  display: flex;
+}
+
+:where(.ez-textfield):has(.ez-textfield-label) :where(.ez-textfield-label) {
+  display: inline-block;
+}
+
+/* -------------------------------------------------------
+ * Fullwidth
+ * ------------------------------------------------------- */
+:where(.ez-textfield).ez-fullwidth,
+:where(.ez-textfield).ez-fullwidth :where(.ez-textfield-center),
+:where(.ez-textfield).ez-fullwidth :where(input:not([type="hidden"]), select, textarea) {
+  flex-basis: 100%;
+  width: 100%;
+}
+
+/* -------------------------------------------------------
+ * Reduced motion
+ * ------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  :where(.ez-textfield),
+  :where(.ez-textfield) :where(.ez-textfield-label),
+  :where(.ez-textfield) :where(input:not([type="hidden"]), select, textarea),
+  :where(.ez-textfield) :where(.ez-textfield-leading),
+  :where(.ez-textfield) :where(.ez-textfield-trailing) {
+    transition: none;
+  }
+}
