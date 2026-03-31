@@ -146,17 +146,29 @@
 }
 
 /* Active primary tab ripple color */
-:where(.ez-tabs.ez-primary, ez-tabs[variant="primary"])
-  > :where(.ez-tab.ez-active, ez-tab[active])
+:where(
+  .ez-tabs.ez-primary,
+   ez-tabs[variant="primary"],
+  .ez-tabs:not(.ez-primary, .ez-secondary),
+   ez-tabs:not([variant])
+)
+  > :where(.ez-tab, ez-tab):where(:focus, :active, .ez-active, [active])
   > ez-ripple {
-  --ez-ripple-color: var(--md-sys-color-primary, #6750a4);
+  --ez-ripple-color: var(--md-sys-color-primary);
+  --ez-ripple-on-color: var(--md-sys-color-on-primary);
 }
 
 /* Inactive primary tab ripple color */
-:where(.ez-tabs.ez-primary, ez-tabs[variant="primary"])
-  > :where(.ez-tab, ez-tab):not(.ez-active, [active])
+:where(
+  .ez-tabs.ez-primary,
+   ez-tabs[variant="primary"],
+  .ez-tabs:not(.ez-primary, .ez-secondary),
+   ez-tabs:not([variant])
+ )
+  > :where(.ez-tab, ez-tab):not(:focus, :active, .ez-active, [active])
   > ez-ripple {
-  --ez-ripple-color: var(--md-sys-color-on-surface, #1d1b20);
+  --ez-ripple-color: var(--md-sys-color-on-surface);
+  --ez-ripple-on-color: var(--md-sys-color-surface);
 }
 
 /* ─── Secondary tabs ─────────────────────────────────────────────────────── */
@@ -187,16 +199,18 @@
 
 /* Active secondary tab ripple color */
 :where(.ez-tabs.ez-secondary, ez-tabs[variant="secondary"])
-  > :where(.ez-tab.ez-active, ez-tab[active])
+  > :where(.ez-tab, ez-tab):where(.ez-active, :active, [active], :focus)
   > ez-ripple {
   --ez-ripple-color: var(--md-sys-color-on-surface, #1d1b20);
+  --ez-ripple-on-color: var(--md-sys-color-surface);
 }
 
 /* Inactive secondary tab ripple color */
 :where(.ez-tabs.ez-secondary, ez-tabs[variant="secondary"])
-  > :where(.ez-tab, ez-tab):not(.ez-active, [active])
+  > :where(.ez-tab, ez-tab):not(.ez-active, :active, [active], :focus)
   > ez-ripple {
   --ez-ripple-color: var(--md-sys-color-on-surface, #1d1b20);
+  --ez-ripple-on-color: var(--md-sys-color-surface);
 }
 
 /* ─── CSS-only fallback: active indicator via pseudo-element ──────────────── */
