@@ -21,8 +21,7 @@
   flex-flow: row nowrap;
   background: var(--_tabs-container-color);
   border-bottom: var(--_tabs-divider-height) solid var(--_tabs-divider-color);
-  overflow-x: auto;
-  overflow-y: visible;
+  overflow: auto visible;
   scrollbar-width: none; /* hide scrollbar on Firefox */
 }
 
@@ -201,6 +200,7 @@
 }
 
 /* ─── CSS-only fallback: active indicator via pseudo-element ──────────────── */
+
 /* When .ez-tabs__indicator element is not present, use tab ::after pseudo */
 
 :where(.ez-tabs, ez-tabs):not(:has(.ez-tabs__indicator))
