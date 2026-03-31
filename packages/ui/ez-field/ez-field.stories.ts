@@ -251,7 +251,7 @@ export const ErrorPropertyStory: StoryObj = {
     await expect(attrField?.validationMessage).toBe('Initial error message');
 
     // Verify error renders in shadow DOM
-    const errorDiv = attrField?.shadowRoot?.querySelector('.error');
+    const errorDiv = attrField?.shadowRoot?.querySelector('[part="error"]');
 
     await expect(errorDiv?.textContent.trim()).toBe('Initial error message');
 

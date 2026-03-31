@@ -33,7 +33,7 @@ export const FieldDefault: StoryObj = {
               placeholder="Enter email"
             />
           </div>
-          <div class="ez-field__help">We'll never share your email.</div>
+          <div class="ez-field-help">We'll never share your email.</div>
         </div>
 
         <br /><br />
@@ -46,7 +46,7 @@ export const FieldDefault: StoryObj = {
             type="text"
             placeholder="Enter username"
           />
-          <div class="ez-field__error-message">Username is required.</div>
+          <div class="ez-field-error">Username is required.</div>
         </div>
       </div>
     </section>
@@ -55,10 +55,8 @@ export const FieldDefault: StoryObj = {
     const fields = canvasElement.querySelectorAll('.ez-field');
 
     await expect(fields.length).toBe(3);
-    await expect(canvasElement.querySelector('.ez-field__help')).not.toBeNull();
-    await expect(
-      canvasElement.querySelector('.ez-field__error-message')
-    ).not.toBeNull();
+    await expect(canvasElement.querySelector('.ez-field-help')).not.toBeNull();
+    await expect(canvasElement.querySelector('.ez-field-error')).not.toBeNull();
   },
 };
 
@@ -79,7 +77,7 @@ export const FieldVertical: StoryObj = {
             type="text"
             placeholder="Enter full name"
           />
-          <div class="ez-field__help">As it appears on your ID.</div>
+          <div class="ez-field-help">As it appears on your ID.</div>
         </div>
 
         <br />
@@ -105,7 +103,7 @@ export const FieldVertical: StoryObj = {
             type="tel"
             placeholder="Enter phone"
           />
-          <div class="ez-field__error-message">Invalid phone number.</div>
+          <div class="ez-field-error">Invalid phone number.</div>
         </div>
       </div>
     </section>
@@ -115,14 +113,12 @@ export const FieldVertical: StoryObj = {
 
     await expect(vertFields.length).toBe(3);
     await expect(canvasElement.querySelector('input[required]')).not.toBeNull();
-    await expect(
-      canvasElement.querySelector('.ez-field__error-message')
-    ).not.toBeNull();
+    await expect(canvasElement.querySelector('.ez-field-error')).not.toBeNull();
   },
 };
 
 /**
- * Custom content slot (`.ez-field__custom`) below field.
+ * Custom content slot (`.ez-field-content`) below field.
  */
 export const FieldCustomSlot: StoryObj = {
   render: () => html`
@@ -137,7 +133,7 @@ export const FieldCustomSlot: StoryObj = {
             class="ez-input"
             placeholder="Tell us about yourself"
           ></textarea>
-          <div class="ez-field__custom">Max 250 characters.</div>
+          <div class="ez-field-content">Max 250 characters.</div>
         </div>
 
         <br />
@@ -151,70 +147,62 @@ export const FieldCustomSlot: StoryObj = {
             placeholder="Enter password"
             required
           />
-          <div class="ez-field__error-message">Password is required.</div>
-          <div class="ez-field__custom">Must be at least 8 characters.</div>
+          <div class="ez-field-error">Password is required.</div>
+          <div class="ez-field-content">Must be at least 8 characters.</div>
         </div>
       </div>
     </section>
   `,
   play: async ({ canvasElement }) => {
-    const customs = canvasElement.querySelectorAll('.ez-field__custom');
+    const customs = canvasElement.querySelectorAll('.ez-field-content');
 
     await expect(customs.length).toBe(2);
-    await expect(
-      canvasElement.querySelector('.ez-field__error-message')
-    ).not.toBeNull();
+    await expect(canvasElement.querySelector('.ez-field-error')).not.toBeNull();
   },
 };
 
 /**
- * Flex row layout with leading and trailing elements.
+ * Leading and trailing elements as direct children of .ez-field.
  */
-export const FieldFlexRow: StoryObj = {
+export const FieldLeadingTrailing: StoryObj = {
   render: () => html`
     <section>
-      <header><h2>Field - Flex Row (Leading / Trailing)</h2></header>
+      <header><h2>Field - Leading / Trailing</h2></header>
 
       <div class="ez-section-body">
         <div class="ez-field ez-field--vertical">
           <label for="field-flex-1">Price</label>
-          <div class="ez-field__flex-row">
-            <span class="ez-field__leading">$</span>
-            <input
-              id="field-flex-1"
-              class="ez-input"
-              type="number"
-              placeholder="0"
-            />
-            <span class="ez-field__trailing">.00</span>
-          </div>
+          <span class="ez-field-leading">$</span>
+          <input
+            id="field-flex-1"
+            class="ez-input"
+            type="number"
+            placeholder="0"
+          />
+          <span class="ez-field-trailing">.00</span>
         </div>
 
         <br />
 
         <div class="ez-field ez-field--vertical">
           <label for="field-flex-2">Weight</label>
-          <div class="ez-field__flex-row">
-            <span class="ez-field__leading md-icon">scale</span>
-            <input
-              id="field-flex-2"
-              class="ez-input"
-              type="number"
-              placeholder="0"
-            />
-            <span class="ez-field__trailing">kg</span>
-          </div>
-          <div class="ez-field__custom">Enter weight in kilograms.</div>
+          <span class="ez-field-leading md-icon">scale</span>
+          <input
+            id="field-flex-2"
+            class="ez-input"
+            type="number"
+            placeholder="0"
+          />
+          <span class="ez-field-trailing">kg</span>
+          <div class="ez-field-content">Enter weight in kilograms.</div>
         </div>
       </div>
     </section>
   `,
   play: async ({ canvasElement }) => {
-    const flexRows = canvasElement.querySelectorAll('.ez-field__flex-row'),
-      leading = canvasElement.querySelectorAll('.ez-field__leading'),
-      trailing = canvasElement.querySelectorAll('.ez-field__trailing');
+    const leading = canvasElement.querySelectorAll('.ez-field-leading'),
+      trailing = canvasElement.querySelectorAll('.ez-field-trailing');
 
-    await expect(flexRows.length).toBe(2);
     await expect(leading.length).toBe(2);
     await expect(trailing.length).toBe(2);
   },
@@ -251,7 +239,7 @@ export const FieldDisabled: StoryObj = {
             value="Read only value"
             disabled
           />
-          <div class="ez-field__help">This field cannot be edited.</div>
+          <div class="ez-field-help">This field cannot be edited.</div>
         </div>
       </div>
     </section>
