@@ -1,49 +1,48 @@
 section > :where(
   header,
-  div > header
+  .ez-section__body > header,
+  .ez-section-body > header
 ) {
   padding: 1.5rem;
 }
 
 section > :where(
-  div,
   section,
-  div > section,
   article,
-  div > article
+  .ez-section__body,
+  .ez-section-body
 ) {
   border-top: var(--ez-1px) solid currentcolor;
 }
 
 section > :where(
-  div,
   section,
-  div > section,
   article,
-  div > article
+  .ez-section__body,
+  .ez-section-body
 ) > :where(
   header,
-  div > header
+  .ez-section__body > header,
+  .ez-section-body > header
 ) {
   padding: .5rem;
 }
 
 section > :where(
-  div,
   section,
-  div > section,
   article,
-  div > article
+  .ez-section__body,
+  .ez-section-body
 ) > :where(
   header,
-  div > header
+  .ez-section__body > header,
+  .ez-section-body > header
 ) + * {
   margin-top: 1rem;
 }
 
 section article,
 section > :where(
-  div,
   .ez-section__body,
   .ez-section-body
 ) {
