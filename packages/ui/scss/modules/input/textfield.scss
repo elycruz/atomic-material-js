@@ -115,10 +115,9 @@
   --_tf-indicator-width: 3px;
 }
 
-/* Focus — outlined: outline → focus-color, 3px per spec */
+/* Focus — outlined: outline → focus-color (border-width stays at 3px, only color changes) */
 :where(.ez-textfield).ez-outlined:where(:focus-within) {
   --_tf-outline-color: var(--_tf-focus-color);
-  --_tf-border-width: 3px;
 }
 
 /* Error — label, caret, trailing, supporting → error-color */
@@ -196,9 +195,8 @@ html[dir="rtl"] :where(.ez-textfield) {
   min-height: 56px;
 }
 
-/* Outlined focus enhancement (flat DOM) */
+/* Outlined focus enhancement (flat DOM) — only color changes, no width change */
 :where(.ez-textfield).ez-outlined:has(:focus) {
-  border-width: 3px;
   border-color: var(--_tf-outline-color);
 }
 
@@ -328,7 +326,7 @@ html[dir="rtl"] :where(.ez-textfield) {
   color: var(--_tf-placeholder-color);
 }
 
-:where(.ez-textfield) :where(input:not([type="hidden"]), select, textarea):focus {
+:where(.ez-textfield) :where(input:not([type="hidden"]), select, textarea):is(:focus, :focus-visible) {
   outline: none;
   opacity: 1;
 }
@@ -393,9 +391,29 @@ html[dir="rtl"] :where(.ez-textfield) {
   border-bottom-color: var(--_tf-indicator-color);
 }
 
-/* Outlined variant (.ez-outlined) */
+/* Outlined variant (.ez-outlined) — border-width is always 3px (transparent initially) to prevent
+ * layout shift on focus. The visible 1px border is rendered via the .ez-textfield-border-container
+ * child element or the ::before pseudo-element. On focus, only border-color changes (not width). */
 :where(.ez-textfield).ez-outlined {
-  border: var(--_tf-border-width) solid var(--_tf-outline-color);
+  border: 3px solid transparent;
+}
+
+/* .ez-textfield-border-container — renders the visible 1px outline border without affecting layout.
+ * Use as a direct child of .ez-textfield.ez-outlined in HTML, or rely on the ::before fallback. */
+:where(.ez-textfield).ez-outlined > .ez-textfield-border-container,
+:where(.ez-textfield).ez-outlined::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border: 1px solid var(--_tf-outline-color);
+  border-radius: inherit;
+  pointer-events: none;
+  transition: border-color var(--_tf-speed) var(--_tf-easing);
+}
+
+/* When .ez-textfield-border-container is present, suppress the ::before fallback */
+:where(.ez-textfield).ez-outlined:has(> .ez-textfield-border-container)::before {
+  content: none;
 }
 
 :where(.ez-textfield).ez-outlined:focus-within {
@@ -438,8 +456,10 @@ html[dir="rtl"] :where(.ez-textfield) {
   opacity: 0.04;
 }
 
-/* Outlined disabled: outline */
-:where(.ez-textfield).ez-outlined:where([disabled], .ez-disabled, :has(:disabled)) {
+/* Outlined disabled: outline — also applies to ::before border container */
+:where(.ez-textfield).ez-outlined:where([disabled], .ez-disabled, :has(:disabled)),
+:where(.ez-textfield).ez-outlined:where([disabled], .ez-disabled, :has(:disabled)) > .ez-textfield-border-container,
+:where(.ez-textfield).ez-outlined:where([disabled], .ez-disabled, :has(:disabled))::before {
   border-color: var(--_tf-disabled-color);
   opacity: var(--_tf-disabled-container-opacity);
 }
