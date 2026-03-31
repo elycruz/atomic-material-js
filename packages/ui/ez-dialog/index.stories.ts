@@ -523,7 +523,7 @@ export const FullScreenDialog: StoryObj = {
                 <strong>Event title</strong>
                 <input
                   type="text"
-                  class="ez-input"
+                  class="ez-textfield"
                   placeholder="Add title"
                   style="display: block; width: 100%; margin-top: 0.25rem;"
                 />
@@ -532,14 +532,14 @@ export const FullScreenDialog: StoryObj = {
                 <strong>Date</strong>
                 <input
                   type="date"
-                  class="ez-input"
+                  class="ez-textfield"
                   style="display: block; width: 100%; margin-top: 0.25rem;"
                 />
               </label>
               <label>
                 <strong>Description</strong>
                 <textarea
-                  class="ez-input"
+                  class="ez-textfield"
                   rows="4"
                   placeholder="Add description"
                   style="display: block; width: 100%; margin-top: 0.25rem;"
