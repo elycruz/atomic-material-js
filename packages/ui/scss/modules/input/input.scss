@@ -1,6 +1,8 @@
 /**
  * Layout direction
  * ---------------------- */
+@import "../../component-prelude";
+
 html:not([dir="rtl"]) :where(ez-input, .ez-input, .ez-textfield) {
   flex-flow: row nowrap;
 }
@@ -349,7 +351,7 @@ html[dir="rtl"] :where(ez-input, .ez-input, .ez-textfield) > *:not(
   select,
   textarea
 ) {
-  line-height: var(--ez-24px);
+  @extend %md-typescale-body-large;
 }
 
 /*

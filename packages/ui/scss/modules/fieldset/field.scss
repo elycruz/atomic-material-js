@@ -1,3 +1,5 @@
+@import "../../component-prelude";
+
 label {
   user-select: none;
   vertical-align: middle;
@@ -73,7 +75,7 @@ label:has(> ez-ripple > :disabled) {
 }
 
 :where(ez-field, .ez-field) :is(.ez-field-help, [slot="help"], .ez-help) {
-  font-size: smaller;
+  @extend %md-typescale-body-small;
 }
 
 :where(ez-field, .ez-field) .ez-field-center {
@@ -96,8 +98,8 @@ label:has(> ez-ripple > :disabled) {
 
 /* Error message (M3 supporting-text error style) */
 :where(ez-field, .ez-field) .ez-field-error {
-  font-family: var(--md-sys-typescale-body-small-font, inherit), sans-serif;
-  font-size: var(--md-sys-typescale-body-small-size, smaller);
+  @extend %md-typescale-body-small;
+
   color: var(--md-sys-color-error, red);
   margin-top: 0.25rem;
   padding-inline: var(--md-sys-spacing-4, 1rem);
@@ -105,8 +107,8 @@ label:has(> ez-ripple > :disabled) {
 
 /* Custom content */
 :where(ez-field, .ez-field) .ez-field-content {
-  font-family: var(--md-sys-typescale-body-small-font, inherit), sans-serif;
-  font-size: var(--md-sys-typescale-body-small-size, smaller);
+  @extend %md-typescale-body-small;
+
   color: var(--md-sys-color-on-surface-variant, GrayText);
   margin-top: 0.25rem;
   padding-inline: var(--md-sys-spacing-4, 1rem);

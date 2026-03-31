@@ -18,6 +18,7 @@
  * Help, messages, supported text, etc., are handled by `.ez-field`/`ez-field`.
  *
  */
+@import "../../component-prelude";
 
 /* -------------------------------------------------------
  * Base
@@ -29,13 +30,14 @@
   justify-content: space-between;
   align-items: center;
   user-select: none;
-  font: normal var(--_tf-font-weight) var(--_tf-font-size) var(--_tf-font-family);
-  letter-spacing: var(--_tf-font-tracking);
-  line-height: var(--_tf-line-height);
+
+  @extend %md-typescale-body-large;
+
   color: var(--_tf-text-color);
   transition: border-color var(--_tf-speed) var(--_tf-easing);
   background: transparent;
   border-radius: var(--_tf-border-radius);
+  gap: var(--_tf-padding);
 
   &, * {
     box-sizing: border-box;
@@ -57,12 +59,7 @@
   color: var(--_tf-icon-color);
 }
 
-:where(.ez-textfield) :where(.ez-textfield-leading) {
-  margin: 0 0 0 var(--_tf-padding);
-}
-
 :where(.ez-textfield) :where(.ez-textfield-trailing) {
-  margin: 0 var(--_tf-padding) 0 0;
   color: var(--_tf-trailing-icon-color);
 }
 
@@ -85,9 +82,9 @@
   position: relative;
   display: inline-block;
   padding: var(--_tf-padding);
-  font-size: var(--_tf-font-size);
-  font-weight: var(--_tf-font-weight);
-  letter-spacing: var(--_tf-font-tracking);
+
+  @extend %md-typescale-body-large;
+
   line-height: var(--_tf-font-size);
   background: transparent;
   transition: opacity var(--_tf-speed) var(--_tf-easing);
