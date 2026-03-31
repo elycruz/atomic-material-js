@@ -3,7 +3,7 @@ import { expect } from 'storybook/test';
 import type { StoryObj } from '@storybook/web-components-vite';
 
 export default {
-  title: 'CSS Components/Field',
+  title: 'CSS Components/Field v2',
 };
 
 /**
