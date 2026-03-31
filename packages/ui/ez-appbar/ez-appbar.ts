@@ -1,12 +1,8 @@
 import { css, type CSSResultGroup, type PropertyValues } from 'lit';
 
-import {
-  addClass,
-  hasClass,
-  removeClass,
-  debounce,
-  toNumberOr,
-} from '../utils/index.js';
+import { addClass, hasClass, removeClass } from '../utils/dom/dom.js';
+import { toNumberOr } from '../utils/number.js';
+import { debounce } from '../utils/debounce.js';
 
 import { VARIETY_NAME, THEME_NAME, SIZE_NAME } from '../utils/constants.js';
 

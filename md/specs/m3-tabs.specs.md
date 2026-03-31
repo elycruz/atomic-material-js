@@ -272,3 +272,10 @@ The active-tab indicator should exist outside of the tab button itself and shoul
 ---
 
 *Extracted from the Material Design 3 website.*
+
+## Deprecated Tokens
+
+md.comp.primary-navigation-tab.divider.color
+md.comp.primary-navigation-tab.divider.height
+md.comp.secondary-navigation-tab.divider.color
+md.comp.secondary-navigation-tab.divider.height

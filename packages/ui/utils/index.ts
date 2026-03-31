@@ -1,6 +1,5 @@
 // @deprecated - Import modules directly.
 // ----
-export * from './dom/classNames.js';
 export * from './console.js';
 export * from './debounce.js';
 export * from './dom/index.js';
