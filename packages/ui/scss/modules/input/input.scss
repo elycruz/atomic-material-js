@@ -179,7 +179,7 @@ html:not([dir="rtl"]) :where(ez-input, .ez-input, .ez-textfield):where(
   padding: var(--ez-input-padding-block) var(--ez-input-padding-inline);
 }
 
-html:not([dir="rtl"]) :where(ez-input, .ez-input, .ez-textfield):where(:not(:has(.ez-tf-wrapper))) > *:not(
+html:not([dir="rtl"]) :where(ez-input, .ez-input, .ez-textfield) > *:not(
   [type="button"],
   [type="checkbox"],
   [type="color"],
@@ -213,7 +213,7 @@ html[dir="rtl"] :where(ez-input, .ez-input, .ez-textfield):is(
   padding: var(--ez-input-padding-inline) var(--ez-input-padding-block);
 }
 
-html[dir="rtl"] :where(ez-input, .ez-input, .ez-textfield):where(:not(:has(.ez-tf-wrapper))) > *:not(
+html[dir="rtl"] :where(ez-input, .ez-input, .ez-textfield) > *:not(
   [type="button"],
   [type="checkbox"],
   [type="color"],
@@ -230,7 +230,7 @@ html[dir="rtl"] :where(ez-input, .ez-input, .ez-textfield):where(:not(:has(.ez-t
 /**
  * Size control - Restrict heights for known control sizes.
  */
-:where(ez-input, .ez-input, .ez-textfield):where(:not(:has(.ez-tf-wrapper))):not(.ez-small, .ez-large, textarea, :has(> textarea)) {
+:where(ez-input, .ez-input, .ez-textfield):not(.ez-small, .ez-large, textarea, :has(> textarea)) {
   max-height: calc(36 / 16 * 1rem);
 }
 
@@ -250,7 +250,7 @@ html[dir="rtl"] :where(ez-input, .ez-input, .ez-textfield):where(:not(:has(.ez-t
 /**
  * Default dimensions, where not checkbox, and/or radio button.
  */
-:where(ez-input, .ez-input, .ez-textfield):where(:not(:has(.ez-tf-wrapper))):not([type="checkbox"], [type="radio"]) {
+:where(ez-input, .ez-input, .ez-textfield):not([type="checkbox"], [type="radio"]) {
   --ez-input-padding-block: var(--ez-6px);
   --ez-input-padding-inline: var(--ez-6px);
 
@@ -263,7 +263,7 @@ html[dir="rtl"] :where(ez-input, .ez-input, .ez-textfield):where(:not(:has(.ez-t
 /**
  * Default background.
  */
-:where(ez-input, .ez-input, .ez-textfield):where(:not(:has(.ez-tf-wrapper))):has(
+:where(ez-input, .ez-input, .ez-textfield):has(
   input:not(
     [type="button"],
     [type="checkbox"],
@@ -301,8 +301,8 @@ html[dir="rtl"] :where(ez-input, .ez-input, .ez-textfield):where(:not(:has(.ez-t
 /*
  * Input, Select, Textarea, and 'not checkbox, or radio'
  * ---------------------- */
-:where(ez-input, .ez-input, .ez-textfield):where(:not(:has(.ez-tf-wrapper))):not([type="checkbox"], [type="radio"]),
-:where(ez-input, .ez-input, .ez-textfield):where(:not(:has(.ez-tf-wrapper))) > :is(
+:where(ez-input, .ez-input, .ez-textfield):not([type="checkbox"], [type="radio"]),
+:where(ez-input, .ez-input, .ez-textfield) > :is(
   input:not([type="checkbox"], [type="radio"]),
   textarea,
   select
@@ -376,8 +376,8 @@ html[dir="rtl"] :where(ez-input, .ez-input, .ez-textfield):where(:not(:has(.ez-t
  * Outlined/Default
  * ----------------------- */
 :where(
-  :where(ez-input, .ez-input, .ez-textfield):where(:not(:has(.ez-tf-wrapper))):not(.ez-underlined),
-  :where(ez-input, .ez-input, .ez-textfield):where(:not(:has(.ez-tf-wrapper))).ez-outlined
+  :where(ez-input, .ez-input, .ez-textfield):not(.ez-underlined),
+  :where(ez-input, .ez-input, .ez-textfield).ez-outlined
 ):has(
   input:not([type="range"], [type="image"], [type="checkbox"], [type="radio"]),
   select,
@@ -408,7 +408,7 @@ html[dir="rtl"] :where(ez-input, .ez-input, .ez-textfield):where(:not(:has(.ez-t
 /*
  * MD3 Filled variant (flat DOM)
  * ----------------------- */
-:where(ez-input, .ez-input, .ez-textfield):where(:not(:has(.ez-tf-wrapper))).ez-filled {
+:where(ez-input, .ez-input, .ez-textfield).ez-filled {
   position: relative;
   background: var(--_tf-container-color);
   border: none;
@@ -420,12 +420,12 @@ html[dir="rtl"] :where(ez-input, .ez-input, .ez-textfield):where(:not(:has(.ez-t
 /*
  * MD3 Outlined focus enhancement (flat DOM)
  * ----------------------- */
-:where(ez-input, .ez-input, .ez-textfield):where(:not(:has(.ez-tf-wrapper))).ez-outlined:has(:focus) {
+:where(ez-input, .ez-input, .ez-textfield).ez-outlined:has(:focus) {
   border-width: 3px;
   border-color: var(--_tf-outline-color);
 }
 
-:where(ez-input, .ez-input, .ez-textfield):where(:not(:has(.ez-tf-wrapper))).ez-outlined:has(:is(.ez-error, :invalid)) {
+:where(ez-input, .ez-input, .ez-textfield).ez-outlined:has(:is(.ez-error, :invalid)) {
   border-color: var(--_tf-outline-color);
 }
 
@@ -465,14 +465,14 @@ html[dir="rtl"] :where(ez-input, .ez-input, .ez-textfield):where(:not(:has(.ez-t
 /*
  * Leading/trailing icons
  * ----------------------- */
-:where(ez-input, .ez-input, .ez-textfield) > .ez-field__leading {
+:where(ez-input, .ez-input, .ez-textfield) > .ez-textfield-leading {
   display: flex;
   align-items: center;
   padding-inline-start: var(--md-sys-spacing-3, 0.75rem);
   color: var(--_tf-icon-color);
 }
 
-:where(ez-input, .ez-input, .ez-textfield) > .ez-field__trailing {
+:where(ez-input, .ez-input, .ez-textfield) > .ez-textfield-trailing {
   display: flex;
   align-items: center;
   padding-inline-end: var(--md-sys-spacing-3, 0.75rem);
@@ -489,7 +489,7 @@ html[dir="rtl"] :where(ez-input, .ez-input, .ez-textfield):where(:not(:has(.ez-t
 /**
  * Material Design - Input/Textfield
  * ---------------------- */
-:where(ez-input, .ez-input, .ez-textfield):where(:not(:has(.ez-tf-wrapper))):not(
+:where(ez-input, .ez-input, .ez-textfield):not(
   [type="checkbox"],
   [type="radio"]
 ):where(:focus-within) {
