@@ -4,7 +4,15 @@
  * MD3 tabs component — Primary and Secondary variants.
  * Use `.ez-tabs.ez-primary` or `.ez-tabs.ez-secondary`.
  */
-@import "../component-prelude";
+@use "../component-prelude";
+
+/* ─── Variables ─────────────────────────────────────────────────────────────── */
+
+$tab-min-height: 3rem; // 48px
+// Since CSS props are dynamic calculation has to be done using `calc`.
+$tab-padding: calc((#{$tab-min-height} - var(--md-sys-typescale-label-large-line-height)) / 2);
+$font-and-line-height-diff: calc(var(--md-sys-typescale-label-large-line-height) - var(--md-sys-typescale-label-large-size));
+$tall-tab-padding-block: calc(#{$tab-padding} - (#{$font-and-line-height-diff} / 2));
 
 /* ─── Container ──────────────────────────────────────────────────────────── */
 
@@ -25,6 +33,7 @@
   border-bottom: var(--_tabs-divider-height) solid var(--_tabs-divider-color);
   overflow: auto visible;
   scrollbar-width: none; /* hide scrollbar on Firefox */
+  min-height: #{$tab-min-height};
 }
 
 :where(.ez-tabs, ez-tabs)::-webkit-scrollbar {
@@ -38,7 +47,7 @@
   bottom: -1px; /* sit on top of the container border */
   left: 0;
   height: 3px;
-  min-width: 24px;
+  min-width: 1.5rem;
   background: var(--_tabs-active-indicator-color);
   border-radius: var(--_tabs-active-indicator-shape);
   pointer-events: none;
@@ -66,11 +75,9 @@
   flex-flow: column nowrap;
   align-items: center;
   justify-content: flex-end;
-  gap: 4px;
-  padding: 12px 16px;
-  min-width: 48px;
-  min-height: 48px;
-  overflow: hidden;
+  padding: #{$tab-padding} 1rem;
+  min-width: #{$tab-min-height};
+  min-height: #{$tab-min-height};
   cursor: pointer;
   user-select: none;
   border: none;
@@ -80,10 +87,25 @@
 
   @extend %md-typescale-label-large;
 
-  /* Focus ring */
-  &:focus-visible {
-    outline: 3px solid var(--md-sys-color-secondary, #625b71);
-    outline-offset: -3px;
+  // Focus outline container
+  // Since it needs to have rounded corners
+  // but our tab component only has square
+  // ones.
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: var(--md-sys-shape-corner-large);
+  }
+}
+
+/* Focus ring */
+:is(.ez-tabs, ez-tabs) :is(.ez-tab, ez-tab):focus-visible {
+  outline: none;
+
+  &::before {
+    outline: 3px solid var(--md-sys-color-primary, #625b71);
+    outline-offset: -6px;
   }
 }
 
@@ -126,12 +148,16 @@
 }
 
 :where(.ez-tabs.ez-primary, ez-tabs[variant="primary"]) > :where(.ez-tab, ez-tab) {
-  padding-bottom: 12px;
-
   /* Icon + label stacked: taller container */
   &:has(.ez-tab__icon):has(.ez-tab__label),
   &:has(.md-icon):has(.ez-tab__label) {
     min-height: 64px;
+
+    // 1px here is ".ez-tabs" border-bottom;  Math
+    // here makes spacing accurate and takes into account
+    // line-height outer-space on tab label.
+    padding: calc((#{$tall-tab-padding-block} / 2) - 1px) 1rem
+      calc((#{$tall-tab-padding-block} / 2) + 1px);
   }
 }
 
