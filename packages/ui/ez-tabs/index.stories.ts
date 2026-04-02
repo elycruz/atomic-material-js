@@ -25,7 +25,9 @@ function syncIndicator(tabsEl: Element) {
     indicatorInset = isPrimary ? 2 : 0;
 
   indicator.style.width = `${tabRect.width - indicatorInset * 2}px`;
-  indicator.style.transform = `translateX(${tabRect.left - tabsRect.left + tabsEl.scrollLeft + indicatorInset}px)`;
+  indicator.style.transform = `translateX(${
+    tabRect.left - tabsRect.left + tabsEl.scrollLeft + indicatorInset
+  }px)`;
 }
 
 /**
