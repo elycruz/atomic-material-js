@@ -45,6 +45,14 @@
       "types": "./dist/ez-textfield/index.d.ts",
       "default": "./dist/ez-textfield/index.js"
     },
+    "./ez-tab": {
+      "types": "./dist/ez-tab/index.d.ts",
+      "default": "./dist/ez-tab/index.js"
+    },
+    "./ez-tabs": {
+      "types": "./dist/ez-tabs/index.d.ts",
+      "default": "./dist/ez-tabs/index.js"
+    },
     "./utils": {
       "types": "./dist/utils/index.d.ts",
       "default": "./dist/utils/index.js"
