@@ -211,6 +211,28 @@
   --ez-ripple-on-color: var(--md-sys-color-surface);
 }
 
+/* ─── Inline icon modifier ───────────────────────────────────────────────── */
+
+/*
+ * Add .ez-inline to an .ez-tab to render the icon and label side-by-side
+ * instead of stacked. Keeps the 48dp min-height regardless of variant.
+ */
+
+:where(.ez-tab.ez-inline, ez-tab[inline]) {
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem; /* 8dp per MD3 */
+}
+
+/* Override the primary 64dp icon+label height when the tab is inline */
+:where(.ez-tabs.ez-primary, ez-tabs[variant="primary"])
+  > :where(.ez-tab.ez-inline, ez-tab[inline]):has(.ez-tab__icon):has(.ez-tab__label),
+:where(.ez-tabs.ez-primary, ez-tabs[variant="primary"])
+  > :where(.ez-tab.ez-inline, ez-tab[inline]):has(.md-icon):has(.ez-tab__label) {
+  min-height: 48px;
+}
+
 /* ─── CSS-only fallback: active indicator via pseudo-element ──────────────── */
 
 /* When .ez-tabs__indicator element is not present, use tab ::after pseudo */
