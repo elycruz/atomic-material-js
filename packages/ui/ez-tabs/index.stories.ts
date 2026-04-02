@@ -220,6 +220,75 @@ export const SecondaryLabelOnly: Story = {
   },
 };
 
+/* ─── Primary tabs — inline icon + label ────────────────────────────────── */
+
+export const PrimaryInlineIcon: Story = {
+  render: () => html`
+    <section>
+      <header><h2>Primary Tabs — Inline Icon + Label</h2></header>
+
+      <div
+        class="ez-tabs ez-primary"
+        role="tablist"
+        aria-label="Primary tabs with inline icons"
+      >
+        <div class="ez-tabs__indicator"></div>
+
+        <button
+          class="ez-tab ez-inline ez-active"
+          type="button"
+          role="tab"
+          aria-selected="true"
+        >
+          <ez-ripple></ez-ripple>
+          <span class="md-icon ez-tab__icon" aria-hidden="true">flight</span>
+          <span class="ez-tab__label">Flights</span>
+        </button>
+
+        <button
+          class="ez-tab ez-inline"
+          type="button"
+          role="tab"
+          aria-selected="false"
+        >
+          <ez-ripple></ez-ripple>
+          <span class="md-icon ez-tab__icon" aria-hidden="true">luggage</span>
+          <span class="ez-tab__label">Trips</span>
+        </button>
+
+        <button
+          class="ez-tab ez-inline"
+          type="button"
+          role="tab"
+          aria-selected="false"
+        >
+          <ez-ripple></ez-ripple>
+          <span class="md-icon ez-tab__icon" aria-hidden="true">explore</span>
+          <span class="ez-tab__label">Explore</span>
+        </button>
+      </div>
+    </section>
+  `,
+  play: async ({ canvasElement }) => {
+    const tabs = canvasElement.querySelector('.ez-tabs');
+
+    await expect(tabs).toBeInTheDocument();
+
+    const tabItems = tabs?.querySelectorAll('.ez-tab');
+
+    await expect(tabItems?.length).toBe(3);
+
+    const active = tabs?.querySelector('.ez-tab.ez-active');
+
+    await expect(active).toBeInTheDocument();
+    await expect(active?.classList.contains('ez-inline')).toBe(true);
+    await expect(active?.querySelector('.ez-tab__icon')).toBeInTheDocument();
+    await expect(active?.querySelector('.ez-tab__label')).toBeInTheDocument();
+
+    if (tabs) initTabs(tabs);
+  },
+};
+
 /* ─── Secondary tabs — icon + label ─────────────────────────────────────── */
 
 export const SecondaryIconAndLabel: Story = {
@@ -269,6 +338,73 @@ export const SecondaryIconAndLabel: Story = {
     const active = tabs?.querySelector('.ez-tab.ez-active');
 
     await expect(active).toBeInTheDocument();
+    await expect(active?.querySelector('.ez-tab__icon')).toBeInTheDocument();
+    await expect(active?.querySelector('.ez-tab__label')).toBeInTheDocument();
+
+    if (tabs) initTabs(tabs);
+  },
+};
+
+/* ─── Secondary tabs — inline icon + label ──────────────────────────────── */
+
+export const SecondaryInlineIcon: Story = {
+  render: () => html`
+    <section>
+      <header><h2>Secondary Tabs — Inline Icon + Label</h2></header>
+
+      <div
+        class="ez-tabs ez-secondary"
+        role="tablist"
+        aria-label="Secondary tabs with inline icons"
+      >
+        <div class="ez-tabs__indicator"></div>
+
+        <button
+          class="ez-tab ez-inline ez-active"
+          type="button"
+          role="tab"
+          aria-selected="true"
+        >
+          <ez-ripple></ez-ripple>
+          <span class="md-icon ez-tab__icon" aria-hidden="true">photo</span>
+          <span class="ez-tab__label">Photos</span>
+        </button>
+
+        <button
+          class="ez-tab ez-inline"
+          type="button"
+          role="tab"
+          aria-selected="false"
+        >
+          <ez-ripple></ez-ripple>
+          <span class="md-icon ez-tab__icon" aria-hidden="true"
+            >photo_album</span
+          >
+          <span class="ez-tab__label">Albums</span>
+        </button>
+
+        <button
+          class="ez-tab ez-inline"
+          type="button"
+          role="tab"
+          aria-selected="false"
+        >
+          <ez-ripple></ez-ripple>
+          <span class="md-icon ez-tab__icon" aria-hidden="true">star</span>
+          <span class="ez-tab__label">For You</span>
+        </button>
+      </div>
+    </section>
+  `,
+  play: async ({ canvasElement }) => {
+    const tabs = canvasElement.querySelector('.ez-tabs.ez-secondary');
+
+    await expect(tabs).toBeInTheDocument();
+
+    const active = tabs?.querySelector('.ez-tab.ez-active');
+
+    await expect(active).toBeInTheDocument();
+    await expect(active?.classList.contains('ez-inline')).toBe(true);
     await expect(active?.querySelector('.ez-tab__icon')).toBeInTheDocument();
     await expect(active?.querySelector('.ez-tab__label')).toBeInTheDocument();
 
