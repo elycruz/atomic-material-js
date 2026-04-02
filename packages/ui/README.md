@@ -82,6 +82,7 @@ The library includes a comprehensive Material Design 3 design system built with 
 | **Button Group** | Grouped button layouts | Horizontal and vertical grouping |
 | **Badge** | Notification badges | Small/large, positioned, standalone |
 | **Card** | Container cards | Filled, Outlined, Elevated variants |
+| **Chip** | Compact elements for filters, selections, and actions | Assist, Filter, Input, Suggestion; checkbox/radio label pattern |
 | **Dialog** | Modal dialogs | Full-screen and standard dialogs |
 | **Divider** | Visual separators | Horizontal and vertical dividers |
 | **Field** | Form field containers | Material Design 3 field styling |

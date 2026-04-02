@@ -1,0 +1,64 @@
+/**
+ * Filter Chip — .ez-filter
+ *
+ * Supports selection via:
+ *   - aria-pressed="true" / aria-selected="true" / .ez-selected (JS toggle)
+ *   - :has(input:checked) (label + checkbox/radio, no JS)
+ * -------------------- */
+
+/* Selected state */
+:where(.ez-btn, .ez-button).ez-chip.ez-filter:is(
+  [aria-pressed="true"],
+  [aria-selected="true"],
+  .ez-selected,
+  :has(input:checked)
+) {
+  background: var(--md-sys-color-secondary-container);
+  color: var(--md-sys-color-on-secondary-container);
+  border-color: transparent;
+}
+
+/* Selected state ripple color */
+:where(.ez-btn, .ez-button).ez-chip.ez-filter:is(
+  [aria-pressed="true"],
+  [aria-selected="true"],
+  .ez-selected,
+  :has(input:checked)
+) ez-ripple::after,
+:where(.ez-btn, .ez-button).ez-chip.ez-filter:is(
+  [aria-pressed="true"],
+  [aria-selected="true"],
+  .ez-selected,
+  :has(input:checked)
+) ez-ripple::before {
+  background: var(--md-sys-color-on-secondary-container);
+}
+
+/* Selected icon color */
+:where(.ez-btn, .ez-button).ez-chip.ez-filter:is(
+  [aria-pressed="true"],
+  [aria-selected="true"],
+  .ez-selected,
+  :has(input:checked)
+) > .md-icon {
+  color: var(--md-sys-color-on-secondary-container);
+}
+
+/**
+ * Checkmark icon — hidden by default, shown when selected.
+ * -------------------- */
+:where(.ez-btn, .ez-button).ez-chip.ez-filter > .ez-chip-checkmark {
+  display: none;
+  font-size: 18px;
+  width: 18px;
+  height: 18px;
+}
+
+:where(.ez-btn, .ez-button).ez-chip.ez-filter:is(
+  [aria-pressed="true"],
+  [aria-selected="true"],
+  .ez-selected,
+  :has(input:checked)
+) > .ez-chip-checkmark {
+  display: inline-flex;
+}

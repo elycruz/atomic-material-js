@@ -1,0 +1,14 @@
+/**
+ * Assist Chip — .ez-assist
+ *
+ * Color: on-surface text, outline border, primary-colored leading icon.
+ * -------------------- */
+
+:where(.ez-btn, .ez-button).ez-chip.ez-assist {
+  color: var(--md-sys-color-on-surface, ButtonText);
+  border-color: var(--md-sys-color-outline, ButtonBorder);
+}
+
+:where(.ez-btn, .ez-button).ez-chip.ez-assist > .md-icon {
+  color: var(--md-sys-color-primary);
+}

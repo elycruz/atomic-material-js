@@ -1,0 +1,74 @@
+/**
+ * Input Chip — .ez-input
+ *
+ * Supports avatar (24dp, 12dp radius), trailing close icon, and selection
+ * via the same 3 APIs as filter chips.
+ * -------------------- */
+
+/**
+ * Avatar support
+ * -------------------- */
+:where(.ez-btn, .ez-button).ez-chip.ez-input:has(> .ez-chip-avatar) {
+  padding-inline-start: 4px;
+}
+
+:where(.ez-btn, .ez-button).ez-chip.ez-input > .ez-chip-avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 12px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+/**
+ * Trailing close icon
+ * -------------------- */
+:where(.ez-btn, .ez-button).ez-chip.ez-input > .ez-chip-close {
+  font-size: 18px;
+  width: 18px;
+  height: 18px;
+  color: var(--md-sys-color-on-surface-variant);
+  cursor: pointer;
+  position: relative;
+  z-index: 4;
+}
+
+/**
+ * Selected state
+ * -------------------- */
+:where(.ez-btn, .ez-button).ez-chip.ez-input:is(
+  [aria-pressed="true"],
+  [aria-selected="true"],
+  .ez-selected,
+  :has(input:checked)
+) {
+  background: var(--md-sys-color-secondary-container);
+  color: var(--md-sys-color-on-secondary-container);
+  border-color: transparent;
+}
+
+/* Selected state ripple color */
+:where(.ez-btn, .ez-button).ez-chip.ez-input:is(
+  [aria-pressed="true"],
+  [aria-selected="true"],
+  .ez-selected,
+  :has(input:checked)
+) ez-ripple::after,
+:where(.ez-btn, .ez-button).ez-chip.ez-input:is(
+  [aria-pressed="true"],
+  [aria-selected="true"],
+  .ez-selected,
+  :has(input:checked)
+) ez-ripple::before {
+  background: var(--md-sys-color-on-secondary-container);
+}
+
+/* Selected close icon color */
+:where(.ez-btn, .ez-button).ez-chip.ez-input:is(
+  [aria-pressed="true"],
+  [aria-selected="true"],
+  .ez-selected,
+  :has(input:checked)
+) > .ez-chip-close {
+  color: var(--md-sys-color-on-secondary-container);
+}
