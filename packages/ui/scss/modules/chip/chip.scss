@@ -1,0 +1,88 @@
+/**
+ * Base Chip — built on .ez-btn
+ *
+ * Overrides button defaults for chip-specific sizing, shape, padding, and colors.
+ * Usage: <button class="ez-btn ez-chip ...">
+ * -------------------- */
+
+:where(.ez-btn, .ez-button).ez-chip {
+  --_btn-container-height: 32px;
+  --_btn-container-shape: 8px;
+  --_btn-icon-size: 18px;
+
+  min-height: var(--_btn-container-height);
+  border-radius: var(--_btn-container-shape);
+  padding-block: 0;
+  padding-inline: 16px;
+  gap: 8px;
+
+  /* Disable button shape-morph animation — chips have fixed 8px radius */
+  animation: none;
+
+  /* Default chip colors — outlined look */
+  background: transparent;
+  color: var(--md-sys-color-on-surface-variant, ButtonText);
+  border: 1px solid var(--md-sys-color-outline-variant, ButtonBorder);
+
+  /* Label typography — same as button label-large */
+  font-size: var(--md-sys-typescale-label-large-size, 1.16667rem);
+  font-weight: var(--md-sys-typescale-label-large-weight, 500);
+  letter-spacing: var(--md-sys-typescale-label-large-tracking, 0);
+  line-height: var(--md-sys-typescale-label-large-line-height, 1.66667rem);
+}
+
+/**
+ * Icon-aware padding — reduce padding on the side with an icon.
+ * -------------------- */
+
+/* Leading icon present — reduce padding-inline-start */
+:where(.ez-btn, .ez-button).ez-chip:has(
+  > :is(.md-icon, .ez-chip-avatar, .ez-chip-checkmark):first-child
+) {
+  padding-inline-start: 8px;
+}
+
+/* Trailing icon present — reduce padding-inline-end */
+:where(.ez-btn, .ez-button).ez-chip:has(
+  > :is(.md-icon, .ez-chip-close):last-child
+) {
+  padding-inline-end: 8px;
+}
+
+/* Leading icon present after hidden input (label pattern) */
+:where(.ez-btn, .ez-button).ez-chip:has(
+  > :is(input[type="checkbox"], input[type="radio"]) + :is(.md-icon, ez-ripple) + :is(.md-icon, .ez-chip-checkmark)
+) {
+  padding-inline-start: 8px;
+}
+
+:where(.ez-btn, .ez-button).ez-chip:has(
+  > :is(input[type="checkbox"], input[type="radio"]) + ez-ripple + :is(.md-icon, .ez-chip-checkmark)
+) {
+  padding-inline-start: 8px;
+}
+
+/**
+ * Ripple color override — chip uses on-surface-variant instead of theme color.
+ * -------------------- */
+:where(.ez-btn, .ez-button).ez-chip ez-ripple::after,
+:where(.ez-btn, .ez-button).ez-chip ez-ripple::before {
+  background: var(--md-sys-color-on-surface-variant);
+}
+
+/**
+ * Icon sizing within chips.
+ * -------------------- */
+:where(.ez-btn, .ez-button).ez-chip > .md-icon {
+  font-size: var(--_btn-icon-size);
+  width: var(--_btn-icon-size);
+  height: var(--_btn-icon-size);
+}
+
+/**
+ * Elevated chip — reuse button .ez-elevated but override background.
+ * -------------------- */
+:where(.ez-btn, .ez-button).ez-chip.ez-elevated {
+  border: none;
+  background: var(--md-sys-color-surface-container-low, ButtonFace);
+}

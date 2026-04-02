@@ -1,0 +1,10 @@
+/**
+ * Chip Set — flex-wrap layout container for chip groups.
+ * -------------------- */
+
+.ez-chip-set {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
