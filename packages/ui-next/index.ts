@@ -1,4 +1,6 @@
 export * from './ez-appbar/index.js';
 export * from './ez-ripple/index.js';
 export * from './ez-field/index.js';
+export * from './ez-tab/index.js';
+export * from './ez-tabs/index.js';
 export * from './ez-textfield/index.js';
