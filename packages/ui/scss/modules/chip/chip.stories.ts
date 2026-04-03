@@ -17,18 +17,18 @@ export const ChipVariants: StoryObj = {
 
       <div class="ez-section-body">
         <div class="ez-chip-set">
-          <button class="ez-btn ez-chip ez-assist" type="button">
+          <button class="ez-chip ez-assist" type="button">
             <ez-ripple></ez-ripple>
             <span>Assist</span>
           </button>
 
-          <button class="ez-btn ez-chip ez-filter" type="button">
+          <button class="ez-chip ez-filter" type="button">
             <ez-ripple></ez-ripple>
             <span class="md-icon ez-chip-checkmark">check</span>
             <span>Filter</span>
           </button>
 
-          <button class="ez-btn ez-chip ez-input" type="button">
+          <button class="ez-chip ez-input" type="button">
             <ez-ripple></ez-ripple>
             <span>Input</span>
             <span
@@ -39,7 +39,7 @@ export const ChipVariants: StoryObj = {
             >
           </button>
 
-          <button class="ez-btn ez-chip ez-suggestion" type="button">
+          <button class="ez-chip ez-suggestion" type="button">
             <ez-ripple></ez-ripple>
             <span>Suggestion</span>
           </button>
@@ -69,19 +69,19 @@ export const ChipWithIcons: StoryObj = {
       <div class="ez-section-body">
         <h3>Assist — with leading icon</h3>
         <div class="ez-chip-set">
-          <button class="ez-btn ez-chip ez-assist" type="button">
+          <button class="ez-chip ez-assist" type="button">
             <ez-ripple></ez-ripple>
             <span class="md-icon">event</span>
             <span>Add to calendar</span>
           </button>
 
-          <button class="ez-btn ez-chip ez-assist" type="button">
+          <button class="ez-chip ez-assist" type="button">
             <ez-ripple></ez-ripple>
             <span class="md-icon">directions</span>
             <span>Get directions</span>
           </button>
 
-          <button class="ez-btn ez-chip ez-assist" type="button">
+          <button class="ez-chip ez-assist" type="button">
             <ez-ripple></ez-ripple>
             <span class="md-icon">lightbulb</span>
             <span>Turn on lights</span>
@@ -92,11 +92,7 @@ export const ChipWithIcons: StoryObj = {
 
         <h3>Filter — with trailing icon</h3>
         <div class="ez-chip-set">
-          <button
-            class="ez-btn ez-chip ez-filter"
-            type="button"
-            aria-pressed="false"
-          >
+          <button class="ez-chip ez-filter" type="button" aria-pressed="false">
             <ez-ripple></ez-ripple>
             <span class="md-icon ez-chip-checkmark">check</span>
             <span>Documents</span>
@@ -104,7 +100,7 @@ export const ChipWithIcons: StoryObj = {
           </button>
 
           <button
-            class="ez-btn ez-chip ez-filter ez-selected"
+            class="ez-chip ez-filter ez-selected"
             type="button"
             aria-pressed="true"
           >
@@ -119,7 +115,7 @@ export const ChipWithIcons: StoryObj = {
 
         <h3>Input — with avatar and close icon</h3>
         <div class="ez-chip-set" data-testid="input-chips-with-icons">
-          <button class="ez-btn ez-chip ez-input" type="button">
+          <button class="ez-chip ez-input" type="button">
             <ez-ripple></ez-ripple>
             <img
               class="ez-chip-avatar"
@@ -135,7 +131,7 @@ export const ChipWithIcons: StoryObj = {
             >
           </button>
 
-          <button class="ez-btn ez-chip ez-input" type="button">
+          <button class="ez-chip ez-input" type="button">
             <ez-ripple></ez-ripple>
             <img
               class="ez-chip-avatar"
@@ -156,13 +152,13 @@ export const ChipWithIcons: StoryObj = {
 
         <h3>Suggestion — with leading icon</h3>
         <div class="ez-chip-set">
-          <button class="ez-btn ez-chip ez-suggestion" type="button">
+          <button class="ez-chip ez-suggestion" type="button">
             <ez-ripple></ez-ripple>
             <span class="md-icon">search</span>
             <span>Price: low to high</span>
           </button>
 
-          <button class="ez-btn ez-chip ez-suggestion" type="button">
+          <button class="ez-chip ez-suggestion" type="button">
             <ez-ripple></ez-ripple>
             <span class="md-icon">star</span>
             <span>Top rated</span>
@@ -193,25 +189,25 @@ export const ChipStates: StoryObj = {
       <div class="ez-section-body">
         <h3>Disabled</h3>
         <div class="ez-chip-set" data-testid="disabled-chips">
-          <button class="ez-btn ez-chip ez-assist" type="button" disabled>
+          <button class="ez-chip ez-assist" type="button" disabled>
             <ez-ripple></ez-ripple>
             <span class="md-icon">event</span>
             <span>Disabled Assist</span>
           </button>
 
-          <button class="ez-btn ez-chip ez-filter" type="button" disabled>
+          <button class="ez-chip ez-filter" type="button" disabled>
             <ez-ripple></ez-ripple>
             <span class="md-icon ez-chip-checkmark">check</span>
             <span>Disabled Filter</span>
           </button>
 
-          <button class="ez-btn ez-chip ez-input" type="button" disabled>
+          <button class="ez-chip ez-input" type="button" disabled>
             <ez-ripple></ez-ripple>
             <span>Disabled Input</span>
             <span class="md-icon ez-chip-close">close</span>
           </button>
 
-          <button class="ez-btn ez-chip ez-suggestion" type="button" disabled>
+          <button class="ez-chip ez-suggestion" type="button" disabled>
             <ez-ripple></ez-ripple>
             <span>Disabled Suggestion</span>
           </button>
@@ -222,7 +218,7 @@ export const ChipStates: StoryObj = {
         <h3>Selected (via .ez-selected class)</h3>
         <div class="ez-chip-set" data-testid="selected-chips">
           <button
-            class="ez-btn ez-chip ez-filter ez-selected"
+            class="ez-chip ez-filter ez-selected"
             type="button"
             aria-pressed="true"
           >
@@ -232,7 +228,7 @@ export const ChipStates: StoryObj = {
           </button>
 
           <button
-            class="ez-btn ez-chip ez-input ez-selected"
+            class="ez-chip ez-input ez-selected"
             type="button"
             aria-pressed="true"
           >
@@ -251,22 +247,19 @@ export const ChipStates: StoryObj = {
 
         <h3>Elevated</h3>
         <div class="ez-chip-set" data-testid="elevated-chips">
-          <button class="ez-btn ez-chip ez-assist ez-elevated" type="button">
+          <button class="ez-chip ez-assist ez-elevated" type="button">
             <ez-ripple></ez-ripple>
             <span class="md-icon">event</span>
             <span>Elevated Assist</span>
           </button>
 
-          <button class="ez-btn ez-chip ez-filter ez-elevated" type="button">
+          <button class="ez-chip ez-filter ez-elevated" type="button">
             <ez-ripple></ez-ripple>
             <span class="md-icon ez-chip-checkmark">check</span>
             <span>Elevated Filter</span>
           </button>
 
-          <button
-            class="ez-btn ez-chip ez-suggestion ez-elevated"
-            type="button"
-          >
+          <button class="ez-chip ez-suggestion ez-elevated" type="button">
             <ez-ripple></ez-ripple>
             <span>Elevated Suggestion</span>
           </button>
@@ -311,6 +304,185 @@ export const ChipStates: StoryObj = {
 };
 
 /**
+ * Disabled chips — flat and elevated — per M3 spec.
+ * Flat chips get faded outline, elevated chips lose shadow.
+ * Both use per-element opacity (12% container, 38% content).
+ */
+export const ChipDisabledStates: StoryObj = {
+  render: () => html`
+    <section>
+      <header><h2>Disabled Chips — M3 Spec</h2></header>
+
+      <div class="ez-section-body">
+        <h3>Disabled — Flat (outlined)</h3>
+        <div class="ez-chip-set" data-testid="disabled-flat">
+          <button class="ez-chip ez-assist" type="button" disabled>
+            <ez-ripple></ez-ripple>
+            <span class="md-icon">event</span>
+            <span>Assist</span>
+          </button>
+
+          <button class="ez-chip ez-filter" type="button" disabled>
+            <ez-ripple></ez-ripple>
+            <span class="md-icon ez-chip-checkmark">check</span>
+            <span>Filter</span>
+          </button>
+
+          <button class="ez-chip ez-input" type="button" disabled>
+            <ez-ripple></ez-ripple>
+            <span>Input</span>
+            <span class="md-icon ez-chip-close">close</span>
+          </button>
+
+          <button class="ez-chip ez-suggestion" type="button" disabled>
+            <ez-ripple></ez-ripple>
+            <span>Suggestion</span>
+          </button>
+        </div>
+
+        <br />
+
+        <h3>Disabled — Elevated</h3>
+        <div class="ez-chip-set" data-testid="disabled-elevated">
+          <button class="ez-chip ez-assist ez-elevated" type="button" disabled>
+            <ez-ripple></ez-ripple>
+            <span class="md-icon">event</span>
+            <span>Assist</span>
+          </button>
+
+          <button class="ez-chip ez-filter ez-elevated" type="button" disabled>
+            <ez-ripple></ez-ripple>
+            <span class="md-icon ez-chip-checkmark">check</span>
+            <span>Filter</span>
+          </button>
+
+          <button
+            class="ez-chip ez-suggestion ez-elevated"
+            type="button"
+            disabled
+          >
+            <ez-ripple></ez-ripple>
+            <span>Suggestion</span>
+          </button>
+        </div>
+      </div>
+    </section>
+  `,
+  play: async ({ canvasElement }) => {
+    const flatChips = canvasElement.querySelectorAll(
+        '[data-testid="disabled-flat"] .ez-chip'
+      ),
+      elevatedChips = canvasElement.querySelectorAll(
+        '[data-testid="disabled-elevated"] .ez-chip'
+      );
+
+    await expect(flatChips.length).toBe(4);
+    await expect(elevatedChips.length).toBe(3);
+
+    await Promise.all(
+      Array.from(flatChips).map(async chip => {
+        await expect((chip as HTMLButtonElement).disabled).toBe(true);
+
+        const style = getComputedStyle(chip);
+
+        await expect(style.pointerEvents).toBe('none');
+        await expect(style.cursor).toBe('default');
+      })
+    );
+
+    await Promise.all(
+      Array.from(elevatedChips).map(async chip => {
+        await expect((chip as HTMLButtonElement).disabled).toBe(true);
+
+        const style = getComputedStyle(chip);
+
+        await expect(style.boxShadow).toBe('none');
+      })
+    );
+  },
+};
+
+/**
+ * Dragged chip state — elevated shadow applied via .ez-dragged class.
+ */
+export const ChipDraggedState: StoryObj = {
+  render: () => html`
+    <section>
+      <header><h2>Dragged Chips</h2></header>
+
+      <div class="ez-section-body">
+        <h3>Flat chip — dragged (elevation level3)</h3>
+        <div class="ez-chip-set" data-testid="dragged-flat">
+          <button class="ez-chip ez-assist ez-dragged" type="button">
+            <ez-ripple></ez-ripple>
+            <span class="md-icon">event</span>
+            <span>Dragged Assist</span>
+          </button>
+
+          <button class="ez-chip ez-filter ez-dragged" type="button">
+            <ez-ripple></ez-ripple>
+            <span class="md-icon ez-chip-checkmark">check</span>
+            <span>Dragged Filter</span>
+          </button>
+        </div>
+
+        <br />
+
+        <h3>Elevated chip — dragged (elevation level3)</h3>
+        <div class="ez-chip-set" data-testid="dragged-elevated">
+          <button
+            class="ez-chip ez-assist ez-elevated ez-dragged"
+            type="button"
+          >
+            <ez-ripple></ez-ripple>
+            <span class="md-icon">event</span>
+            <span>Dragged Elevated</span>
+          </button>
+        </div>
+
+        <br />
+
+        <h3>Normal chip (not dragged) — for comparison</h3>
+        <div class="ez-chip-set">
+          <button class="ez-chip ez-assist" type="button">
+            <ez-ripple></ez-ripple>
+            <span class="md-icon">event</span>
+            <span>Normal Assist</span>
+          </button>
+        </div>
+      </div>
+    </section>
+  `,
+  play: async ({ canvasElement }) => {
+    const draggedFlat = canvasElement.querySelectorAll(
+        '[data-testid="dragged-flat"] .ez-chip'
+      ),
+      draggedElevated = canvasElement.querySelectorAll(
+        '[data-testid="dragged-elevated"] .ez-chip'
+      );
+
+    await expect(draggedFlat.length).toBe(2);
+    await expect(draggedElevated.length).toBe(1);
+
+    await Promise.all(
+      Array.from(draggedFlat).map(async chip => {
+        const style = getComputedStyle(chip);
+
+        await expect(style.boxShadow).not.toBe('none');
+      })
+    );
+
+    await Promise.all(
+      Array.from(draggedElevated).map(async chip => {
+        const style = getComputedStyle(chip);
+
+        await expect(style.boxShadow).not.toBe('none');
+      })
+    );
+  },
+};
+
+/**
  * Filter chip set using `<label>` + `<input type="checkbox">` for
  * multi-select — no JavaScript required.
  */
@@ -334,7 +506,7 @@ export const FilterChipCheckboxGroup: StoryObj = {
         >
           ${['Docs', 'Slides', 'Sheets', 'Images', 'Videos'].map(
             (label, i) => html`
-              <label class="ez-btn ez-chip ez-filter" for="fc-${i}">
+              <label class="ez-chip ez-filter" for="fc-${i}">
                 <input
                   type="checkbox"
                   id="fc-${i}"
@@ -393,7 +565,7 @@ export const FilterChipRadioGroup: StoryObj = {
         >
           ${['Price', 'Rating', 'Distance', 'Newest'].map(
             (label, i) => html`
-              <label class="ez-btn ez-chip ez-filter" for="fr-${i}">
+              <label class="ez-chip ez-filter" for="fr-${i}">
                 <input
                   type="radio"
                   id="fr-${i}"
@@ -454,7 +626,7 @@ export const InputChipSet: StoryObj = {
             { name: 'Carol Davis', initials: 'CD', color: '#7D5260' },
           ].map(
             ({ name, initials, color }) => html`
-              <button class="ez-btn ez-chip ez-input" type="button">
+              <button class="ez-chip ez-input" type="button">
                 <ez-ripple></ez-ripple>
                 <img
                   class="ez-chip-avatar"
@@ -481,7 +653,7 @@ export const InputChipSet: StoryObj = {
         <div class="ez-chip-set" role="group" aria-label="Tags">
           ${['JavaScript', 'TypeScript', 'CSS'].map(
             tag => html`
-              <button class="ez-btn ez-chip ez-input" type="button">
+              <button class="ez-chip ez-input" type="button">
                 <ez-ripple></ez-ripple>
                 <span class="md-icon">code</span>
                 <span>${tag}</span>
@@ -501,7 +673,7 @@ export const InputChipSet: StoryObj = {
         <h3>Input chip — selected state</h3>
         <div class="ez-chip-set" role="group" aria-label="Selected input">
           <button
-            class="ez-btn ez-chip ez-input ez-selected"
+            class="ez-chip ez-input ez-selected"
             type="button"
             aria-pressed="true"
           >
@@ -520,7 +692,7 @@ export const InputChipSet: StoryObj = {
             >
           </button>
 
-          <button class="ez-btn ez-chip ez-input" type="button">
+          <button class="ez-chip ez-input" type="button">
             <ez-ripple></ez-ripple>
             <img
               class="ez-chip-avatar"
@@ -571,7 +743,7 @@ export const ChipInteraction: StoryObj = {
       <div class="ez-section-body">
         <div class="ez-chip-set" data-testid="interaction-chips">
           <button
-            class="ez-btn ez-chip ez-assist"
+            class="ez-chip ez-assist"
             type="button"
             data-testid="chip-assist"
           >
@@ -581,7 +753,7 @@ export const ChipInteraction: StoryObj = {
           </button>
 
           <button
-            class="ez-btn ez-chip ez-filter ez-selected"
+            class="ez-chip ez-filter ez-selected"
             type="button"
             aria-pressed="true"
             data-testid="chip-filter-selected"
@@ -592,7 +764,7 @@ export const ChipInteraction: StoryObj = {
           </button>
 
           <button
-            class="ez-btn ez-chip ez-filter"
+            class="ez-chip ez-filter"
             type="button"
             aria-pressed="false"
             data-testid="chip-filter-unselected"
@@ -603,7 +775,7 @@ export const ChipInteraction: StoryObj = {
           </button>
 
           <button
-            class="ez-btn ez-chip ez-suggestion"
+            class="ez-chip ez-suggestion"
             type="button"
             disabled
             data-testid="chip-disabled"
@@ -621,7 +793,7 @@ export const ChipInteraction: StoryObj = {
           aria-label="Checkbox interaction"
           data-testid="interaction-checkbox"
         >
-          <label class="ez-btn ez-chip ez-filter" for="ic-0">
+          <label class="ez-chip ez-filter" for="ic-0">
             <input
               type="checkbox"
               id="ic-0"
@@ -634,7 +806,7 @@ export const ChipInteraction: StoryObj = {
             <span>Checked A</span>
           </label>
 
-          <label class="ez-btn ez-chip ez-filter" for="ic-1">
+          <label class="ez-chip ez-filter" for="ic-1">
             <input type="checkbox" id="ic-1" name="interaction-cb" value="b" />
             <ez-ripple></ez-ripple>
             <span class="md-icon ez-chip-checkmark">check</span>

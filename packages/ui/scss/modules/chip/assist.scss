@@ -1,14 +1,20 @@
 /**
  * Assist Chip — .ez-assist
  *
- * Color: on-surface text, outline border, primary-colored leading icon.
+ * Color: on-surface text, outline-variant border (inherited), primary-colored leading icon.
+ * State layer: on-surface (overrides base chip's on-surface-variant).
  * -------------------- */
 
-:where(.ez-btn, .ez-button).ez-chip.ez-assist {
+.ez-chip.ez-assist {
   color: var(--md-sys-color-on-surface, ButtonText);
-  border-color: var(--md-sys-color-outline, ButtonBorder);
 }
 
-:where(.ez-btn, .ez-button).ez-chip.ez-assist > .md-icon {
+.ez-chip.ez-assist > .md-icon {
   color: var(--md-sys-color-primary);
+}
+
+/* Assist chip state layer uses on-surface (not on-surface-variant) per spec */
+.ez-chip.ez-assist ez-ripple::after,
+.ez-chip.ez-assist ez-ripple::before {
+  background: var(--md-sys-color-on-surface);
 }
