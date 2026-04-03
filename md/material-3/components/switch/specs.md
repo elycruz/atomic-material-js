@@ -1,47 +1,12 @@
 # Switch: Specs
 
-## Anatomy
+![3 elements of a switch.](https://lh3.googleusercontent.com/a4JkZitJC-KZ1qxKfHvM-B2tuC0JqMsA08tY-fRrBhlXDf6JpvjpQD9IAZ0_zg-R1E0tvzAst-VwpSYDGUkfGABeKMCgHcAtXPwan6iiuNILhA=w40)
 
-- Track (background container)
-- Thumb (toggle indicator)
-- Icon (optional, inside thumb)
+## Tokens & specs
 
-## Color
-
-Switch uses:
-- Primary color for on state
-- Surface variant for off state
-- On primary for on-state icon
-- On surface variant for off-state icon
-
-## Measurements
-
-| Attribute | Value |
-|-----------|-------|
-| Track width | 52dp |
-| Track height | 32dp |
-| Thumb diameter | 24dp |
-| Corner radius | 16dp |
-| Icon size | 16dp |
-| Touch target | 48dp x 48dp |
-
-## States
-
-- Off (unselected)
-- On (selected)
-- Off disabled
-- On disabled
-- Off hovered
-- On hovered
-- Off focused
-- On focused
-- Off pressed
-- On pressed
-
-## Tokens & Specs
+Browse the component elements, attributes, tokens, and their values. Learn more about design tokens
 
 ### Switch
-
 
 #### Enabled / Icon
 
@@ -60,7 +25,7 @@ Switch uses:
 | Switch track width | md.comp.switch.track.width | 52dp |
 | Switch track outline color | md.comp.switch.unselected.track.outline.color | #79747E |
 | Switch track outline width | md.comp.switch.track.outline.width | 2dp |
-| Switch track shape | md.comp.switch.track.shape | Shape: corner.full (Fully round, Circular) |
+| Switch track shape | md.comp.switch.track.shape | Shape: md.sys.shape.corner.full (rounded_corner) |
 | Switch selected track color | md.comp.switch.selected.track.color | #6750A4 |
 | Switch unselected track color | md.comp.switch.unselected.track.color | #E6E0E9 |
 
@@ -76,20 +41,16 @@ Switch uses:
 | Switch with icon handle width | md.comp.switch.with-icon.handle.width | 24dp |
 | Switch selected handle width | md.comp.switch.selected.handle.width | 24dp |
 | Switch pressed handle width | md.comp.switch.pressed.handle.width | 28dp |
-| Switch handle shape | md.comp.switch.handle.shape | Shape: corner.full (Fully round, Circular) |
+| Switch handle shape | md.comp.switch.handle.shape | Shape: md.sys.shape.corner.full (rounded_corner) |
 | Switch selected handle color | md.comp.switch.selected.handle.color | #FFFFFF |
 | Switch unselected handle color | md.comp.switch.unselected.handle.color | #79747E |
-| Switch handle shadow color | md.comp.switch.handle.shadow-color | #000000 |
-| Switch handle elevation | md.comp.switch.handle.elevation | Elevation: level5 (5dp) |
-| Switch handle height | md.comp.switch.handle.height | 20dp |
-| Switch handle width | md.comp.switch.handle.width | 20dp |
 
 #### Enabled / State layer
 
 | Token | Reference | Value |
 |-------|-----------|-------|
 | Switch state layer size | md.comp.switch.state-layer.size | 40dp |
-| Switch state layer shape | md.comp.switch.state-layer.shape | Shape: corner.full (Fully round, Circular) |
+| Switch state layer shape | md.comp.switch.state-layer.shape | Shape: md.sys.shape.corner.full (rounded_corner) |
 
 #### Disabled / Icon
 
@@ -117,8 +78,6 @@ Switch uses:
 | Switch disabled selected handle opacity | md.comp.switch.disabled.selected.handle.opacity | 1 |
 | Switch disabled selected handle color | md.comp.switch.disabled.selected.handle.color | #FEF7FF |
 | Switch disabled unselected handle color | md.comp.switch.disabled.unselected.handle.color | #1D1B20 |
-| Switch disabled handle opacity | md.comp.switch.disabled.handle.opacity | 0.38 |
-| Switch disabled handle elevation | md.comp.switch.disabled.handle.elevation | Elevation: level5 (5dp) |
 
 #### Hovered / Icon
 
@@ -205,3 +164,46 @@ Switch uses:
 |-------|-----------|-------|
 | Switch selected pressed handle color | md.comp.switch.selected.pressed.handle.color | #EADDFF |
 | Switch unselected pressed handle color | md.comp.switch.unselected.pressed.handle.color | #49454F |
+
+## Color
+
+![6 color roles of a switch in light and dark themes.](https://lh3.googleusercontent.com/0fyIBhV6SPL8tV1Vk7CtpveaYQ1-am9tJ41EVA-QaywC5FoZ6CmY7Cevkh6gG8HklU2Ojaj4r0d4Po-J0MEVg2VLPzYo1R2FUey0lcFBTu-0=w40)
+
+### Adjacent text label color
+
+## States
+
+![5 states of a switch shown in light and dark themes.](https://lh3.googleusercontent.com/PnpKeMQPpfXYol0STNFLWY--Fet6iOSy9Skw-SxaiktaHsBbPbHkXNl2RX7aLYHsrUbIN8LwPshZzNEQF4AM1vqbj70iiVmdzzvwC69U64M=w40)
+
+State specs are in the token module above
+
+## Measurements
+
+![Measurements of switches without icons.](https://lh3.googleusercontent.com/QjZaSle3gkHOtKy1j-YDhEIIdbjF3_Uy3kVXdJnmx7F4Gt-Af66rcmJpNFIKXrGIUg2NSEb9U4UAJ8kx1s50G9oIbfq_7fphlO8MoJd15uLp=w40)
+
+![Measurements of switches with icons.](https://lh3.googleusercontent.com/pOvYPjVd1P1HEOyZPLp4jziQmmbT5uMefs4zGCMSHg-fiRFgzXIeAz75RDSyfyZSu3yObf70vL6iiPgRVQtzDTWj8rZVaCR87l-gWjdz66Pr=w40)
+
+| Element | Attribute | Value |
+|---|---|---|
+| Track | Height | 32dp |
+| Width | 52dp |
+| Outline width | 2dp |
+| Shape | md.sys.shape.corner.full |
+| Handle | Height (unselected) | 16dp |
+| Height - with icon | 24dp |
+| Height (selected) | 24dp |
+| Height (pressed) | 28dp |
+| Width (unselected) | 16dp |
+| Width - with icon | 24dp |
+| Width (selected) | 24dp |
+| Width (pressed) | 28dp |
+| Shape | md.sys.shape.corner.full |
+| State layer | Size | 40dp |
+| Shape | md.sys.shape.corner.full |
+| Target | Size | 48dp |
+| Icon | Size (selected) | 16dp |
+| Icon | Size (unselected) | 16dp |
+
+## Configurations
+
+![3 example switches with and without icons in on and off states. ](https://lh3.googleusercontent.com/yZbAEZRgNI6uOkunAfaXCx8NAExJ8RsY6DkIjWJMH0DanJdyakTEzO8YFyw1bd3AZdvfJv229_maPQKBRGGddH4NZm7PsouKM_oTEBs3-Bin=w40)

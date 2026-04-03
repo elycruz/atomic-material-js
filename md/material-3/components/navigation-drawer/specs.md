@@ -1,49 +1,30 @@
-# Navigation Drawer: Specs
+# Navigation drawer: Specs
 
-**Note:** The navigation drawer is no longer recommended in the Material 3 expressive update. For those who have updated, use an expanded navigation rail, which has mostly the same functionality of the navigation drawer and adapts better across window size classes.
+![Navigation drawer diagram numbering 7 elements](https://lh3.googleusercontent.com/XQqbD3P86vaNwSR7zEWzeXnw_VQ-u5LnM_wl_axaPI-t-8Inp_VPVyiPJUtXgAan5-UqVGlahZc0GzYXVH5ae839iIG25uW6nKPEVJ7QsAz98A=w40)
 
-## Anatomy
+## Tokens & specs
 
-- Container
-- Headline
-- Label text
-- Icon
-- Active indicator
-- Badge label text
-- Scrim
+[Token Viewer - Interactive tokens available on webpage]
 
 ## Color
 
-Color values are implemented through design tokens. For design, this means working with color values that correspond with tokens. For implementation, a color value will be a token that references a value.
-
-Navigation drawer color roles used for light and dark schemes:
-- Surface container low
-- On surface variant
-- On secondary container
-- Secondary container
-- Scrim
-
-For divider color roles, see divider specs.
+![Navigation drawer diagram numbering 8 elements.](https://lh3.googleusercontent.com/EFOoVjwBffIgl-Gs07m2W5WiNu8brQ2paefKx_U_eQexLGySjgLV_C9FYD7wkTs0o7j3_RvrcTcqh6oUAKyyrkRsYKsU3A6n-KFtlCBp1sKv=w40)
 
 ## States
 
-States are visual representations used to communicate the status of a component or interactive element.
-
-Navigation drawer states:
-- Enabled
-- Hovered
-- Focused
-- Pressed
+![4 navigation drawers illustrating enabled, hovered, focused, and pressed states.](https://lh3.googleusercontent.com/xCUslUMH4a9wLA0cXIbv622e8KMYHe0R5TPMmzjG0lFKP2hX6vjQcnKVFwxI9HIdk1z3y6BR65wFxvpsx4LcCDTCkHk0J52aaChbC8h3YEZy=w40)
 
 ## Measurements
 
 ### Standard navigation drawer
 
+![Standard navigation drawer with measurements shown for various elements.](https://lh3.googleusercontent.com/l8YaTBOyAgzi71bCX-rCjVbPr9F5UayXCBXxfhQ30w1vqJ7aauCJmDa6a-BMxz7e8E4irFkO9c_1Rr7_7ECnf_rlMF86EpPoCC6TeOgZ5gF-=w40)
+
 | Attribute | Value |
-|-----------|-------|
+|---|---|
 | Container height | 100% |
 | Container width | 360dp |
-| Container shape | 0, 16, 16, 0dp corner radii |
+| Container shape | 0,16,16,0dp corner radii |
 | Icon size | 24dp |
 | Active indicator height | 56dp |
 | Active indicator shape | 28dp |
@@ -56,8 +37,10 @@ Navigation drawer states:
 
 ### Modal navigation drawer
 
+![Modal navigation drawer with measurements shown for various elements.](https://lh3.googleusercontent.com/invVA4iDTyiHnbFHAMhycwQRAZds3tEMmOOPGaiv1HnriGnDeAV4MSXpQ9gOcnALm0eQcxgml_hzP-tTo1gWH4DQMu-ZM0iPuy1OgHvjULc_=w40)
+
 | Attribute | Value |
-|-----------|-------|
+|---|---|
 | Container height | 100% |
 | Container width | 360dp |
 | Icon size | 24dp |
@@ -69,67 +52,3 @@ Navigation drawer states:
 | Right padding | 28dp |
 | Active indicator padding | 12dp |
 | Padding between elements | 0dp |
-
-## Tokens & Specs
-
-The navigation drawer has one token set. Learn about design tokens.
-
-See design tokens for detailed specifications.
-
-### Navigation drawers (baseline)
-
-
-#### Enabled
-
-| Token | Reference | Value |
-|-------|-----------|-------|
-| Navigation drawer container color | md.comp.navigation-drawer.container.color | #FFFBFE |
-| Navigation drawer icon color | md.comp.navigation-drawer.icon.color | #49454F |
-| Navigation drawer label text color | md.comp.navigation-drawer.label-text.color | #1D1B20 |
-
-#### Hovered
-
-| Token | Reference | Value |
-|-------|-----------|-------|
-| Navigation drawer hover state layer opacity | md.comp.navigation-drawer.hover.state-layer.opacity | 8% |
-
-#### Focused
-
-| Token | Reference | Value |
-|-------|-----------|-------|
-| Navigation drawer focused state layer opacity | md.comp.navigation-drawer.focused.state-layer.opacity | 10% |
-
-#### Pressed (ripple)
-
-| Token | Reference | Value |
-|-------|-----------|-------|
-| Navigation drawer ripple color | md.comp.navigation-drawer.ripple.color | #6750A4 |
-
-### Navigation drawers
-
-
-#### Enabled
-
-| Token | Reference | Value |
-|-------|-----------|-------|
-| Navigation drawer container color | md.comp.navigation-drawer.container.color | #FFFBFE |
-| Navigation drawer icon color | md.comp.navigation-drawer.icon.color | #49454F |
-| Navigation drawer label text color | md.comp.navigation-drawer.label-text.color | #1D1B20 |
-
-#### Hovered
-
-| Token | Reference | Value |
-|-------|-----------|-------|
-| Navigation drawer hover state layer opacity | md.comp.navigation-drawer.hover.state-layer.opacity | 8% |
-
-#### Focused
-
-| Token | Reference | Value |
-|-------|-----------|-------|
-| Navigation drawer focused state layer opacity | md.comp.navigation-drawer.focused.state-layer.opacity | 10% |
-
-#### Pressed (ripple)
-
-| Token | Reference | Value |
-|-------|-----------|-------|
-| Navigation drawer ripple color | md.comp.navigation-drawer.ripple.color | #6750A4 |

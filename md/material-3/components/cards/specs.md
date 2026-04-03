@@ -1,88 +1,180 @@
 # Cards: Specs
 
-## Elevated Card
+## Tokens & specs
 
-### Container
+### Card - Elevated
 
-![Diagram indicating elevated card container.](https://lh3.googleusercontent.com/E3Vi9qZnejfvkANGxN7TTmb5Utn3gzxXo8tbngvR9A83WXhpvV-mK_p9erAn4wBXMFmFRXpw2SmD7N-mIEq_5nOkXuKc8LOzoFXj6Oa8G1lv=w640)
+#### Enabled / Container
 
-### Color
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Elevated card container color | md.comp.elevated-card.container.color | #F7F2FA |
+| Elevated card container elevation | md.comp.elevated-card.container.elevation | Elevation: md.sys.elevation.level1 (1dp) |
+| Elevated card container shape | md.comp.elevated-card.container.shape | Shape: md.sys.shape.corner.medium (rounded_corner, 12dp) |
+| Elevated card container shadow color | md.comp.elevated-card.container.shadow-color | #000000 |
 
-![Color diagram indicating elevated card surface color.](https://lh3.googleusercontent.com/gOvzxWalOCyRSRq6I8AqYgS6Y-XJlhBZ7VW82pxtb3dFUccU5LHnNcaccQ4BVnHcQflh6KOXqswxajojBj-v_9S6huJlw4kvNscb4UZN6Zb0=w640)
+#### Enabled / Icon
 
-Elevated card color roles used for light and dark themes:
-- **Surface container low**
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Elevated card icon color | md.comp.elevated-card.icon.color | #6750A4 |
+| Elevated card icon size | md.comp.elevated-card.icon.size | 24dp |
 
-### States
+#### Disabled / Container
 
-![Diagram of 5 elevated card states.](https://lh3.googleusercontent.com/8OD9zWeF6hOtcHP-XQEqSVrCYSmtOFcwnb19h4zkqIDtpszCMXho0opgebc5B_ukqbsOiK-Q_iMQoDf1Iz94KTS5kg3zH3qXyF8Ki9kZAo0_=w640)
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Elevated card disabled container elevation | md.comp.elevated-card.disabled.container.elevation | Elevation: md.sys.elevation.level1 (1dp) |
+| Elevated card disabled container opacity | md.comp.elevated-card.disabled.container.opacity | 0.38 |
+| Elevated card disabled container color | md.comp.elevated-card.disabled.container.color | #FEF7FF |
 
-States are visual representations used to communicate the status of a component or interactive element. Learn more about interaction states.
+#### Hovered / Container
 
-Elevated card states: Hovered, Focused, Pressed, Dragged, Disabled
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Elevated card hover container elevation | md.comp.elevated-card.hover.container.elevation | Elevation: md.sys.elevation.level2 (3dp) |
 
-## Filled Card
+#### Hovered / State layer
 
-### Container
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Elevated card hover state layer color | md.comp.elevated-card.hover.state-layer.color | #1D1B20 |
+| Elevated card hover state layer opacity | md.comp.elevated-card.hover.state-layer.opacity | 0.08 |
 
-![Diagram indicating filled card container.](https://lh3.googleusercontent.com/RbaHdHqyYyeHjx_eq4Kbjc4E3WWtYoHRrwqEg2mnQUhLVLjtwyp3KtjjaHrV6kdyFRPu5O26lbeXiQwSA3kQSGei)
+#### Focused / Focus indicator
 
-### Color
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Elevated card focus indicator color | md.comp.elevated-card.focus.indicator.color | #625B71 |
+| Elevated card focus indicator thickness | md.comp.elevated-card.focus.indicator.thickness | 3dp |
+| Elevated card focus indicator offset | md.comp.elevated-card.focus.indicator.outline.offset | 2dp |
 
-![Color diagram indicating filled card surface color.](https://lh3.googleusercontent.com/cOmC4QpvbjKpn86ZkVqq_Y4mE9RJqHLjVQ3u6xVHAOz1qOHAcCXn0QkT5YJiZhGQUNK0nVhCR3ScKJ7zNvVCALmh3KCkZ9RMBM5U6pVV=w640)
+#### Focused / Container
 
-Filled card color roles used for light and dark themes:
-- **Surface container highest**
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Elevated card focus container elevation | md.comp.elevated-card.focus.container.elevation | Elevation: md.sys.elevation.level1 (1dp) |
 
-### States
+#### Focused / State layer
 
-![Diagram showing 5 filled card states.](https://lh3.googleusercontent.com/b_eeHb5p1L8kMx2dZvW6zNQcI-G4hZQ2qVRJlx8C8VK5hqVZzJkK1VNQnfYfqKMfY8rF_Q3Wvb8g2VrCd0mPNd5RlNpVUPqOXWFxOQ=w640)
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Elevated card focus state layer color | md.comp.elevated-card.focus.state-layer.color | #1D1B20 |
+| Elevated card focus state layer opacity | md.comp.elevated-card.focus.state-layer.opacity | 0.1 |
 
-States are visual representations used to communicate the status of a component or interactive element. Learn more about interaction states.
+#### Pressed (ripple) / Container
 
-Filled card states: Hovered, Focused, Pressed, Dragged, Disabled
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Elevated card pressed container elevation | md.comp.elevated-card.pressed.container.elevation | Elevation: md.sys.elevation.level1 (1dp) |
 
-## Outlined Card
+#### Pressed (ripple) / State layer
 
-### Container and Outline
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Elevated card pressed state layer color | md.comp.elevated-card.pressed.state-layer.color | #1D1B20 |
+| Elevated card pressed state layer opacity | md.comp.elevated-card.pressed.state-layer.opacity | 0.1 |
 
-![Diagram indicating outlined card container and outline.](https://lh3.googleusercontent.com/VQj3rXFGH2Lkx5pY8zW9kM6NLqJ8qV5FrM2OhPyDjE4XyZbT3NVXsKwL2cO4H5m=w640)
+#### Dragged / Container
 
-### Color
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Elevated card dragged container elevation | md.comp.elevated-card.dragged.container.elevation | Elevation: md.sys.elevation.level4 (8dp) |
 
-![Color diagram indicating outlined card surface color.](https://lh3.googleusercontent.com/SzFpK4QvMbXsZdYqTcWkL6JoRxSxYvZ3LnN9P5hUq2JjVwMpR1XlNaB8U9fC0D7=w640)
+#### Dragged / State layer
 
-Outlined card color roles used for light and dark themes:
-- **Surface**
-- **Outline variant**
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Elevated card dragged state layer color | md.comp.elevated-card.dragged.state-layer.color | #1D1B20 |
+| Elevated card dragged state layer opacity | md.comp.elevated-card.dragged.state-layer.opacity | 0.16 |
 
-### States
+### Card - Filled
 
-![Diagram showing 5 outlined card states.](https://lh3.googleusercontent.com/TqWlZ6XvOsYzR3Ky7jFnN8mQpVsUw4XbR2hW5PqCrJvExN8KxYzU0lmJ1S9GhT=w640)
+#### Enabled / Container
 
-States are visual representations used to communicate the status of a component or interactive element. Learn more about interaction states.
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Filled card container color | md.comp.filled-card.container.color | #E6E0E9 |
+| Filled card container elevation | md.comp.filled-card.container.elevation | Elevation: md.sys.elevation.level0 (0) |
+| Filled card container shape | md.comp.filled-card.container.shape | Shape: md.sys.shape.corner.medium (rounded_corner, 12dp) |
+| Filled card container shadow color | md.comp.filled-card.container.shadow-color | #000000 |
 
-Outlined card states: Hovered, Focused, Pressed, Dragged, Disabled
+#### Enabled / Icon
 
-## Measurements
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Filled card icon color | md.comp.filled-card.icon.color | #6750A4 |
+| Filled card icon size | md.comp.filled-card.icon.size | 24dp |
 
-### Card Padding and Size
+#### Disabled / Container
 
-| Attribute | Value |
-|-----------|-------|
-| Shape | 12dp corner radius |
-| Left/right padding | 16dp |
-| Padding between cards | 8dp max |
-| Label text alignment | Start-aligned |
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Filled card disabled container elevation | md.comp.filled-card.disabled.container.elevation | Elevation: md.sys.elevation.level0 (0) |
+| Filled card disabled container opacity | md.comp.filled-card.disabled.container.opacity | 0.38 |
+| Filled card disabled container color | md.comp.filled-card.disabled.container.color | #E7E0EC |
 
-## Tokens & Specs
+#### Hovered / Container
 
-Select a component variant below to see its elements, attributes, tokens, and their values.
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Filled card hover container elevation | md.comp.filled-card.hover.container.elevation | Elevation: md.sys.elevation.level1 (1dp) |
+
+#### Hovered / State layer
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Filled card hover state layer color | md.comp.filled-card.hover.state-layer.color | #1D1B20 |
+| Filled card hover state layer opacity | md.comp.filled-card.hover.state-layer.opacity | 0.08 |
+
+#### Focused / Focus indicator
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Filled card focus indicator color | md.comp.filled-card.focus.indicator.color | #625B71 |
+| Filled card focus indicator thickness | md.comp.filled-card.focus.indicator.thickness | 3dp |
+| Filled card focus indicator offset | md.comp.filled-card.focus.indicator.outline.offset | 2dp |
+
+#### Focused / Container
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Filled card focus container elevation | md.comp.filled-card.focus.container.elevation | Elevation: md.sys.elevation.level0 (0) |
+
+#### Focused / State layer
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Filled card focus state layer color | md.comp.filled-card.focus.state-layer.color | #1D1B20 |
+| Filled card focus state layer opacity | md.comp.filled-card.focus.state-layer.opacity | 0.1 |
+
+#### Pressed (ripple) / Container
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Filled card pressed container elevation | md.comp.filled-card.pressed.container.elevation | Elevation: md.sys.elevation.level0 (0) |
+
+#### Pressed (ripple) / State layer
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Filled card pressed state layer color | md.comp.filled-card.pressed.state-layer.color | #1D1B20 |
+| Filled card pressed state layer opacity | md.comp.filled-card.pressed.state-layer.opacity | 0.1 |
+
+#### Dragged / Container
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Filled card dragged container elevation | md.comp.filled-card.dragged.container.elevation | Elevation: md.sys.elevation.level3 (6dp) |
+
+#### Dragged / State layer
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Filled card dragged state layer color | md.comp.filled-card.dragged.state-layer.color | #1D1B20 |
+| Filled card dragged state layer opacity | md.comp.filled-card.dragged.state-layer.opacity | 0.16 |
 
 ### Card - Outlined
-
-
-#### Enabled
 
 #### Enabled / Container
 
@@ -90,8 +182,7 @@ Select a component variant below to see its elements, attributes, tokens, and th
 |-------|-----------|-------|
 | Outlined card container color | md.comp.outlined-card.container.color | #FEF7FF |
 | Outlined card container elevation | md.comp.outlined-card.container.elevation | Elevation: md.sys.elevation.level0 (0) |
-| Outlined card container surface tint layer color | md.comp.outlined-card.container.surface-tint-layer.color | #6750A4 |
-| Outlined card container shape | md.comp.outlined-card.container.shape | Shape: md.sys.shape.corner.medium (Rounded, 12dp) |
+| Outlined card container shape | md.comp.outlined-card.container.shape | Shape: md.sys.shape.corner.medium (rounded_corner, 12dp) |
 
 #### Enabled / Outline
 
@@ -108,8 +199,6 @@ Select a component variant below to see its elements, attributes, tokens, and th
 | Outlined card icon color | md.comp.outlined-card.icon.color | #6750A4 |
 | Outlined card icon size | md.comp.outlined-card.icon.size | 24dp |
 
-#### Disabled
-
 #### Disabled / Container
 
 | Token | Reference | Value |
@@ -122,8 +211,6 @@ Select a component variant below to see its elements, attributes, tokens, and th
 |-------|-----------|-------|
 | Outlined card disabled outline color | md.comp.outlined-card.disabled.outline.color | #79747E |
 | Outlined card disabled outline opacity | md.comp.outlined-card.disabled.outline.opacity | 0.12 |
-
-#### Hovered
 
 #### Hovered / Container
 
@@ -143,8 +230,6 @@ Select a component variant below to see its elements, attributes, tokens, and th
 | Token | Reference | Value |
 |-------|-----------|-------|
 | Outlined card hover outline color | md.comp.outlined-card.hover.outline.color | #CAC4D0 |
-
-#### Focused
 
 #### Focused / Focus indicator
 
@@ -173,8 +258,6 @@ Select a component variant below to see its elements, attributes, tokens, and th
 |-------|-----------|-------|
 | Outlined card focus outline color | md.comp.outlined-card.focus.outline.color | #1D1B20 |
 
-#### Pressed (ripple)
-
 #### Pressed (ripple) / Container
 
 | Token | Reference | Value |
@@ -194,13 +277,11 @@ Select a component variant below to see its elements, attributes, tokens, and th
 |-------|-----------|-------|
 | Outlined card pressed outline color | md.comp.outlined-card.pressed.outline.color | #CAC4D0 |
 
-#### Dragged
-
 #### Dragged / Container
 
 | Token | Reference | Value |
 |-------|-----------|-------|
-| Outlined card dragged container elevation | md.comp.outlined-card.dragged.container.elevation | Elevation: md.sys.elevation.level0 (0) |
+| Outlined card dragged container elevation | md.comp.outlined-card.dragged.container.elevation | Elevation: md.sys.elevation.level3 (6dp) |
 
 #### Dragged / State layer
 
@@ -215,202 +296,49 @@ Select a component variant below to see its elements, attributes, tokens, and th
 |-------|-----------|-------|
 | Outlined card dragged outline color | md.comp.outlined-card.dragged.outline.color | #CAC4D0 |
 
-### Card - Filled
+## Elevated card
 
+![Diagram indicating elevated card container.](https://lh3.googleusercontent.com/E3Vi9qZnejfvkANGxN7TTmb5Utn3gzxXo8tbngvR9A83WXhpvV-mK_p9erAn4wBXMFmFRXpw2SmD7N-mIEq_5nOkXuKc8LOzoFXj6Oa8G1lv=w40)
 
-#### Enabled
+### Elevated card color
 
-#### Enabled / Container
+![Color diagram indicating elevated card surface color.](https://lh3.googleusercontent.com/gOvzxWalOCyRSRq6I8AqYgS6Y-XJlhBZ7VW82pxtb3dFUccU5LHnNcaccQ4BVnHcQflh6KOXqswxajoIj-v_9S6huJlw4kvNscb4UZN6Zb0=w40)
 
-| Token | Reference | Value |
-|-------|-----------|-------|
-| Filled card container color | md.comp.filled-card.container.color | #E6E0E9 |
-| Filled card container elevation | md.comp.filled-card.container.elevation | Elevation: md.sys.elevation.level0 (0) |
-| Filled card container shape | md.comp.filled-card.container.shape | Shape: md.sys.shape.corner.medium (Rounded, 12dp) |
-| Filled card container shadow color | md.comp.filled-card.container.shadow-color | #000000 |
-| Filled card container surface tint layer color | md.comp.filled-card.container.surface-tint-layer.color | #6750A4 |
+### Elevated card states
 
-#### Enabled / Icon
+![Diagram of 5 elevated card states.](https://lh3.googleusercontent.com/8OD9zWeF6hOtcHP-XQEqSVrCYSmtOFcwnb19h4zkqIDtpszCMXho0opgebc5B_ukqbsOiK-Q_iMQoDf1Iz94KTS5kg3zH3qXyF8Ki9kZAo0_=w40)
 
-| Token | Reference | Value |
-|-------|-----------|-------|
-| Filled card icon color | md.comp.filled-card.icon.color | #6750A4 |
-| Filled card icon size | md.comp.filled-card.icon.size | 24dp |
+## Filled card
 
-#### Disabled
+![Diagram indicating filled card container.](https://lh3.googleusercontent.com/RbaHdHqyYyeHjx_eq4Kbjc4e3WWtYoHRrwqEg2mnQUhLVLjtwyp3KtjjaHrV6kdyFRPu5O26lbeXiQwSA3kQSGeiiggAit3rHjrWhadLuwCU=w40)
 
-#### Disabled / Container
+### Filled card color
 
-| Token | Reference | Value |
-|-------|-----------|-------|
-| Filled card disabled container elevation | md.comp.filled-card.disabled.container.elevation | Elevation: md.sys.elevation.level0 (0) |
-| Filled card disabled container opacity | md.comp.filled-card.disabled.container.opacity | 0.38 |
-| Filled card disabled container color | md.comp.filled-card.disabled.container.color | #E7E0EC |
+![Color diagram indicating filled card surface color.](https://lh3.googleusercontent.com/28sRV5HrMfndGdrvcX_VHMHcm9rf_kk7W_LC3Jom8_R9rtsrEJAMjjPVT552KXBmxiaMKszeZ5QenLT1ejk3anom5NgsKHr-02mDyG4VEuzl=w40)
 
-#### Hovered
+### Filled card states
 
-#### Hovered / Container
+![Diagram of 5 filled card states.](https://lh3.googleusercontent.com/dyvw6FZH2BO4dAPsybP7VtJyu3dvPM_SK6YtHcXcFOSbUXx2KFiOganJcT29S4R85p3ZNem11PKaAFjRQLg4nGHjca0CLE2MF2N4t9vUn0E=w40)
 
-| Token | Reference | Value |
-|-------|-----------|-------|
-| Filled card hover container elevation | md.comp.filled-card.hover.container.elevation | Elevation: md.sys.elevation.level1 (1dp) |
+## Outlined card
 
-#### Hovered / State layer
+![Diagram indicating outlined card container and outline.](https://lh3.googleusercontent.com/mwuwAzgNXs1xArEeUNQ5ayKXGbsLGzverYdD2EPiqL9Nk2EoZb5LEVop_RyeltCreY-py6o6B5Ry1lndyG6bQ-7p8AvUYtNNmlu1D10dwqSU=w40)
 
-| Token | Reference | Value |
-|-------|-----------|-------|
-| Filled card hover state layer color | md.comp.filled-card.hover.state-layer.color | #1D1B20 |
-| Filled card hover state layer opacity | md.comp.filled-card.hover.state-layer.opacity | 0.08 |
+### Outlined card color
 
-#### Focused
+![Outlined card color roles in light and dark themes.](https://lh3.googleusercontent.com/X8jbeHzsvv736FiatKGB2IOlsdiGVljvmrVCHUTgi0Au8RPx_aVvF1UMhbbjcAu--WnKD3LAWI4hLZiLmW9Q4oO0BkuSR4HpsAmpqleifMA=w40)
 
-#### Focused / Focus indicator
+### Outlined card states
 
-| Token | Reference | Value |
-|-------|-----------|-------|
-| Filled card focus indicator color | md.comp.filled-card.focus.indicator.color | #625B71 |
-| Filled card focus indicator thickness | md.comp.filled-card.focus.indicator.thickness | 3dp |
-| Filled card focus indicator offset | md.comp.filled-card.focus.indicator.outline.offset | 2dp |
+![Diagram of 5 outlined card states.](https://lh3.googleusercontent.com/knnDmfc6SIH-85gkuLOhQRHJhvHpPRGu_OzMgaQMMtDnloC-fCR1jJl1PGG0AP72kt6sqmBKlZgIbQ80HKeubSnxa5_zUOYcA0-Ip1hiQV4=w40)
 
-#### Focused / Container
+## Measurements
 
-| Token | Reference | Value |
-|-------|-----------|-------|
-| Filled card focus container elevation | md.comp.filled-card.focus.container.elevation | Elevation: md.sys.elevation.level0 (0) |
+![Diagram with card layout measurements.](https://lh3.googleusercontent.com/el_YhKWDFNMsVV51gm6oChPgPeNh4NiZU7_jdajUv38w5rT3nVlzDXfArepuPH38d1er7SCslFJyrf-KaBtIap102w7_CFnOj_BVu43S-ds=w40)
 
-#### Focused / State layer
-
-| Token | Reference | Value |
-|-------|-----------|-------|
-| Filled card focus state layer color | md.comp.filled-card.focus.state-layer.color | #1D1B20 |
-| Filled card focus state layer opacity | md.comp.filled-card.focus.state-layer.opacity | 0.1 |
-
-#### Pressed (ripple)
-
-#### Pressed (ripple) / Container
-
-| Token | Reference | Value |
-|-------|-----------|-------|
-| Filled card pressed container elevation | md.comp.filled-card.pressed.container.elevation | Elevation: md.sys.elevation.level0 (0) |
-
-#### Pressed (ripple) / State layer
-
-| Token | Reference | Value |
-|-------|-----------|-------|
-| Filled card pressed state layer color | md.comp.filled-card.pressed.state-layer.color | #1D1B20 |
-| Filled card pressed state layer opacity | md.comp.filled-card.pressed.state-layer.opacity | 0.1 |
-
-#### Dragged
-
-#### Dragged / Container
-
-| Token | Reference | Value |
-|-------|-----------|-------|
-| Filled card dragged container elevation | md.comp.filled-card.dragged.container.elevation | Elevation: md.sys.elevation.level1 (1dp) |
-
-#### Dragged / State layer
-
-| Token | Reference | Value |
-|-------|-----------|-------|
-| Filled card dragged state layer color | md.comp.filled-card.dragged.state-layer.color | #1D1B20 |
-| Filled card dragged state layer opacity | md.comp.filled-card.dragged.state-layer.opacity | 0.16 |
-
-### Card - Elevated
-
-
-#### Enabled
-
-#### Enabled / Container
-
-| Token | Reference | Value |
-|-------|-----------|-------|
-| Elevated card container color | md.comp.elevated-card.container.color | #F7F2FA |
-| Elevated card container elevation | md.comp.elevated-card.container.elevation | Elevation: md.sys.elevation.level1 (1dp) |
-| Elevated card container surface tint layer color | md.comp.elevated-card.container.surface-tint-layer.color | #6750A4 |
-| Elevated card container shape | md.comp.elevated-card.container.shape | Shape: md.sys.shape.corner.medium (Rounded, 12dp) |
-| Elevated card container shadow color | md.comp.elevated-card.container.shadow-color | #000000 |
-
-#### Enabled / Icon
-
-| Token | Reference | Value |
-|-------|-----------|-------|
-| Elevated card icon color | md.comp.elevated-card.icon.color | #6750A4 |
-| Elevated card icon size | md.comp.elevated-card.icon.size | 24dp |
-
-#### Disabled
-
-#### Disabled / Container
-
-| Token | Reference | Value |
-|-------|-----------|-------|
-| Elevated card disabled container elevation | md.comp.elevated-card.disabled.container.elevation | Elevation: md.sys.elevation.level1 (1dp) |
-| Elevated card disabled container opacity | md.comp.elevated-card.disabled.container.opacity | 0.38 |
-| Elevated card disabled container color | md.comp.elevated-card.disabled.container.color | #FEF7FF |
-
-#### Hovered
-
-#### Hovered / Container
-
-| Token | Reference | Value |
-|-------|-----------|-------|
-| Elevated card hover container elevation | md.comp.elevated-card.hover.container.elevation | Elevation: md.sys.elevation.level2 (3dp) |
-
-#### Hovered / State layer
-
-| Token | Reference | Value |
-|-------|-----------|-------|
-| Elevated card hover state layer color | md.comp.elevated-card.hover.state-layer.color | #1D1B20 |
-| Elevated card hover state layer opacity | md.comp.elevated-card.hover.state-layer.opacity | 0.08 |
-
-#### Focused
-
-#### Focused / Focus indicator
-
-| Token | Reference | Value |
-|-------|-----------|-------|
-| Elevated card focus indicator color | md.comp.elevated-card.focus.indicator.color | #625B71 |
-| Elevated card focus indicator thickness | md.comp.elevated-card.focus.indicator.thickness | 3dp |
-| Elevated card focus indicator offset | md.comp.elevated-card.focus.indicator.outline.offset | 2dp |
-
-#### Focused / Container
-
-| Token | Reference | Value |
-|-------|-----------|-------|
-| Elevated card focus container elevation | md.comp.elevated-card.focus.container.elevation | Elevation: md.sys.elevation.level1 (1dp) |
-
-#### Focused / State layer
-
-| Token | Reference | Value |
-|-------|-----------|-------|
-| Elevated card focus state layer color | md.comp.elevated-card.focus.state-layer.color | #1D1B20 |
-| Elevated card focus state layer opacity | md.comp.elevated-card.focus.state-layer.opacity | 0.1 |
-
-#### Pressed (ripple)
-
-#### Pressed (ripple) / Container
-
-| Token | Reference | Value |
-|-------|-----------|-------|
-| Elevated card pressed container elevation | md.comp.elevated-card.pressed.container.elevation | Elevation: md.sys.elevation.level1 (1dp) |
-
-#### Pressed (ripple) / State layer
-
-| Token | Reference | Value |
-|-------|-----------|-------|
-| Elevated card pressed state layer color | md.comp.elevated-card.pressed.state-layer.color | #1D1B20 |
-| Elevated card pressed state layer opacity | md.comp.elevated-card.pressed.state-layer.opacity | 0.1 |
-
-#### Dragged
-
-#### Dragged / Container
-
-| Token | Reference | Value |
-|-------|-----------|-------|
-| Elevated card dragged container elevation | md.comp.elevated-card.dragged.container.elevation | Elevation: md.sys.elevation.level2 (3dp) |
-
-#### Dragged / State layer
-
-| Token | Reference | Value |
-|-------|-----------|-------|
-| Elevated card dragged state layer color | md.comp.elevated-card.dragged.state-layer.color | #1D1B20 |
-| Elevated card dragged state layer opacity | md.comp.elevated-card.dragged.state-layer.opacity | 0.16 |
+| Attribute | Value |
+|---|---|
+| Shape | 12dp corner radius |
+| Left/right padding | 16dp |
+| Padding between cards | 8dp max |
+| Label text alignment | Start-aligned |
