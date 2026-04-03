@@ -1,15 +1,5 @@
 # Chips – Specs
 
-## Tokens & specs
-
-Select a component variant below to see its elements, attributes, tokens, and values.
-
-### Token viewer
-
-The token viewer provides an interactive way to explore chip tokens across variants (Chip - Assist, Chip - Filter, Chip - Input, Chip - Suggestion) with states: Enabled, Disabled, Hovered, Focused, Pressed (ripple), and Dragged. Tokens are shown for Default, Light theme.
-
----
-
 ## Assist chip
 
 ![Assist chip diagram numbering 3 elements.](https://lh3.googleusercontent.com/UipTazZY6lB09YYRrq_uydfwLG0Xj5EIIlJVA252BfyovfvZXXXPGP66wGx4ZT0jOXqI6eQ7OLB6zVCjzqJ8CCJEqPW8Gw34jd-gSSA7qHsdIQ=s0)
@@ -214,7 +204,111 @@ Suggestion chip padding and size measurements:
 
 ## Tokens & Specs
 
+Select a component variant below to see its elements, attributes, tokens, and values.
+
+### Chip - Suggestion
+
+
+#### Enabled / Container
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Suggestion chip container shape | md.comp.suggestion-chip.container.shape | Shape: md.sys.shape.corner.small (Rounded, 8dp) |
+| Suggestion chip container height | md.comp.suggestion-chip.container.height | 32dp |
+| Suggestion chip flat container elevation | md.comp.suggestion-chip.flat.container.elevation | Elevation: md.sys.elevation.level0 (0) |
+| Suggestion chip flat outline color | md.comp.suggestion-chip.flat.outline.color | #CAC4D0 |
+| Suggestion chip flat outline width | md.comp.suggestion-chip.flat.outline.width | 1dp |
+| Suggestion chip elevated container elevation | md.comp.suggestion-chip.elevated.container.elevation | Elevation: md.sys.elevation.level1 (1dp) |
+| Suggestion chip elevated container color | md.comp.suggestion-chip.elevated.container.color | #F7F2FA |
+| Suggestion chip elevated container shadow color | md.comp.suggestion-chip.elevated.container.shadow-color | #000000 |
+| Suggestion chip container surface tint | md.comp.suggestion-chip.container.surface-tint-layer.color | #79747E |
+
+#### Enabled / Label text
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Suggestion chip label text font | md.comp.suggestion-chip.label-text.font | Roboto |
+| Suggestion chip label text line height | md.comp.suggestion-chip.label-text.line-height | 20pt |
+| Suggestion chip label text size | md.comp.suggestion-chip.label-text.size | 14pt |
+| Suggestion chip label text weight | md.comp.suggestion-chip.label-text.weight | 500 |
+| Suggestion chip label text tracking | md.comp.suggestion-chip.label-text.tracking | 0.1pt |
+| Suggestion chip label text type | md.comp.suggestion-chip.label-text.type | Font: Roboto 500 14pt/20pt tracking 0.1pt |
+| Suggestion chip label text color | md.comp.suggestion-chip.label-text.color | #49454F |
+
+### Chip - Input
+
+
+#### Enabled / Container
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Input chip container shape | md.comp.input-chip.container.shape | Shape: md.sys.shape.corner.small (Rounded, 8dp) |
+| Input chip container height | md.comp.input-chip.container.height | 32dp |
+| Input chip flat container elevation | md.comp.input-chip.flat.container.elevation | Elevation: md.sys.elevation.level0 (0) |
+| Input chip flat outline color | md.comp.input-chip.flat.outline.color | #CAC4D0 |
+| Input chip flat outline width | md.comp.input-chip.flat.outline.width | 1dp |
+| Input chip elevated container elevation | md.comp.input-chip.elevated.container.elevation | Elevation: md.sys.elevation.level1 (1dp) |
+| Input chip elevated container color | md.comp.input-chip.elevated.container.color | #F7F2FA |
+| Input chip elevated container shadow color | md.comp.input-chip.elevated.container.shadow-color | #000000 |
+| Input chip container surface tint | md.comp.input-chip.container.surface-tint-layer.color | #79747E |
+
+#### Enabled / Icon
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Input chip with icon icon size | md.comp.input-chip.with-icon.icon.size | 18dp |
+| Input chip with icon icon color | md.comp.input-chip.with-icon.icon.color | #49454F |
+
+#### Enabled / Label text
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Input chip label text font | md.comp.input-chip.label-text.font | Roboto |
+| Input chip label text line height | md.comp.input-chip.label-text.line-height | 20pt |
+| Input chip label text size | md.comp.input-chip.label-text.size | 14pt |
+| Input chip label text weight | md.comp.input-chip.label-text.weight | 500 |
+| Input chip label text tracking | md.comp.input-chip.label-text.tracking | 0.1pt |
+| Input chip label text type | md.comp.input-chip.label-text.type | Font: Roboto 500 14pt/20pt tracking 0.1pt |
+| Input chip label text color | md.comp.input-chip.label-text.color | #49454F |
+
+### Chip - Filter
+
+
+#### Enabled / Container
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Filter chip container shape | md.comp.filter-chip.container.shape | Shape: md.sys.shape.corner.small (Rounded, 8dp) |
+| Filter chip container height | md.comp.filter-chip.container.height | 32dp |
+| Filter chip flat container elevation | md.comp.filter-chip.flat.container.elevation | Elevation: md.sys.elevation.level0 (0) |
+| Filter chip flat outline color | md.comp.filter-chip.flat.outline.color | #CAC4D0 |
+| Filter chip flat outline width | md.comp.filter-chip.flat.outline.width | 1dp |
+| Filter chip elevated container elevation | md.comp.filter-chip.elevated.container.elevation | Elevation: md.sys.elevation.level1 (1dp) |
+| Filter chip elevated container color | md.comp.filter-chip.elevated.container.color | #F7F2FA |
+| Filter chip elevated container shadow color | md.comp.filter-chip.elevated.container.shadow-color | #000000 |
+| Filter chip container surface tint | md.comp.filter-chip.container.surface-tint-layer.color | #79747E |
+
+#### Enabled / Icon
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Filter chip with icon icon size | md.comp.filter-chip.with-icon.icon.size | 18dp |
+| Filter chip with icon icon color | md.comp.filter-chip.with-icon.icon.color | #79747E |
+
+#### Enabled / Label text
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Filter chip label text font | md.comp.filter-chip.label-text.font | Roboto |
+| Filter chip label text line height | md.comp.filter-chip.label-text.line-height | 20pt |
+| Filter chip label text size | md.comp.filter-chip.label-text.size | 14pt |
+| Filter chip label text weight | md.comp.filter-chip.label-text.weight | 500 |
+| Filter chip label text tracking | md.comp.filter-chip.label-text.tracking | 0.1pt |
+| Filter chip label text type | md.comp.filter-chip.label-text.type | Font: Roboto 500 14pt/20pt tracking 0.1pt |
+| Filter chip label text color | md.comp.filter-chip.label-text.color | #49454F |
+
 ### Chip - Assist
+
 
 #### Enabled / Container
 
@@ -381,101 +475,3 @@ Suggestion chip padding and size measurements:
 |-------|-----------|-------|
 | Assist chip dragged state layer color | md.comp.assist-chip.dragged.state-layer.color | #1D1B20 |
 | Assist chip dragged state layer opacity | md.comp.assist-chip.dragged.state-layer.opacity | 0.16 |
-
-### Chip - Filter
-
-#### Enabled / Container
-
-| Token | Reference | Value |
-|-------|-----------|-------|
-| Filter chip container shape | md.comp.filter-chip.container.shape | Shape: md.sys.shape.corner.small (Rounded, 8dp) |
-| Filter chip container height | md.comp.filter-chip.container.height | 32dp |
-| Filter chip flat container elevation | md.comp.filter-chip.flat.container.elevation | Elevation: md.sys.elevation.level0 (0) |
-| Filter chip flat outline color | md.comp.filter-chip.flat.outline.color | #CAC4D0 |
-| Filter chip flat outline width | md.comp.filter-chip.flat.outline.width | 1dp |
-| Filter chip elevated container elevation | md.comp.filter-chip.elevated.container.elevation | Elevation: md.sys.elevation.level1 (1dp) |
-| Filter chip elevated container color | md.comp.filter-chip.elevated.container.color | #F7F2FA |
-| Filter chip elevated container shadow color | md.comp.filter-chip.elevated.container.shadow-color | #000000 |
-| Filter chip container surface tint | md.comp.filter-chip.container.surface-tint-layer.color | #79747E |
-
-#### Enabled / Icon
-
-| Token | Reference | Value |
-|-------|-----------|-------|
-| Filter chip with icon icon size | md.comp.filter-chip.with-icon.icon.size | 18dp |
-| Filter chip with icon icon color | md.comp.filter-chip.with-icon.icon.color | #79747E |
-
-#### Enabled / Label text
-
-| Token | Reference | Value |
-|-------|-----------|-------|
-| Filter chip label text font | md.comp.filter-chip.label-text.font | Roboto |
-| Filter chip label text line height | md.comp.filter-chip.label-text.line-height | 20pt |
-| Filter chip label text size | md.comp.filter-chip.label-text.size | 14pt |
-| Filter chip label text weight | md.comp.filter-chip.label-text.weight | 500 |
-| Filter chip label text tracking | md.comp.filter-chip.label-text.tracking | 0.1pt |
-| Filter chip label text type | md.comp.filter-chip.label-text.type | Font: Roboto 500 14pt/20pt tracking 0.1pt |
-| Filter chip label text color | md.comp.filter-chip.label-text.color | #49454F |
-
-### Chip - Input
-
-#### Enabled / Container
-
-| Token | Reference | Value |
-|-------|-----------|-------|
-| Input chip container shape | md.comp.input-chip.container.shape | Shape: md.sys.shape.corner.small (Rounded, 8dp) |
-| Input chip container height | md.comp.input-chip.container.height | 32dp |
-| Input chip flat container elevation | md.comp.input-chip.flat.container.elevation | Elevation: md.sys.elevation.level0 (0) |
-| Input chip flat outline color | md.comp.input-chip.flat.outline.color | #CAC4D0 |
-| Input chip flat outline width | md.comp.input-chip.flat.outline.width | 1dp |
-| Input chip elevated container elevation | md.comp.input-chip.elevated.container.elevation | Elevation: md.sys.elevation.level1 (1dp) |
-| Input chip elevated container color | md.comp.input-chip.elevated.container.color | #F7F2FA |
-| Input chip elevated container shadow color | md.comp.input-chip.elevated.container.shadow-color | #000000 |
-| Input chip container surface tint | md.comp.input-chip.container.surface-tint-layer.color | #79747E |
-
-#### Enabled / Icon
-
-| Token | Reference | Value |
-|-------|-----------|-------|
-| Input chip with icon icon size | md.comp.input-chip.with-icon.icon.size | 18dp |
-| Input chip with icon icon color | md.comp.input-chip.with-icon.icon.color | #49454F |
-
-#### Enabled / Label text
-
-| Token | Reference | Value |
-|-------|-----------|-------|
-| Input chip label text font | md.comp.input-chip.label-text.font | Roboto |
-| Input chip label text line height | md.comp.input-chip.label-text.line-height | 20pt |
-| Input chip label text size | md.comp.input-chip.label-text.size | 14pt |
-| Input chip label text weight | md.comp.input-chip.label-text.weight | 500 |
-| Input chip label text tracking | md.comp.input-chip.label-text.tracking | 0.1pt |
-| Input chip label text type | md.comp.input-chip.label-text.type | Font: Roboto 500 14pt/20pt tracking 0.1pt |
-| Input chip label text color | md.comp.input-chip.label-text.color | #49454F |
-
-### Chip - Suggestion
-
-#### Enabled / Container
-
-| Token | Reference | Value |
-|-------|-----------|-------|
-| Suggestion chip container shape | md.comp.suggestion-chip.container.shape | Shape: md.sys.shape.corner.small (Rounded, 8dp) |
-| Suggestion chip container height | md.comp.suggestion-chip.container.height | 32dp |
-| Suggestion chip flat container elevation | md.comp.suggestion-chip.flat.container.elevation | Elevation: md.sys.elevation.level0 (0) |
-| Suggestion chip flat outline color | md.comp.suggestion-chip.flat.outline.color | #CAC4D0 |
-| Suggestion chip flat outline width | md.comp.suggestion-chip.flat.outline.width | 1dp |
-| Suggestion chip elevated container elevation | md.comp.suggestion-chip.elevated.container.elevation | Elevation: md.sys.elevation.level1 (1dp) |
-| Suggestion chip elevated container color | md.comp.suggestion-chip.elevated.container.color | #F7F2FA |
-| Suggestion chip elevated container shadow color | md.comp.suggestion-chip.elevated.container.shadow-color | #000000 |
-| Suggestion chip container surface tint | md.comp.suggestion-chip.container.surface-tint-layer.color | #79747E |
-
-#### Enabled / Label text
-
-| Token | Reference | Value |
-|-------|-----------|-------|
-| Suggestion chip label text font | md.comp.suggestion-chip.label-text.font | Roboto |
-| Suggestion chip label text line height | md.comp.suggestion-chip.label-text.line-height | 20pt |
-| Suggestion chip label text size | md.comp.suggestion-chip.label-text.size | 14pt |
-| Suggestion chip label text weight | md.comp.suggestion-chip.label-text.weight | 500 |
-| Suggestion chip label text tracking | md.comp.suggestion-chip.label-text.tracking | 0.1pt |
-| Suggestion chip label text type | md.comp.suggestion-chip.label-text.type | Font: Roboto 500 14pt/20pt tracking 0.1pt |
-| Suggestion chip label text color | md.comp.suggestion-chip.label-text.color | #49454F |

@@ -24,10 +24,6 @@ Shape: Flat and wavy
 | Shape | Flat (default) | Available | Available |
 | | Wavy | -- | Available |
 
-## Tokens & specs
-
-Browse the component elements, attributes, tokens, and their values. See design tokens for detailed specifications.
-
 ## Anatomy
 
 - Active indicator
@@ -53,13 +49,37 @@ Size measurements for circular progress indicators. The thicker variants are pro
 
 The linear progress indicator is inset from the edge of the screen by 4dp.
 
-## Baseline tokens
+## Tokens & Specs
 
-The circular and linear progress indicator had separate token sets. These are no longer recommended.
+Browse the component elements, attributes, tokens, and their values. See design tokens for detailed specifications.
 
-## Progress Indicator Token Sets
+### Progress indicator - Circular
+
+
+#### Color
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Progress indicator active indicator color | md.comp.progress-indicator.active-indicator.color | #6750A4 |
+
+### Progress indicator - Linear
+
+
+#### Color
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Progress indicator active indicator color | md.comp.progress-indicator.active-indicator.color | #6750A4 |
+| Progress indicator track color | md.comp.progress-indicator.track.color | #E8DEF8 |
+
+#### Shape
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Progress indicator container shape | md.comp.progress-indicator.container.shape | Shape: corner.none (No corner radius, Sharp) |
 
 ### Progress Indicator - Common
+
 
 #### Color
 
@@ -75,25 +95,6 @@ The circular and linear progress indicator had separate token sets. These are no
 |-------|-----------|-------|
 | Progress indicator active indicator shape | md.comp.progress-indicator.active-indicator.shape | Shape: corner.full (Fully round, Circular) |
 
-### Progress indicator - Linear
+## Baseline tokens
 
-#### Color
-
-| Token | Reference | Value |
-|-------|-----------|-------|
-| Progress indicator active indicator color | md.comp.progress-indicator.active-indicator.color | #6750A4 |
-| Progress indicator track color | md.comp.progress-indicator.track.color | #E8DEF8 |
-
-#### Shape
-
-| Token | Reference | Value |
-|-------|-----------|-------|
-| Progress indicator container shape | md.comp.progress-indicator.container.shape | Shape: corner.none (No corner radius, Sharp) |
-
-### Progress indicator - Circular
-
-#### Color
-
-| Token | Reference | Value |
-|-------|-----------|-------|
-| Progress indicator active indicator color | md.comp.progress-indicator.active-indicator.color | #6750A4 |
+The circular and linear progress indicator had separate token sets. These are no longer recommended.

@@ -22,10 +22,6 @@ In compact windows, navigation bars use vertical items. In medium windows, navig
 | Navigation item layout | Vertical (default) | Available | Available |
 | | Horizontal | -- | Available |
 
-## Tokens & specs
-
-Use design tokens for navigation bar specifications.
-
 ## Anatomy
 
 - Container
@@ -86,29 +82,87 @@ Navigation bar width and margins for compact and medium windows.
 - 4 destinations
 - 5 destinations
 
-## Navigation Bar Token Sets
+## Tokens & Specs
 
-### Nav bar - Common
+Use design tokens for navigation bar specifications.
 
-#### Color
+### Nav bar - Item - Horizontal
+
+
+#### Typography
 
 | Token | Reference | Value |
 |-------|-----------|-------|
-| Nav bar container color | md.comp.navigation-bar.container.color | #FFFBFE |
-| Nav bar icon color | md.comp.navigation-bar.icon.color | #49454F |
-| Nav bar label text color | md.comp.navigation-bar.label-text.color | #49454F |
-| Nav bar active icon color | md.comp.navigation-bar.active-indicator.color | #6750A4 |
+| Nav bar item horizontal label text font | md.comp.nav-bar.item.horizontal.label-text.font |  |
+| Nav bar item horizontal active indicator size | md.comp.nav-bar.item.horizontal.active-indicator.size |  |
+
+### Nav bar - Item - Vertical
+
+
+#### Typography
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Nav bar item vertical label text font | md.comp.nav-bar.item.vertical.label-text.font |  |
+| Nav bar item vertical active indicator size | md.comp.nav-bar.item.vertical.active-indicator.size |  |
+
+### Nav bar - Common
+
+
+#### Color
+
+##### Color / Enabled
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Nav bar container elevation | md.comp.nav-bar.container.elevation |  |
+| Nav bar container shadow color | md.comp.nav-bar.container.shadow-color | #000000 |
+| Nav bar container color | md.comp.nav-bar.container.color | #F3EDF7 |
+| Nav bar item indicator color | md.comp.nav-bar.item.active.indicator.color | #E8DEF8 |
+| Nav bar item active label text color | md.comp.nav-bar.item.active.label-text.color | #625B71 |
+| Nav bar item inactive label text color | md.comp.nav-bar.item.inactive.label-text.color | #49454F |
+| Nav bar item active icon color | md.comp.nav-bar.item.active.icon.color | #4A4458 |
+| Nav bar item inactive icon color | md.comp.nav-bar.item.inactive.icon.color | #49454F |
+
+##### Color / Hovered
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Nav bar item active hovered state layer color | md.comp.nav-bar.item.active.hovered.state-layer.color | #4A4458 |
+| Nav bar item active hovered state layer opacity | md.comp.nav-bar.item.active.hovered.state-layer.opacity | 0.08 |
+| Nav bar item inactive hovered state layer color | md.comp.nav-bar.item.inactive.hovered.state-layer.color | #49454F |
+| Nav bar item inactive hovered state layer opacity | md.comp.nav-bar.item.inactive.hovered.state-layer.opacity | 0.08 |
+
+##### Color / Focused
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Nav bar item active focused state layer color | md.comp.nav-bar.item.active.focused.state-layer.color | #4A4458 |
+| Nav bar item active focused state layer opacity | md.comp.nav-bar.item.active.focused.state-layer.opacity | 0.1 |
+| Nav bar item inactive focused state layer color | md.comp.nav-bar.item.inactive.focused.state-layer.color | #49454F |
+| Nav bar item inactive focused state layer opacity | md.comp.nav-bar.item.inactive.focused.state-layer.opacity | 0.1 |
+
+##### Color / Pressed
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Nav bar item active pressed state layer color | md.comp.nav-bar.item.active.pressed.state-layer.color | #4A4458 |
+| Nav bar item active pressed state layer opacity | md.comp.nav-bar.item.active.pressed.state-layer.opacity | 0.1 |
+| Nav bar item inactive pressed state layer color | md.comp.nav-bar.item.inactive.pressed.state-layer.color | #4A4458 |
+| Nav bar item inactive pressed state layer opacity | md.comp.nav-bar.item.inactive.pressed.state-layer.opacity | 0.1 |
 
 #### Nav item
 
 | Token | Reference | Value |
 |-------|-----------|-------|
-| Nav bar nav item hover state layer opacity | md.comp.navigation-bar.nav-item.hover.state-layer.opacity | 8% |
-| Nav bar nav item pressed state layer opacity | md.comp.navigation-bar.nav-item.pressed.state-layer.opacity | 10% |
+| Nav bar space between items | md.comp.nav-bar.item.between-space | 0 |
+| Nav bar item shape | md.comp.nav-bar.item.active-indicator.shape |  |
+| Nav bar item space between icon label space | md.comp.nav-bar.item.active-indicator.icon-label-space | 4dp |
+| Nav bar item icon size | md.comp.nav-bar.item.icon.size | 24dp |
 
 #### Container
 
 | Token | Reference | Value |
 |-------|-----------|-------|
-| Nav bar container height | md.comp.navigation-bar.container.height | 80dp |
-| Nav bar container shape | md.comp.navigation-bar.container.shape | Shape: corner.none (No corner radius, Sharp) |
+| Nav bar height | md.comp.nav-bar.container.height | 64dp |
+| Nav bar shape | md.comp.nav-bar.container.shape |  |

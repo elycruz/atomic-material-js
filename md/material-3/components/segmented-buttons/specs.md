@@ -8,12 +8,6 @@
 - Icon (optional for unselected state)
 - Label text
 
-## Tokens and Specs
-
-Browse the component elements, attributes, tokens, and their values.
-
-**Note:** Learn more about design tokens.
-
 ## Color
 
 Color values are implemented through design tokens. For design, this means working with color values that correspond with tokens. For implementation, a color value will be a token that references a value.
@@ -72,6 +66,7 @@ Density can be used in denser UIs where space is limited. Density is only applie
 ## Tokens & Specs
 
 ### Segmented button - Outlined
+
 
 #### Enabled / Container
 

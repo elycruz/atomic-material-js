@@ -18,12 +18,6 @@
 | Containment | Default | -- | Available |
 | | Contained | -- | Available |
 
-## Tokens & specs
-
-Loading indicators have a single token set.
-
-See design tokens for detailed specifications.
-
 ## Anatomy
 
 - Active indicator
@@ -48,9 +42,14 @@ Contained loading indicator color roles used for light and dark schemes:
 
 To ensure sufficient margins, the size is 48dp while the shape container is 38dp.
 
-## Loading Indicator Token Sets
+## Tokens & Specs
+
+Loading indicators have a single token set.
+
+See design tokens for detailed specifications.
 
 ### Loading indicator
+
 
 #### Color
 

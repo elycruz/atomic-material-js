@@ -42,6 +42,7 @@ Switch uses:
 
 ### Switch
 
+
 #### Enabled / Icon
 
 | Token | Reference | Value |

@@ -1,9 +1,5 @@
 # Tooltips: Specs
 
-## Tokens & specs
-
-Select a component variant below to see its attributes, tokens, and values.
-
 ## Plain tooltip
 
 ### Anatomy
@@ -74,25 +70,77 @@ Configurations:
 - Supporting text and one button
 - Supporting text and two buttons
 
-## Token Tables
+## Tokens & Specs
 
-### Tooltip - Plain
+Select a component variant below to see its attributes, tokens, and values.
+
+### Tooltip - Rich
+
+
+#### Enabled
+
+| Token | Reference | Value |
+|-------|-----------|-------|
 
 #### Enabled / Container
 
 | Token | Reference | Value |
 |-------|-----------|-------|
-| Plain tooltip container color | md.comp.plain-tooltip.container.color | #322F35 |
-| Plain tooltip container shape | md.comp.plain-tooltip.container.shape | Shape: corner.extra.small (Extra small, Rounded) |
+| Rich tooltip container color | md.comp.rich-tooltip.container.color | #49454E |
+| Rich tooltip container elevation | md.comp.rich-tooltip.container.elevation | Elevation: md.sys.elevation.level3 (6dp) |
+| Rich tooltip container shape | md.comp.rich-tooltip.container.shape | Shape: md.sys.shape.corner.medium (Rounded, 12dp) |
+
+#### Enabled / Subhead
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Rich tooltip subhead color | md.comp.rich-tooltip.subhead.color | #F5EFF7 |
+| Rich tooltip subhead font | md.comp.rich-tooltip.subhead.font | Font: md.sys.typescale.title-small (Title Small, 500, 14sp/20sp, 0.1sp) |
+| Rich tooltip subhead line height | md.comp.rich-tooltip.subhead.line-height | 20sp |
+| Rich tooltip subhead size | md.comp.rich-tooltip.subhead.size | 14sp |
+| Rich tooltip subhead tracking | md.comp.rich-tooltip.subhead.tracking | 0.1sp |
+| Rich tooltip subhead weight | md.comp.rich-tooltip.subhead.weight | 500 |
 
 #### Enabled / Supporting text
 
 | Token | Reference | Value |
 |-------|-----------|-------|
-| Plain tooltip supporting text font | md.comp.plain-tooltip.supporting-text.font | Roboto |
-| Plain tooltip supporting text line height | md.comp.plain-tooltip.supporting-text.line-height | 16pt |
-| Plain tooltip supporting text size | md.comp.plain-tooltip.supporting-text.size | 12pt |
-| Plain tooltip supporting text weight | md.comp.plain-tooltip.supporting-text.weight | 400 |
-| Plain tooltip supporting text tracking | md.comp.plain-tooltip.supporting-text.tracking | 0.4pt |
-| Supporting text type style | md.comp.plain-tooltip.supporting-text.type | Font: Roboto 400 12pt/16pt tracking 0.4pt |
-| Plain tooltip supporting text color | md.comp.plain-tooltip.supporting-text.color | #F5EFF7 |
+| Rich tooltip supporting text color | md.comp.rich-tooltip.supporting-text.color | #F5EFF7 |
+| Rich tooltip supporting text font | md.comp.rich-tooltip.supporting-text.font | Font: md.sys.typescale.body-small (Body Small, 500, 12sp/16sp, 0.4sp) |
+| Rich tooltip supporting text line height | md.comp.rich-tooltip.supporting-text.line-height | 16sp |
+| Rich tooltip supporting text size | md.comp.rich-tooltip.supporting-text.size | 12sp |
+| Rich tooltip supporting text tracking | md.comp.rich-tooltip.supporting-text.tracking | 0.4sp |
+| Rich tooltip supporting text weight | md.comp.rich-tooltip.supporting-text.weight | 500 |
+
+#### Enabled / Action button
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Rich tooltip action button label text color | md.comp.rich-tooltip.action-button.label-text.color | #D0BCFF |
+
+### Tooltip - Plain
+
+
+#### Enabled
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+
+#### Enabled / Container
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Plain tooltip container color | md.comp.plain-tooltip.container.color | #616161 |
+| Plain tooltip container elevation | md.comp.plain-tooltip.container.elevation | Elevation: md.sys.elevation.level3 (6dp) |
+| Plain tooltip container shape | md.comp.plain-tooltip.container.shape | Shape: md.sys.shape.corner.extra-small (Rounded, 4dp) |
+
+#### Enabled / Label text
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Plain tooltip label text color | md.comp.plain-tooltip.label-text.color | #F5EFF7 |
+| Plain tooltip label text font | md.comp.plain-tooltip.label-text.font | Font: md.sys.typescale.body-small (Body Small, 500, 12sp/16sp, 0.4sp) |
+| Plain tooltip label text line height | md.comp.plain-tooltip.label-text.line-height | 16sp |
+| Plain tooltip label text size | md.comp.plain-tooltip.label-text.size | 12sp |
+| Plain tooltip label text tracking | md.comp.plain-tooltip.label-text.tracking | 0.4sp |
+| Plain tooltip label text weight | md.comp.plain-tooltip.label-text.weight | 500 |

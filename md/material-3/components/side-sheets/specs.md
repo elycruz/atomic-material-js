@@ -1,15 +1,5 @@
 # Side sheets: Specs
 
-## Tokens & specs
-
-Browse the component elements, attributes, tokens, and their values.
-
-### Sheets - Side
-
-Token: Default, Light
-
-Folder: Enabled, Hovered, Focused, Pressed (ripple)
-
 ## Standard side sheet
 
 ### Anatomy
@@ -88,31 +78,97 @@ Modal side sheet padding and size measurements:
 | Max-width | 400dp |
 | Margins (when detached) | 16dp |
 
-## Design Tokens
+## Tokens & Specs
 
-### Standard Side Sheet
+Browse the component elements, attributes, tokens, and their values.
 
-| Token | Reference | Value |
-|-------|-----------|-------|
-| Side sheet container color | md.comp.side-sheet.container.color | Surface |
-| Side sheet container shape | md.comp.side-sheet.container.shape | Shape: 0dp (No rounding) |
-| Side sheet divider color | md.comp.side-sheet.divider.color | Outline variant |
-| Side sheet headline color | md.comp.side-sheet.headline.color | On surface variant |
-| Side sheet text color | md.comp.side-sheet.text.color | On surface variant |
+### Sheets - Side
 
-### Modal Side Sheet
+
+#### Enabled
+
+##### Container
 
 | Token | Reference | Value |
 |-------|-----------|-------|
-| Modal side sheet container color | md.comp.side-sheet.modal.container.color | Surface container low |
-| Modal side sheet scrim color | md.comp.side-sheet.modal.scrim.color | On surface variant |
-| Modal side sheet scrim opacity | md.comp.side-sheet.modal.scrim.opacity | 0.32 |
-| Modal side sheet container elevation | md.comp.side-sheet.modal.container.elevation | Elevation: level1 (1dp) |
+| Sheet side docked container color | md.comp.sheet.side.docked.container.color | #FEF7FF |
+| Sheet side docked modal container color | md.comp.sheet.side.docked.modal.container.color | #F7F2FA |
+| Sheet side docked standard container color | md.comp.sheet.side.docked.standard.container.color | #FEF7FF |
+| Sheet side docked container surface tint layer color | md.comp.sheet.side.docked.container.surface-tint-layer.color | #6750A4 |
+| Sheet side docked modal container elevation | md.comp.sheet.side.docked.modal.container.elevation | Elevation: level1 (1dp) |
+| Sheet side docked standard container elevation | md.comp.sheet.side.docked.standard.container.elevation | Elevation: level0 (0dp) |
+| Sheet side docked container height | md.comp.sheet.side.docked.container.height | 100% |
+| Sheet side docked container shape | md.comp.sheet.side.docked.container.shape | Shape: 0dp (No rounding) |
+| Sheet side detached container shape | md.comp.sheet.side.detached.container.shape | Shape: corner.large (16dp) |
+| Sheet side docked container width | md.comp.sheet.side.docked.container.width | 256dp |
+| Sheet side docked modal container shape | md.comp.sheet.side.docked.modal.container.shape | Shape: corner.large (16dp) |
 
-### Interactions
+##### Headline
 
 | Token | Reference | Value |
 |-------|-----------|-------|
-| Side sheet hovered state layer opacity | md.comp.side-sheet.hovered.state-layer.opacity | 0.08 |
-| Side sheet focused state layer opacity | md.comp.side-sheet.focused.state-layer.opacity | 0.12 |
-| Side sheet pressed state layer opacity | md.comp.side-sheet.pressed.state-layer.opacity | 0.12 |
+| Sheet side docked headline color | md.comp.sheet.side.docked.headline.color | #49454F |
+| Sheet side docked headline font | md.comp.sheet.side.docked.headline.font | Roboto |
+| Sheet side docked headline line height | md.comp.sheet.side.docked.headline.line-height | 28pt |
+| Sheet side docked headline size | md.comp.sheet.side.docked.headline.size | 22pt |
+| Sheet side docked headline tracking | md.comp.sheet.side.docked.headline.tracking | 0 |
+| Sheet side docked headline weight | md.comp.sheet.side.docked.headline.weight | 400 |
+
+##### Divider
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Sheet side docked divider color | md.comp.sheet.side.docked.divider.color | #79747E |
+
+#### Hovered
+
+##### Label text
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Sheet side docked action hover label text color | md.comp.sheet.side.docked.action.hover.label-text.color | #6750A4 |
+
+##### State layer
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Sheet side docked action hover state layer color | md.comp.sheet.side.docked.action.hover.state-layer.color | #6750A4 |
+| Sheet side docked action hover state layer opacity | md.comp.sheet.side.docked.action.hover.state-layer.opacity | 0.08 |
+
+#### Focused
+
+##### Focus indicator
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Sheet side docked focus indicator color | md.comp.sheet.side.docked.focus.indicator.color | #625B71 |
+| Sheet side docked focus indicator thickness | md.comp.sheet.side.docked.focus.indicator.thickness | 3dp |
+| Sheet side docked focus indicator offset | md.comp.sheet.side.docked.focus.indicator.outline.offset | 2dp |
+
+##### Label text
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Sheet side docked action focus label text color | md.comp.sheet.side.docked.action.focus.label-text.color | #6750A4 |
+
+##### State layer
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Sheet side docked action focus state layer color | md.comp.sheet.side.docked.action.focus.state-layer.color | #6750A4 |
+| Sheet side docked action focus state layer opacity | md.comp.sheet.side.docked.action.focus.state-layer.opacity | 0.1 |
+
+#### Pressed (ripple)
+
+##### Label text
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Sheet side docked action pressed label text color | md.comp.sheet.side.docked.action.pressed.label-text.color | #6750A4 |
+
+##### State layer
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Sheet side docked action pressed state layer color | md.comp.sheet.side.docked.action.pressed.state-layer.color | #6750A4 |
+| Sheet side docked action pressed state layer opacity | md.comp.sheet.side.docked.action.pressed.state-layer.opacity | 0.1 |

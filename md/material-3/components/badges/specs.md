@@ -22,10 +22,6 @@ Components:
 
 ![5 aspects of badge anatomy on a navigation rail.](https://lh3.googleusercontent.com/9yjKmecr7ZJh2Tm71DBDcwftLy2cMEpCW2yl73CCr7kUctUtmKaW78yFdO-0ZUSBXShjh9CDLZtQhcOyVt9CmdNhywVGvneguYneZMeui26j=w40)
 
-## Tokens & specs
-
-Browse the component elements, attributes, tokens, and their values.
-
 ## Color
 
 Color values are implemented through design tokens. For design, this means working with color values that correspond with tokens. For implementation, a color value will be a token that references a value.
@@ -90,7 +86,10 @@ Configurations include:
 
 ## Tokens & Specs
 
+Browse the component elements, attributes, tokens, and their values.
+
 ### Badges
+
 
 #### Enabled / Container
 

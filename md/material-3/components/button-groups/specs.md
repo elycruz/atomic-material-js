@@ -28,22 +28,6 @@ Configurations for both variants of button groups:
 | Default shape | Round, square | -- | Available |
 | Selection | Single-select, multi-select, selection-required | Available as segmented button | Available |
 
-## Tokens & Specs
-
-Standard and connected button group tokens are organized by size. Select the variant and size from the token set menu.
-
-**Note:** Go to the button and icon button pages to view their tokens. Learn about design tokens.
-
-### Button group standard - Size - Xsmall
-
-#### Pressed
-
-| Token | Reference | Value |
-|-------|-----------|-------|
-| Button group xsmall pressed motion spring dampening | md.comp.button-group.standard.xsmall.pressed.item.width.motion.spring.dampening | 0.9 |
-| Button group xsmall pressed motion spring stiffness | md.comp.button-group.standard.xsmall.pressed.item.width.motion.spring.stiffness | 1400 |
-| Button group xsmall pressed width multiplier | md.comp.button-group.standard.xsmall.pressed.item.width.multiplier | 15% |
-
 ## Anatomy
 
 Button groups are invisible containers that add padding between buttons and modify button shape. They don't contain any buttons by default.
@@ -161,3 +145,124 @@ Extra small and small connected button groups have 48dp target areas and a minim
 ## Density
 
 Button groups adapt to the density of the buttons inside. Button groups adapt to the height of the buttons inside, including when density is applied.
+
+## Tokens & Specs
+
+Standard and connected button group tokens are organized by size. Select the variant and size from the token set menu.
+
+**Note:** Go to the button and icon button pages to view their tokens. Learn about design tokens.
+
+### Button group connected - Size - Xlarge
+
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Button group connected xlarge container height | md.comp.button-group.connected.xlarge.container.height | 136dp |
+| Button group connected xlarge space between buttons | md.comp.button-group.connected.xlarge.between-space | 2dp |
+| Button group connected xlarge container shape | md.comp.button-group.connected.xlarge.container.shape | Shape: md.sys.shape.corner.large (Rounded, 16dp) |
+| Button group connected xlarge inner corner size | md.comp.button-group.connected.xlarge.inner-corner.corner-size | 20dp |
+| Button group connected xlarge pressed inner corner size | md.comp.button-group.connected.xlarge.pressed.inner-corner.corner-size | 16dp |
+| Button group connected xlarge selected inner corner size | md.comp.button-group.connected.xlarge.selected.inner-corner.corner-size | 50% |
+
+### Button group connected - Size - Large
+
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Button group connected large container height | md.comp.button-group.connected.large.container.height | 96dp |
+| Button group connected large space between buttons | md.comp.button-group.connected.large.between-space | 2dp |
+| Button group connected large container shape | md.comp.button-group.connected.large.container.shape | Shape: md.sys.shape.corner.large (Rounded, 12dp) |
+| Button group connected large inner corner size | md.comp.button-group.connected.large.inner-corner.corner-size | 16dp |
+| Button group connected large pressed inner corner size | md.comp.button-group.connected.large.pressed.inner-corner.corner-size | 12dp |
+| Button group connected large selected inner corner size | md.comp.button-group.connected.large.selected.inner-corner.corner-size | 50% |
+
+### Button group connected - Size - Medium
+
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Button group connected medium container height | md.comp.button-group.connected.medium.container.height | 56dp |
+| Button group connected medium space between buttons | md.comp.button-group.connected.medium.between-space | 2dp |
+| Button group connected medium container shape | md.comp.button-group.connected.medium.container.shape | Shape: md.sys.shape.corner.medium (Rounded, 8dp) |
+| Button group connected medium inner corner size | md.comp.button-group.connected.medium.inner-corner.corner-size | 8dp |
+| Button group connected medium pressed inner corner size | md.comp.button-group.connected.medium.pressed.inner-corner.corner-size | 4dp |
+| Button group connected medium selected inner corner size | md.comp.button-group.connected.medium.selected.inner-corner.corner-size | 50% |
+
+### Button group connected - Size - Small
+
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Button group connected small container height | md.comp.button-group.connected.small.container.height | 40dp |
+| Button group connected small space between buttons | md.comp.button-group.connected.small.between-space | 2dp |
+| Button group connected small container shape | md.comp.button-group.connected.small.container.shape | Shape: md.sys.shape.corner.medium (Rounded, 8dp) |
+| Button group connected small inner corner size | md.comp.button-group.connected.small.inner-corner.corner-size | 8dp |
+| Button group connected small pressed inner corner size | md.comp.button-group.connected.small.pressed.inner-corner.corner-size | 4dp |
+| Button group connected small selected inner corner size | md.comp.button-group.connected.small.selected.inner-corner.corner-size | 50% |
+
+### Button group connected - Size - Xsmall
+
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Button group connected xsmall container height | md.comp.button-group.connected.xsmall.container.height | 32dp |
+| Button group connected xsmall space between buttons | md.comp.button-group.connected.xsmall.between-space | 2dp |
+| Button group connected xsmall container shape | md.comp.button-group.connected.xsmall.container.shape | Shape: md.sys.shape.corner.medium (Rounded, 8dp) |
+| Button group connected xsmall inner corner size | md.comp.button-group.connected.xsmall.inner-corner.corner-size | 8dp |
+| Button group connected xsmall pressed inner corner size | md.comp.button-group.connected.xsmall.pressed.inner-corner.corner-size | 4dp |
+| Button group connected xsmall selected inner corner size | md.comp.button-group.connected.xsmall.selected.inner-corner.corner-size | 50% |
+
+### Button group standard - Size - Xlarge
+
+
+#### Pressed
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Button group xlarge pressed motion spring dampening | md.comp.button-group.standard.xlarge.pressed.item.width.motion.spring.dampening | 0.9 |
+| Button group xlarge pressed motion spring stiffness | md.comp.button-group.standard.xlarge.pressed.item.width.motion.spring.stiffness | 1400 |
+| Button group xlarge pressed width multiplier | md.comp.button-group.standard.xlarge.pressed.item.width.multiplier | 15% |
+
+### Button group standard - Size - Large
+
+
+#### Pressed
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Button group large pressed motion spring dampening | md.comp.button-group.standard.large.pressed.item.width.motion.spring.dampening | 0.9 |
+| Button group large pressed motion spring stiffness | md.comp.button-group.standard.large.pressed.item.width.motion.spring.stiffness | 1400 |
+| Button group large pressed width multiplier | md.comp.button-group.standard.large.pressed.item.width.multiplier | 15% |
+
+### Button group standard - Size - Medium
+
+
+#### Pressed
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Button group medium pressed motion spring dampening | md.comp.button-group.standard.medium.pressed.item.width.motion.spring.dampening | 0.9 |
+| Button group medium pressed motion spring stiffness | md.comp.button-group.standard.medium.pressed.item.width.motion.spring.stiffness | 1400 |
+| Button group medium pressed width multiplier | md.comp.button-group.standard.medium.pressed.item.width.multiplier | 15% |
+
+### Button group standard - Size - Small
+
+
+#### Pressed
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Button group small pressed motion spring dampening | md.comp.button-group.standard.small.pressed.item.width.motion.spring.dampening | 0.9 |
+| Button group small pressed motion spring stiffness | md.comp.button-group.standard.small.pressed.item.width.motion.spring.stiffness | 1400 |
+| Button group small pressed width multiplier | md.comp.button-group.standard.small.pressed.item.width.multiplier | 15% |
+
+### Button group standard - Size - Xsmall
+
+
+#### Pressed
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Button group xsmall pressed motion spring dampening | md.comp.button-group.standard.xsmall.pressed.item.width.motion.spring.dampening | 0.9 |
+| Button group xsmall pressed motion spring stiffness | md.comp.button-group.standard.xsmall.pressed.item.width.motion.spring.stiffness | 1400 |
+| Button group xsmall pressed width multiplier | md.comp.button-group.standard.xsmall.pressed.item.width.multiplier | 15% |

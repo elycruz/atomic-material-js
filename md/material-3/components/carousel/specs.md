@@ -1,9 +1,5 @@
 # Carousel: Specs
 
-## Tokens & Specs
-
-Browse the component elements, attributes, tokens, and their values.
-
 ## Color
 
 ![2 color roles of a carousel.](https://lh3.googleusercontent.com/Mzrpy7os0Evw3KGIkxaFfkon8IgFJgpyqGgYD2DIMMybywyuPHpomDXt8yaG9F6u0lJAhlpuoYHtJE1Sv2KYym2NJiXYSBSqOT6pMFsQMCdXZF77w=w640)
@@ -141,84 +137,116 @@ Full-screen carousels fill the window edge-to-edge.
 | Top/bottom padding | 0dp |
 | Padding between elements | 16dp |
 
-## Carousel Item Tokens
+## Tokens & Specs
 
-### Enabled / Outline
+Browse the component elements, attributes, tokens, and their values.
+
+### Carousel item
+
+
+#### Enabled
+
+#### Enabled / Outline
 
 | Token | Reference | Value |
 |-------|-----------|-------|
 | Carousel item outline color | md.comp.carousel-item.with-outline.outline.color | #79747E |
-| Carousel item outline width | md.comp.carousel-item.with-outline.outline.width |  |
+| Carousel item outline width | md.comp.carousel-item.with-outline.outline.width | Elevation: ? (1dp) |
 
-### Enabled / Container
+#### Enabled / Container
 
 | Token | Reference | Value |
 |-------|-----------|-------|
-| Carousel item container color | md.comp.carousel-item.container.color | #FFFBFE |
-| Carousel item container elevation | md.comp.carousel-item.container.elevation |  |
-| Carousel item container surface tint layer color | md.comp.carousel-item.container.surface-tint-layer.color | #6750A4 |
-| Carousel item container shape | md.comp.carousel-item.container.shape |  |
+| Carousel item container color | md.comp.carousel-item.container.color | #FEF7FF |
+| Carousel item container elevation | md.comp.carousel-item.container.elevation | Elevation: md.sys.elevation.level0 (0) |
 | Carousel item container shadow color | md.comp.carousel-item.container.shadow-color | #000000 |
+| Carousel item container surface tint layer color | md.comp.carousel-item.container.surface-tint-layer.color | #6750A4 |
+| Carousel item container shape | md.comp.carousel-item.container.shape | Shape: md.sys.shape.corner.extra-large (Rounded, 28dp) |
 
-### Hover / Container
+#### Hover
+
+#### Hover / Container
 
 | Token | Reference | Value |
 |-------|-----------|-------|
-| Carousel item hover container elevation | md.comp.carousel-item.hover.container.elevation |  |
+| Carousel item hover container elevation | md.comp.carousel-item.hover.container.elevation | Elevation: md.sys.elevation.level1 (1dp) |
 
-### Hover / State layer
+#### Hover / State layer
 
 | Token | Reference | Value |
 |-------|-----------|-------|
 | Carousel item hover state layer color | md.comp.carousel-item.hover.state-layer.color | #1D1B20 |
 | Carousel item hover state layer opacity | md.comp.carousel-item.hover.state-layer.opacity | 0.08 |
 
-### Focus / Focus indicator
+#### Hover / Outline
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Carousel item hover outline color | md.comp.carousel-item.with-outline.hover.outline.color | #79747E |
+
+#### Focus
+
+#### Focus / Focus indicator
 
 | Token | Reference | Value |
 |-------|-----------|-------|
 | Carousel item focus indicator color | md.comp.carousel-item.focus.indicator.color | #625B71 |
 | Carousel item focus indicator thickness | md.comp.carousel-item.focus.indicator.thickness | 3dp |
-| Carousel item focus indicator offset | md.comp.carousel-item.focus.indicator.outline.offset | 2dp |
+| Carousel focus indicator offset | md.comp.carousel-item.focus.indicator.outline.offset | 2dp |
 
-### Focus / Container
+#### Focus / Outline
 
 | Token | Reference | Value |
 |-------|-----------|-------|
-| Carousel item focus container elevation | md.comp.carousel-item.focus.container.elevation |  |
+| Carousel item focus outline color | md.comp.carousel-item.with-outline.focus.outline.color | #1D1B20 |
 
-### Focus / State layer
+#### Focus / Container
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Carousel item focus container elevation | md.comp.carousel-item.focus.container.elevation | Elevation: md.sys.elevation.level0 (0) |
+
+#### Focus / State layer
 
 | Token | Reference | Value |
 |-------|-----------|-------|
 | Carousel item focus state layer color | md.comp.carousel-item.focus.state-layer.color | #1D1B20 |
 | Carousel item focus state layer opacity | md.comp.carousel-item.focus.state-layer.opacity | 0.1 |
 
-### Pressed (ripple) / Container
+#### Pressed (ripple)
+
+#### Pressed (ripple) / Outline
 
 | Token | Reference | Value |
 |-------|-----------|-------|
-| Carousel item pressed container elevation | md.comp.carousel-item.pressed.container.elevation |  |
+| Carousel item pressed outline color | md.comp.carousel-item.with-outline.pressed.outline.color | #79747E |
 
-### Pressed (ripple) / State layer
+#### Pressed (ripple) / Container
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Carousel item pressed container elevation | md.comp.carousel-item.pressed.container.elevation | Elevation: md.sys.elevation.level0 (0) |
+
+#### Pressed (ripple) / State layer
 
 | Token | Reference | Value |
 |-------|-----------|-------|
 | Carousel item pressed state layer color | md.comp.carousel-item.pressed.state-layer.color | #1D1B20 |
 | Carousel item pressed state layer opacity | md.comp.carousel-item.pressed.state-layer.opacity | 0.1 |
 
-### Disabled / Container
+#### Disabled
+
+#### Disabled / Container
 
 | Token | Reference | Value |
 |-------|-----------|-------|
-| Carousel item disabled container elevation | md.comp.carousel-item.disabled.container.elevation |  |
+| Carousel item disabled container elevation | md.comp.carousel-item.disabled.container.elevation | Elevation: md.sys.elevation.level0 (0) |
 | Carousel item disabled container opacity | md.comp.carousel-item.disabled.container.opacity | 0.38 |
-| Carousel item disabled container color | md.comp.carousel-item.disabled.container.color | #FFFBFE |
+| Carousel item disabled container color | md.comp.carousel-item.disabled.container.color | #FEF7FF |
 
-### Disabled / Outline
+#### Disabled / Outline
 
 | Token | Reference | Value |
 |-------|-----------|-------|
-| Carousel item disabled outline color | md.comp.carousel-item.disabled.outline.color | #79747E |
-| Carousel item disabled outline opacity | md.comp.carousel-item.disabled.outline.opacity | 0.38 |
-| Carousel item disabled outline width | md.comp.carousel-item.disabled.outline.width |  |
+| Carousel item disabled outline color | md.comp.carousel-item.with-outline.disabled.outline.color | #79747E |
+| Carousel item disabled outline opacity | md.comp.carousel-item.with-outline.disabled.outline.opacity | 0.12 |

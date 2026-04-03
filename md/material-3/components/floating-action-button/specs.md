@@ -28,57 +28,6 @@ In the expressive update, the primary, secondary, and tertiary set colors were r
 | Color | Primary container, secondary container, tertiary container | Available as primary, secondary, tertiary | Available |
 | | Primary, secondary, tertiary | -- | Available |
 
-## Tokens & Specs
-
-Use the table's menu to select a token set. FAB tokens are organized by size and color.
-
-### FAB Token Example (Medium)
-
-| Token | Value |
-|-------|-------|
-| FAB medium container height | 80dp |
-| FAB medium container width | 80dp |
-| FAB medium icon size | 28dp |
-| FAB medium container shape | -- |
-
-### FAB - Color - Tonal Primary
-
-#### Enabled
-
-| Token | Reference | Value |
-|-------|-----------|-------|
-| FAB tonal primary container color | md.comp.fab.primary-container.container.color | #EADDFF |
-| FAB tonal primary container shadow color | md.comp.fab.primary-container.container.shadow-color | #000000 |
-| FAB tonal primary container elevation | md.comp.fab.primary-container.container.elevation | Elevation: level3 (3dp) |
-| FAB tonal primary icon color | md.comp.fab.primary-container.icon.color | #4F378B |
-
-#### Hovered
-
-| Token | Reference | Value |
-|-------|-----------|-------|
-| FAB tonal primary hovered container elevation | md.comp.fab.primary-container.hovered.container.elevation | Elevation: level4 (4dp) |
-| FAB tonal primary hovered state layer color | md.comp.fab.primary-container.hovered.state-layer.color | #4F378B |
-| FAB tonal primary hovered state layer opacity | md.comp.fab.primary-container.hovered.state-layer.opacity | 0.08 |
-| FAB tonal primary hovered icon color | md.comp.fab.primary-container.hovered.icon.color | #4F378B |
-
-#### Focused
-
-| Token | Reference | Value |
-|-------|-----------|-------|
-| FAB tonal primary focused container elevation | md.comp.fab.primary-container.focus.container.elevation | Elevation: level3 (3dp) |
-| FAB tonal primary focused state layer color | md.comp.fab.primary-container.focus.state-layer.color | #4F378B |
-| FAB tonal primary focused state layer opacity | md.comp.fab.primary-container.focus.state-layer.opacity | 0.1 |
-| FAB tonal primary focused icon color | md.comp.fab.primary-container.focus.icon.color | #4F378B |
-
-#### Pressed
-
-| Token | Reference | Value |
-|-------|-----------|-------|
-| FAB tonal primary pressed container elevation | md.comp.fab.primary-container.pressed.container.elevation | Elevation: level3 (3dp) |
-| FAB tonal primary pressed state layer color | md.comp.fab.primary-container.pressed.state-layer.color | #4F378B |
-| FAB tonal primary pressed state layer opacity | md.comp.fab.primary-container.pressed.state-layer.opacity | 0.1 |
-| FAB tonal primary pressed icon color | md.comp.fab.primary-container.pressed.icon.color | #4F378B |
-
 ## Anatomy
 
 1. Container
@@ -128,6 +77,96 @@ Medium FAB size and padding measurements.
 ### Large FAB
 
 Large FAB size and padding measurements.
+
+## Tokens & Specs
+
+Use the table's menu to select a token set. FAB tokens are organized by size and color.
+
+### FAB - Color - Tonal tertiary
+
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| FAB tonal tertiary container color | md.comp.fab.tertiary-container.container.color | #FFD8E4 |
+| FAB tonal tertiary container shadow color | md.comp.fab.tertiary-container.container.shadow-color | #000000 |
+| FAB tonal tertiary container elevation | md.comp.fab.tertiary-container.container.elevation | Elevation: md.sys.elevation.level3 (6dp) |
+| FAB tonal tertiary icon color | md.comp.fab.tertiary-container.icon.color | #633B48 |
+| FAB tonal tertiary hovered container elevation | md.comp.fab.tertiary-container.hovered.container.elevation | Elevation: md.sys.elevation.level4 (8dp) |
+| FAB tonal tertiary hovered state layer color | md.comp.fab.tertiary-container.hovered.state-layer.color | #633B48 |
+| FAB tonal tertiary hovered state layer opacity | md.comp.fab.tertiary-container.hovered.state-layer.opacity | 0.08 |
+| FAB tonal tertiary hovered icon color | md.comp.fab.tertiary-container.hovered.icon.color | #633B48 |
+| FAB tonal tertiary focused container elevation | md.comp.fab.tertiary-container.focused.container.elevation | Elevation: md.sys.elevation.level3 (6dp) |
+| FAB tonal tertiary focused state layer color | md.comp.fab.tertiary-container.focused.state-layer.color | #633B48 |
+| FAB tonal tertiary focused state layer opacity | md.comp.fab.tertiary-container.focused.state-layer.opacity | 0.1 |
+| FAB tonal tertiary focused icon color | md.comp.fab.tertiary-container.focused.icon.color | #633B48 |
+| FAB tonal tertiary pressed container elevation | md.comp.fab.tertiary-container.pressed.container.elevation | Elevation: md.sys.elevation.level3 (6dp) |
+| FAB tonal tertiary pressed state layer color | md.comp.fab.tertiary-container.pressed.state-layer.color | #633B48 |
+| FAB tonal tertiary pressed state layer opacity | md.comp.fab.tertiary-container.pressed.state-layer.opacity | 0.1 |
+| FAB tonal tertiary pressed icon color | md.comp.fab.tertiary-container.pressed.icon.color | #633B48 |
+
+### FAB - Color - Tonal secondary
+
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| FAB tonal secondary container color | md.comp.fab.secondary-container.container.color | #E8DEF8 |
+| FAB tonal secondary container shadow color | md.comp.fab.secondary-container.container.shadow-color | #000000 |
+| FAB tonal secondary container elevation | md.comp.fab.secondary-container.container.elevation | Elevation: md.sys.elevation.level3 (6dp) |
+| FAB tonal secondary icon color | md.comp.fab.secondary-container.icon.color | #4A4458 |
+| FAB tonal secondary hovered container elevation | md.comp.fab.secondary-container.hovered.container.elevation | Elevation: md.sys.elevation.level4 (8dp) |
+| FAB tonal secondary hovered state layer color | md.comp.fab.secondary-container.hovered.state-layer.color | #4A4458 |
+| FAB tonal secondary hovered state layer opacity | md.comp.fab.secondary-container.hovered.state-layer.opacity | 0.08 |
+| FAB tonal secondary hovered icon color | md.comp.fab.secondary-container.hovered.icon.color | #4A4458 |
+| FAB tonal secondary focused container elevation | md.comp.fab.secondary-container.focused.container.elevation | Elevation: md.sys.elevation.level3 (6dp) |
+| FAB tonal secondary focused state layer color | md.comp.fab.secondary-container.focused.state-layer.color | #4A4458 |
+| FAB tonal secondary focused state layer opacity | md.comp.fab.secondary-container.focused.state-layer.opacity | 0.1 |
+| FAB tonal secondary focused icon color | md.comp.fab.secondary-container.focused.icon.color | #4A4458 |
+| FAB tonal secondary pressed container elevation | md.comp.fab.secondary-container.pressed.container.elevation | Elevation: md.sys.elevation.level3 (6dp) |
+| FAB tonal secondary pressed state layer color | md.comp.fab.secondary-container.pressed.state-layer.color | #4A4458 |
+| FAB tonal secondary pressed state layer opacity | md.comp.fab.secondary-container.pressed.state-layer.opacity | 0.1 |
+| FAB tonal secondary pressed icon color | md.comp.fab.secondary-container.pressed.icon.color | #4A4458 |
+
+### FAB - Color - Tonal primary
+
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| FAB tonal primary container color | md.comp.fab.primary-container.container.color | #EADDFF |
+| FAB tonal primary container shadow color | md.comp.fab.primary-container.container.shadow-color | #000000 |
+| FAB tonal primary container elevation | md.comp.fab.primary-container.container.elevation | Elevation: md.sys.elevation.level3 (6dp) |
+| FAB tonal primary icon color | md.comp.fab.primary-container.icon.color | #4F378B |
+| FAB tonal primary hovered container elevation | md.comp.fab.primary-container.hovered.container.elevation | Elevation: md.sys.elevation.level4 (8dp) |
+| FAB tonal primary hovered state layer color | md.comp.fab.primary-container.hovered.state-layer.color | #4F378B |
+| FAB tonal primary hovered state layer opacity | md.comp.fab.primary-container.hovered.state-layer.opacity | 0.08 |
+| FAB tonal primary hovered icon color | md.comp.fab.primary-container.hovered.icon.color | #4F378B |
+| FAB tonal primary focused container elevation | md.comp.fab.primary-container.focused.container.elevation | Elevation: md.sys.elevation.level3 (6dp) |
+| FAB tonal primary focused state layer color | md.comp.fab.primary-container.focused.state-layer.color | #4F378B |
+| FAB tonal primary focused state layer opacity | md.comp.fab.primary-container.focused.state-layer.opacity | 0.1 |
+| FAB tonal primary focused icon color | md.comp.fab.primary-container.focused.icon.color | #4F378B |
+| FAB tonal primary pressed container elevation | md.comp.fab.primary-container.pressed.container.elevation | Elevation: md.sys.elevation.level3 (6dp) |
+| FAB tonal primary pressed state layer color | md.comp.fab.primary-container.pressed.state-layer.color | #4F378B |
+| FAB tonal primary pressed state layer opacity | md.comp.fab.primary-container.pressed.state-layer.opacity | 0.1 |
+| FAB tonal primary pressed icon color | md.comp.fab.primary-container.pressed.icon.color | #4F378B |
+
+### FAB - Size - Large
+
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| FAB large container height | md.comp.fab.large.container.height | 96dp |
+| FAB large container width | md.comp.fab.large.container.width | 96dp |
+| FAB large icon size | md.comp.fab.large.icon.size | 36dp |
+| FAB large container shape | md.comp.fab.large.container.shape | Shape: md.sys.shape.corner.extra-large (Rounded, 28dp) |
+
+### FAB - Size - Medium
+
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| FAB medium container height | md.comp.fab.medium.container.height | 80dp |
+| FAB medium container width | md.comp.fab.medium.container.width | 80dp |
+| FAB medium icon size | md.comp.fab.medium.icon.size | 28dp |
+| FAB medium container shape | md.comp.fab.medium.container.shape | Shape: md.sys.shape.corner.large-increased (Rounded, 20dp) |
 
 ## Baseline Tokens & Specs
 

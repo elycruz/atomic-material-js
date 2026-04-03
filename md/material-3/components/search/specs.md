@@ -35,14 +35,6 @@ Full-screen layout in the divided style. Docked layout in the divided style.
 | Style | Divided | Available | Not recommended. Use contained. |
 | Layout | Docked, full-screen | Available | Available |
 
-## Tokens & specs
-
-The search bar set only contains tokens for the unfocused search bar. The search view set contains all other tokens when interacting with search, including all styles and layouts.
-
-### Search view container
-
-- Surface tint layer color: #6750A4
-
 ## Anatomy
 
 Search includes a search bar and a container for suggestions and results. The container is empty by default. Use the list component to add content. In the divided (baseline) style, a divider separates the search bar and results.
@@ -154,35 +146,83 @@ Unfocused search bar margin measurements. Focused search bar margin measurements
 
 Full-screen search padding and size measurements for divided style. Docked search padding and size measurements for divided style.
 
-## Design Tokens
+## Tokens & Specs
 
-### Search Bar - Enabled
+The search bar set only contains tokens for the unfocused search bar. The search view set contains all other tokens when interacting with search, including all styles and layouts.
 
-| Token | Reference | Value |
-|-------|-----------|-------|
-| Search bar container color | md.comp.search.bar.container.color | Surface container high |
-| Search bar text color | md.comp.search.bar.text.color | On surface |
-| Search bar leading icon color | md.comp.search.bar.leading.icon.color | On surface variant |
-| Search bar trailing icon color | md.comp.search.bar.trailing.icon.color | On surface variant |
-| Search bar hint text color | md.comp.search.bar.hint-text.color | On surface variant |
+### Search - Bar
 
-### Search Bar - Hovered
+
+#### Color / Contained
 
 | Token | Reference | Value |
 |-------|-----------|-------|
-| Search bar hovered state layer color | md.comp.search.bar.hovered.state-layer.color | On surface |
-| Search bar hovered state layer opacity | md.comp.search.bar.hovered.state-layer.opacity | 0.08 |
+| Search bar contained container color | md.comp.search-bar.contained.container.color | #F5EFF7 |
+| Search bar contained container elevation | md.comp.search-bar.contained.container.elevation | Elevation: md.sys.elevation.level0 (0) |
+| Search bar contained leading icon color | md.comp.search-bar.contained.leading-icon.color | #49454F |
+| Search bar contained trailing icon color | md.comp.search-bar.contained.trailing-icon.color | #49454F |
+| Search bar contained input text color | md.comp.search-bar.contained.input-text.color | #1D1B20 |
+| Search bar contained supporting text color | md.comp.search-bar.contained.supporting-text.color | #49454F |
 
-### Search Bar - Focused
-
-| Token | Reference | Value |
-|-------|-----------|-------|
-| Search bar focused state layer opacity | md.comp.search.bar.focused.state-layer.opacity | 0.12 |
-
-### Search View Container
+#### Layout and Text / Contained
 
 | Token | Reference | Value |
 |-------|-----------|-------|
-| Search view container color | md.comp.search.view.container.color | Surface container low |
-| Search view container elevation | md.comp.search.view.container.elevation | Elevation: level1 (1dp) |
-| Search surface tint layer color | md.comp.search.surface-tint.color | #6750A4 |
+| Search bar contained pane leading margin | md.comp.search-bar.contained.leading-margin | 24dp |
+| Search bar contained pane trailing margin | md.comp.search-bar.contained.trailing-margin | 24dp |
+| Search bar contained motion | md.comp.search-bar.contained.motion.spring | Spring: dampening 0.9, stiffness 1400 |
+| Search bar contained leading space | md.comp.search-bar.contained.leading-space | 4dp |
+| Search bar contained trailing space | md.comp.search-bar.contained.trailing-space | 4dp |
+| Search bar contained no actions leading space | md.comp.search-bar.contained.no-actions.leading-space | 16dp |
+| Search bar contained no actions trailing space | md.comp.search-bar.contained.no-actions.trailing-space | 16dp |
+| Search bar contained icon label gap | md.comp.search-bar.contained.icon-label.gap | 4dp |
+| Search bar contained avatar target size | md.comp.search-bar.contained.avatar.target-size | 48dp |
+| Search bar contained trailing actions gap | md.comp.search-bar.contained.trailing-actions.gap | 8dp |
+
+### Search - View
+
+
+#### Color
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Search view container color | md.comp.search-view.container.color | #ECE6F0 |
+| Search view contained background color | md.comp.search-view.contained.background.color | #F7F2FA |
+| Search view container background elevation | md.comp.search-view.container.elevation | Elevation: md.sys.elevation.level0 (0) |
+| Search view header supporting text color | md.comp.search-view.header.supporting-text.color | #49454F |
+| Search view header input text color | md.comp.search-view.header.input-text.color | #1D1B20 |
+| Search view header leading icon color | md.comp.search-view.header.leading-icon.color | #1D1B20 |
+| Search view header trailing icon color | md.comp.search-view.header.trailing-icon.color | #49454F |
+| Search view divider color | md.comp.search-view.divider.color | #79747E |
+
+#### Layout and Text
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+
+#### Layout and Text / Contained (expressive)
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Search view contained pane leading margin | md.comp.search-view.contained.leading-margin | 12dp |
+| Search view contained pane trailing margin | md.comp.search-view.contained.trailing-margin | 12dp |
+
+#### Layout and Text / Header
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Search view header supporting text type | md.comp.search-view.header.supporting-text.type | Font: md.sys.typescale.body-medium (Body Medium, 500, 14/20, 0.25) |
+| Search view header supporting text font | md.comp.search-view.header.supporting-text.font | Roboto |
+| Search view header supporting text line height | md.comp.search-view.header.supporting-text.line-height | 24pt |
+| Search view header supporting text size | md.comp.search-view.header.supporting-text.size | 16pt |
+| Search view header supporting text weight | md.comp.search-view.header.supporting-text.weight | 400 |
+| Search view header supporting text tracking | md.comp.search-view.header.supporting-text.tracking | 0.5pt |
+| Search view header input text type | md.comp.search-view.header.input-text.type | Font: md.sys.typescale.body-large (Body Large, 400, 16/24, 0.5) |
+| Search view header input text font | md.comp.search-view.header.input-text.font | Roboto |
+| Search view header input text line height | md.comp.search-view.header.input-text.line-height | 24pt |
+| Search view header input text size | md.comp.search-view.header.input-text.size | 16pt |
+| Search view header input text weight | md.comp.search-view.header.input-text.weight | 400 |
+| Search view header input text tracking | md.comp.search-view.header.input-text.tracking | 0.5pt |
+| Search view header trailing space | md.comp.search-view.header.trailing-space | 4dp |
+| Search view header heading supporting space | md.comp.search-view.header.heading-supporting-space | 8dp |
+| Search view header input trailing space | md.comp.search-view.header.input-trailing-space | 16dp |
