@@ -1,9 +1,6 @@
 /**
  * Suggestion Chip — .ez-suggestion
  *
- * Uses outline border (not outline-variant) per spec.
+ * All spec token values (#CAC4D0) match the base chip's outline-variant.
+ * No border-color override needed — inherits from .ez-chip base.
  * -------------------- */
-
-:where(.ez-btn, .ez-button).ez-chip.ez-suggestion {
-  border-color: var(--md-sys-color-outline, ButtonBorder);
-}
