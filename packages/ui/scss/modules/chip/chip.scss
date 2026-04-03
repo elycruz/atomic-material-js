@@ -1,17 +1,24 @@
 /**
- * Base Chip — built on .ez-btn
+ * Base Chip — standalone component
  *
- * Overrides button defaults for chip-specific sizing, shape, padding, and colors.
- * Usage: <button class="ez-btn ez-chip ...">
+ * Standalone: <button class="ez-chip ez-assist" type="button">
+ * With button (backward compat): <button class="ez-btn ez-chip ez-assist" type="button">
  * -------------------- */
 
-:where(.ez-btn, .ez-button).ez-chip {
-  --_btn-container-height: 32px;
-  --_btn-container-shape: 8px;
-  --_btn-icon-size: 18px;
+.ez-chip {
+  /* Structural base (standalone — no .ez-btn required) */
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  text-align: center;
+  user-select: none;
 
-  min-height: var(--_btn-container-height);
-  border-radius: var(--_btn-container-shape);
+  /* Chip sizing & shape */
+  min-height: 32px;
+  border-radius: 8px;
   padding-block: 0;
   padding-inline: 16px;
   gap: 8px;
@@ -19,16 +26,43 @@
   /* Disable button shape-morph animation — chips have fixed 8px radius */
   animation: none;
 
-  /* Default chip colors — outlined look */
+  /* Default chip colors — outlined (flat) look */
   background: transparent;
   color: var(--md-sys-color-on-surface-variant, ButtonText);
   border: 1px solid var(--md-sys-color-outline-variant, ButtonBorder);
+  box-shadow: none;
 
-  /* Label typography — same as button label-large */
+  /* Label typography — label-large */
+  font-family: var(--md-sys-typescale-label-large-font, inherit), sans-serif;
   font-size: var(--md-sys-typescale-label-large-size, 1.16667rem);
   font-weight: var(--md-sys-typescale-label-large-weight, 500);
   letter-spacing: var(--md-sys-typescale-label-large-tracking, 0);
   line-height: var(--md-sys-typescale-label-large-line-height, 1.66667rem);
+
+  /* Smooth transitions */
+  transition:
+    border-color var(--md-sys-motion-duration-short4, 200ms) var(--md-sys-motion-easing-expressive-default-effects, cubic-bezier(0.34, 0.80, 0.34, 1.00)),
+    color var(--md-sys-motion-duration-short4, 200ms) var(--md-sys-motion-easing-expressive-default-effects, cubic-bezier(0.34, 0.80, 0.34, 1.00)),
+    background-color var(--md-sys-motion-duration-short4, 200ms) var(--md-sys-motion-easing-expressive-default-effects, cubic-bezier(0.34, 0.80, 0.34, 1.00)),
+    opacity var(--md-sys-motion-duration-short4, 200ms) var(--md-sys-motion-easing-expressive-default-effects, cubic-bezier(0.34, 0.80, 0.34, 1.00)),
+    box-shadow var(--md-sys-motion-duration-short4, 200ms) var(--md-sys-motion-easing-expressive-default-effects, cubic-bezier(0.34, 0.80, 0.34, 1.00));
+}
+
+.ez-chip:not(:disabled):hover {
+  cursor: pointer;
+}
+
+/**
+ * Ripple z-index layering (standalone — mirrors button base).
+ * -------------------- */
+
+.ez-chip > *:not(ez-ripple) {
+  position: relative;
+  z-index: 3;
+}
+
+.ez-chip > ez-ripple {
+  z-index: 1;
 }
 
 /**
@@ -36,27 +70,27 @@
  * -------------------- */
 
 /* Leading icon present — reduce padding-inline-start */
-:where(.ez-btn, .ez-button).ez-chip:has(
+.ez-chip:has(
   > :is(.md-icon, .ez-chip-avatar, .ez-chip-checkmark):first-child
 ) {
   padding-inline-start: 8px;
 }
 
 /* Trailing icon present — reduce padding-inline-end */
-:where(.ez-btn, .ez-button).ez-chip:has(
+.ez-chip:has(
   > :is(.md-icon, .ez-chip-close):last-child
 ) {
   padding-inline-end: 8px;
 }
 
 /* Leading icon present after hidden input (label pattern) */
-:where(.ez-btn, .ez-button).ez-chip:has(
+.ez-chip:has(
   > :is(input[type="checkbox"], input[type="radio"]) + :is(.md-icon, ez-ripple) + :is(.md-icon, .ez-chip-checkmark)
 ) {
   padding-inline-start: 8px;
 }
 
-:where(.ez-btn, .ez-button).ez-chip:has(
+.ez-chip:has(
   > :is(input[type="checkbox"], input[type="radio"]) + ez-ripple + :is(.md-icon, .ez-chip-checkmark)
 ) {
   padding-inline-start: 8px;
@@ -65,24 +99,140 @@
 /**
  * Ripple color override — chip uses on-surface-variant instead of theme color.
  * -------------------- */
-:where(.ez-btn, .ez-button).ez-chip ez-ripple::after,
-:where(.ez-btn, .ez-button).ez-chip ez-ripple::before {
+.ez-chip ez-ripple::after,
+.ez-chip ez-ripple::before {
   background: var(--md-sys-color-on-surface-variant);
 }
 
 /**
  * Icon sizing within chips.
  * -------------------- */
-:where(.ez-btn, .ez-button).ez-chip > .md-icon {
-  font-size: var(--_btn-icon-size);
-  width: var(--_btn-icon-size);
-  height: var(--_btn-icon-size);
+.ez-chip > .md-icon {
+  font-size: 18px;
+  width: 18px;
+  height: 18px;
 }
 
 /**
- * Elevated chip — reuse button .ez-elevated but override background.
+ * Elevated chip — no border, surface-container-low background, level1 shadow.
  * -------------------- */
-:where(.ez-btn, .ez-button).ez-chip.ez-elevated {
+.ez-chip.ez-elevated {
   border: none;
   background: var(--md-sys-color-surface-container-low, ButtonFace);
+  box-shadow: var(--md-sys-elevation-level1, 0 1px 2px 0 rgb(0 0 0 / 30%), 0 1px 3px 1px rgb(0 0 0 / 15%));
+}
+
+/* Elevated hover — level2 per chip spec (not level3 like button) */
+.ez-chip.ez-elevated:not(:disabled):hover {
+  box-shadow: var(--md-sys-elevation-level2, 0 1px 2px 0 rgb(0 0 0 / 30%), 0 2px 6px 2px rgb(0 0 0 / 15%));
+}
+
+/* Elevated focus — level2 */
+.ez-chip.ez-elevated:not(:disabled):focus-visible {
+  box-shadow: var(--md-sys-elevation-level2, 0 1px 2px 0 rgb(0 0 0 / 30%), 0 2px 6px 2px rgb(0 0 0 / 15%));
+}
+
+/* Elevated pressed — level2 */
+.ez-chip.ez-elevated:not(:disabled):active {
+  box-shadow: var(--md-sys-elevation-level2, 0 1px 2px 0 rgb(0 0 0 / 30%), 0 2px 6px 2px rgb(0 0 0 / 15%));
+}
+
+/**
+ * Focus state — chip-specific focus ring color and flat outline change.
+ * -------------------- */
+.ez-chip:focus-visible {
+  --ez-focus-ring-color: var(--md-sys-color-secondary, #625B71);
+
+  outline: 3px solid var(--ez-focus-ring-color);
+  outline-offset: 2px;
+}
+
+/* Flat chip: border becomes on-surface when focused */
+.ez-chip:not(.ez-elevated):focus-visible {
+  border-color: var(--md-sys-color-on-surface, ButtonText);
+}
+
+/**
+ * Dragged state — elevation level3 per spec.
+ * -------------------- */
+.ez-chip.ez-dragged {
+  box-shadow: var(--md-sys-elevation-level3, 0 1px 3px 0 rgb(0 0 0 / 30%), 0 4px 8px 3px rgb(0 0 0 / 15%));
+}
+
+/**
+ * Disabled state — per-element opacity per M3 spec.
+ * Override button's global opacity: 0.55 with precise token values.
+ * -------------------- */
+.ez-chip:disabled {
+  opacity: 1; /* Override button's global 0.55 when used with .ez-btn */
+  cursor: default;
+  pointer-events: none;
+
+  /* Disabled label text: on-surface at 38% */
+  color: color-mix(
+    in oklch,
+    var(--md-sys-color-on-surface, #1D1B20) calc(var(--md-sys-state-disabled-content-opacity, 0.38) * 100%),
+    transparent
+  );
+}
+
+/* Flat chip disabled: outline at 12% */
+.ez-chip:disabled:not(.ez-elevated) {
+  border-color: color-mix(
+    in oklch,
+    var(--md-sys-color-on-surface, #1D1B20) calc(var(--md-sys-state-disabled-container-opacity, 0.12) * 100%),
+    transparent
+  );
+}
+
+/* Elevated chip disabled: background at 12%, shadow drops */
+.ez-chip:disabled.ez-elevated {
+  background: color-mix(
+    in oklch,
+    var(--md-sys-color-on-surface, #1D1B20) calc(var(--md-sys-state-disabled-container-opacity, 0.12) * 100%),
+    transparent
+  );
+  box-shadow: none;
+}
+
+/* Disabled icons */
+.ez-chip:disabled > .md-icon,
+.ez-chip:disabled > .ez-chip-close,
+.ez-chip:disabled > .ez-chip-checkmark {
+  color: color-mix(
+    in oklch,
+    var(--md-sys-color-on-surface, #1D1B20) calc(var(--md-sys-state-disabled-content-opacity, 0.38) * 100%),
+    transparent
+  );
+}
+
+/**
+ * Label pattern — chip used as <label> with checkbox/radio input.
+ * -------------------- */
+.ez-chip:is(label) {
+  &:has(:focus-visible) {
+    --ez-focus-ring-color: var(--md-sys-color-secondary, #625B71);
+
+    outline: 3px solid var(--ez-focus-ring-color);
+    outline-offset: 2px;
+  }
+}
+
+/* Flat label chip: border becomes on-surface when focused */
+.ez-chip:is(label):not(.ez-elevated):has(:focus-visible) {
+  border-color: var(--md-sys-color-on-surface, ButtonText);
+}
+
+.ez-chip:is(label) :where(input[type="checkbox"], input[type="radio"]) {
+  position: absolute;
+  appearance: none;
+  display: block;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+
+  &, &:checked {
+    background: transparent;
+    border: none;
+  }
 }

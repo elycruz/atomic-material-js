@@ -7,7 +7,7 @@
  * -------------------- */
 
 /* Selected state */
-:where(.ez-btn, .ez-button).ez-chip.ez-filter:is(
+.ez-chip.ez-filter:is(
   [aria-pressed="true"],
   [aria-selected="true"],
   .ez-selected,
@@ -19,13 +19,13 @@
 }
 
 /* Selected state ripple color */
-:where(.ez-btn, .ez-button).ez-chip.ez-filter:is(
+.ez-chip.ez-filter:is(
   [aria-pressed="true"],
   [aria-selected="true"],
   .ez-selected,
   :has(input:checked)
 ) ez-ripple::after,
-:where(.ez-btn, .ez-button).ez-chip.ez-filter:is(
+.ez-chip.ez-filter:is(
   [aria-pressed="true"],
   [aria-selected="true"],
   .ez-selected,
@@ -35,7 +35,7 @@
 }
 
 /* Selected icon color */
-:where(.ez-btn, .ez-button).ez-chip.ez-filter:is(
+.ez-chip.ez-filter:is(
   [aria-pressed="true"],
   [aria-selected="true"],
   .ez-selected,
@@ -47,14 +47,14 @@
 /**
  * Checkmark icon — hidden by default, shown when selected.
  * -------------------- */
-:where(.ez-btn, .ez-button).ez-chip.ez-filter > .ez-chip-checkmark {
+.ez-chip.ez-filter > .ez-chip-checkmark {
   display: none;
   font-size: 18px;
   width: 18px;
   height: 18px;
 }
 
-:where(.ez-btn, .ez-button).ez-chip.ez-filter:is(
+.ez-chip.ez-filter:is(
   [aria-pressed="true"],
   [aria-selected="true"],
   .ez-selected,

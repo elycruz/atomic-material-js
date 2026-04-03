@@ -8,11 +8,11 @@
 /**
  * Avatar support
  * -------------------- */
-:where(.ez-btn, .ez-button).ez-chip.ez-input:has(> .ez-chip-avatar) {
+.ez-chip.ez-input:has(> .ez-chip-avatar) {
   padding-inline-start: 4px;
 }
 
-:where(.ez-btn, .ez-button).ez-chip.ez-input > .ez-chip-avatar {
+.ez-chip.ez-input > .ez-chip-avatar {
   width: 24px;
   height: 24px;
   border-radius: 12px;
@@ -23,7 +23,7 @@
 /**
  * Trailing close icon
  * -------------------- */
-:where(.ez-btn, .ez-button).ez-chip.ez-input > .ez-chip-close {
+.ez-chip.ez-input > .ez-chip-close {
   font-size: 18px;
   width: 18px;
   height: 18px;
@@ -36,7 +36,7 @@
 /**
  * Selected state
  * -------------------- */
-:where(.ez-btn, .ez-button).ez-chip.ez-input:is(
+.ez-chip.ez-input:is(
   [aria-pressed="true"],
   [aria-selected="true"],
   .ez-selected,
@@ -48,13 +48,13 @@
 }
 
 /* Selected state ripple color */
-:where(.ez-btn, .ez-button).ez-chip.ez-input:is(
+.ez-chip.ez-input:is(
   [aria-pressed="true"],
   [aria-selected="true"],
   .ez-selected,
   :has(input:checked)
 ) ez-ripple::after,
-:where(.ez-btn, .ez-button).ez-chip.ez-input:is(
+.ez-chip.ez-input:is(
   [aria-pressed="true"],
   [aria-selected="true"],
   .ez-selected,
@@ -64,7 +64,7 @@
 }
 
 /* Selected close icon color */
-:where(.ez-btn, .ez-button).ez-chip.ez-input:is(
+.ez-chip.ez-input:is(
   [aria-pressed="true"],
   [aria-selected="true"],
   .ez-selected,
