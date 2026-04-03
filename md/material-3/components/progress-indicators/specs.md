@@ -56,3 +56,44 @@ The linear progress indicator is inset from the edge of the screen by 4dp.
 ## Baseline tokens
 
 The circular and linear progress indicator had separate token sets. These are no longer recommended.
+
+## Progress Indicator Token Sets
+
+### Progress Indicator - Common
+
+#### Color
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Progress indicator active indicator color | md.comp.progress-indicator.active-indicator.color | #6750A4 |
+| Progress indicator track color | md.comp.progress-indicator.track.color | #E8DEF8 |
+| Progress indicator stop indicator color | md.comp.progress-indicator.stop-indicator.color | #6750A4 |
+
+#### Shape
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Progress indicator active indicator shape | md.comp.progress-indicator.active-indicator.shape | Shape: corner.full (Fully round, Circular) |
+
+### Progress indicator - Linear
+
+#### Color
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Progress indicator active indicator color | md.comp.progress-indicator.active-indicator.color | #6750A4 |
+| Progress indicator track color | md.comp.progress-indicator.track.color | #E8DEF8 |
+
+#### Shape
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Progress indicator container shape | md.comp.progress-indicator.container.shape | Shape: corner.none (No corner radius, Sharp) |
+
+### Progress indicator - Circular
+
+#### Color
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Progress indicator active indicator color | md.comp.progress-indicator.active-indicator.color | #6750A4 |

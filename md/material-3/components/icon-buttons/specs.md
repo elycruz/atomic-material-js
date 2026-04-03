@@ -37,6 +37,63 @@ Icon button token sets are organized by common tokens, color, and size. Select t
 
 **Note:** Learn about design tokens.
 
+### Icon button - Color - Filled
+
+#### Enabled
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Icon button filled container color | md.comp.icon-button.filled.container.color | #6750A4 |
+| Icon button filled container color - toggle (unselected) | md.comp.icon-button.filled.unselected.container.color | #F3EDF7 |
+| Icon button filled container color - toggle (selected) | md.comp.icon-button.filled.selected.container.color | #6750A4 |
+| Icon button filled icon color | md.comp.icon-button.filled.icon.color | #FFFFFF |
+| Icon button filled icon color - toggle (unselected) | md.comp.icon-button.filled.unselected.icon.color | #49454F |
+| Icon button filled icon color - toggle (selected) | md.comp.icon-button.filled.selected.icon.color | #FFFFFF |
+
+#### Disabled
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Icon button filled disabled container color | md.comp.icon-button.filled.disabled.container.color | #1D1B20 |
+| Icon button filled disabled container color - toggle (unselected) | md.comp.icon-button.filled.disabled.unselected.container.color | #1D1B20 |
+| Icon button filled disabled container color - toggle (selected) | md.comp.icon-button.filled.disabled.selected.container.color | #1D1B20 |
+| Icon button filled disabled icon color | md.comp.icon-button.filled.disabled.icon.color | #49454F |
+| Icon button filled disabled icon color - toggle (unselected) | md.comp.icon-button.filled.disabled.unselected.icon.color | #49454F |
+| Icon button filled disabled icon color - toggle (selected) | md.comp.icon-button.filled.disabled.selected.icon.color | #49454F |
+
+#### Hovered
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Icon button filled container color | md.comp.icon-button.filled.hover.container.color | #6750A4 |
+| Icon button filled container color - toggle (unselected) | md.comp.icon-button.filled.hover.unselected.container.color | #F3EDF7 |
+| Icon button filled container color - toggle (selected) | md.comp.icon-button.filled.hover.selected.container.color | #6750A4 |
+| Icon button filled icon color | md.comp.icon-button.filled.hover.icon.color | #FFFFFF |
+| Icon button filled icon color - toggle (unselected) | md.comp.icon-button.filled.hover.unselected.icon.color | #49454F |
+| Icon button filled icon color - toggle (selected) | md.comp.icon-button.filled.hover.selected.icon.color | #FFFFFF |
+
+#### Focused
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Icon button filled container color | md.comp.icon-button.filled.focus.container.color | #6750A4 |
+| Icon button filled container color - toggle (unselected) | md.comp.icon-button.filled.focus.unselected.container.color | #F3EDF7 |
+| Icon button filled container color - toggle (selected) | md.comp.icon-button.filled.focus.selected.container.color | #6750A4 |
+| Icon button filled icon color | md.comp.icon-button.filled.focus.icon.color | #FFFFFF |
+| Icon button filled icon color - toggle (unselected) | md.comp.icon-button.filled.focus.unselected.icon.color | #49454F |
+| Icon button filled icon color - toggle (selected) | md.comp.icon-button.filled.focus.selected.icon.color | #FFFFFF |
+
+#### Pressed
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Icon button filled container color | md.comp.icon-button.filled.pressed.container.color | #6750A4 |
+| Icon button filled container color - toggle (unselected) | md.comp.icon-button.filled.pressed.unselected.container.color | #F3EDF7 |
+| Icon button filled container color - toggle (selected) | md.comp.icon-button.filled.pressed.selected.container.color | #6750A4 |
+| Icon button filled icon color | md.comp.icon-button.filled.pressed.icon.color | #FFFFFF |
+| Icon button filled icon color - toggle (unselected) | md.comp.icon-button.filled.pressed.unselected.icon.color | #49454F |
+| Icon button filled icon color - toggle (selected) | md.comp.icon-button.filled.pressed.selected.icon.color | #FFFFFF |
+
 ## Anatomy
 
 - Icon

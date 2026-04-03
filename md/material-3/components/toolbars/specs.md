@@ -122,3 +122,65 @@ Bottom app bar padding and size measurements
 
 - Icon buttons and FAB
 - Icon buttons and no FAB
+
+## Token Tables
+
+### Toolbar - Color - Standard
+
+#### Enabled
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Toolbar standard container color | md.comp.toolbar.standard.container.color | #F3EDF7 |
+| Toolbar standard button container color | md.comp.toolbar.standard.button.container.color | #F3EDF7 |
+| Toolbar standard selected button container color | md.comp.toolbar.standard.selected.button.container.color | #E8DEF8 |
+| Toolbar standard icon color | md.comp.toolbar.standard.icon.color | #49454F |
+| Toolbar standard selected icon color | md.comp.toolbar.standard.selected.icon.color | #4A4458 |
+| Toolbar standard label color | md.comp.toolbar.standard.label-text.color | #49454F |
+| Toolbar standard selected label color | md.comp.toolbar.standard.selected.label-text.color | #4A4458 |
+| Toolbar standard container shape | md.comp.toolbar.standard.container.shape | Shape: corner.none (No corner, Square) |
+
+#### Disabled
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Toolbar standard disabled icon color | md.comp.toolbar.standard.disabled.icon.color | #1D1B20 |
+| Toolbar standard disabled icon opacity | md.comp.toolbar.standard.disabled.icon.opacity | 0.38 |
+| Toolbar standard disabled label color | md.comp.toolbar.standard.disabled.label-text.color | #1D1B20 |
+| Toolbar standard disabled label opacity | md.comp.toolbar.standard.disabled.label-text.opacity | 0.38 |
+
+#### Hovered
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Toolbar standard hovered state layer color | md.comp.toolbar.standard.hovered.state-layer.color | #49454F |
+| Toolbar standard selected hovered state layer color | md.comp.toolbar.standard.selected.hovered.state-layer.color | #4A4458 |
+| Toolbar standard hovered state layer opacity | md.comp.toolbar.standard.hovered.state-layer.opacity | 0.08 |
+| Toolbar standard hovered icon color | md.comp.toolbar.standard.hovered.icon.color | #49454F |
+| Toolbar standard selected hovered icon color | md.comp.toolbar.standard.selected.hovered.icon.color | #4A4458 |
+| Toolbar standard hovered label color | md.comp.toolbar.standard.hovered.label-text.color | #49454F |
+| Toolbar standard selected hovered label color | md.comp.toolbar.standard.selected.hovered.label-text.color | #4A4458 |
+
+#### Focused
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Toolbar standard focused state layer color | md.comp.toolbar.standard.focused.state-layer.color | #49454F |
+| Toolbar standard selected focused state layer color | md.comp.toolbar.standard.selected.focused.state-layer.color | #4A4458 |
+| Toolbar standard focused state layer opacity | md.comp.toolbar.standard.focused.state-layer.opacity | 0.1 |
+| Toolbar standard focused icon color | md.comp.toolbar.standard.focused.icon.color | #49454F |
+| Toolbar standard selected focused icon color | md.comp.toolbar.standard.selected.focused.icon.color | #4A4458 |
+| Toolbar standard focused label color | md.comp.toolbar.standard.focused.label-text.color | #49454F |
+| Toolbar standard selected focused label color | md.comp.toolbar.standard.selected.focused.label-text.color | #4A4458 |
+
+#### Pressed
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Toolbar standard pressed state layer color | md.comp.toolbar.standard.pressed.state-layer.color | #49454F |
+| Toolbar standard selected pressed state layer color | md.comp.toolbar.standard.selected.pressed.state-layer.color | #4A4458 |
+| Toolbar standard pressed state layer opacity | md.comp.toolbar.standard.pressed.state-layer.opacity | 0.1 |
+| Toolbar standard pressed icon color | md.comp.toolbar.standard.pressed.icon.color | #49454F |
+| Toolbar standard selected pressed icon color | md.comp.toolbar.standard.selected.pressed.icon.color | #4A4458 |
+| Toolbar standard pressed label color | md.comp.toolbar.standard.pressed.label-text.color | #49454F |
+| Toolbar standard selected pressed label color | md.comp.toolbar.standard.selected.pressed.label-text.color | #4A4458 |

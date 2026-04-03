@@ -87,3 +87,32 @@ Modal side sheet padding and size measurements:
 | Bottom actions alignment (horizontal) | Left |
 | Max-width | 400dp |
 | Margins (when detached) | 16dp |
+
+## Design Tokens
+
+### Standard Side Sheet
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Side sheet container color | md.comp.side-sheet.container.color | Surface |
+| Side sheet container shape | md.comp.side-sheet.container.shape | Shape: 0dp (No rounding) |
+| Side sheet divider color | md.comp.side-sheet.divider.color | Outline variant |
+| Side sheet headline color | md.comp.side-sheet.headline.color | On surface variant |
+| Side sheet text color | md.comp.side-sheet.text.color | On surface variant |
+
+### Modal Side Sheet
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Modal side sheet container color | md.comp.side-sheet.modal.container.color | Surface container low |
+| Modal side sheet scrim color | md.comp.side-sheet.modal.scrim.color | On surface variant |
+| Modal side sheet scrim opacity | md.comp.side-sheet.modal.scrim.opacity | 0.32 |
+| Modal side sheet container elevation | md.comp.side-sheet.modal.container.elevation | Elevation: level1 (1dp) |
+
+### Interactions
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Side sheet hovered state layer opacity | md.comp.side-sheet.hovered.state-layer.opacity | 0.08 |
+| Side sheet focused state layer opacity | md.comp.side-sheet.focused.state-layer.opacity | 0.12 |
+| Side sheet pressed state layer opacity | md.comp.side-sheet.pressed.state-layer.opacity | 0.12 |

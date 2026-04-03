@@ -187,3 +187,87 @@ Extra small and small icon buttons must have a target size of 48x48dp or larger 
 ## Baseline Tokens
 
 The baseline button token sets are organized by color and include common tokens, color, and size specifications.
+
+## Tokens & Specs
+
+### Button - Color - Filled
+
+#### Enabled
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Button filled container color | md.comp.button.filled.container.color | #6750A4 |
+| Button filled container color - toggle (unselected) | md.comp.button.filled.unselected.container.color | #F3EDF7 |
+| Button filled container color - toggle (selected) | md.comp.button.filled.selected.container.color | #6750A4 |
+| Button filled shadow color | md.comp.button.filled.container.shadow-color | #000000 |
+| Button filled elevation | md.comp.button.filled.container.elevation | Elevation: level0 (0dp) |
+| Button filled label color | md.comp.button.filled.label-text.color | #FFFFFF |
+| Button filled label color - toggle (unselected) | md.comp.button.filled.unselected.label-text.color | #49454F |
+| Button filled label color - toggle (selected) | md.comp.button.filled.selected.label-text.color | #FFFFFF |
+| Button filled icon color | md.comp.button.filled.icon.color | #FFFFFF |
+| Button filled icon color - toggle (unselected) | md.comp.button.filled.unselected.icon.color | #49454F |
+| Button filled icon color - toggle (selected) | md.comp.button.filled.selected.icon.color | #FFFFFF |
+
+#### Disabled
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Button filled container color | md.comp.button.filled.disabled.container.color | #49454F |
+| Button filled container color - toggle (unselected) | md.comp.button.filled.disabled.unselected.container.color | #49454F |
+| Button filled container color - toggle (selected) | md.comp.button.filled.disabled.selected.container.color | #49454F |
+| Button filled shadow color | md.comp.button.filled.disabled.container.shadow-color | #000000 |
+| Button filled elevation | md.comp.button.filled.disabled.container.elevation | Elevation: level0 (0dp) |
+| Button filled label color | md.comp.button.filled.disabled.label-text.color | #49454F |
+| Button filled label color - toggle (unselected) | md.comp.button.filled.disabled.unselected.label-text.color | #49454F |
+| Button filled label color - toggle (selected) | md.comp.button.filled.disabled.selected.label-text.color | #49454F |
+| Button filled icon color | md.comp.button.filled.disabled.icon.color | #49454F |
+| Button filled icon color - toggle (unselected) | md.comp.button.filled.disabled.unselected.icon.color | #49454F |
+| Button filled icon color - toggle (selected) | md.comp.button.filled.disabled.selected.icon.color | #49454F |
+
+#### Hovered
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Button filled container color | md.comp.button.filled.hover.container.color | #6750A4 |
+| Button filled container color - toggle (unselected) | md.comp.button.filled.hover.unselected.container.color | #F3EDF7 |
+| Button filled container color - toggle (selected) | md.comp.button.filled.hover.selected.container.color | #6750A4 |
+| Button filled shadow color | md.comp.button.filled.hover.container.shadow-color | #000000 |
+| Button filled elevation | md.comp.button.filled.hover.container.elevation | Elevation: level1 (1dp) |
+| Button filled label color | md.comp.button.filled.hover.label-text.color | #FFFFFF |
+| Button filled label color - toggle (unselected) | md.comp.button.filled.hover.unselected.label-text.color | #49454F |
+| Button filled label color - toggle (selected) | md.comp.button.filled.hover.selected.label-text.color | #FFFFFF |
+| Button filled icon color | md.comp.button.filled.hover.icon.color | #FFFFFF |
+| Button filled icon color - toggle (unselected) | md.comp.button.filled.hover.unselected.icon.color | #49454F |
+| Button filled icon color - toggle (selected) | md.comp.button.filled.hover.selected.icon.color | #FFFFFF |
+
+#### Focused
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Button filled container color | md.comp.button.filled.focus.container.color | #6750A4 |
+| Button filled container color - toggle (unselected) | md.comp.button.filled.focus.unselected.container.color | #F3EDF7 |
+| Button filled container color - toggle (selected) | md.comp.button.filled.focus.selected.container.color | #6750A4 |
+| Button filled shadow color | md.comp.button.filled.focus.container.shadow-color | #000000 |
+| Button filled elevation | md.comp.button.filled.focus.container.elevation | Elevation: level0 (0dp) |
+| Button filled label color | md.comp.button.filled.focus.label-text.color | #FFFFFF |
+| Button filled label color - toggle (unselected) | md.comp.button.filled.focus.unselected.label-text.color | #49454F |
+| Button filled label color - toggle (selected) | md.comp.button.filled.focus.selected.label-text.color | #FFFFFF |
+| Button filled icon color | md.comp.button.filled.focus.icon.color | #FFFFFF |
+| Button filled icon color - toggle (unselected) | md.comp.button.filled.focus.unselected.icon.color | #49454F |
+| Button filled icon color - toggle (selected) | md.comp.button.filled.focus.selected.icon.color | #FFFFFF |
+
+#### Pressed
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Button filled container color | md.comp.button.filled.pressed.container.color | #6750A4 |
+| Button filled container color - toggle (unselected) | md.comp.button.filled.pressed.unselected.container.color | #F3EDF7 |
+| Button filled container color - toggle (selected) | md.comp.button.filled.pressed.selected.container.color | #6750A4 |
+| Button filled shadow color | md.comp.button.filled.pressed.container.shadow-color | #000000 |
+| Button filled elevation | md.comp.button.filled.pressed.container.elevation | Elevation: level0 (0dp) |
+| Button filled label color | md.comp.button.filled.pressed.label-text.color | #FFFFFF |
+| Button filled label color - toggle (unselected) | md.comp.button.filled.pressed.unselected.label-text.color | #49454F |
+| Button filled label color - toggle (selected) | md.comp.button.filled.pressed.selected.label-text.color | #FFFFFF |
+| Button filled icon color | md.comp.button.filled.pressed.icon.color | #FFFFFF |
+| Button filled icon color - toggle (unselected) | md.comp.button.filled.pressed.unselected.icon.color | #49454F |
+| Button filled icon color - toggle (selected) | md.comp.button.filled.pressed.selected.icon.color | #FFFFFF |

@@ -29,6 +29,33 @@ Use the table's menu to switch token sets. The FAB menu has a common token set a
 
 **Note:** Learn about design tokens.
 
+### FAB Menu
+
+#### Close button
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| FAB menu close button container height | md.comp.fab-menu.close-button.container.height | 56dp |
+| FAB menu close width | md.comp.fab-menu.close-button.container.width | 56dp |
+| FAB menu close button icon size | md.comp.fab-menu.close-button.icon.size | 20dp |
+| FAB menu close button container elevation | md.comp.fab-menu.close-button.container.elevation | Elevation: level3 (3dp) |
+| FAB menu close button container shape | md.comp.fab-menu.close-button.container.shape | Shape: corner.full (Fully round, Circular) |
+| FAB menu close button between space | md.comp.fab-menu.close-button.between-space | 8dp |
+
+#### List item
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| FAB menu - menu item container height | md.comp.fab-menu.menu-item.container.height | 56dp |
+| FAB menu - menu item label text | md.comp.fab-menu.menu-item.label-text | Font: Roboto 500 14pt/20pt tracking 0.1pt |
+| FAB menu - menu item icon size | md.comp.fab-menu.menu-item.icon.size | 24dp |
+| FAB menu - menu item container elevation | md.comp.fab-menu.menu-item.container.elevation | Elevation: level3 (3dp) |
+| FAB menu - menu item between icon text space | md.comp.fab-menu.menu-item.between-icon-text-space | 12dp |
+| FAB menu - menu item text trailing space | md.comp.fab-menu.menu-item.text-trailing-space | 12dp |
+| FAB menu - menu item container shape | md.comp.fab-menu.menu-item.container.shape | Shape: corner.md (Medium, 12dp) |
+| FAB menu - menu item spacing | md.comp.fab-menu.menu-item.spacing | 12dp |
+| FAB menu - menu item container width | md.comp.fab-menu.menu-item.container.width | Dynamic |
+
 ## Anatomy
 
 - Close button

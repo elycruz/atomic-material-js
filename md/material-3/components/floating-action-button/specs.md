@@ -41,6 +41,44 @@ Use the table's menu to select a token set. FAB tokens are organized by size and
 | FAB medium icon size | 28dp |
 | FAB medium container shape | -- |
 
+### FAB - Color - Tonal Primary
+
+#### Enabled
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| FAB tonal primary container color | md.comp.fab.primary-container.container.color | #EADDFF |
+| FAB tonal primary container shadow color | md.comp.fab.primary-container.container.shadow-color | #000000 |
+| FAB tonal primary container elevation | md.comp.fab.primary-container.container.elevation | Elevation: level3 (3dp) |
+| FAB tonal primary icon color | md.comp.fab.primary-container.icon.color | #4F378B |
+
+#### Hovered
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| FAB tonal primary hovered container elevation | md.comp.fab.primary-container.hovered.container.elevation | Elevation: level4 (4dp) |
+| FAB tonal primary hovered state layer color | md.comp.fab.primary-container.hovered.state-layer.color | #4F378B |
+| FAB tonal primary hovered state layer opacity | md.comp.fab.primary-container.hovered.state-layer.opacity | 0.08 |
+| FAB tonal primary hovered icon color | md.comp.fab.primary-container.hovered.icon.color | #4F378B |
+
+#### Focused
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| FAB tonal primary focused container elevation | md.comp.fab.primary-container.focus.container.elevation | Elevation: level3 (3dp) |
+| FAB tonal primary focused state layer color | md.comp.fab.primary-container.focus.state-layer.color | #4F378B |
+| FAB tonal primary focused state layer opacity | md.comp.fab.primary-container.focus.state-layer.opacity | 0.1 |
+| FAB tonal primary focused icon color | md.comp.fab.primary-container.focus.icon.color | #4F378B |
+
+#### Pressed
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| FAB tonal primary pressed container elevation | md.comp.fab.primary-container.pressed.container.elevation | Elevation: level3 (3dp) |
+| FAB tonal primary pressed state layer color | md.comp.fab.primary-container.pressed.state-layer.color | #4F378B |
+| FAB tonal primary pressed state layer opacity | md.comp.fab.primary-container.pressed.state-layer.opacity | 0.1 |
+| FAB tonal primary pressed icon color | md.comp.fab.primary-container.pressed.icon.color | #4F378B |
+
 ## Anatomy
 
 1. Container

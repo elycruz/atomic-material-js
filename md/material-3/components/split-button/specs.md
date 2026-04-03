@@ -107,3 +107,80 @@ The inner corner radius changes depending on button sizing. The space should alw
 - Medium: 4dp
 - Large: 8dp
 - Extra large: 12dp
+
+## Token Specifications
+
+### Split button - Size - Xsmall
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Split button xsmall container height | md.comp.split-button.xsmall.container.height | 32dp |
+| Split button xsmall between space | md.comp.split-button.xsmall.between-space | 2dp |
+| Split button xsmall container shape | md.comp.split-button.xsmall.container.shape |  |
+| Split button xsmall inner corner size | md.comp.split-button.xsmall.inner-corner.corner-size | 4dp |
+| Split button xsmall outer corner size | md.comp.split-button.xsmall.outer-corner.corner-size | 50% |
+| Split button xsmall leading button leading space | md.comp.split-button.xsmall.leading-button.leading-space | 12dp |
+| Split button xsmall leading button trailing space | md.comp.split-button.xsmall.leading-button.trailing-space | 10dp |
+| Split button xsmall trailing button icon size | md.comp.split-button.xsmall.trailing-button.icon.size | 22dp |
+| Split button xsmall trailing button leading space | md.comp.split-button.xsmall.trailing-button.leading-space | 13dp |
+| Split button xsmall trailing button trailing space | md.comp.split-button.xsmall.trailing-button.trailing-space | 13dp |
+
+### Split button - Size - Small
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Split button small container height | md.comp.split-button.small.container.height | 36dp |
+| Split button small between space | md.comp.split-button.small.between-space | 2dp |
+| Split button small container shape | md.comp.split-button.small.container.shape |  |
+| Split button small inner corner size | md.comp.split-button.small.inner-corner.corner-size | 4dp |
+| Split button small outer corner size | md.comp.split-button.small.outer-corner.corner-size | 50% |
+| Split button small leading button leading space | md.comp.split-button.small.leading-button.leading-space | 12dp |
+| Split button small leading button trailing space | md.comp.split-button.small.leading-button.trailing-space | 10dp |
+| Split button small trailing button icon size | md.comp.split-button.small.trailing-button.icon.size | 24dp |
+| Split button small trailing button leading space | md.comp.split-button.small.trailing-button.leading-space | 11dp |
+| Split button small trailing button trailing space | md.comp.split-button.small.trailing-button.trailing-space | 11dp |
+
+### Split button - Size - Medium
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Split button medium container height | md.comp.split-button.medium.container.height | 40dp |
+| Split button medium between space | md.comp.split-button.medium.between-space | 2dp |
+| Split button medium container shape | md.comp.split-button.medium.container.shape |  |
+| Split button medium inner corner size | md.comp.split-button.medium.inner-corner.corner-size | 4dp |
+| Split button medium outer corner size | md.comp.split-button.medium.outer-corner.corner-size | 50% |
+| Split button medium leading button leading space | md.comp.split-button.medium.leading-button.leading-space | 12dp |
+| Split button medium leading button trailing space | md.comp.split-button.medium.leading-button.trailing-space | 10dp |
+| Split button medium trailing button icon size | md.comp.split-button.medium.trailing-button.icon.size | 24dp |
+| Split button medium trailing button leading space | md.comp.split-button.medium.trailing-button.leading-space | 12dp |
+| Split button medium trailing button trailing space | md.comp.split-button.medium.trailing-button.trailing-space | 12dp |
+
+### Split button - Size - Large
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Split button large container height | md.comp.split-button.large.container.height | 48dp |
+| Split button large between space | md.comp.split-button.large.between-space | 2dp |
+| Split button large container shape | md.comp.split-button.large.container.shape |  |
+| Split button large inner corner size | md.comp.split-button.large.inner-corner.corner-size | 8dp |
+| Split button large outer corner size | md.comp.split-button.large.outer-corner.corner-size | 50% |
+| Split button large leading button leading space | md.comp.split-button.large.leading-button.leading-space | 16dp |
+| Split button large leading button trailing space | md.comp.split-button.large.leading-button.trailing-space | 12dp |
+| Split button large trailing button icon size | md.comp.split-button.large.trailing-button.icon.size | 24dp |
+| Split button large trailing button leading space | md.comp.split-button.large.trailing-button.leading-space | 16dp |
+| Split button large trailing button trailing space | md.comp.split-button.large.trailing-button.trailing-space | 16dp |
+
+### Split button - Size - Xlarge
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Split button xlarge container height | md.comp.split-button.xlarge.container.height | 56dp |
+| Split button xlarge between space | md.comp.split-button.xlarge.between-space | 2dp |
+| Split button xlarge container shape | md.comp.split-button.xlarge.container.shape |  |
+| Split button xlarge inner corner size | md.comp.split-button.xlarge.inner-corner.corner-size | 12dp |
+| Split button xlarge outer corner size | md.comp.split-button.xlarge.outer-corner.corner-size | 50% |
+| Split button xlarge leading button leading space | md.comp.split-button.xlarge.leading-button.leading-space | 16dp |
+| Split button xlarge leading button trailing space | md.comp.split-button.xlarge.leading-button.trailing-space | 12dp |
+| Split button xlarge trailing button icon size | md.comp.split-button.xlarge.trailing-button.icon.size | 24dp |
+| Split button xlarge trailing button leading space | md.comp.split-button.xlarge.trailing-button.leading-space | 16dp |
+| Split button xlarge trailing button trailing space | md.comp.split-button.xlarge.trailing-button.trailing-space | 16dp |

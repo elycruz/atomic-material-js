@@ -47,3 +47,29 @@ Bottom sheets span the full window width up to 640dp. When the window width exce
 | Start/end margin (window width > 640dp) | 56dp |
 | Width | Full width, up to max-width 640dp |
 | Height | Variable |
+
+## Design Tokens
+
+### Bottom Sheet Container
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Bottom sheet container color | md.comp.bottom-sheet.container.color | Surface container low |
+| Bottom sheet container shape | md.comp.bottom-sheet.container.shape | Shape: corner.large (16dp rounded corners) |
+| Bottom sheet container elevation | md.comp.bottom-sheet.container.elevation | Elevation: level1 (1dp) |
+| Bottom sheet scrim color | md.comp.bottom-sheet.scrim.color | On surface variant |
+| Bottom sheet scrim opacity | md.comp.bottom-sheet.scrim.opacity | 0.32 |
+
+### Drag Handle
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Bottom sheet drag handle color | md.comp.bottom-sheet.drag-handle.color | On surface variant |
+| Bottom sheet drag handle size | md.comp.bottom-sheet.drag-handle.size | 4dp x 32dp |
+| Bottom sheet drag handle opacity | md.comp.bottom-sheet.drag-handle.opacity | 0.4 |
+
+### Standard (Non-Modal)
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Standard bottom sheet scrim display | md.comp.bottom-sheet.standard.scrim.display | None |

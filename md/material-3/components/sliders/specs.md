@@ -102,3 +102,40 @@ Padding and size measurements for XS, S, M, L, and XL sliders:
 | Handle width | 4dp | 4dp | 4dp | 4dp | 4dp |
 | Track shape | 8dp | 8dp | 12dp | 16dp | 28dp |
 | Inset icon size | - | - | 24dp | 24dp | 32dp |
+
+## Design Tokens
+
+### Slider Track - Enabled
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Slider active track color | md.comp.slider.active.track.color | Primary |
+| Slider inactive track color | md.comp.slider.inactive.track.color | On primary |
+| Slider track height | md.comp.slider.track.height | 4dp |
+| Slider track shape | md.comp.slider.track.shape | Shape: corner.full (Fully round) |
+
+### Slider Handle
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Slider handle color | md.comp.slider.handle.color | Primary |
+| Slider handle height | md.comp.slider.handle.height | 4dp |
+| Slider handle width | md.comp.slider.handle.width | 4dp |
+
+### Slider States
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Slider hovered state layer opacity | md.comp.slider.hovered.state-layer.opacity | 0.08 |
+| Slider focused state layer opacity | md.comp.slider.focused.state-layer.opacity | 0.12 |
+| Slider pressed state layer opacity | md.comp.slider.pressed.state-layer.opacity | 0.12 |
+| Slider disabled track color | md.comp.slider.disabled.track.color | On surface |
+| Slider disabled track opacity | md.comp.slider.disabled.track.opacity | 0.38 |
+
+### Value Indicator
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Slider value indicator background color | md.comp.slider.value-indicator.background.color | Inverse surface |
+| Slider value indicator text color | md.comp.slider.value-indicator.text.color | Inverse on surface |
+| Slider value indicator shape | md.comp.slider.value-indicator.shape | Shape: corner.full (Fully round) |

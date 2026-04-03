@@ -75,3 +75,33 @@ Navigation drawer states:
 | Right padding | 28dp |
 | Active indicator padding | 12dp |
 | Padding between elements | 0dp |
+
+## Navigation Drawer Token Sets
+
+### Navigation drawers (baseline)
+
+#### Enabled
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Navigation drawer container color | md.comp.navigation-drawer.container.color | #FFFBFE |
+| Navigation drawer icon color | md.comp.navigation-drawer.icon.color | #49454F |
+| Navigation drawer label text color | md.comp.navigation-drawer.label-text.color | #1D1B20 |
+
+#### Hovered
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Navigation drawer hover state layer opacity | md.comp.navigation-drawer.hover.state-layer.opacity | 8% |
+
+#### Focused
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Navigation drawer focused state layer opacity | md.comp.navigation-drawer.focused.state-layer.opacity | 10% |
+
+#### Pressed (ripple)
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Navigation drawer ripple color | md.comp.navigation-drawer.ripple.color | #6750A4 |

@@ -153,3 +153,36 @@ Unfocused search bar margin measurements. Focused search bar margin measurements
 ### Divided style
 
 Full-screen search padding and size measurements for divided style. Docked search padding and size measurements for divided style.
+
+## Design Tokens
+
+### Search Bar - Enabled
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Search bar container color | md.comp.search.bar.container.color | Surface container high |
+| Search bar text color | md.comp.search.bar.text.color | On surface |
+| Search bar leading icon color | md.comp.search.bar.leading.icon.color | On surface variant |
+| Search bar trailing icon color | md.comp.search.bar.trailing.icon.color | On surface variant |
+| Search bar hint text color | md.comp.search.bar.hint-text.color | On surface variant |
+
+### Search Bar - Hovered
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Search bar hovered state layer color | md.comp.search.bar.hovered.state-layer.color | On surface |
+| Search bar hovered state layer opacity | md.comp.search.bar.hovered.state-layer.opacity | 0.08 |
+
+### Search Bar - Focused
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Search bar focused state layer opacity | md.comp.search.bar.focused.state-layer.opacity | 0.12 |
+
+### Search View Container
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Search view container color | md.comp.search.view.container.color | Surface container low |
+| Search view container elevation | md.comp.search.view.container.elevation | Elevation: level1 (1dp) |
+| Search surface tint layer color | md.comp.search.surface-tint.color | #6750A4 |

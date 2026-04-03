@@ -34,6 +34,16 @@ Standard and connected button group tokens are organized by size. Select the var
 
 **Note:** Go to the button and icon button pages to view their tokens. Learn about design tokens.
 
+### Button group standard - Size - Xsmall
+
+#### Pressed
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Button group xsmall pressed motion spring dampening | md.comp.button-group.standard.xsmall.pressed.item.width.motion.spring.dampening | 0.9 |
+| Button group xsmall pressed motion spring stiffness | md.comp.button-group.standard.xsmall.pressed.item.width.motion.spring.stiffness | 1400 |
+| Button group xsmall pressed width multiplier | md.comp.button-group.standard.xsmall.pressed.item.width.multiplier | 15% |
+
 ## Anatomy
 
 Button groups are invisible containers that add padding between buttons and modify button shape. They don't contain any buttons by default.

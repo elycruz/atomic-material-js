@@ -45,3 +45,86 @@ Dialogs use the following color roles:
 - Supporting text: 16sp
 - Button text: 14sp
 - Body text: 14sp
+
+## Dialog Tokens
+
+### Dialog - Basic
+
+#### Enabled / Container
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Dialog container color | md.comp.dialog.container.color | #FFFBFE |
+| Dialog container elevation | md.comp.dialog.container.elevation |  |
+| Dialog container shape | md.comp.dialog.container.shape |  |
+| Dialog container shadow color | md.comp.dialog.container.shadow-color | #000000 |
+| Dialog surface tint layer color | md.comp.dialog.surface-tint-layer.color | #6750A4 |
+
+#### Enabled / Headline
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Dialog headline color | md.comp.dialog.headline.color | #1C1B1F |
+
+#### Enabled / Supporting text
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Dialog supporting text color | md.comp.dialog.supporting-text.color | #49454E |
+
+#### Hovered / Container
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Dialog hover container elevation | md.comp.dialog.hover.container.elevation |  |
+
+#### Focused / Container
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Dialog focus container elevation | md.comp.dialog.focus.container.elevation |  |
+
+#### Pressed (ripple) / Container
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Dialog pressed container elevation | md.comp.dialog.pressed.container.elevation |  |
+
+### Dialog - Full Screen
+
+#### Enabled / Container
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Dialog fullscreen container color | md.comp.dialog-fullscreen.container.color | #FFFBFE |
+| Dialog fullscreen surface tint layer color | md.comp.dialog-fullscreen.surface-tint-layer.color | #6750A4 |
+
+#### Enabled / Headline
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Dialog fullscreen headline color | md.comp.dialog-fullscreen.headline.color | #1C1B1F |
+
+#### Enabled / Supporting text
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Dialog fullscreen supporting text color | md.comp.dialog-fullscreen.supporting-text.color | #49454E |
+
+#### Hovered / Container
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Dialog fullscreen hover container elevation | md.comp.dialog-fullscreen.hover.container.elevation |  |
+
+#### Focused / Container
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Dialog fullscreen focus container elevation | md.comp.dialog-fullscreen.focus.container.elevation |  |
+
+#### Pressed (ripple) / Container
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Dialog fullscreen pressed container elevation | md.comp.dialog-fullscreen.pressed.container.elevation |  |

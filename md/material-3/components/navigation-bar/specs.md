@@ -85,3 +85,30 @@ Navigation bar width and margins for compact and medium windows.
 - 3 destinations
 - 4 destinations
 - 5 destinations
+
+## Navigation Bar Token Sets
+
+### Nav bar - Common
+
+#### Color
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Nav bar container color | md.comp.navigation-bar.container.color | #FFFBFE |
+| Nav bar icon color | md.comp.navigation-bar.icon.color | #49454F |
+| Nav bar label text color | md.comp.navigation-bar.label-text.color | #49454F |
+| Nav bar active icon color | md.comp.navigation-bar.active-indicator.color | #6750A4 |
+
+#### Nav item
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Nav bar nav item hover state layer opacity | md.comp.navigation-bar.nav-item.hover.state-layer.opacity | 8% |
+| Nav bar nav item pressed state layer opacity | md.comp.navigation-bar.nav-item.pressed.state-layer.opacity | 10% |
+
+#### Container
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Nav bar container height | md.comp.navigation-bar.container.height | 80dp |
+| Nav bar container shape | md.comp.navigation-bar.container.shape | Shape: corner.none (No corner radius, Sharp) |

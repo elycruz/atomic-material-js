@@ -46,3 +46,14 @@ This color provides a subtle separation while maintaining visual hierarchy.
 
 - Default: Visible state
 - No interactive states (dividers are non-interactive elements)
+
+## Divider Token Sets
+
+### Divider
+
+#### Enabled / Container
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Divider thickness | md.comp.divider.thickness | 1dp |
+| Divider color | md.comp.divider.color | #CAC4D0 |

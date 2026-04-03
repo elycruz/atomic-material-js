@@ -173,3 +173,91 @@ Medium top app bar color roles used for light and dark schemes:
 - On surface
 - On surface
 - On surface variant
+
+## Tokens & Specs
+
+### App bar - Common
+
+#### Color
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| App bar container color | md.comp.app-bar.container.color | #FEF7FF |
+| Search container color | md.comp.app-bar.search.container.color | #F3EDF7 |
+| Search label color | md.comp.app-bar.search.label.color | #49454F |
+| App bar container color on scroll | md.comp.app-bar.on-scroll.container.color | #F3EDF7 |
+| Search container color on scroll | md.comp.app-bar.search.on-scroll.container.color | #E6E0E9 |
+| App bar container elevation | md.comp.app-bar.container.elevation | Elevation: level0 (0dp) |
+| App bar container elevation on scroll | md.comp.app-bar.on-scroll.container.elevation | Elevation: level1 (1dp) |
+| App bar title text | md.comp.app-bar.title.color | #1D1B20 |
+| App bar subtitle text | md.comp.app-bar.subtitle.color | #49454F |
+| App bar leading icon | md.comp.app-bar.leading-icon.color | #1D1B20 |
+| App bar trailing icon | md.comp.app-bar.trailing-icon.color | #49454F |
+
+#### Spacing
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| App bar left padding | md.comp.app-bar.leading-space | 4dp |
+| App bar right padding | md.comp.app-bar.trailing-space | 4dp |
+| App bar icon spacing | md.comp.app-bar.icon-button-space | 0dp |
+| Search left padding | md.comp.app-bar.search.leading-space | 8dp |
+| Search right padding | md.comp.app-bar.search.trailing-space | 8dp |
+
+#### Shape
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| App bar container shape | md.comp.app-bar.container.shape | Shape: corner.none (No shape, Sharp) |
+
+#### Size
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| App bar avatar size | md.comp.app-bar.avatar.size | 32dp |
+| App bar icon size | md.comp.app-bar.icon.size | 24dp |
+
+### App bar - Size - Small
+
+#### Size
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| App bar small container height | md.comp.app-bar.small.container.height | 64dp |
+
+### App bar - Size - Medium Flexible
+
+#### Size
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| App bar medium flexible container height | md.comp.app-bar.medium-flexible.container.height | 80dp |
+| App bar medium flexible title font | md.comp.app-bar.medium-flexible.title.font | Font: Roboto 500 28pt/34pt tracking 0pt |
+
+### App bar - Size - Large Flexible
+
+#### Size
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| App bar large flexible container height | md.comp.app-bar.large-flexible.container.height | 152dp |
+| App bar large flexible title font | md.comp.app-bar.large-flexible.title.font | Font: Roboto 400 32pt/40pt tracking 0pt |
+
+### Search - View
+
+#### Color
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Search view container surface tint layer color | md.comp.search-view.container.surface-tint-layer.color | #6750A4 |
+
+### App bar - Size - Medium (baseline)
+
+#### Size
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| App bar medium container height | md.comp.app-bar.medium.container.height | 112dp |
+| App bar medium title font | md.comp.app-bar.medium.title.font | Font: Roboto 500 24pt/28pt tracking 0pt |
+| App bar medium icon button size | md.comp.app-bar.medium.icon.size | 24dp |
+| App bar medium subtitle font | md.comp.app-bar.medium.subtitle.font | Font: Roboto 400 16pt/24pt tracking 0.5pt |

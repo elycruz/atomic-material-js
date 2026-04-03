@@ -238,3 +238,276 @@ Baseline menu padding and size measurements:
 A baseline menu appears when a person interacts with a button, action, or other control. A few examples: Button, Text field, Icon button, Selected text
 
 ![Examples of 4 baseline menu inputs.](https://lh3.googleusercontent.com/qaQR6Vom4qUYAtiLZOaGC34kpj4PCzx3--sowDis88NJ1VOQiwhipAIlwryE8_cYmOrso8ZXJ8O56o-PeU4ZC0SvopP5Ej5WB23rBIQmn9kL=s0)
+
+## Tokens & Specs
+
+### Menu (baseline)
+
+#### Enabled
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Menu container color | md.comp.menu.container.color | #F3EDF7 |
+| Menu container shape | md.comp.menu.container.shape |  |
+| Menu container shadow color | md.comp.menu.container.shadow-color | #000000 |
+| Menu container elevation | md.comp.menu.container.elevation |  |
+
+#### Enabled / Container
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Menu list item selected label text color | md.comp.menu.list-item.selected.label-text.color | #4A4458 |
+| Menu list item with leading icon - icon color | md.comp.menu.list-item.selected.with-leading-icon.leading-icon.color | #4A4458 |
+| Menu list item with trailing icon - icon color | md.comp.menu.list-item.selected.with-leading-icon.trailing-icon.color | #4A4458 |
+| Menu container surface tint layer color | md.comp.menu.container.surface-tint-layer.color | #6750A4 |
+| Menu list item container height | md.comp.menu.list-item.container.height | 48.0dp |
+| Menu list item label text font | md.comp.menu.list-item.label-text.font |  |
+| Menu list item label text size | md.comp.menu.list-item.label-text.size | 14.0dp |
+| Menu list item label text line height | md.comp.menu.list-item.label-text.line-height | 20.0dp |
+| Menu list item label text letter spacing | md.comp.menu.list-item.label-text.letter-spacing | 0.1dp |
+| Menu list item label text weight | md.comp.menu.list-item.label-text.weight |  |
+| Menu list item leading icon size | md.comp.menu.list-item.leading-icon.size | 24.0dp |
+| Menu list item trailing icon size | md.comp.menu.list-item.trailing-icon.size | 24.0dp |
+| Menu container shape | md.comp.menu.container.shape |  |
+| Menu list item leading icon color | md.comp.menu.list-item.leading-icon.color | #704B72 |
+| Menu list item trailing icon color | md.comp.menu.list-item.trailing-icon.color | #704B72 |
+
+#### Disabled
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Menu list item label text color | md.comp.menu.list-item.label-text.color | #4A4458 |
+| Menu list item with leading icon - icon color | md.comp.menu.list-item.with-leading-icon.leading-icon.color | #704B72 |
+| Menu list item with trailing icon - icon color | md.comp.menu.list-item.with-trailing-icon.trailing-icon.color | #704B72 |
+
+#### Hover
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Menu list item state layer color | md.comp.menu.list-item.state-layer.color | #1F1B1F |
+| Menu list item state layer opacity | md.comp.menu.list-item.state-layer.opacity | 0.08 |
+
+#### Focus
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Menu list item state layer color | md.comp.menu.list-item.state-layer.color | #1F1B1F |
+| Menu list item state layer opacity | md.comp.menu.list-item.state-layer.opacity | 0.12 |
+
+#### Pressed
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Menu list item state layer color | md.comp.menu.list-item.state-layer.color | #1F1B1F |
+| Menu list item state layer opacity | md.comp.menu.list-item.state-layer.opacity | 0.12 |
+
+#### Focus indicator
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Menu list item focus indicator color | md.comp.menu.list-item.focus-indicator.color | #6750A4 |
+| Menu list item focus indicator width | md.comp.menu.list-item.focus-indicator.width | 3.0dp |
+
+### Menus - Common
+
+#### Enabled
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Menu container color | md.comp.menu.container.color | #FFFBFE |
+| Menu container shape | md.comp.menu.container.shape |  |
+| Menu container shadow color | md.comp.menu.container.shadow-color | #000000 |
+| Menu container elevation | md.comp.menu.container.elevation |  |
+
+#### Enabled / Container
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Menu list item selected label text color | md.comp.menu.list-item.selected.label-text.color | #1D192B |
+| Menu list item with leading icon - icon color | md.comp.menu.list-item.selected.with-leading-icon.leading-icon.color | #1D192B |
+| Menu list item with trailing icon - icon color | md.comp.menu.list-item.selected.with-leading-icon.trailing-icon.color | #1D192B |
+| Menu container surface tint layer color | md.comp.menu.container.surface-tint-layer.color | #6750A4 |
+| Menu list item container height | md.comp.menu.list-item.container.height | 56.0dp |
+| Menu list item label text font | md.comp.menu.list-item.label-text.font |  |
+| Menu list item label text size | md.comp.menu.list-item.label-text.size | 14.0dp |
+| Menu list item label text line height | md.comp.menu.list-item.label-text.line-height | 20.0dp |
+| Menu list item label text letter spacing | md.comp.menu.list-item.label-text.letter-spacing | 0.1dp |
+| Menu list item label text weight | md.comp.menu.list-item.label-text.weight |  |
+| Menu list item leading icon size | md.comp.menu.list-item.leading-icon.size | 24.0dp |
+| Menu list item trailing icon size | md.comp.menu.list-item.trailing-icon.size | 24.0dp |
+| Menu container shape | md.comp.menu.container.shape |  |
+| Menu list item leading icon color | md.comp.menu.list-item.leading-icon.color | #49454E |
+| Menu list item trailing icon color | md.comp.menu.list-item.trailing-icon.color | #49454E |
+| Menu list item label text color | md.comp.menu.list-item.label-text.color | #1D192B |
+
+#### Disabled
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Menu list item label text color | md.comp.menu.list-item.label-text.color | #1D192B |
+| Menu list item with leading icon - icon color | md.comp.menu.list-item.with-leading-icon.leading-icon.color | #49454E |
+| Menu list item with trailing icon - icon color | md.comp.menu.list-item.with-trailing-icon.trailing-icon.color | #49454E |
+
+#### Hover
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Menu list item state layer color | md.comp.menu.list-item.state-layer.color | #1D192B |
+| Menu list item state layer opacity | md.comp.menu.list-item.state-layer.opacity | 0.08 |
+
+#### Focus
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Menu list item state layer color | md.comp.menu.list-item.state-layer.color | #1D192B |
+| Menu list item state layer opacity | md.comp.menu.list-item.state-layer.opacity | 0.12 |
+
+#### Pressed
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Menu list item state layer color | md.comp.menu.list-item.state-layer.color | #1D192B |
+| Menu list item state layer opacity | md.comp.menu.list-item.state-layer.opacity | 0.12 |
+
+#### Focus indicator
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Menu list item focus indicator color | md.comp.menu.list-item.focus-indicator.color | #6750A4 |
+| Menu list item focus indicator width | md.comp.menu.list-item.focus-indicator.width | 3.0dp |
+
+### Menus - Color - Vibrant
+
+#### Enabled
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Menu container color | md.comp.menu.container.color | #FFFBFE |
+| Menu container shape | md.comp.menu.container.shape |  |
+| Menu container shadow color | md.comp.menu.container.shadow-color | #000000 |
+| Menu container elevation | md.comp.menu.container.elevation |  |
+
+#### Enabled / Container
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Menu list item selected label text color | md.comp.menu.list-item.selected.label-text.color | #FFFFFF |
+| Menu list item with leading icon - icon color | md.comp.menu.list-item.selected.with-leading-icon.leading-icon.color | #FFFFFF |
+| Menu list item with trailing icon - icon color | md.comp.menu.list-item.selected.with-leading-icon.trailing-icon.color | #FFFFFF |
+| Menu container surface tint layer color | md.comp.menu.container.surface-tint-layer.color | #6750A4 |
+| Menu list item container height | md.comp.menu.list-item.container.height | 56.0dp |
+| Menu list item label text font | md.comp.menu.list-item.label-text.font |  |
+| Menu list item label text size | md.comp.menu.list-item.label-text.size | 14.0dp |
+| Menu list item label text line height | md.comp.menu.list-item.label-text.line-height | 20.0dp |
+| Menu list item label text letter spacing | md.comp.menu.list-item.label-text.letter-spacing | 0.1dp |
+| Menu list item label text weight | md.comp.menu.list-item.label-text.weight |  |
+| Menu list item leading icon size | md.comp.menu.list-item.leading-icon.size | 24.0dp |
+| Menu list item trailing icon size | md.comp.menu.list-item.trailing-icon.size | 24.0dp |
+| Menu container shape | md.comp.menu.container.shape |  |
+| Menu list item leading icon color | md.comp.menu.list-item.leading-icon.color | #7D5260 |
+| Menu list item trailing icon color | md.comp.menu.list-item.trailing-icon.color | #7D5260 |
+| Menu list item label text color | md.comp.menu.list-item.label-text.color | #7D5260 |
+
+#### Disabled
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Menu list item label text color | md.comp.menu.list-item.label-text.color | #7D5260 |
+| Menu list item with leading icon - icon color | md.comp.menu.list-item.with-leading-icon.leading-icon.color | #7D5260 |
+| Menu list item with trailing icon - icon color | md.comp.menu.list-item.with-trailing-icon.trailing-icon.color | #7D5260 |
+
+#### Hover
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Menu list item state layer color | md.comp.menu.list-item.state-layer.color | #7D5260 |
+| Menu list item state layer opacity | md.comp.menu.list-item.state-layer.opacity | 0.08 |
+
+#### Focus
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Menu list item state layer color | md.comp.menu.list-item.state-layer.color | #7D5260 |
+| Menu list item state layer opacity | md.comp.menu.list-item.state-layer.opacity | 0.12 |
+
+#### Pressed
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Menu list item state layer color | md.comp.menu.list-item.state-layer.color | #7D5260 |
+| Menu list item state layer opacity | md.comp.menu.list-item.state-layer.opacity | 0.12 |
+
+#### Focus indicator
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Menu list item focus indicator color | md.comp.menu.list-item.focus-indicator.color | #7D5260 |
+| Menu list item focus indicator width | md.comp.menu.list-item.focus-indicator.width | 3.0dp |
+
+### Menus - Color - Standard
+
+#### Enabled
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Menu container color | md.comp.menu.container.color | #FFFBFE |
+| Menu container shape | md.comp.menu.container.shape |  |
+| Menu container shadow color | md.comp.menu.container.shadow-color | #000000 |
+| Menu container elevation | md.comp.menu.container.elevation |  |
+
+#### Enabled / Container
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Menu list item selected label text color | md.comp.menu.list-item.selected.label-text.color | #1D192B |
+| Menu list item with leading icon - icon color | md.comp.menu.list-item.selected.with-leading-icon.leading-icon.color | #1D192B |
+| Menu list item with trailing icon - icon color | md.comp.menu.list-item.selected.with-leading-icon.trailing-icon.color | #1D192B |
+| Menu container surface tint layer color | md.comp.menu.container.surface-tint-layer.color | #6750A4 |
+| Menu list item container height | md.comp.menu.list-item.container.height | 56.0dp |
+| Menu list item label text font | md.comp.menu.list-item.label-text.font |  |
+| Menu list item label text size | md.comp.menu.list-item.label-text.size | 14.0dp |
+| Menu list item label text line height | md.comp.menu.list-item.label-text.line-height | 20.0dp |
+| Menu list item label text letter spacing | md.comp.menu.list-item.label-text.letter-spacing | 0.1dp |
+| Menu list item label text weight | md.comp.menu.list-item.label-text.weight |  |
+| Menu list item leading icon size | md.comp.menu.list-item.leading-icon.size | 24.0dp |
+| Menu list item trailing icon size | md.comp.menu.list-item.trailing-icon.size | 24.0dp |
+| Menu container shape | md.comp.menu.container.shape |  |
+| Menu list item leading icon color | md.comp.menu.list-item.leading-icon.color | #49454E |
+| Menu list item trailing icon color | md.comp.menu.list-item.trailing-icon.color | #49454E |
+| Menu list item label text color | md.comp.menu.list-item.label-text.color | #1D192B |
+
+#### Disabled
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Menu list item label text color | md.comp.menu.list-item.label-text.color | #1D192B |
+| Menu list item with leading icon - icon color | md.comp.menu.list-item.with-leading-icon.leading-icon.color | #49454E |
+| Menu list item with trailing icon - icon color | md.comp.menu.list-item.with-trailing-icon.trailing-icon.color | #49454E |
+
+#### Hover
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Menu list item state layer color | md.comp.menu.list-item.state-layer.color | #1D192B |
+| Menu list item state layer opacity | md.comp.menu.list-item.state-layer.opacity | 0.08 |
+
+#### Focus
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Menu list item state layer color | md.comp.menu.list-item.state-layer.color | #1D192B |
+| Menu list item state layer opacity | md.comp.menu.list-item.state-layer.opacity | 0.12 |
+
+#### Pressed
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Menu list item state layer color | md.comp.menu.list-item.state-layer.color | #1D192B |
+| Menu list item state layer opacity | md.comp.menu.list-item.state-layer.opacity | 0.12 |
+
+#### Focus indicator
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Menu list item focus indicator color | md.comp.menu.list-item.focus-indicator.color | #6750A4 |
+| Menu list item focus indicator width | md.comp.menu.list-item.focus-indicator.width | 3.0dp |

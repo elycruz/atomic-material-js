@@ -87,3 +87,30 @@ Configurations include:
 - Active nav rail no label - small badge
 - Active nav rail no label - large badge
 - Active nav rail no label - large badge max character count
+
+## Tokens & Specs
+
+### Badges
+
+#### Enabled / Container
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Badge color | md.comp.badge.color | #B3261E |
+| Badge shape | md.comp.badge.shape | Shape: md.sys.shape.corner.full (Fully round, Circular) |
+| Badge size | md.comp.badge.size | 6dp |
+| Badge large color | md.comp.badge.large.color | #B3261E |
+| Badge large shape | md.comp.badge.large.shape | Shape: md.sys.shape.corner.full (Fully round, Circular) |
+| Badge large size | md.comp.badge.large.size | 16dp |
+
+#### Enabled / Label text
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Badge large label text color | md.comp.badge.large.label-text.color | #FFFFFF |
+| Badge large label text font | md.comp.badge.large.label-text.font | Roboto |
+| Badge large label text line height | md.comp.badge.large.label-text.line-height | 16pt |
+| Badge large label text size | md.comp.badge.large.label-text.size | 11pt |
+| Badge large label text tracking | md.comp.badge.large.label-text.tracking | 0.5pt |
+| Badge large label text weight | md.comp.badge.large.label-text.weight | 500 |
+| Badge large label text type | md.comp.badge.large.label-text.type | Font: Roboto 500 11pt/16pt tracking 0.5pt |

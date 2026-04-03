@@ -73,3 +73,26 @@ Configurations:
 - Subhead and supporting text
 - Supporting text and one button
 - Supporting text and two buttons
+
+## Token Tables
+
+### Tooltip - Plain
+
+#### Enabled / Container
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Plain tooltip container color | md.comp.plain-tooltip.container.color | #322F35 |
+| Plain tooltip container shape | md.comp.plain-tooltip.container.shape | Shape: corner.extra.small (Extra small, Rounded) |
+
+#### Enabled / Supporting text
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Plain tooltip supporting text font | md.comp.plain-tooltip.supporting-text.font | Roboto |
+| Plain tooltip supporting text line height | md.comp.plain-tooltip.supporting-text.line-height | 16pt |
+| Plain tooltip supporting text size | md.comp.plain-tooltip.supporting-text.size | 12pt |
+| Plain tooltip supporting text weight | md.comp.plain-tooltip.supporting-text.weight | 400 |
+| Plain tooltip supporting text tracking | md.comp.plain-tooltip.supporting-text.tracking | 0.4pt |
+| Supporting text type style | md.comp.plain-tooltip.supporting-text.type | Font: Roboto 400 12pt/16pt tracking 0.4pt |
+| Plain tooltip supporting text color | md.comp.plain-tooltip.supporting-text.color | #F5EFF7 |

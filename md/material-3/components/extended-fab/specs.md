@@ -35,6 +35,42 @@ Use the table's menu to select a token set. Extended FAB tokens are organized by
 | Extended FAB small icon label space | 8dp |
 | Extended FAB small trailing space | 16dp |
 
+### Extended FAB - Color - Tonal Primary
+
+#### Enabled
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Extended FAB tonal primary container color | md.comp.extended-fab.primary-container.container.color | #EADDFF |
+| Extended FAB tonal primary container elevation | md.comp.extended-fab.primary-container.container.elevation | Elevation: level3 (3dp) |
+| Extended FAB tonal primary container shadow color | md.comp.extended-fab.primary-container.container.shadow-color | #000000 |
+| Extended FAB tonal primary label text color | md.comp.extended-fab.primary-container.label-text.color | #4F378B |
+| Extended FAB tonal primary container icon color | md.comp.extended-fab.primary-container.icon.color | #4F378B |
+
+#### Hovered
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Extended FAB tonal primary hovered container elevation | md.comp.extended-fab.primary-container.hovered.container.elevation | Elevation: level4 (4dp) |
+| Extended FAB tonal primary hovered state layer color | md.comp.extended-fab.primary-container.hovered.state-layer.color | #4F378B |
+| Extended FAB tonal primary hovered state layer opacity | md.comp.extended-fab.primary-container.hovered.state-layer.opacity | 0.08 |
+
+#### Focused
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Extended FAB tonal primary focused container elevation | md.comp.extended-fab.primary-container.focus.container.elevation | Elevation: level3 (3dp) |
+| Extended FAB tonal primary focused state layer color | md.comp.extended-fab.primary-container.focus.state-layer.color | #4F378B |
+| Extended FAB tonal primary focused state layer opacity | md.comp.extended-fab.primary-container.focus.state-layer.opacity | 0.1 |
+
+#### Pressed
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| Extended FAB tonal primary pressed container elevation | md.comp.extended-fab.primary-container.pressed.container.elevation | Elevation: level3 (3dp) |
+| Extended FAB tonal primary pressed state layer color | md.comp.extended-fab.primary-container.pressed.state-layer.color | #4F378B |
+| Extended FAB tonal primary pressed state layer opacity | md.comp.extended-fab.primary-container.pressed.state-layer.opacity | 0.1 |
+
 ## Anatomy
 
 - Container

@@ -247,3 +247,18 @@ Baseline three-line list alignment, padding, and size measurements.
 **Trailing switch**
 - With trailing switch
 - With leading icon and trailing switch
+
+## List Tokens & Specs
+
+### List - Common
+
+#### Color / Enabled
+
+| Token | Reference | Value |
+|-------|-----------|-------|
+| List list item container color | md.comp.list.list-item.container.color | #FEF7FF |
+| List list item segmented container color | md.comp.list.list-item.segmented.container.color | #FEF7FF |
+| List list item label text color | md.comp.list.list-item.label-text.color | #1D1B20 |
+| List list item supporting text color | md.comp.list.list-item.supporting-text.color | #49454F |
+| List list item overline color | md.comp.list.list-item.overline.color | #49454F |
+| List list item divider color | md.comp.list.divider.color | #79747E |
