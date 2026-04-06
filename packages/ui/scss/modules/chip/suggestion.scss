@@ -4,3 +4,8 @@
  * All spec token values (#CAC4D0) match the base chip's outline-variant.
  * No border-color override needed — inherits from .ez-chip base.
  * -------------------- */
+
+/* Leading icon — primary per spec */
+.ez-chip.ez-suggestion > .md-icon {
+  color: var(--md-sys-color-primary);
+}

@@ -72,3 +72,30 @@
 ) > .ez-chip-close {
   color: var(--md-sys-color-on-secondary-container);
 }
+
+/* Selected leading icon — primary per spec */
+.ez-chip.ez-input:is(
+  [aria-pressed="true"],
+  [aria-selected="true"],
+  .ez-selected,
+  :has(input:checked)
+) > .md-icon {
+  color: var(--md-sys-color-primary);
+}
+
+/**
+ * Disabled + selected — on-surface at 12% bg, overrides selected background.
+ * -------------------- */
+.ez-chip.ez-input:disabled:is(
+  [aria-pressed="true"],
+  [aria-selected="true"],
+  .ez-selected,
+  :has(input:checked)
+) {
+  background: color-mix(
+    in oklch,
+    var(--md-sys-color-on-surface, #1D1B20) calc(var(--md-sys-state-disabled-container-opacity, 0.12) * 100%),
+    transparent
+  );
+  border-color: transparent;
+}
