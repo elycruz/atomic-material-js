@@ -22,6 +22,11 @@
 
 /**
  * Trailing close icon
+ *
+ * Visual icon is 18dp but interactive target is 48x48dp per M3 spec
+ * (specs.md: "Target size for close icon | Min 48dp"; guidelines.md:
+ * "the target can extend beyond the visible container of the chip").
+ * The ::before pseudo-element extends the hit area without affecting layout.
  * -------------------- */
 .ez-chip.ez-input > .ez-chip-close {
   font-size: 18px;
@@ -31,6 +36,12 @@
   cursor: pointer;
   position: relative;
   z-index: 4;
+}
+
+.ez-chip.ez-input > .ez-chip-close::before {
+  content: '';
+  position: absolute;
+  inset: -15px;
 }
 
 /**
