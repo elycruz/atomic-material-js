@@ -79,7 +79,7 @@
   [aria-selected="true"],
   .ez-selected,
   :has(input:checked)
-) > .md-icon {
+) > .md-icon:not(.ez-chip-close) {
   color: var(--md-sys-color-primary);
 }
 
