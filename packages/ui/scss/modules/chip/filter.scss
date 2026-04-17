@@ -70,8 +70,9 @@
 
 /**
  * Selected flat hover — level1 elevation per spec.
+ * Excludes disabled chips (button pattern: :disabled, label pattern: :has(input:disabled)).
  * -------------------- */
-.ez-chip.ez-filter:not(.ez-elevated, :disabled):is(
+.ez-chip.ez-filter:not(.ez-elevated, :disabled, :has(input:disabled)):is(
   [aria-pressed="true"],
   [aria-selected="true"],
   .ez-selected,
@@ -82,8 +83,9 @@
 
 /**
  * Disabled + selected — on-surface at 12% bg, overrides selected background.
+ * Covers both button pattern (:disabled) and label pattern (:has(input:disabled)).
  * -------------------- */
-.ez-chip.ez-filter:disabled:is(
+.ez-chip.ez-filter:is(:disabled, :has(input:disabled)):is(
   [aria-pressed="true"],
   [aria-selected="true"],
   .ez-selected,
