@@ -85,8 +85,9 @@
 
 /**
  * Disabled + selected — on-surface at 12% bg, overrides selected background.
+ * Covers both button pattern (:disabled) and label pattern (:has(input:disabled)).
  * -------------------- */
-.ez-chip.ez-input:disabled:is(
+.ez-chip.ez-input:is(:disabled, :has(input:disabled)):is(
   [aria-pressed="true"],
   [aria-selected="true"],
   .ez-selected,
