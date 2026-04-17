@@ -1,10 +1,10 @@
-:is(.ez-textfield):has(
+:is(.ez-textfield, ez-textfield):has(
   :is(input, select, textarea):focus-visible
 ),
 :is(
-  .ez-radio, .ez-checkbox, .ez-textfield, button,
+  .ez-radio, .ez-checkbox, .ez-textfield, ez-textfield, button,
   .ez-btn, .ez-button, ez-button,
-  :is(:not(.ez-textfield) > :is(select, textarea, input))
+  :is(:not(.ez-textfield, ez-textfield) > :is(select, textarea, input))
 ):focus-visible {
   outline: 3px solid var(--ez-focus-ring-color);
   outline-offset: 2px;

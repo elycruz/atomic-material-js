@@ -17,3 +17,16 @@
 :host [part='center'] {
   flex: 1;
 }
+
+/* Suppress native focus outlines on slotted controls — the <ez-textfield>
+   host (in light DOM, matched by focus-ring.scss) is the sole focus
+   indicator. Slotted elements live outside the shadow DOM, so this
+   ::slotted() rule is the only way to reach them from shadow styles. */
+:host ::slotted(input:focus),
+:host ::slotted(input:focus-visible),
+:host ::slotted(select:focus),
+:host ::slotted(select:focus-visible),
+:host ::slotted(textarea:focus),
+:host ::slotted(textarea:focus-visible) {
+  outline: none;
+}
