@@ -22,6 +22,11 @@
 
 /**
  * Trailing close icon
+ *
+ * Visual icon is 18dp but interactive target is 48x48dp per M3 spec
+ * (specs.md: "Target size for close icon | Min 48dp"; guidelines.md:
+ * "the target can extend beyond the visible container of the chip").
+ * The ::before pseudo-element extends the hit area without affecting layout.
  * -------------------- */
 .ez-chip.ez-input > .ez-chip-close {
   font-size: 18px;
@@ -31,6 +36,12 @@
   cursor: pointer;
   position: relative;
   z-index: 4;
+}
+
+.ez-chip.ez-input > .ez-chip-close::before {
+  content: '';
+  position: absolute;
+  inset: -15px;
 }
 
 /**
@@ -71,4 +82,32 @@
   :has(input:checked)
 ) > .ez-chip-close {
   color: var(--md-sys-color-on-secondary-container);
+}
+
+/* Selected leading icon — primary per spec */
+.ez-chip.ez-input:is(
+  [aria-pressed="true"],
+  [aria-selected="true"],
+  .ez-selected,
+  :has(input:checked)
+) > .md-icon:not(.ez-chip-close) {
+  color: var(--md-sys-color-primary);
+}
+
+/**
+ * Disabled + selected — on-surface at 12% bg, overrides selected background.
+ * Covers both button pattern (:disabled) and label pattern (:has(input:disabled)).
+ * -------------------- */
+.ez-chip.ez-input:is(:disabled, :has(input:disabled)):is(
+  [aria-pressed="true"],
+  [aria-selected="true"],
+  .ez-selected,
+  :has(input:checked)
+) {
+  background: color-mix(
+    in oklch,
+    var(--md-sys-color-on-surface, #1D1B20) calc(var(--md-sys-state-disabled-container-opacity, 0.12) * 100%),
+    transparent
+  );
+  border-color: transparent;
 }

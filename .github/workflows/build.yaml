@@ -50,7 +50,7 @@ jobs:
 
       - if: ${{ steps.restore-turbo-cache.outputs.cache-hit != 'true' }}
         name: Run build
-        run: turbo build build-storybook docs
+        run: turbo build build-storybook
 
       - if: ${{ steps.restore-turbo-cache.outputs.cache-hit != 'true' }}
         name: Save Turbo Cache

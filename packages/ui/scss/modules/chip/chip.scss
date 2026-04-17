@@ -127,14 +127,14 @@
   box-shadow: var(--md-sys-elevation-level2, 0 1px 2px 0 rgb(0 0 0 / 30%), 0 2px 6px 2px rgb(0 0 0 / 15%));
 }
 
-/* Elevated focus — level2 */
+/* Elevated focus — level1 per spec (stays at rest elevation) */
 .ez-chip.ez-elevated:not(:disabled):focus-visible {
-  box-shadow: var(--md-sys-elevation-level2, 0 1px 2px 0 rgb(0 0 0 / 30%), 0 2px 6px 2px rgb(0 0 0 / 15%));
+  box-shadow: var(--md-sys-elevation-level1, 0 1px 2px 0 rgb(0 0 0 / 30%), 0 1px 3px 1px rgb(0 0 0 / 15%));
 }
 
-/* Elevated pressed — level2 */
+/* Elevated pressed — level1 per spec (stays at rest elevation) */
 .ez-chip.ez-elevated:not(:disabled):active {
-  box-shadow: var(--md-sys-elevation-level2, 0 1px 2px 0 rgb(0 0 0 / 30%), 0 2px 6px 2px rgb(0 0 0 / 15%));
+  box-shadow: var(--md-sys-elevation-level1, 0 1px 2px 0 rgb(0 0 0 / 30%), 0 1px 3px 1px rgb(0 0 0 / 15%));
 }
 
 /**
@@ -147,16 +147,21 @@
   outline-offset: 2px;
 }
 
-/* Flat chip: border becomes on-surface when focused */
-.ez-chip:not(.ez-elevated):focus-visible {
+/* Flat assist chip: border becomes on-surface when focused (per assist spec) */
+.ez-chip.ez-assist:not(.ez-elevated):focus-visible {
   border-color: var(--md-sys-color-on-surface, ButtonText);
 }
 
+/* Flat filter/input/suggestion chip: border becomes on-surface-variant when focused */
+.ez-chip:not(.ez-assist, .ez-elevated):focus-visible {
+  border-color: var(--md-sys-color-on-surface-variant, ButtonText);
+}
+
 /**
- * Dragged state — elevation level3 per spec.
+ * Dragged state — elevation level4 per spec.
  * -------------------- */
 .ez-chip.ez-dragged {
-  box-shadow: var(--md-sys-elevation-level3, 0 1px 3px 0 rgb(0 0 0 / 30%), 0 4px 8px 3px rgb(0 0 0 / 15%));
+  box-shadow: var(--md-sys-elevation-level4, 0 2px 3px 0 rgb(0 0 0 / 30%), 0 6px 10px 4px rgb(0 0 0 / 15%));
 }
 
 /**
@@ -218,9 +223,14 @@
   }
 }
 
-/* Flat label chip: border becomes on-surface when focused */
-.ez-chip:is(label):not(.ez-elevated):has(:focus-visible) {
+/* Flat assist label chip: border becomes on-surface when focused */
+.ez-chip:is(label).ez-assist:not(.ez-elevated):has(:focus-visible) {
   border-color: var(--md-sys-color-on-surface, ButtonText);
+}
+
+/* Flat filter/input/suggestion label chip: on-surface-variant when focused */
+.ez-chip:is(label):not(.ez-assist, .ez-elevated):has(:focus-visible) {
+  border-color: var(--md-sys-color-on-surface-variant, ButtonText);
 }
 
 .ez-chip:is(label) :where(input[type="checkbox"], input[type="radio"]) {

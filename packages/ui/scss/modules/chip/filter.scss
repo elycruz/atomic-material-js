@@ -6,6 +6,11 @@
  *   - :has(input:checked) (label + checkbox/radio, no JS)
  * -------------------- */
 
+/* Unselected leading icon — primary per spec */
+.ez-chip.ez-filter:not(:disabled) > .md-icon:not(.ez-chip-checkmark) {
+  color: var(--md-sys-color-primary);
+}
+
 /* Selected state */
 .ez-chip.ez-filter:is(
   [aria-pressed="true"],
@@ -61,4 +66,35 @@
   :has(input:checked)
 ) > .ez-chip-checkmark {
   display: inline-flex;
+}
+
+/**
+ * Selected flat hover — level1 elevation per spec.
+ * Excludes disabled chips (button pattern: :disabled, label pattern: :has(input:disabled)).
+ * -------------------- */
+.ez-chip.ez-filter:not(.ez-elevated, :disabled, :has(input:disabled)):is(
+  [aria-pressed="true"],
+  [aria-selected="true"],
+  .ez-selected,
+  :has(input:checked)
+):hover {
+  box-shadow: var(--md-sys-elevation-level1, 0 1px 2px 0 rgb(0 0 0 / 30%), 0 1px 3px 1px rgb(0 0 0 / 15%));
+}
+
+/**
+ * Disabled + selected — on-surface at 12% bg, overrides selected background.
+ * Covers both button pattern (:disabled) and label pattern (:has(input:disabled)).
+ * -------------------- */
+.ez-chip.ez-filter:is(:disabled, :has(input:disabled)):is(
+  [aria-pressed="true"],
+  [aria-selected="true"],
+  .ez-selected,
+  :has(input:checked)
+) {
+  background: color-mix(
+    in oklch,
+    var(--md-sys-color-on-surface, #1D1B20) calc(var(--md-sys-state-disabled-container-opacity, 0.12) * 100%),
+    transparent
+  );
+  border-color: transparent;
 }
