@@ -7,7 +7,7 @@
  * -------------------- */
 
 /* Unselected leading icon — primary per spec */
-.ez-chip.ez-filter > .md-icon {
+.ez-chip.ez-filter:not(:disabled) > .md-icon:not(.ez-chip-checkmark) {
   color: var(--md-sys-color-primary);
 }
 
