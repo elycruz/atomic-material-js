@@ -84,28 +84,10 @@ function renderTextField({
             <span class="md-icon">${trailingIcon}</span>
           </div>`
         : ''}
-    `;
-
-  /* Outlined variant: wrap with border-container to prevent layout shift on focus */
-  if (variant === 'ez-outlined') {
-    const containerClasses = [
-      'ez-textfield-border-container',
-      'ez-outlined',
-      stateFlags,
-    ]
+    `,
+    rootClasses = ['ez-textfield', variant, stateFlags]
       .filter(Boolean)
       .join(' ');
-
-    return html`
-      <div class="${containerClasses}">
-        <div class="ez-textfield">${inner}</div>
-      </div>
-    `;
-  }
-
-  const rootClasses = ['ez-textfield', variant, stateFlags]
-    .filter(Boolean)
-    .join(' ');
 
   return html`<div class="${rootClasses}">${inner}</div>`;
 }
@@ -173,27 +155,10 @@ function renderSelectField({
             <span class="md-icon">${trailingIcon}</span>
           </div>`
         : ''}
-    `;
-
-  if (variant === 'ez-outlined') {
-    const containerClasses = [
-      'ez-textfield-border-container',
-      'ez-outlined',
-      stateFlags,
-    ]
+    `,
+    rootClasses = ['ez-textfield', variant, stateFlags]
       .filter(Boolean)
       .join(' ');
-
-    return html`
-      <div class="${containerClasses}">
-        <div class="ez-textfield">${inner}</div>
-      </div>
-    `;
-  }
-
-  const rootClasses = ['ez-textfield', variant, stateFlags]
-    .filter(Boolean)
-    .join(' ');
 
   return html`<div class="${rootClasses}">${inner}</div>`;
 }
@@ -244,27 +209,10 @@ function renderTextareaField({
         ></textarea>
         <label class="ez-textfield-label" for="${id}">${label}</label>
       </div>
-    `;
-
-  if (variant === 'ez-outlined') {
-    const containerClasses = [
-      'ez-textfield-border-container',
-      'ez-outlined',
-      stateFlags,
-    ]
+    `,
+    rootClasses = ['ez-textfield', variant, stateFlags]
       .filter(Boolean)
       .join(' ');
-
-    return html`
-      <div class="${containerClasses}">
-        <div class="ez-textfield">${inner}</div>
-      </div>
-    `;
-  }
-
-  const rootClasses = ['ez-textfield', variant, stateFlags]
-    .filter(Boolean)
-    .join(' ');
 
   return html`<div class="${rootClasses}">${inner}</div>`;
 }
