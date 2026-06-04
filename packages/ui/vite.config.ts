@@ -10,6 +10,7 @@ import type { TestProjectInlineConfiguration } from 'vitest/config';
 
 const { NODE_ENV } = process.env,
   isDev = !NODE_ENV || NODE_ENV === 'development',
+  isCI = process.env.CI === 'true',
   dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
@@ -96,7 +97,9 @@ export default defineConfig({
           browser: {
             enabled: true,
             headless: true,
-            provider: playwright({}),
+            provider: playwright({
+              launchOptions: isCI ? { channel: 'chrome' } : undefined,
+            }),
             screenshotFailures: false,
             instances: [
               {

@@ -18,7 +18,6 @@ jobs:
     runs-on: ubuntu-latest
     env:
       NODE_ENV: CI/CD
-      PUPPETEER_CACHE_DIR: ~/.cache/ms-playwright
     steps:
       - name: Checkout
         uses: actions/checkout@v6.0.1
@@ -47,33 +46,6 @@ jobs:
           key: ${{ runner.os }}-turbo-${{ hashFiles('packages/**/*.ts', 'packages/**/*.tsx', 'packages/**/*.css', 'packages/**/*.js', 'packages/**/*.mjs', 'pnpm-lock.yaml', 'turbo.json') }}
           restore-keys: |
             ${{ runner.os }}-turbo-
-
-      - name: Restore Puppeteer Bin Cache
-        uses: actions/cache/restore@v5
-        id: restore-puppeteer-cache
-        env:
-          cache-name: restore-puppeteer-cache
-        with:
-          # Cache files in the default puppeteer cache directory (on linux)
-          path: ${{ env.PUPPETEER_CACHE_DIR }}
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
-
-      - if: ${{ steps.restore-puppeteer-cache.outputs.cache-hit != 'true' }}
-        name: Install Puppeteer
-        continue-on-error: false
-        run: cd packages/ui && pnpm exec playwright install chromium-headless-shell --with-deps && cd ../../
-
-      - if: ${{ steps.restore-puppeteer-cache.outputs.cache-hit != 'true' }}
-        name: Save Puppeteer Bin Cache
-        id: save-puppeteer-cache
-        uses: actions/cache/save@v5
-        with:
-          path: ${{ env.PUPPETEER_CACHE_DIR }}
-          key: ${{ steps.restore-puppeteer-cache.outputs.cache-primary-key }}
 
       - name: Run test
         run: turbo build test
