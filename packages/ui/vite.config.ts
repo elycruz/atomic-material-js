@@ -10,7 +10,7 @@ import type { TestProjectInlineConfiguration } from 'vitest/config';
 
 const { NODE_ENV } = process.env,
   isDev = !NODE_ENV || NODE_ENV === 'development',
-  isCI = process.env.CI === 'true',
+  isCI = !!process.env.CI && process.env.CI !== 'false',
   dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
