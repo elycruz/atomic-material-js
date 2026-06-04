@@ -4,8 +4,8 @@ import styles from './page.module.scss';
 const boxCName = styles.box;
 
 export default function SpacingPage() {
-  const fibonacciNums = fib(5000) as unknown as number[],
-    factorsOf144 = factorsOf(144) as unknown as number[],
+  const fibonacciNums = fib(5000),
+    factorsOf144 = factorsOf(144),
     sizes = fibonacciNums
       .concat(factorsOf144.filter(x => !fibonacciNums.includes(x)))
       .sort((a, b) => {
