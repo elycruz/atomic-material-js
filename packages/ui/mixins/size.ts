@@ -29,5 +29,5 @@ export const WithSize = <T extends Constructor<ReactiveElement>>(
       this._size = xs || '';
       this.requestUpdate(SIZE_NAME, oldValue);
     }
-  } as unknown as T & Constructor<WithSizeInterface>;
+  };
 };

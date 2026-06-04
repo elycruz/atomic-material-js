@@ -21,7 +21,7 @@ export class EzTabElement extends EzBaseElement {
   ];
 
   static override properties = {
-    ...(EzBaseElement as unknown as typeof EzBaseElement).properties,
+    ...EzBaseElement.properties,
     active: { type: Boolean, reflect: true },
   };
 

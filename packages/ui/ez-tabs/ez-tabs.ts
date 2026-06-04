@@ -33,7 +33,7 @@ export class EzTabsElement extends EzBaseElement {
   ];
 
   static override properties = {
-    ...(EzBaseElement as unknown as typeof EzBaseElement).properties,
+    ...EzBaseElement.properties,
     variant: { type: String, reflect: true },
   };
 

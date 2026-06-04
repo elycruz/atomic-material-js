@@ -6,11 +6,11 @@ import {
 } from '@atomic/ui/utils/number.js';
 
 export default function Page() {
-  const factorsOf144 = factorsOf(144) as unknown as number[],
-    multiplesOf4 = multiplesOf(4, Math.round(144 / 4)) as unknown as number[],
-    multiplesOf6 = multiplesOf(6, Math.round(144 / 6)) as unknown as number[],
-    multiplesOf8 = multiplesOf(8, Math.round(144 / 8)) as unknown as number[],
-    fib144 = fib(144) as unknown as number[],
+  const factorsOf144 = factorsOf(144),
+    multiplesOf4 = multiplesOf(4, Math.round(144 / 4)),
+    multiplesOf6 = multiplesOf(6, Math.round(144 / 6)),
+    multiplesOf8 = multiplesOf(8, Math.round(144 / 8)),
+    fib144 = fib(144),
     commonNumbers = (() => {
       const counts = ([] as number[])
         .concat(factorsOf144, multiplesOf4, multiplesOf6, multiplesOf8, fib144)
@@ -27,9 +27,7 @@ export default function Page() {
         }, [])
         .sort((a, b) => a - b);
     })(),
-    commonNumberFactors = commonFactorsOf(
-      ...new Set(commonNumbers)
-    ) as unknown as number[];
+    commonNumberFactors = commonFactorsOf(...new Set(commonNumbers));
 
   return (
     <section>
