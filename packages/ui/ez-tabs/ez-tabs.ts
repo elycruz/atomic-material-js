@@ -39,9 +39,18 @@ export class EzTabsElement extends EzBaseElement {
 
   declare variant: EzTabsVariant | '';
 
+  #internals: ElementInternals;
+
   constructor() {
     super();
     this.variant = 'primary';
+
+    // Expose the `tablist` role on the host element itself (matching
+    // `ez-tab`, which carries `role=tab` via ElementInternals). The inner
+    // wrapper is marked presentational in `render()` so the slotted tabs
+    // flatten in as direct children of the tablist in the accessibility tree.
+    this.#internals = this.attachInternals();
+    this.#internals.role = 'tablist';
   }
 
   #resizeObserver: ResizeObserver | null = null;
@@ -191,8 +200,8 @@ export class EzTabsElement extends EzBaseElement {
 
   render(): TemplateResult {
     return html`
-      <div class="ez-tabs ${this.variantClass}" role="tablist">
-        <div class="ez-tabs__indicator"></div>
+      <div class="ez-tabs ${this.variantClass}" role="presentation">
+        <div class="ez-tabs__indicator" aria-hidden="true"></div>
         <slot @slotchange=${this.#onSlotChange}></slot>
       </div>
     `;
