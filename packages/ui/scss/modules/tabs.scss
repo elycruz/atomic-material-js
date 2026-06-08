@@ -263,8 +263,12 @@ $tall-tab-padding-block: calc(#{$tab-padding} - (#{$font-and-line-height-diff} /
 
 /* When .ez-tabs__indicator element is not present, use tab ::after pseudo */
 
-:where(.ez-tabs, ez-tabs):not(:has(.ez-tabs__indicator))
-  > :where(.ez-tab.ez-active, ez-tab[active])::after {
+/* Class-based usage keeps the `:has` guard; custom-element usage is gated by
+ * `:not(:defined)` since `:has()` cannot see the indicator rendered in the
+ * shadow root — once `<ez-tabs>` upgrades it draws its own indicator. */
+:where(.ez-tabs):not(:has(.ez-tabs__indicator))
+  > .ez-tab.ez-active::after,
+ez-tabs:not(:defined) > ez-tab[active]::after {
   content: "";
   position: absolute;
   bottom: -1px;
@@ -275,8 +279,9 @@ $tall-tab-padding-block: calc(#{$tab-padding} - (#{$font-and-line-height-diff} /
   border-radius: var(--_tabs-active-indicator-shape);
 }
 
-:where(.ez-tabs.ez-secondary, ez-tabs[variant="secondary"]):not(:has(.ez-tabs__indicator))
-  > :where(.ez-tab.ez-active, ez-tab[active])::after {
+:where(.ez-tabs.ez-secondary):not(:has(.ez-tabs__indicator))
+  > .ez-tab.ez-active::after,
+ez-tabs[variant="secondary"]:not(:defined) > ez-tab[active]::after {
   left: 0;
   right: 0;
   height: 2px;
