@@ -32,13 +32,36 @@ export const PrimaryLabelOnly: Story = {
 
     await expect(tabs).toBeInTheDocument();
 
-    const tabItems = tabs?.querySelectorAll('ez-tab');
+    const tabItems = Array.from(
+      tabs?.querySelectorAll<HTMLElement>('ez-tab') ?? []
+    );
 
-    await expect(tabItems?.length).toBe(3);
+    await expect(tabItems.length).toBe(3);
 
     const active = tabs?.querySelector('ez-tab[active]');
 
     await expect(active).toBeInTheDocument();
+
+    // Arrow-key navigation moves the active state AND focus to the next tab.
+    // Focus moving onto the host relies on the tab delegating focus into its
+    // inner focusable node (`delegatesFocus`); ARIA semantics (role/selected)
+    // live on the host via ElementInternals.
+    tabItems[0]?.focus();
+
+    tabs?.dispatchEvent(
+      new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true })
+    );
+
+    await Promise.all(
+      tabItems.map(
+        t =>
+          (t as unknown as { updateComplete: Promise<boolean> }).updateComplete
+      )
+    );
+
+    await expect(tabItems[1]?.hasAttribute('active')).toBe(true);
+    await expect(tabItems[0]?.hasAttribute('active')).toBe(false);
+    await expect(document.activeElement).toBe(tabItems[1]);
   },
 };
 
