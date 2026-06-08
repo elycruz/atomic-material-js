@@ -261,11 +261,18 @@ $tall-tab-padding-block: calc(#{$tab-padding} - (#{$font-and-line-height-diff} /
 
 /* ─── CSS-only fallback: active indicator via pseudo-element ──────────────── */
 
-/* When .ez-tabs__indicator element is not present, use tab ::after pseudo */
-
-/* Class-based usage keeps the `:has` guard; custom-element usage is gated by
- * `:not(:defined)` since `:has()` cannot see the indicator rendered in the
- * shadow root — once `<ez-tabs>` upgrades it draws its own indicator. */
+/*
+ * When a `.ez-tabs__indicator` element is not present, paint the active
+ * indicator via a tab `::after` pseudo-element instead.
+ *
+ * Class-based usage keeps the `:has(.ez-tabs__indicator)` guard. The
+ * custom-element tag is split out and gated behind `:not(:defined)` on
+ * purpose: an upgraded `<ez-tabs>` renders its own `.ez-tabs__indicator`
+ * inside its shadow root, but `:has()` cannot pierce the shadow boundary to
+ * see it — so without this guard the fallback would paint a SECOND indicator
+ * in the light DOM (this stylesheet is bundled globally). Not-yet-upgraded
+ * custom elements still get the fallback, preserving progressive enhancement.
+ */
 :where(.ez-tabs):not(:has(.ez-tabs__indicator))
   > .ez-tab.ez-active::after,
 ez-tabs:not(:defined) > ez-tab[active]::after {
