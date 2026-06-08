@@ -10,9 +10,10 @@ export default {
 const themes = Object.values(EzThemeVariants);
 
 /**
- * Small badge (dot) — empty badge rendered as a 6dp dot indicator.
+ * Badge (CSS) — small (dot) and large (with content) badges, positioning, and
+ * themes, using the `.ez-badge-wrapper` / `.ez-badge` CSS classes.
  */
-export const SmallBadge: StoryObj = {
+export const DefaultVariation: StoryObj = {
   render: () => html`
     <section>
       <header><h2>Small Badge (Dot)</h2></header>
@@ -20,12 +21,12 @@ export const SmallBadge: StoryObj = {
         class="ez-section-body"
         style="display: flex; gap: 2rem; align-items: center;"
       >
-        <span class="ez-badge-wrapper">
+        <span class="ez-badge-wrapper" data-testid="small-icon">
           <span class="md-icon" aria-hidden="true">notifications</span>
           <span class="ez-badge"></span>
         </span>
 
-        <span class="ez-badge-wrapper">
+        <span class="ez-badge-wrapper" data-testid="small-button">
           <button
             class="ez-btn ez-outlined ez-theme-primary"
             type="button"
@@ -37,30 +38,7 @@ export const SmallBadge: StoryObj = {
         </span>
       </div>
     </section>
-  `,
-  play: async ({ canvasElement }) => {
-    const badges = canvasElement.querySelectorAll('.ez-badge');
 
-    await expect(badges.length).toBe(2);
-
-    await Promise.all(
-      Array.from(badges).map(async badge => {
-        await expect(badge.textContent?.trim()).toBe('');
-        await expect(badge.classList.contains('ez-badge')).toBe(true);
-      })
-    );
-
-    const wrappers = canvasElement.querySelectorAll('.ez-badge-wrapper');
-
-    await expect(wrappers.length).toBe(2);
-  },
-};
-
-/**
- * Large badge — badge with numeric or text content, rendered at 16dp.
- */
-export const LargeBadge: StoryObj = {
-  render: () => html`
     <section>
       <header><h2>Large Badge (with content)</h2></header>
       <div
@@ -69,86 +47,56 @@ export const LargeBadge: StoryObj = {
       >
         <span class="ez-badge-wrapper">
           <span class="md-icon" aria-hidden="true">notifications</span>
-          <span class="ez-badge">3</span>
+          <span class="ez-badge" data-testid="badge-3">3</span>
         </span>
 
         <span class="ez-badge-wrapper">
           <span class="md-icon" aria-hidden="true">notifications</span>
-          <span class="ez-badge">99</span>
+          <span class="ez-badge" data-testid="badge-99">99</span>
         </span>
 
         <span class="ez-badge-wrapper">
           <span class="md-icon" aria-hidden="true">notifications</span>
-          <span class="ez-badge">999+</span>
+          <span class="ez-badge" data-testid="badge-999">999+</span>
         </span>
       </div>
     </section>
-  `,
-  play: async ({ canvasElement }) => {
-    const badges = canvasElement.querySelectorAll('.ez-badge');
 
-    await expect(badges.length).toBe(3);
-    await expect(badges[0]?.textContent?.trim()).toBe('3');
-    await expect(badges[1]?.textContent?.trim()).toBe('99');
-    await expect(badges[2]?.textContent?.trim()).toBe('999+');
-  },
-};
-
-/**
- * Badge positioning — badges anchored to different elements.
- */
-export const Positioning: StoryObj = {
-  render: () => html`
     <section>
       <header><h2>Badge Positioning</h2></header>
       <div
         class="ez-section-body"
         style="display: flex; gap: 3rem; align-items: center; padding: 1rem;"
       >
-        <span class="ez-badge-wrapper" aria-label="Notifications: 5">
+        <span
+          class="ez-badge-wrapper"
+          data-testid="pos-notif"
+          aria-label="Notifications: 5"
+        >
           <span class="md-icon" aria-hidden="true">notifications</span>
           <span class="ez-badge">5</span>
         </span>
 
-        <span class="ez-badge-wrapper" aria-label="Messages: new">
+        <span
+          class="ez-badge-wrapper"
+          data-testid="pos-mail"
+          aria-label="Messages: new"
+        >
           <span class="md-icon" aria-hidden="true">mail</span>
           <span class="ez-badge"></span>
         </span>
 
-        <span class="ez-badge-wrapper" aria-label="Cart: 12 items">
+        <span
+          class="ez-badge-wrapper"
+          data-testid="pos-cart"
+          aria-label="Cart: 12 items"
+        >
           <span class="md-icon" aria-hidden="true">shopping_cart</span>
           <span class="ez-badge">12</span>
         </span>
       </div>
     </section>
-  `,
-  play: async ({ canvasElement }) => {
-    const wrappers = canvasElement.querySelectorAll('.ez-badge-wrapper');
 
-    await expect(wrappers.length).toBe(3);
-
-    // First: large badge with number
-    const firstBadge = wrappers[0]?.querySelector('.ez-badge');
-
-    await expect(firstBadge?.textContent?.trim()).toBe('5');
-
-    // Second: small dot badge
-    const secondBadge = wrappers[1]?.querySelector('.ez-badge');
-
-    await expect(secondBadge?.textContent?.trim()).toBe('');
-
-    // Third: large badge with number
-    const thirdBadge = wrappers[2]?.querySelector('.ez-badge');
-
-    await expect(thirdBadge?.textContent?.trim()).toBe('12');
-  },
-};
-
-/**
- * Themed badges — badges using different theme color families.
- */
-export const WithThemes: StoryObj = {
-  render: () => html`
     <section>
       <header><h2>Themed Badges</h2></header>
       <div
@@ -160,6 +108,7 @@ export const WithThemes: StoryObj = {
             <div style="text-align: center;">
               <span
                 class="ez-badge-wrapper ${theme ? `ez-theme-${theme}` : ''}"
+                data-testid="theme-${theme || 'default'}"
               >
                 <span class="md-icon" aria-hidden="true">notifications</span>
                 <span class="ez-badge">7</span>
@@ -173,13 +122,54 @@ export const WithThemes: StoryObj = {
       </div>
     </section>
   `,
-  play: async ({ canvasElement }) => {
-    const badges = canvasElement.querySelectorAll('.ez-badge');
 
-    await expect(badges.length).toBe(themes.length);
+  play: async ({ canvasElement }) => {
+    // Small (dot) badges
+    const smallIcon = canvasElement.querySelector(
+        '[data-testid="small-icon"] .ez-badge'
+      ),
+      smallButton = canvasElement.querySelector(
+        '[data-testid="small-button"] .ez-badge'
+      );
+
+    await expect(smallIcon).toBeInTheDocument();
+    await expect(smallButton).toBeInTheDocument();
+    await expect(smallIcon?.textContent?.trim()).toBe('');
+    await expect(smallButton?.textContent?.trim()).toBe('');
+
+    // Large badges (with content)
+    const badge3 = canvasElement.querySelector('[data-testid="badge-3"]'),
+      badge99 = canvasElement.querySelector('[data-testid="badge-99"]'),
+      badge999 = canvasElement.querySelector('[data-testid="badge-999"]');
+
+    await expect(badge3?.textContent?.trim()).toBe('3');
+    await expect(badge99?.textContent?.trim()).toBe('99');
+    await expect(badge999?.textContent?.trim()).toBe('999+');
+
+    // Positioning — badges anchored to different elements
+    const posNotif = canvasElement.querySelector(
+        '[data-testid="pos-notif"] .ez-badge'
+      ),
+      posMail = canvasElement.querySelector(
+        '[data-testid="pos-mail"] .ez-badge'
+      ),
+      posCart = canvasElement.querySelector(
+        '[data-testid="pos-cart"] .ez-badge'
+      );
+
+    await expect(posNotif?.textContent?.trim()).toBe('5');
+    await expect(posMail?.textContent?.trim()).toBe('');
+    await expect(posCart?.textContent?.trim()).toBe('12');
+
+    // Themed badges
+    const themedBadges = canvasElement.querySelectorAll(
+      '[data-testid^="theme-"] .ez-badge'
+    );
+
+    await expect(themedBadges.length).toBe(themes.length);
 
     await Promise.all(
-      Array.from(badges).map(async badge => {
+      Array.from(themedBadges).map(async badge => {
         await expect(badge.textContent?.trim()).toBe('7');
       })
     );
