@@ -1,9 +1,10 @@
 @import "field.scss";
 @import "fieldset.scss";
 
-input,
-textarea,
-select,
+// `button` is normalized here intentionally; `input`, `textarea`, and `select`
+// are deliberately excluded so bare text-entry controls inherit the page font
+// size and carry no text-field-like typography. Text-field typography is owned
+// solely by `.ez-textfield` (see `input/textfield.scss`).
 button {
   font-size: 1rem;
 }
