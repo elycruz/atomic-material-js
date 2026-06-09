@@ -830,3 +830,64 @@ export const TextareaTextField: StoryObj = {
     await expect(disabledTextarea?.disabled).toBe(true);
   },
 };
+
+/**
+ * Invariant: `.ez-textfield` is the sole owner of text-field-like styling.
+ *
+ * A bare, unwrapped `<input type="text">` (no `.ez-textfield` ancestor) must NOT
+ * receive any field decoration (border/background/padding/typography) from the
+ * stylesheet. The only field-like styles come from `.ez-textfield` itself, so a
+ * wrapped control differs from a bare one. (The bare control may still receive a
+ * `:focus-visible` outline — an a11y baseline owned by `focus-ring.scss` — which
+ * is intentionally not field decoration.)
+ */
+export const BareInputHasNoFieldStyling: StoryObj = {
+  render: () => html`
+    <section>
+      <header><h2>Bare input vs. .ez-textfield</h2></header>
+
+      <div
+        class="ez-section-body"
+        style="display: flex; flex-direction: column; gap: 1.5rem; max-width: 320px;"
+      >
+        <h3>Bare (unwrapped) input — no field styling</h3>
+        <input id="bare-input" type="text" placeholder="Bare input" />
+
+        <h3>Wrapped in .ez-textfield — field styling applies</h3>
+        ${renderTextField({
+          variant: 'ez-filled',
+          label: 'Label',
+          id: 'wrapped-input',
+        })}
+      </div>
+    </section>
+  `,
+  play: async ({ canvasElement }) => {
+    const bareInput =
+        canvasElement.querySelector<HTMLInputElement>('#bare-input'),
+      wrappedInput =
+        canvasElement.querySelector<HTMLInputElement>('#wrapped-input');
+
+    await expect(bareInput).not.toBeNull();
+    await expect(wrappedInput).not.toBeNull();
+
+    if (!bareInput || !wrappedInput) return;
+
+    // The bare input has no .ez-textfield ancestor; the wrapped one does.
+    await expect(bareInput.closest('.ez-textfield')).toBeNull();
+    await expect(wrappedInput.closest('.ez-textfield')).not.toBeNull();
+
+    const bareStyle = getComputedStyle(bareInput),
+      wrappedStyle = getComputedStyle(wrappedInput),
+      // Field padding is applied only by `.ez-textfield`, never to a bare input.
+      barePadding = parseFloat(bareStyle.paddingTop),
+      wrappedPadding = parseFloat(wrappedStyle.paddingTop);
+
+    await expect(wrappedPadding).toBeGreaterThan(barePadding);
+
+    // Text-field typography (`%md-typescale-body-large`) is gated behind
+    // `.ez-textfield`; a bare input is not font-normalized by the stylesheet, so
+    // it does not inherit the field typescale.
+    await expect(bareStyle.fontSize).not.toBe(wrappedStyle.fontSize);
+  },
+};
