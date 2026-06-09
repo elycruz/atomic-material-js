@@ -1,11 +1,22 @@
 /**
  * Base form control styles
  *
- * Shared styles for native form controls (input, select, textarea).
- * Component-specific styles live in their own files.
+ * Shared disabled reset for the library's `.ez-*` controls whose class sits on
+ * the native element (checkbox, radio, switch, range, color). Component-specific
+ * styles live in their own files.
+ *
+ * Scoped to `.ez-*` classes rather than bare `input`/`select`/`textarea` so the
+ * reset never leaks onto unwrapped native controls (see #115).
+ *
+ * Not handled here:
+ * - `.ez-textfield` — its disabled block (`textfield.scss`) owns the wrapper's
+ *   `pointer-events`/`cursor` reset via `[disabled]`/`.ez-disabled`/`:has(:disabled)`.
+ * - `pointer-events: none` for any disabled control is also applied globally by
+ *   `fieldset/index.scss :disabled`; the `cursor: not-allowed` here is the
+ *   `.ez-*`-specific addition.
  */
 
-:where(input:not([type="hidden"]), select, textarea) {
+:where(.ez-checkbox, .ez-radio, .ez-switch, .ez-range, .ez-color) {
   &:disabled {
     pointer-events: none;
     cursor: not-allowed;
