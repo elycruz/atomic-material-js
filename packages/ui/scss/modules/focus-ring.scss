@@ -1,15 +1,15 @@
-// NOTE: The `:not(.ez-textfield, ez-textfield) > :is(select, textarea, input)`
-// branch below is the SINGLE sanctioned rule that targets a bare (unwrapped)
-// text-entry control. It provides a `:focus-visible` outline as an accessibility
-// baseline only — it is NOT text-field decoration. All text-field-like styling is
-// owned solely by `.ez-textfield` (see `input/textfield.scss`). Do not remove this
-// branch when auditing for stray bare-input styles.
 :is(.ez-textfield, ez-textfield):has(
   :is(input, select, textarea):focus-visible
 ),
 :is(
   .ez-radio, .ez-checkbox, .ez-textfield, ez-textfield, button,
   .ez-btn, .ez-button, ez-button,
+  // NOTE: This branch is the SINGLE sanctioned rule that targets a bare
+  // (unwrapped) text-entry control. It provides a `:focus-visible` outline as
+  // an accessibility baseline only — it is NOT text-field decoration. All
+  // text-field-like styling is owned solely by `.ez-textfield` (see
+  // `input/textfield.scss`). Do not remove this branch when auditing for stray
+  // bare-input styles.
   :is(:not(.ez-textfield, ez-textfield) > :is(select, textarea, input))
 ):focus-visible {
   outline: 3px solid var(--ez-focus-ring-color);
