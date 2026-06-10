@@ -6,5 +6,7 @@ export * from './ez-shape/index.js';
 export * from './ez-tab/index.js';
 export * from './ez-tabs/index.js';
 export * from './ez-textfield/index.js';
+export * from './ez-view/index.js';
+export * from './ez-views/index.js';
 export * from './mixins/index.js';
 export * from './utils/index.js';
