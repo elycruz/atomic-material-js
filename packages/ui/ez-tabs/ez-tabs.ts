@@ -120,11 +120,11 @@ export class EzTabsElement extends EzBaseElement {
 
       if (!tab.id) tab.id = `${this.htmlFor}-tab-${i}`;
 
-      const view = document.getElementById(controls) as
-        | (HTMLElement & { assignTabPanel?: (id: string) => void })
-        | null;
+      const view = document.getElementById(controls);
 
-      view?.assignTabPanel?.(tab.id);
+      (
+        view as { assignTabPanel?: (id: string) => void } | null
+      )?.assignTabPanel?.(tab.id);
     });
 
     // Sync the container to whichever tab is currently active.
