@@ -44,6 +44,14 @@
       "types": "./dist/ez-tabs/index.d.ts",
       "default": "./dist/ez-tabs/index.js"
     },
+    "./ez-view": {
+      "types": "./dist/ez-view/index.d.ts",
+      "default": "./dist/ez-view/index.js"
+    },
+    "./ez-views": {
+      "types": "./dist/ez-views/index.d.ts",
+      "default": "./dist/ez-views/index.js"
+    },
     "./*": "./dist/*"
   },
   "scripts": {

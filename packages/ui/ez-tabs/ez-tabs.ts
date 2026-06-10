@@ -35,15 +35,25 @@ export class EzTabsElement extends EzBaseElement {
   static override properties = {
     ...EzBaseElement.properties,
     variant: { type: String, reflect: true },
+    htmlFor: { type: String, attribute: 'for', reflect: true },
   };
 
   declare variant: EzTabsVariant | '';
+
+  /**
+   * `id` of the `ez-views` container this tablist drives (declarative wiring).
+   * When set, activating a tab activates the `ez-view` named by that tab's
+   * `controls` attribute, and the ARIA `tab` <-> `tabpanel` relationship is
+   * wired up automatically.
+   */
+  declare htmlFor: string;
 
   #internals: ElementInternals;
 
   constructor() {
     super();
     this.variant = 'primary';
+    this.htmlFor = '';
 
     // Expose the `tablist` role on the host element itself (matching
     // `ez-tab`, which carries `role=tab` via ElementInternals). The inner
@@ -77,6 +87,50 @@ export class EzTabsElement extends EzBaseElement {
     }px)`;
   }
 
+  /** Resolve the associated `ez-views` container, if `for` is set. */
+  #viewsEl(): (HTMLElement & { assignTabPanel?: unknown }) | null {
+    return this.htmlFor ? document.getElementById(this.htmlFor) : null;
+  }
+
+  /**
+   * Activate the `ez-view` controlled by `tab` (upgrade-safe: setting the
+   * `active` attribute works whether or not `ez-views` has upgraded yet).
+   */
+  #driveViews(tab: EzTabElement | null | undefined): void {
+    const container = this.#viewsEl(),
+      controls = tab?.getAttribute('controls');
+
+    if (container && controls) container.setAttribute('active', controls);
+  }
+
+  /**
+   * Wire the ARIA `tab` <-> `tabpanel` relationship: each tab's `controls`
+   * already maps to `aria-controls`; here we generate tab ids where absent and
+   * label each `ez-view` by its controlling tab via `assignTabPanel`.
+   */
+  #wireViews(): void {
+    if (!this.htmlFor) return;
+
+    const tabs = Array.from(this.querySelectorAll<EzTabElement>('ez-tab'));
+
+    tabs.forEach((tab, i) => {
+      const controls = tab.getAttribute('controls');
+
+      if (!controls) return;
+
+      if (!tab.id) tab.id = `${this.htmlFor}-tab-${i}`;
+
+      const view = document.getElementById(controls) as
+        | (HTMLElement & { assignTabPanel?: (id: string) => void })
+        | null;
+
+      view?.assignTabPanel?.(tab.id);
+    });
+
+    // Sync the container to whichever tab is currently active.
+    this.#driveViews(this.querySelector<EzTabElement>('ez-tab[active]'));
+  }
+
   #onTabClick = (e: Event): void => {
     const target = e.target as HTMLElement,
       tab = target.closest<EzTabElement>('ez-tab');
@@ -92,6 +146,7 @@ export class EzTabsElement extends EzBaseElement {
     tab.active = true;
 
     this.#syncIndicator();
+    this.#driveViews(tab);
 
     this.dispatchEvent(
       new CustomEvent(EzTabsEvents.TabChange, {
@@ -138,6 +193,7 @@ export class EzTabsElement extends EzBaseElement {
     nextTab.focus();
 
     this.#syncIndicator();
+    this.#driveViews(nextTab);
 
     this.dispatchEvent(
       new CustomEvent(EzTabsEvents.TabChange, {
@@ -150,6 +206,7 @@ export class EzTabsElement extends EzBaseElement {
 
   #onSlotChange = (): void => {
     this.#syncIndicator();
+    this.#wireViews();
   };
 
   override firstUpdated(_changedProperties: PropertyValues): void {
@@ -170,6 +227,7 @@ export class EzTabsElement extends EzBaseElement {
     this.#resizeObserver.observe(this);
 
     this.#syncIndicator();
+    this.#wireViews();
   }
 
   override disconnectedCallback(): void {

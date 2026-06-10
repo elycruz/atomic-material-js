@@ -37,15 +37,24 @@ export class EzTabElement extends EzBaseElement {
   static override properties = {
     ...EzBaseElement.properties,
     active: { type: Boolean, reflect: true },
+    controls: { type: String, reflect: true },
   };
 
   declare active: boolean;
+
+  /**
+   * `id` of the `ez-view` this tab controls (declarative `for` / `controls`
+   * wiring). Mirrored to `aria-controls` so the `tab` -> `tabpanel`
+   * relationship is exposed in the accessibility tree.
+   */
+  declare controls: string;
 
   #internals: ElementInternals;
 
   constructor() {
     super();
     this.active = false;
+    this.controls = '';
 
     // Expose ARIA semantics on the host element itself (not the inner shadow
     // DOM node) so the `tablist` -> `tab` relationship stays intact in the
@@ -60,6 +69,11 @@ export class EzTabElement extends EzBaseElement {
 
     if (changedProperties.has('active')) {
       this.#internals.ariaSelected = this.active ? 'true' : 'false';
+    }
+
+    if (changedProperties.has('controls')) {
+      if (this.controls) this.setAttribute('aria-controls', this.controls);
+      else this.removeAttribute('aria-controls');
     }
   }
 

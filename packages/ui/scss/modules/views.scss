@@ -1,0 +1,34 @@
+/**
+ * Views (view-stack)
+ *
+ * The content half of the `tablist → tab → tabpanel` triad. `ez-views` shows
+ * one `ez-view` at a time by toggling the `active` attribute (analogous to
+ * `[open]` on `<dialog>`).
+ *
+ * The default show/hide lives here — in the **overridable** user-facing
+ * stylesheet, never inline — so consumers can animate purely in CSS via
+ * `@starting-style` + `transition-behavior: allow-discrete`, e.g.:
+ *
+ *   ez-view {
+ *     opacity: 0;
+ *     transition: opacity .3s, display .3s allow-discrete;
+ *   }
+ *   ez-view[active] { opacity: 1; }
+ *   @starting-style { ez-view[active] { opacity: 0; } }
+ *
+ * The `[active]` / `:not([active])` qualifiers are intentional: they out-weigh
+ * the component's own `:host` display rule so this stylesheet stays the single
+ * source of truth for visibility (and remains overridable by page authors).
+ */
+
+:where(ez-views) {
+  display: block;
+}
+
+ez-view[active] {
+  display: block;
+}
+
+ez-view:not([active]) {
+  display: none;
+}
